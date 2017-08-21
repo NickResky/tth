@@ -1,11 +1,8 @@
 Todos
 
 1. Basic Stuff
-- Setup basic Angular project
 - Setup server side rendering for Angular project (Angular Universal)
 - Setup CMS (e.g. Wordpress/ Keystone/ Ghost/ Butter/ Crafter)
-- Setup SASS/ Less
-- Setup ESLint
 
 2. Design
 - Mockups
