@@ -55,6 +55,23 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+      "spec": false
+    },
+    "service": {
+      "spec": false
+    },
+    "directive": {
+      "spec": false
+    },
+    "class": {
+      "spec": false // Set to false by default
+    },
+    "module": {
+      "spec": false // Set to false by default
+    },
+    "pipe": {
+      "spec": false
+    }    
   }
 }
