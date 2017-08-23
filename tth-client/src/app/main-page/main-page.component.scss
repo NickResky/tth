@@ -1,0 +1,53 @@
+div {
+    display: block;
+}
+
+.parallaxPhilosophy {
+    background-image: url("../../resources/DSC_7558_mitLogo.jpg");
+    min-height: 100%;
+}
+
+.parallaxTeam {
+    background-image: url("../../resources/H34A8653.jpg");
+    min-height: 100%;
+}
+
+.parallaxStage {
+    background-image: url("../../resources/DSC_9425.jpg");
+    min-height: 100%;
+}
+
+.parallaxPhilosophy, .parallaxTeam, .parallaxStage {
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    // width: 100%;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(77, 77, 77, 0.5);
+    margin: auto 130px;
+    // padding: 10px;
+    padding-top: 30px;
+
+    span.border {
+        border: 2px solid #fcfbf9;
+        padding: 18px;
+        font-size: 30px;
+        letter-spacing: 10px;
+    }
+
+    p.description {
+        // margin: auto 15px;
+        font-size: 20px;
+        padding: 20px;
+    }
+}
