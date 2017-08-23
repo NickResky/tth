@@ -65,10 +65,10 @@
       "spec": false
     },
     "class": {
-      "spec": false // Set to false by default
+      "spec": false
     },
     "module": {
-      "spec": false // Set to false by default
+      "spec": false
     },
     "pipe": {
       "spec": false
