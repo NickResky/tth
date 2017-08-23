@@ -2,13 +2,28 @@ div {
     display: block;
 }
 
+.parallaxPhilosophy, .parallaxCurrent, .parallaxCourses, .parallaxStage,
+.parallaxTeam, .parallaxLocations, .parallaxContact {
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .parallaxPhilosophy {
     background-image: url("../../resources/DSC_7558_mitLogo.jpg");
     min-height: 100%;
 }
 
-.parallaxTeam {
+.parallaxCurrent {
     background-image: url("../../resources/H34A8653.jpg");
+    min-height: 100%;
+}
+
+.parallaxCourses {
+    background-image: url("../../resources/DSC_8806.jpg");
     min-height: 100%;
 }
 
@@ -17,13 +32,19 @@ div {
     min-height: 100%;
 }
 
-.parallaxPhilosophy, .parallaxTeam, .parallaxStage {
-    position: relative;
-    opacity: 0.8;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.parallaxTeam {
+    background-image: url("../../resources/Team.jpg");
+    min-height: 100%;
+}
+
+.parallaxLocations {
+    background-image: url("../../resources/Standorte.jpg");
+    min-height: 100%;
+}
+
+.parallaxContact {
+    background-image: url("../../resources/AURORA4.jpg");
+    min-height: 100%;
 }
 
 .caption {
