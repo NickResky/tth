@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SiteService } from './site.service';
+import { Site } from './../classes/site';
+
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  sites: Site[];
+
+  constructor(private siteService: SiteService) { }
 
   ngOnInit() {
+    this.sites = this.siteService.getSites();
   }
 
 }
