@@ -1,57 +1,10 @@
-<div class="parallaxPhilosophy"></div>
-
-<div class="parallaxCurrent">
-  <div class="caption">
-    <span class="border">AKTUELLES</span>
-    <p class="description">
-      Ab dem 1.12.2016 ist der Eingangsbereich der Ballett-und Tanzschule Ludwigsburg "Tanztheater Anita Hanke"  Liebigstraße 11 gesperrt. Bitte benutzen Sie den Eingang durch die Tiefgarage des Hornbach. Parkplätze sind reichlich vorhanden. Der Treppenaufgang von der Parkgarage führt direkt in die Tanzschule im 1. Stock.Vielen Dank.
-    </p>
-  </div>
-</div>
-
-<div class="parallaxCourses">
-  <div class="caption">
-    <span class="border">KURSE</span>
-    <p class="description">
-      Das Kursangebot der Tanztheater in Ludwigsburg und Markgröningen umfasst Ballett, Modern, Jazz Dance, Musical, Breakdance und Hip Hop.
-    </p>
-  </div>
-</div>
-
-<div class="parallaxStage">
-  <div class="caption">
-    <span class="border">BÜHNE</span>
-    <p class="description">
-      Wir inszenieren Kindermusicals, Jugendprojekte und Choreographenabende in Theatern und im Forum Ludwigsburg.
-    </p>
-  </div>
-</div>
-
-<div class="parallaxTeam">
-  <div class="caption">
-    <span class="border">TEAM</span>
-    <p class="description">
-      
-    </p>
-  </div>
-</div>
-
-<div class="parallaxLocations">
-  <div class="caption">
-    <span class="border">STANDORTE</span>
-    <p class="description">
-      Tanzschule Markgröningen  |  Maulbronner Weg 37  |  71706 Markgröningen  |  07141 4873482
-      <br>
-      Tanzschule Ludwigsburg  |  Liebigstraße 11  |  71636 Ludwigsburg  |  07141 4873482
-    </p>
-  </div>
-</div>
-
-<div class="parallaxContact">
-  <div class="caption">
-    <span class="border">KONTAKT</span>
-    <p class="description">
-      Wir freuen uns über Begegnungen mit tanzbegeisterten Menschen, die zum Probetraining vorbeischauen oder sich von unseren Auftritten bezaubern lassen.
-    </p>
+<div *ngFor="let site of sites" class={{site.cssClass}}>
+  <div class="container">
+    <div class="caption">
+      <span class="border">{{site.title}}</span>
+      <p class="description">
+        {{site.description}}
+      </p>
+    </div>
   </div>
 </div>
