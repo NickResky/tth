@@ -43,28 +43,34 @@ div {
     background-image: url("../../resources/Kontakt.jpg");
 }
 
-.caption {
+.container {
     position: absolute;
-    left: 0;
     top: 30%;
-    // width: 100%;
-    text-align: center;
-    color: #fff;
-    background-color: rgba(77, 77, 77, 0.5);
-    margin: auto 130px;
-    // padding: 10px;
-    padding-top: 30px;
+    width: 100%;
 
-    span.border {
-        border: 2px solid #fcfbf9;
-        padding: 18px;
-        font-size: 30px;
-        letter-spacing: 10px;
-    }
-
-    p.description {
-        // margin: auto 15px;
-        font-size: 20px;
-        padding: 20px;
+    .caption {
+        left: 0;
+        text-align: center;
+        color: #fff;
+        background-color: rgba(77, 77, 77, 0.5);
+        max-width: 1000px;
+        margin: auto;
+        // margin: auto 130px;
+        // padding: 10px;
+        padding: 30px;
+    
+        span.border {
+            border: 2px solid #fcfbf9;
+            padding: 18px;
+            font-size: 30px;
+            letter-spacing: 10px;
+            margin: 20px;
+        }
+    
+        p.description {
+            // margin: auto 15px;
+            font-size: 20px;
+            padding-top: 20px;
+        }
     }
 }
