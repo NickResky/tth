@@ -10,3 +10,16 @@
     background-size: cover;
     // min-height: 100%;
 }
+
+.content {
+    background-color: #F6F5F5;
+    padding: 10px;
+
+    .posts {
+        background-color: #303030;
+        color: #ffffff;
+        opacity: 0.85;
+        padding: 20px;
+        margin: 70px;
+    }
+}
