@@ -4,13 +4,13 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-header',
   template: `
   <div class="navbar">
-    <div class="logo"></div>
+    <div routerLink="/" class="logo"></div>
     <a href="#contact">Kontakt</a>
     <a href="#locations">Standorte</a>
     <a href="#team">Team</a>
     <a href="#courses">Kurse</a>
     <a href="#stage">Bühne</a>
-    <a href="#current">Aktuelles</a>
+    <a routerLink="/aktuelles">Aktuelles</a>
   </div>
   `,
   styleUrls: ['header.component.scss']
