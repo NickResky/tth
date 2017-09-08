@@ -16,6 +16,9 @@
         width:20px;
         margin: 10px 20px;
     }
+    div.logo:focus {
+        outline: none;
+    }
     a {
         float: right;
         display: block;
