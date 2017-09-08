@@ -1,3 +1,5 @@
+$main-page-text-color: #fff;
+
 div {
     display: block;
 }
@@ -51,7 +53,7 @@ div {
     .caption {
         left: 0;
         text-align: center;
-        color: #fff;
+        color: $main-page-text-color;
         background-color: rgba(77, 77, 77, 0.5);
         max-width: 1000px;
         margin: auto;
