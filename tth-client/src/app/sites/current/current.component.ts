@@ -1,3 +1,5 @@
+import { CurrentService } from './current.service';
+import { BlogPost } from './../../classes/blog-post';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentComponent implements OnInit {
 
-  constructor() { }
+  posts: BlogPost[]
+
+  constructor(private currentService: CurrentService) { }
 
   ngOnInit() {
+    this.posts = this.currentService.getPosts();
   }
 
 }
