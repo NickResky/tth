@@ -1,0 +1,27 @@
+@import '../../../variables';
+
+.headPicture {
+    background-image: url("../../../resources/H34A8653.jpg");
+    width: 100%;
+    height: 500px;
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // min-height: 100%;
+}
+
+.content {
+    background-color: $main-text-color;
+    padding: 10px;
+
+    .posts {
+        background-color: #303030;
+        color: #ffffff;
+        opacity: 0.85;
+        padding: 20px;
+        margin: 70px;
+    }
+}
