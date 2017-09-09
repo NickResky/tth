@@ -6,7 +6,7 @@
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
     z-index: 10;
-    div.logo {
+    .logo {
         background-image: url("../../../resources/Logo.png"); //no-repeat;
         background-size: 100% 100%;
         height: 100%;
@@ -16,7 +16,7 @@
         width:20px;
         margin: 10px 20px;
     }
-    div.logo:focus {
+    .logo:focus {
         outline: none;
     }
     a {
