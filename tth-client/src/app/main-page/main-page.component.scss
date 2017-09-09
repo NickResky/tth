@@ -48,7 +48,7 @@ div {
     top: 30%;
     width: 100%;
 
-    .caption {
+    .content {
         left: 0;
         text-align: center;
         color: #fff;
@@ -59,7 +59,7 @@ div {
         // padding: 10px;
         padding: 30px;
     
-        span.border {
+        .caption {
             border: 2px solid #fcfbf9;
             padding: 18px;
             font-size: 30px;
@@ -67,7 +67,7 @@ div {
             margin: 20px;
         }
     
-        p.description {
+        .description {
             // margin: auto 15px;
             font-size: 20px;
             padding-top: 20px;
