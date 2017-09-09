@@ -4,8 +4,7 @@ div {
     display: block;
 }
 
-.parallaxPhilosophy, .parallaxCurrent, .parallaxCourses, .parallaxStage,
-.parallaxTeam, .parallaxLocations, .parallaxContact {
+.parallaxSection {
     position: relative;
     opacity: 0.8;
     background-attachment: fixed;
