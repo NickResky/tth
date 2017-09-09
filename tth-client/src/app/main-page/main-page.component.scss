@@ -1,3 +1,5 @@
+@import '../../variables';
+
 $main-page-text-color: #fff;
 
 div {
@@ -61,7 +63,7 @@ div {
         padding: 30px;
     
         .caption {
-            border: 2px solid #fcfbf9;
+            border: 2px solid $main-text-color;
             padding: 18px;
             font-size: 30px;
             letter-spacing: 10px;

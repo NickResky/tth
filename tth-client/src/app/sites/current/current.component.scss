@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 .headPicture {
     background-image: url("../../../resources/H34A8653.jpg");
     width: 100%;
@@ -12,7 +14,7 @@
 }
 
 .content {
-    background-color: #F6F5F5;
+    background-color: $main-text-color;
     padding: 10px;
 
     .posts {

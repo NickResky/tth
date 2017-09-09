@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 .navbar {
     overflow: hidden;
     background-color: #303030;
@@ -8,7 +10,7 @@
 
     .contactContainer {
         margin: 30px 60px;
-        color: #F6F5F5;
+        color: $main-text-color;
         float: left;
         
         .badge {
@@ -26,7 +28,7 @@
 
     .container {
         margin: 30px 60px;
-        color: #F6F5F5;
+        color: $main-text-color;
         float: right;
     }
 }
