@@ -8,3 +8,14 @@ body, html {
     font: 400 15px/1.8 "Lucida Grande", sans-serif;
     color: #777;
 }
+
+.header-image {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

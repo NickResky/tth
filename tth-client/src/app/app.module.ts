@@ -9,10 +9,13 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
 import { CurrentService } from './sites/current/current.service';
+import { TeamComponent } from './sites/team/team.component';
+import { TeamService } from './sites/team/team.service';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'aktuelles', component: CurrentComponent }
+  { path: 'aktuelles', component: CurrentComponent },
+  { path: 'team', component: TeamComponent }
 ]
 
 @NgModule({
@@ -21,7 +24,8 @@ const routes: Routes = [
     MainPageComponent,
     HeaderComponent,
     FooterComponent,
-    CurrentComponent
+    CurrentComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ const routes: Routes = [
   ],
   providers: [
     SiteService,
-    CurrentService
+    CurrentService,
+    TeamService
   ],
   bootstrap: [AppComponent]
 })

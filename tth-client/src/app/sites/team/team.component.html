@@ -1,0 +1,11 @@
+<div class="header-image"></div>
+<div class="team-member-content">
+  <div *ngFor="let teacher of team" class="posts">
+    <h2>{{teacher.name}}</h2>
+    <p>{{teacher.task}}</p>
+    <div class="team-member-content-container">
+      <img src="assets/team/Anita.jpg" class="team-member-picture-frame"/>
+      <div class="team-member-description-container">{{teacher.description}}</div>
+    </div>
+  </div>
+</div>
