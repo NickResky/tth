@@ -2,6 +2,18 @@ $header-link-color: #f2f2f2;
 $header-hover-background-color: #595959;
 $main-text-color: #F6F5F5;
 
-$breakpoint-tablet: 800px;
-$breakpoint-laptop: 1200px;
-$breakpoint-desktop: 1600px;
+/*---------------------------
+|   RESPONSIVE BREAKPOINTS  |
+----------------------------*/
+
+// Small devices (landscape phones, 576px and up)
+$media-breakpoint-sm: 576px;
+
+// Medium devices (tablets, 768px and up)
+$media-breakpoint-md: 768px;
+
+// Large devices (desktops, 992px and up)
+$media-breakpoint-lg: 992px;
+
+// Extra large devices (large desktops, 1200px and up)
+$media-breakpoint-xl: 1200px;
