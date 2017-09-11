@@ -1,4 +1,5 @@
 @import '../../../variables';
+@import '../../../mixins';
 
 .header-image {
     background-image: url("../../../resources/Team.jpg");
@@ -35,10 +36,10 @@
 
 @media (min-width: $media-breakpoint-md){
     .team-member-content-container {
-        display: flex;
+        @include flexbox();
     
         .team-member-description-container {
-            flex: 1;
+            @include flex(1);
         }
     
         .team-member-picture-frame {
