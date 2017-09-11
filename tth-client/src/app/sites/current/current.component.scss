@@ -1,16 +1,7 @@
 @import '../../../variables';
 
-.headPicture {
+.header-image {
     background-image: url("../../../resources/H34A8653.jpg");
-    width: 100%;
-    height: 500px;
-    position: relative;
-    opacity: 0.8;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    // min-height: 100%;
 }
 
 .content {
