@@ -1,0 +1,23 @@
+@import '../../../variables';
+
+.header-image {
+    background-image: url("../../../resources/Kurse.jpg");
+}
+
+.content {
+    background-color: $main-text-color;
+    padding: 10px 70px;
+
+    .posts {
+        background-color: #303030;
+        color: #ffffff;
+        opacity: 0.85;
+        padding: 20px;
+        margin: 70px;
+    }
+
+    .schedule {
+        width:100%;
+        height: 750px;
+    }
+}
