@@ -1,3 +1,4 @@
+import { Performance } from './../../classes/performance';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stage.component.scss']
 })
 export class StageComponent implements OnInit {
+
+  performances: Performance[];
 
   constructor() { }
 
