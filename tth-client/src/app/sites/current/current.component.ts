@@ -1,3 +1,5 @@
+import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
+import { DynamicContentService } from './../../services/dynamic-content.service';
 import { CurrentService } from './current.service';
 import { BlogPost } from './../../classes/blog-post';
 import { Component, OnInit } from '@angular/core';
@@ -9,12 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentComponent implements OnInit {
 
-  posts: BlogPost[]
+  posts: BlogPost[];
+  currentListShortId: {};
 
-  constructor(private currentService: CurrentService) { }
+  constructor(private currentService: CurrentService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
-    this.posts = this.currentService.getPosts();
+    this.currentListShortId = ZenkitCollections.current.shortId;
+
+    this.currentService.getPosts().then((posts) => {
+      this.posts = posts;
+    });
   }
 
+  getFileSrc(file) {
+    return this.dynamicContentService.getFileSrc(file.shortId, this.currentListShortId);
+  }
 }

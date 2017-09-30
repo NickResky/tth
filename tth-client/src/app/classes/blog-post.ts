@@ -1,6 +1,8 @@
+import { ElementTypes } from './element_types';
+
 export class BlogPost {
     title: string;
-    text: string;
-    pictures: string[];
+    description: string;
+    images: string[];
     embed: string;
 }

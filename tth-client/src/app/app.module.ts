@@ -1,6 +1,8 @@
+import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -32,12 +34,14 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [
     SiteService,
     CurrentService,
-    TeamService
+    TeamService,
+    DynamicContentService
   ],
   bootstrap: [AppComponent]
 })
