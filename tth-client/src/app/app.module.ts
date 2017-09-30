@@ -11,11 +11,13 @@ import { CurrentComponent } from './sites/current/current.component';
 import { CurrentService } from './sites/current/current.service';
 import { TeamComponent } from './sites/team/team.component';
 import { TeamService } from './sites/team/team.service';
+import { CoursesComponent } from './sites/courses/courses.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
-  { path: 'team', component: TeamComponent }
+  { path: 'team', component: TeamComponent },
+  { path: 'kurse', component: CoursesComponent }
 ]
 
 @NgModule({
@@ -25,7 +27,8 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CurrentComponent,
-    TeamComponent
+    TeamComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
