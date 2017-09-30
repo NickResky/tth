@@ -8,11 +8,17 @@
     background-color: $main-text-color;
     padding: 10px;
 
-    .posts {
+    .post {
         background-color: #303030;
         color: #ffffff;
         opacity: 0.85;
         padding: 20px;
         margin: 70px;
+        .post-image-container {
+
+            .post-image {
+                width: 100%;
+            }
+        }
     }
 }
