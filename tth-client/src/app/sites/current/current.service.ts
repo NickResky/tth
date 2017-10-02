@@ -1,6 +1,5 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { DynamicContentService } from './../../services/dynamic-content.service';
-import { POSTS } from './../../../resources/mock-data/blog-data';
 import { BlogPost } from './../../classes/blog-post';
 import { Injectable } from '@angular/core';
 import _ from 'lodash';

@@ -1,4 +1,4 @@
-import { ElementTypes } from './element_types';
+import { ElementTypes } from '../shared/constants/element_types';
 
 export class BlogPost {
     title: string;
