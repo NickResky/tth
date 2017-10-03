@@ -3,7 +3,8 @@
   <div class="posts">
     <h2>Cinemoves</h2>
     <div class="team-member-content-container">
-      <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"/>
+      <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"
+      (click)="showModalDialog = true"/>
       <div class="team-member-description-container">Cupcake ipsum dolor sit amet. Chocolate bar liquorice pudding croissant cotton candy cupcake jelly-o. Topping danish cake powder macaroon. Pie caramels gingerbread pudding oat cake fruitcake gummies. Bear claw dessert gummi bears liquorice. Oat cake icing biscuit cotton candy halvah topping chocolate bar. Macaroon sugar plum dessert. Sugar plum pudding pudding liquorice sweet roll tart icing cotton candy.</div>
     </div>
   </div>
@@ -27,5 +28,82 @@
       <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"/>
       <div class="team-member-description-container">Cupcake ipsum dolor sit amet. Chocolate bar liquorice pudding croissant cotton candy cupcake jelly-o. Topping danish cake powder macaroon. Pie caramels gingerbread pudding oat cake fruitcake gummies. Bear claw dessert gummi bears liquorice. Oat cake icing biscuit cotton candy halvah topping chocolate bar. Macaroon sugar plum dessert. Sugar plum pudding pudding liquorice sweet roll tart icing cotton candy.</div>
     </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal-dialog-background" *ngIf="showModalDialog">
+  <span class="close-button" (click)="showModalDialog = false">&times;</span>
+  <div class="modal-dialog-content-container">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+      <img src="assets/stage/H34A0833.JPG">
+    </div>
+
+    <!-- <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+      <img src="assets/stage/H34A1365.JPG">
+    </div> -->
+
+    <!-- <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+      <img src="assets/stage/H34A1480.JPG">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+      <img src="assets/stage/H34A3398.JPG">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+      <img src="assets/stage/H34A3586.jpg">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+      <img src="assets/stage/H34A3738.JPG">
+    </div> -->
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- <div class="caption-container">
+      <p id="caption">Bilder</p>
+    </div> -->
+    
+    <!-- <div class="column">
+      <img class="demo cursor" src="assets/stage/H34A0833.JPG">
+    </div>
+
+    <div class="column">
+      <img class="demo cursor" src="assets/stage/H34A1365.JPG">
+    </div>
+
+    <div class="column">
+      <img class="demo cursor" src="assets/stage/H34A1480.JPG">
+    </div>
+
+    <div class="column">
+      <img class="demo cursor" src="assets/stage/H34A3398.JPG">
+    </div>
+
+    <div class="column">
+      <img class="demo cursor" src="assets/stage/H34A3586.jpg">
+    </div>
+
+    <div class="column">
+      <img class="demo cursor" src="assets/stage/H34A3738.JPG">
+    <</div> -->
+  </div>
+  <br>
+  
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
   </div>
 </div>

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class StageComponent implements OnInit {
 
   performances: Performance[];
+  showModalDialog = false;
 
   constructor() { }
 
