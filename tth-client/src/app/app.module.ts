@@ -15,6 +15,7 @@ import { TeamComponent } from './sites/team/team.component';
 import { TeamService } from './sites/team/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';
 import { StageComponent } from './sites/stage/stage.component';
+import { GalleryComponent } from './sites/stage/gallery/gallery.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     CurrentComponent,
     TeamComponent,
     CoursesComponent,
-    StageComponent
+    StageComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
