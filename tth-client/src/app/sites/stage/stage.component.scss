@@ -1,27 +1,25 @@
 @import '../../../variables';
 @import '../../../mixins';
 
-.header-image {
-    background-image: url("../../../resources/H34A8653.jpg");
+* {
+    box-sizing: border-box;
 }
 
-.content {
+.header-image {
+    background-image: url("../../../resources/DSC_9425.jpg");
+}
+
+.performances-container {
     background-color: $main-text-color;
     padding: 10px;
 
-    .post {
+    .posts {
         // background-color: #303030;
         color: #303030;
         opacity: 0.85;
         padding: 30px 0 70px;
         margin: 0 70px;
         border-bottom: 1px solid $post-seperator-color;
-        .post-image-container {
-
-            .post-image {
-                width: 100%;
-            }
-        }
     }
 }
 
@@ -37,6 +35,13 @@
         width: 70%;
         height: auto;
         display: block;
+        border: solid black 3px;
+        -webkit-transition-duration: 0.3s; /* Safari */
+        transition-duration: 0.3s;
+    }
+    .team-member-picture-frame:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.3);
+        cursor: pointer;
     }
 }
 

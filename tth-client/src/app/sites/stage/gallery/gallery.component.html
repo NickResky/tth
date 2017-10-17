@@ -1,0 +1,23 @@
+<div class="modal-dialog-background" *ngIf="showModalDialog">
+  <span class="close-button" (click)="close()">&times;</span>
+  <div class="modal-dialog-content-container">
+
+    <div *ngFor="let picture of pictures">
+      <div class="performance-picture-frame" *ngIf="picture.isVisible">
+        <div class="performance-picture-numbertext">{{pictures.indexOf(picture)+1}} / {{pictures.length}}</div>
+        <img src={{picture.source}}>
+      </div>
+    </div>
+
+    <a class="prev-arrow-button" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next-arrow-button" (click)="plusSlides(1)">&#10095;</a>
+
+  </div>
+  <br>
+  
+  <div class="modal-dialog-dot-navigation">
+    <span class="dot"  *ngFor="let picture of pictures" (click)="currentSlide(pictures.indexOf(picture)+1)"></span> 
+    <!-- <span class="dot" (click)="currentSlide(2)"></span> 
+    <span class="dot" (click)="currentSlide(3)"></span>  -->
+  </div>
+</div>
