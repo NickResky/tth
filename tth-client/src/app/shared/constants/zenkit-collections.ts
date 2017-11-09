@@ -10,4 +10,8 @@ export const ZenkitCollections  = {
         // LOCAL shortId: 'BJFD1TY9W',
         requiredElements: RequiredElements.current
     },
+    performances: {
+        shortId: 'HyltubcKub',
+        requiredElements: RequiredElements.performances
+    },
 };

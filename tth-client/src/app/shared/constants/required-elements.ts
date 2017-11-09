@@ -44,5 +44,28 @@ export const RequiredElements  = {
             type: ElementTypes.text,
             mappedClassPropertyName: 'embed'
         }
+    ],
+    performances: [
+        {
+            name: 'Titel',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'title'
+        },
+        {
+            name: 'Beschreibung',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'description'
+        },
+        {
+            name: 'Bild des Posters',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'poster'
+        },
+        {
+            name: 'Bildergallerie',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'gallery'
+        }
+    ],
     ]
 };

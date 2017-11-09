@@ -1,3 +1,5 @@
+import { Performance } from './../classes/performance';
+import { StageService } from './stage.service';
 import { Location } from './../classes/location';
 import { Teacher } from './../classes/teacher';
 import { CourseInformation } from './../classes/course-information';
@@ -16,10 +18,11 @@ export class ModelService {
     contactData: Promise<Contact>;
     blogPostsData: Promise<BlogPost[]>;
     coursesData: Promise<CourseInformation[]>;
+    performancesData: Promise<Performance[]>;
     teamData: Promise<Teacher[]>;
     locationData: Promise<Location[]>;
 
-    constructor(private mainPageService: MainPageService ) { }
+    constructor(private mainPageService: MainPageService, private stageService: StageService ) { }
 
     getMainPageSections() {
         if (_.isNil(this.mainPageData)) {
@@ -28,6 +31,16 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.mainPageData);
+        });
+    }
+
+    getPerformances() {
+        if (_.isNil(this.performancesData)) {
+            this.performancesData = this.stageService.getPerformances();
+            return this.performancesData;
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.performancesData);
         });
     }
 }

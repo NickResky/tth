@@ -1,4 +1,6 @@
+import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-gallery',
@@ -9,6 +11,7 @@ export class GalleryComponent implements OnInit {
 
   showModalDialog = false;
   slideIndex = 1;
+  listShortId = undefined;
   pictures = [
     {'source' : 'assets/stage/H34A0833.JPG', 'isVisible': false},
     {'source' : 'assets/stage/H34A1365.JPG', 'isVisible': false},
@@ -18,14 +21,22 @@ export class GalleryComponent implements OnInit {
     {'source' : 'assets/stage/H34A3738.JPG', 'isVisible': false}
   ];
 
-  constructor() { }
+  constructor(private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
     this.showSlides(1);
   }
 
   // in dynamischer Version kann hier die Liste mit Bildern übergeben werden. Hoffentlich :D
-  show() {
+  show(images, listShortId) {
+    this.listShortId = listShortId;
+    this.pictures = _.map(images, (image) => {
+      return {
+        'source': this.getFileSrc(image),
+        'isVisible': false
+      };
+    });
+    this.showSlides(1);
     this.showModalDialog = true;
   }
 
@@ -57,6 +68,9 @@ export class GalleryComponent implements OnInit {
 
   currentSlide(slideNumber: number) {
     this.showSlides(this.slideIndex = slideNumber);
+  }
+  getFileSrc(file) {
+    return this.dynamicContentService.getFileSrc(file.shortId, this.listShortId);
   }
 
 }
