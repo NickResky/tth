@@ -133,5 +133,21 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'gallery'
         }
     ],
+    contact: [
+        {
+            name: 'Name',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'name'
+        },
+        {
+            name: 'E-Mail',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'email'
+        },
+        {
+            name: 'Telefon',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'phone'
+        }
     ]
 };

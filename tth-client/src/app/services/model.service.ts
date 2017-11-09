@@ -1,3 +1,4 @@
+import { ContactService } from './contact.service';
 import { LocationsService } from './locations.service';
 import { LocationData } from './../classes/location-data';
 import { TeamService } from './team.service';
@@ -30,7 +31,8 @@ export class ModelService {
         private stageService: StageService,
         private coursesService: CoursesService,
         private teamService: TeamService,
-        private locationsService: LocationsService
+        private locationsService: LocationsService,
+        private contactService: ContactService
     ) { }
 
     getMainPageSections() {
@@ -80,6 +82,16 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.locationData);
+        });
+    }
+
+    getContact() {
+        if (_.isNil(this.contactData)) {
+            this.contactData = this.contactService.getContact();
+            return this.contactData;
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.contactData);
         });
     }
 }

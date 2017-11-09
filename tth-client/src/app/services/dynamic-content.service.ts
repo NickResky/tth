@@ -49,7 +49,7 @@ export class DynamicContentService {
         elementIdX: elementIdX
       };
       return this.http
-        .post(this.apiUrl + 'lists/' + ZenkitCollections.current.shortId + '/entries/filter/kanban', httpRequestBody, {headers: headers})
+        .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, {headers: headers})
         .toPromise();
     };
 
@@ -98,7 +98,8 @@ export class DynamicContentService {
               return {
                 list: listJson,
                 elements: elementsJson,
-                kanbanEntries: entriesJson
+                kanbanEntries: entriesJson,
+                sectionElement: sectionElement
               };
             });
         });
@@ -120,6 +121,9 @@ export class DynamicContentService {
         const fullElement = _.find(params.elements, {
           name: requiredElement.name
         });
+        if (_.isNil(fullElement)) {
+          throw new Error('Element ' + requiredElement.name + 'in the Collection ' + params.list.name + ' was not found.');
+        }
         requiredElement.uuid = fullElement.uuid;
         return requiredElement;
       });
@@ -127,19 +131,28 @@ export class DynamicContentService {
     const modifiedEntries = _
       .map(params.kanbanEntries.kanbanData, (entry) => {
 
+        const labelIds = entry[params.sectionElement.uuid + '_categories'];
+        const label = _.find(params.sectionElement.elementData.predefinedCategories, {
+          id: _.head(labelIds)
+        });
+
+        const simplifiedEntry = {
+          label: label.name
+        };
+
         return _.reduce(modifiedRequiredElements, (modifiedEntry, modifiedElement) => {
 
           const value = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
           modifiedEntry[modifiedElement.mappedClassPropertyName] = value;
           return modifiedEntry;
-        }, {});
+        }, simplifiedEntry);
       });
 
     return modifiedEntries;
   }
 
   getFileSrc(fileShortId, listShortId) {
-    return this.apiUrl + 'lists/' + listShortId + '/files/' + fileShortId;
+    return (fileShortId && listShortId) ? this.apiUrl + 'lists/' + listShortId + '/files/' + fileShortId : '';
   }
 }
 
