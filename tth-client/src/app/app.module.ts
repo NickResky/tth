@@ -6,7 +6,6 @@ import { HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { SiteService } from './main-page/site.service';
 import { MainPageService } from './services/main-page.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -15,6 +14,7 @@ import { CurrentService } from './sites/current/current.service';
 import { TeamComponent } from './sites/team/team.component';
 import { TeamService } from './sites/team/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';
+import { CoursesService } from './services/courses.service';
 import { StageComponent } from './sites/stage/stage.component';
 import { StageService } from './services/stage.service';
 import { GalleryComponent } from './sites/stage/gallery/gallery.component';
@@ -53,6 +53,7 @@ const routes: Routes = [
     TeamService,
     DynamicContentService,
     StageService,
+    CoursesService,
     ModelService
   ],
   bootstrap: [AppComponent]

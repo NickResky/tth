@@ -67,5 +67,22 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'gallery'
         }
     ],
+    courses: [
+        {
+            name: 'Titel',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'title'
+        },
+        {
+            name: 'Beschreibung',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'description'
+        },
+        {
+            name: 'Stundenplan',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'schedule'
+        }
+    ],
     ]
 };
