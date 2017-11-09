@@ -1,8 +1,9 @@
-import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
-import { BlogPost } from './../../classes/blog-post';
+import { ZenkitCollections } from './../shared/constants/zenkit-collections';
+
 import { Injectable } from '@angular/core';
 import _ from 'lodash';
+import { DynamicContentService } from './dynamic-content.service';
+import { BlogPost } from '../classes/blog-post';
 
 @Injectable()
 export class CurrentService {

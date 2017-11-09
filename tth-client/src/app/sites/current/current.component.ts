@@ -1,6 +1,6 @@
+import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { DynamicContentService } from './../../services/dynamic-content.service';
-import { CurrentService } from './current.service';
 import { BlogPost } from './../../classes/blog-post';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,12 +14,12 @@ export class CurrentComponent implements OnInit {
   posts: BlogPost[];
   currentListShortId: {};
 
-  constructor(private currentService: CurrentService, private dynamicContentService: DynamicContentService) { }
+  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
     this.currentListShortId = ZenkitCollections.current.shortId;
 
-    this.currentService.getPosts().then((posts) => {
+    this.modelService.getPosts().then((posts) => {
       this.posts = posts;
     });
   }

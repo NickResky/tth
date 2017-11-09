@@ -10,7 +10,7 @@ import { MainPageService } from './services/main-page.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
-import { CurrentService } from './sites/current/current.service';
+import { CurrentService } from './services/current.service';
 import { TeamComponent } from './sites/team/team.component';
 import { TeamService } from './services/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';

@@ -16,7 +16,7 @@ export class ContactComponent implements OnInit {
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
-    this.modelService.getContact().then((contact) => {
+    this.modelService.getContact().then((contact: Contact) => {
       this.contact = contact;
     });
   }
