@@ -18,6 +18,8 @@ import { CoursesService } from './services/courses.service';
 import { StageComponent } from './sites/stage/stage.component';
 import { StageService } from './services/stage.service';
 import { GalleryComponent } from './sites/stage/gallery/gallery.component';
+import { LocationsComponent } from './sites/locations/locations.component';
+import { LocationsService } from './services/locations.service';
 import { ModelService } from './services/model.service';
 import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
 
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'kurse', component: CoursesComponent },
   { path: 'buehne', component: StageComponent },
+  { path: 'locations', component: LocationsComponent },
 ];
 
 @NgModule({
@@ -39,7 +42,8 @@ const routes: Routes = [
     TeamComponent,
     CoursesComponent,
     StageComponent,
-    GalleryComponent
+    GalleryComponent,
+    LocationsComponent,
     MainPageSectionComponent
   ],
   imports: [
@@ -54,6 +58,7 @@ const routes: Routes = [
     DynamicContentService,
     StageService,
     CoursesService,
+    LocationsService,
     ModelService
   ],
   bootstrap: [AppComponent]

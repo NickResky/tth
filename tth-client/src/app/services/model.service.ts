@@ -1,9 +1,10 @@
+import { LocationsService } from './locations.service';
+import { LocationData } from './../classes/location-data';
 import { TeamService } from './team.service';
 import { CourseData } from './../classes/course-data';
 import { CoursesService } from './courses.service';
 import { Performance } from './../classes/performance';
 import { StageService } from './stage.service';
-import { Location } from './../classes/location';
 import { Teacher } from './../classes/teacher';
 import { BlogPost } from './../classes/blog-post';
 import { Contact } from './../classes/contact';
@@ -22,13 +23,14 @@ export class ModelService {
     coursesData: Promise<CourseData>;
     performancesData: Promise<Performance[]>;
     teamData: Promise<Teacher[]>;
-    locationData: Promise<Location[]>;
+    locationData: Promise<LocationData>;
 
     constructor(
         private mainPageService: MainPageService,
         private stageService: StageService,
         private coursesService: CoursesService,
-        private teamService: TeamService
+        private teamService: TeamService,
+        private locationsService: LocationsService
     ) { }
 
     getMainPageSections() {
@@ -68,6 +70,16 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.teamData);
+        });
+    }
+
+    getLocationData() {
+        if (_.isNil(this.locationData)) {
+            this.locationData = this.locationsService.getLocationData();
+            return this.locationData;
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.locationData);
         });
     }
 }

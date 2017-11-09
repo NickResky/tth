@@ -106,5 +106,32 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'image'
         }
     ],
+    locations: [
+        {
+            name: 'Name',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'name'
+        },
+        {
+            name: 'Beschreibung',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'description'
+        },
+        {
+            name: 'Adresse',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'address'
+        },
+        {
+            name: 'Google Maps',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'embed'
+        },
+        {
+            name: 'Bildergalerie',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'gallery'
+        }
+    ],
     ]
 };

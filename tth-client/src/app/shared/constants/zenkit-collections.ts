@@ -22,4 +22,8 @@ export const ZenkitCollections  = {
         shortId: 'BJ6t-cFub',
         requiredElements: RequiredElements.team
     },
+    locations: {
+        shortId: 'Syd9b9F_W',
+        requiredElements: RequiredElements.locations
+    },
 };
