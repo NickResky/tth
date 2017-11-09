@@ -1,80 +1,20 @@
 @import '../../variables';
 
-$main-page-text-color: #fff;
-
 div {
     display: block;
 }
 
-.parallaxSection {
+.main-page-title-video-container {
     position: relative;
-    opacity: 0.8;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100%;
-}
-
-.parallaxPhilosophy {
-    background-image: url("../../resources/DSC_7558_mitLogo.jpg");
-    opacity: 0.85;
-}
-
-.parallaxCurrent {
-    background-image: url("../../resources/H34A8653.jpg");
-}
-
-.parallaxCourses {
-    background-image: url("../../resources/Kurse.jpg");
-}
-
-.parallaxStage {
-    background-image: url("../../resources/DSC_9425.jpg");
-    min-height: 100%;
-}
-
-.parallaxTeam {
-    background-image: url("../../resources/Team.jpg");
-}
-
-.parallaxLocations {
-    background-image: url("../../resources/Standorte.jpg");
-}
-
-.parallaxContact {
-    background-image: url("../../resources/Kontakt.jpg");
-}
-
-.container {
-    position: absolute;
-    top: 30%;
-    width: 100%;
-
-    .content {
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+    height: 0;
+    
+    iframe {
+        position: absolute;
+        top: 0;
         left: 0;
-        text-align: center;
-        color: $main-page-text-color;
-        background-color: rgba(77, 77, 77, 0.5);
-        max-width: 1000px;
-        margin: auto;
-        // margin: auto 130px;
-        // padding: 10px;
-        padding: 30px;
-    
-        .caption {
-            border: 2px solid $main-text-color;
-            padding: 18px;
-            font-size: 30px;
-            letter-spacing: 10px;
-            margin: 20px;
-            text-transform: uppercase;
-        }
-    
-        .description {
-            // margin: auto 15px;
-            font-size: 20px;
-            padding-top: 20px;
-        }
+        width: 100%;
+        height: 100%;
     }
 }

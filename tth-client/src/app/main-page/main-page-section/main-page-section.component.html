@@ -1,0 +1,11 @@
+<div class="main-page-section" class="{{section.cssClass}} parallaxSection" [ngStyle]="getBackgroundStyle(section.image)">
+  <div class="container">
+    <div class="content">
+      <a *ngIf="section.routerLink" routerLink="/{{section.routerLink}}" class="caption">{{section.title}}</a>
+      <div *ngIf="!section.routerLink" class="caption">{{section.title}}</div>
+      <p class="description">
+        {{section.description}}
+      </p>
+    </div>
+  </div>
+</div>

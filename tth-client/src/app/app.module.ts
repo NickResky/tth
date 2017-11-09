@@ -7,6 +7,7 @@ import { HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { SiteService } from './main-page/site.service';
+import { MainPageService } from './services/main-page.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
@@ -16,6 +17,8 @@ import { TeamService } from './sites/team/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';
 import { StageComponent } from './sites/stage/stage.component';
 import { GalleryComponent } from './sites/stage/gallery/gallery.component';
+import { ModelService } from './services/model.service';
+import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -36,6 +39,7 @@ const routes: Routes = [
     CoursesComponent,
     StageComponent,
     GalleryComponent
+    MainPageSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +48,11 @@ const routes: Routes = [
   ],
   providers: [
     SiteService,
+    MainPageService,
     CurrentService,
     TeamService,
-    DynamicContentService
+    DynamicContentService,
+    ModelService
   ],
   bootstrap: [AppComponent]
 })
