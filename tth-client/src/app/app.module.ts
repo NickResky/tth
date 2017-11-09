@@ -12,7 +12,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
 import { CurrentService } from './sites/current/current.service';
 import { TeamComponent } from './sites/team/team.component';
-import { TeamService } from './sites/team/team.service';
+import { TeamService } from './services/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';
 import { CoursesService } from './services/courses.service';
 import { StageComponent } from './sites/stage/stage.component';

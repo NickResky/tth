@@ -84,5 +84,27 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'schedule'
         }
     ],
+    team: [
+        {
+            name: 'Name',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'name'
+        },
+        {
+            name: 'Beschreibung',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'description'
+        },
+        {
+            name: 'Aufgabe',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'task'
+        },
+        {
+            name: 'Bild',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'image'
+        }
+    ],
     ]
 };

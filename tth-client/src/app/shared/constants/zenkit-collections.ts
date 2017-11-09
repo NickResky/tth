@@ -18,4 +18,8 @@ export const ZenkitCollections  = {
         shortId: 'rkmtZcFu-',
         requiredElements: RequiredElements.courses
     },
+    team: {
+        shortId: 'BJ6t-cFub',
+        requiredElements: RequiredElements.team
+    },
 };

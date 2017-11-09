@@ -1,3 +1,4 @@
+import { TeamService } from './team.service';
 import { CourseData } from './../classes/course-data';
 import { CoursesService } from './courses.service';
 import { Performance } from './../classes/performance';
@@ -27,6 +28,7 @@ export class ModelService {
         private mainPageService: MainPageService,
         private stageService: StageService,
         private coursesService: CoursesService,
+        private teamService: TeamService
     ) { }
 
     getMainPageSections() {
@@ -56,6 +58,16 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.coursesData);
+        });
+    }
+
+    getTeam() {
+        if (_.isNil(this.teamData)) {
+            this.teamData = this.teamService.getTeam();
+            return this.teamData;
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.teamData);
         });
     }
 }
