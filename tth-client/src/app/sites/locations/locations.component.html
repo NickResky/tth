@@ -1,0 +1,23 @@
+<div class="header-image"></div>
+<div class="performances-container">
+  <div class="posts" *ngIf="locationMG">
+    <h2 [innerHTML]='locationMG.name'></h2>
+    <div class="team-member-content-container">
+      <img src={{getFileSrc(locationMG.gallery[0])}} class="team-member-picture-frame"
+      (click)="dialog.show(locationMG.gallery, locationsListShortId)"/>
+      <div class="team-member-description-container" [innerHTML]='locationMG.description'></div>
+    </div>
+  </div>
+</div>
+<div class="performances-container">
+  <div class="posts" *ngIf="locationLB">
+    <h2 [innerHTML]='locationLB.name'></h2>
+    <div class="team-member-content-container">
+      <img src={{getFileSrc(locationLB.gallery[0])}} class="team-member-picture-frame"
+      (click)="dialog.show(locationLB.gallery, locationsListShortId)"/>
+      <div class="team-member-description-container" [innerHTML]='locationLB.description'></div>
+    </div>
+  </div>
+</div>
+
+<app-gallery #dialog></app-gallery>

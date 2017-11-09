@@ -1,32 +1,11 @@
 <div class="header-image"></div>
 <div class="performances-container">
-  <div class="posts">
-    <h2>Cinemoves</h2>
+  <div *ngFor="let performance of performances" class="posts">
+    <h2 [innerHTML]='performance.title'></h2>
     <div class="team-member-content-container">
-      <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"
-      (click)="dialog.show()"/>
-      <div class="team-member-description-container">Cupcake ipsum dolor sit amet. Chocolate bar liquorice pudding croissant cotton candy cupcake jelly-o. Topping danish cake powder macaroon. Pie caramels gingerbread pudding oat cake fruitcake gummies. Bear claw dessert gummi bears liquorice. Oat cake icing biscuit cotton candy halvah topping chocolate bar. Macaroon sugar plum dessert. Sugar plum pudding pudding liquorice sweet roll tart icing cotton candy.</div>
-    </div>
-  </div>
-  <div class="posts">
-    <h2>Cinemoves</h2>
-    <div class="team-member-content-container">
-      <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"/>
-      <div class="team-member-description-container">Cupcake ipsum dolor sit amet. Chocolate bar liquorice pudding croissant cotton candy cupcake jelly-o. Topping danish cake powder macaroon. Pie caramels gingerbread pudding oat cake fruitcake gummies. Bear claw dessert gummi bears liquorice. Oat cake icing biscuit cotton candy halvah topping chocolate bar. Macaroon sugar plum dessert. Sugar plum pudding pudding liquorice sweet roll tart icing cotton candy.</div>
-    </div>
-  </div>
-  <div class="posts">
-    <h2>Cinemoves</h2>
-    <div class="team-member-content-container">
-      <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"/>
-      <div class="team-member-description-container">Cupcake ipsum dolor sit amet. Chocolate bar liquorice pudding croissant cotton candy cupcake jelly-o. Topping danish cake powder macaroon. Pie caramels gingerbread pudding oat cake fruitcake gummies. Bear claw dessert gummi bears liquorice. Oat cake icing biscuit cotton candy halvah topping chocolate bar. Macaroon sugar plum dessert. Sugar plum pudding pudding liquorice sweet roll tart icing cotton candy.</div>
-    </div>
-  </div>
-  <div class="posts">
-    <h2>Cinemoves</h2>
-    <div class="team-member-content-container">
-      <img src="assets/stage/Plakat_Cinemoves.jpg" class="team-member-picture-frame"/>
-      <div class="team-member-description-container">Cupcake ipsum dolor sit amet. Chocolate bar liquorice pudding croissant cotton candy cupcake jelly-o. Topping danish cake powder macaroon. Pie caramels gingerbread pudding oat cake fruitcake gummies. Bear claw dessert gummi bears liquorice. Oat cake icing biscuit cotton candy halvah topping chocolate bar. Macaroon sugar plum dessert. Sugar plum pudding pudding liquorice sweet roll tart icing cotton candy.</div>
+      <img src={{getFileSrc(performance.poster)}} class="team-member-picture-frame"
+      (click)="dialog.show(performance.gallery, performancesListShortId)"/>
+      <div class="team-member-description-container" [innerHTML]='performance.description'></div>
     </div>
   </div>
 </div>

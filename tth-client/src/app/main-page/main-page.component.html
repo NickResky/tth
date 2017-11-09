@@ -1,10 +1,9 @@
-<div *ngFor="let site of sites" class="{{site.cssClass}} parallaxSection">
-  <div class="container">
-    <div class="content">
-      <span class="caption">{{site.title}}</span>
-      <p class="description">
-        {{site.description}}
-      </p>
-    </div>
-  </div>
+<div class="main-page-title-video-container">
+    <iframe [src]="getSafeUrl(video)" frameborder="0" allowfullscreen></iframe>
 </div>
+<app-main-page-section *ngIf="philosophySection" [sectiondata]='philosophySection'></app-main-page-section>
+<app-main-page-section *ngIf="coursesSection" [sectiondata]='coursesSection'></app-main-page-section>
+<app-main-page-section *ngIf="performancesSection" [sectiondata]='performancesSection'></app-main-page-section>
+<app-main-page-section *ngIf="performancesSection" [sectiondata]='teamSection'></app-main-page-section>
+<app-main-page-section *ngIf="locationsSection" [sectiondata]='locationsSection'></app-main-page-section>
+<app-main-page-section *ngIf="contactSection" [sectiondata]='contactSection'></app-main-page-section>

@@ -1,0 +1,48 @@
+@import '../../../variables';
+
+$main-page-text-color: #fff;
+
+.parallaxSection {
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+.container {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+
+    .content {
+        left: 0;
+        text-align: center;
+        color: $main-page-text-color;
+        background-color: rgba(77, 77, 77, 0.5);
+        max-width: 1000px;
+        margin: auto;
+        // margin: auto 130px;
+        // padding: 10px;
+        padding: 30px;
+    
+        .caption {
+            border: 2px solid $main-text-color;
+            padding: 18px;
+            font-size: 30px;
+            letter-spacing: 10px;
+            margin: 20px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $main-page-text-color;
+        }
+    
+        .description {
+            // margin: auto 15px;
+            font-size: 20px;
+            padding-top: 20px;
+        }
+    }
+}

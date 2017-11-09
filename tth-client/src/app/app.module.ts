@@ -6,23 +6,33 @@ import { HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { SiteService } from './main-page/site.service';
+import { MainPageService } from './services/main-page.service';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
 import { CurrentService } from './sites/current/current.service';
 import { TeamComponent } from './sites/team/team.component';
-import { TeamService } from './sites/team/team.service';
+import { TeamService } from './services/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';
+import { CoursesService } from './services/courses.service';
 import { StageComponent } from './sites/stage/stage.component';
+import { StageService } from './services/stage.service';
 import { GalleryComponent } from './sites/stage/gallery/gallery.component';
+import { LocationsComponent } from './sites/locations/locations.component';
+import { LocationsService } from './services/locations.service';
+import { ContactComponent } from './sites/contact/contact.component';
+import { ContactService } from './services/contact.service';
+import { ModelService } from './services/model.service';
+import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
   { path: 'kurse', component: CoursesComponent },
-  { path: 'buehne', component: StageComponent }
+  { path: 'buehne', component: StageComponent },
+  { path: 'locations', component: LocationsComponent },
+  { path: 'contact', component: ContactComponent }
 ];
 
 @NgModule({
@@ -35,7 +45,10 @@ const routes: Routes = [
     TeamComponent,
     CoursesComponent,
     StageComponent,
-    GalleryComponent
+    GalleryComponent,
+    LocationsComponent,
+    ContactComponent,
+    MainPageSectionComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +56,15 @@ const routes: Routes = [
     HttpModule
   ],
   providers: [
-    SiteService,
+    MainPageService,
     CurrentService,
     TeamService,
-    DynamicContentService
+    DynamicContentService,
+    StageService,
+    CoursesService,
+    LocationsService,
+    ContactService,
+    ModelService
   ],
   bootstrap: [AppComponent]
 })

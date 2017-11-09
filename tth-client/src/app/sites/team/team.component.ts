@@ -1,4 +1,6 @@
-import { TeamService } from './team.service';
+import { ModelService } from './../../services/model.service';
+import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
+import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Teacher } from './../../classes/teacher';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,13 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  // private picture = require("resources/team/Anita.jpg");
-  team: Teacher[];
+  teachers: Teacher[];
+  showModalDialog = false;
+  performancesListShortId = undefined;
 
-  constructor(private teamService: TeamService) { }
+  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
-    this.team = this.teamService.getTeam();
+    this.performancesListShortId = ZenkitCollections.team.shortId;
+
+    this.modelService.getTeam().then((teachers: Teacher[]) => {
+      this.teachers = teachers;
+    });
+  }
+
+  getFileSrc(file) {
+    return this.dynamicContentService.getFileSrc(file.shortId, this.performancesListShortId);
   }
 
 }
