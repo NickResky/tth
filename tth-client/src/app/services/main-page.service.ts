@@ -61,7 +61,7 @@ export class MainPageService {
         }));
 
         const contactSection = _.head(_.remove(mainPageSections, {
-          title: 'Kontact'
+          title: 'Kontakt'
         }));
 
         const mainPageData = new MainPageData();
