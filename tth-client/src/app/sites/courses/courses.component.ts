@@ -1,3 +1,4 @@
+import { MainPageData } from './../../classes/main-page-data';
 import { CourseData } from './../../classes/course-data';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
@@ -12,6 +13,7 @@ import _ from 'lodash';
 })
 export class CoursesComponent implements OnInit {
 
+  backgroundImage;
   text = undefined;
   scheduleMG = undefined;
   scheduleLB = undefined;
@@ -25,10 +27,18 @@ export class CoursesComponent implements OnInit {
       this.scheduleMG = coursesData.scheduleMG;
       this.scheduleLB = coursesData.scheduleLB;
     });
+    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
+      this.backgroundImage = _.get(mainPageData, ['coursesSection', 'image']);
+    });
   }
 
   getFileSrc(file) {
     return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
   }
 
+  getBackgroundStyle(image) {
+    return {
+      'background-image': 'url(' + this.getFileSrc(image) + ')'
+    };
+  }
 }

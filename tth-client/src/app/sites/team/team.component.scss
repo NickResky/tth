@@ -1,10 +1,6 @@
 @import '../../../variables';
 @import '../../../mixins';
 
-.header-image {
-    background-image: url("../../../resources/Team.jpg");
-}
-
 .team-member-content {
     background-color: $main-text-color;
     padding: 10px;

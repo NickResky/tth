@@ -1,4 +1,4 @@
-<div class="header-image"></div>
+<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>
 <div class="performances-container">
   <div *ngFor="let performance of performances" class="posts">
     <h2 [innerHTML]='performance.title'></h2>
