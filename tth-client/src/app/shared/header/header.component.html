@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" [ngClass]="isMobileNavOpen === true ? 'mobile-nav-open': ''">
     <div routerLink="/" class="logo-container">
       <div class="logo"></div>
       <div class="logo-label-container">
@@ -8,23 +8,33 @@
         </div>
       </div>
     </div>
+    <div class="navbar-menu-icon-container">
+      <div class="navbar-menu-icon" (click)="toggleMobileNav()">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+      </div>
+    </div>
     <div class="navbar-navigation">
-      <a class="navbar-navigation-link" routerLink="/aktuelles">
+      <a class="navbar-navigation-link home-link" routerLink="/" (click)="toggleMobileNav()">
+          Übersicht
+        </a>
+      <a class="navbar-navigation-link" routerLink="/aktuelles" (click)="toggleMobileNav()">
         Aktuelles
       </a>
-      <a class="navbar-navigation-link" routerLink="/kurse">
+      <a class="navbar-navigation-link" routerLink="/kurse" (click)="toggleMobileNav()">
         Kurse
       </a> 
-      <a class="navbar-navigation-link" routerLink="/buehne">
+      <a class="navbar-navigation-link" routerLink="/buehne" (click)="toggleMobileNav()">
         Bühne
       </a>
-      <a class="navbar-navigation-link" routerLink="/team">
+      <a class="navbar-navigation-link" routerLink="/team" (click)="toggleMobileNav()">
         Team
       </a>
-      <a class="navbar-navigation-link" routerLink="/locations">
+      <a class="navbar-navigation-link" routerLink="/locations" (click)="toggleMobileNav()">
         Standorte
       </a>
-      <a class="navbar-navigation-link" routerLink="/contact">
+      <a class="navbar-navigation-link" routerLink="/contact" (click)="toggleMobileNav()">
         Kontakt
       </a>
     </div>

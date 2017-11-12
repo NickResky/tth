@@ -3,7 +3,7 @@
       <div class="footer-section-heading">
         Kontakt
       </div>
-      <div class="footer-section-content">
+      <div class="footer-section-content" *ngIf="locationMG && email">
         <span class="footer-section-content-link">{{locationMG.addressName}}</span>
         <span class="footer-section-content-link">{{locationMG.addressStreet}}</span>
         <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressZIP}}</span>
@@ -23,10 +23,10 @@
             Social
           </div>
         <div class="footer-section-content">    
-          <a class="footer-section-content-link" href="">
+          <a class="footer-section-content-link" href="#">
             Facebook
           </a>
-          <a class="footer-section-content-link" href="">
+          <a class="footer-section-content-link" href="#">
             YouTube
           </a>
         </div>
