@@ -118,9 +118,24 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'description'
         },
         {
-            name: 'Adresse',
+            name: 'Adresse-Name',
             type: ElementTypes.text,
-            mappedClassPropertyName: 'address'
+            mappedClassPropertyName: 'addressName'
+        },
+        {
+            name: 'Adresse-Straße',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'addressStreet'
+        },
+        {
+            name: 'Adresse-PLZ',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'addressZIP'
+        },
+        {
+            name: 'Adresse-Stadt',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'addressCity'
         },
         {
             name: 'Google Maps',

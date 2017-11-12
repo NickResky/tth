@@ -17,7 +17,10 @@ export class LocationsService {
         const locations = _.map(modifiedEntries, (modifiedEntry) => {
           const location = new Location();
           location.name = modifiedEntry.name;
-          location.address = modifiedEntry.address;
+          location.addressName = modifiedEntry.addressName;
+          location.addressStreet = modifiedEntry.addressStreet;
+          location.addressZIP = modifiedEntry.addressZIP;
+          location.addressCity = modifiedEntry.addressCity;
           location.description = modifiedEntry.description;
           location.gallery = modifiedEntry.gallery;
           location.embed = modifiedEntry.embed;
