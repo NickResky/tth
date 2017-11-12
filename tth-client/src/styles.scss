@@ -12,11 +12,17 @@ body, html {
 
 .header-image {
     width: 100%;
-    height: 500px;
+    height: 300px;
     position: relative;
     opacity: 0.8;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .header-image {
+        height: 500px;
+    }
 }
