@@ -41,4 +41,9 @@ export class CurrentComponent implements OnInit {
       'background-image': 'url(' + this.getFileSrc(image) + ')'
     };
   }
+
+  getPostImageBackgroundStyle(post) {
+    const image = _.head(post.images);
+    return this.getBackgroundStyle(image);
+  }
 }

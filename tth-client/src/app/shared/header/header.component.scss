@@ -138,11 +138,7 @@
 @media (min-width: $media-breakpoint-md) {
     .navbar { 
         .navbar-menu-icon-container { 
-            @include flex(1);   
-            margin: 20px;                  
-            .navbar-menu-icon {
-                display: none;
-            }
+            display: none;            
         }
         .navbar-navigation {            
             @include flex(1);  
