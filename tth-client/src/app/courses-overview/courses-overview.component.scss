@@ -16,13 +16,11 @@
             position: relative;
             height: 50px;
             padding: 10px;
-            margin: 0 20px;
             border-bottom: 1px solid #fff;
             overflow: hidden;
             @include transition(
                 background-color 0.3s ease,
-                margin 0.3s ease,
-                padding 0.3s ease
+                padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
             );
               
             .thumb-info-block {
@@ -54,7 +52,6 @@
                     font-size: 14px;
                     color: #fff;
                     clear: none;
-                    font-weight: 600;
                     letter-spacing: 2px;
                 }
             }
@@ -71,10 +68,16 @@
 @media (max-width: $media-breakpoint-md) {
     .courses-overview {
         .course-tags-container {
-            .course-tag-container:hover {
-                background-color: #eb484d;
-                margin: 0;
-                padding-left: 50px;
+            .course-tag-container {
+                .thumb-info-block {
+                    .thumb-title {
+                        font-style: italic;
+                    }
+                }
+                &:hover {
+                    background-color: #eb484d;
+                    padding-left: 30px;
+                } 
             }
         }
     }
@@ -155,6 +158,7 @@
                     .thumb-info-block {
                         @include transform(translateX(0px) translateY(-100px));
                         .thumb-title {
+                            font-weight: 600;
                             //@include transform(translateX(0px) translateY(50px));
                         }
                     }
