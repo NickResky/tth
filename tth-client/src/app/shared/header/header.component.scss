@@ -55,10 +55,10 @@
         }
     }
     .navbar-menu-icon-container {
-        @include transition(background-color 0.5s ease);   
+        @include transition(background-color 0.5s ease);  
         &:hover {
             cursor: pointer;
-            background-color: #eb484d;                            
+            background-color: #eb484d;  
         }     
         .navbar-menu-icon {
             width: 35px;
@@ -100,14 +100,18 @@
             @include transition(transform 0.5s ease);
             overflow: hidden;
             z-index: 1;
-            background-color: #413669; 
+            background-color: #1c1c1c; 
             .navbar-navigation-link {   
-                @include transition(background-color 0.5s);
                 font-style: italic;
                 font-size: 2em;
                 padding: 15px 0 15px 50px;
+                @include transition(
+                    padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                    background-color 0.3s
+                );  
                 &:hover {
-                    background-color: #eb484d;                
+                    background-color: #eb484d; 
+                    padding-left: 70px;               
                 }
             }
         }

@@ -1,3 +1,4 @@
+import { CourseInformation } from './../../classes/course-information';
 import { MainPageData } from './../../classes/main-page-data';
 import { CourseData } from './../../classes/course-data';
 import { ModelService } from './../../services/model.service';
@@ -14,9 +15,9 @@ import _ from 'lodash';
 export class CoursesComponent implements OnInit {
 
   backgroundImage;
-  text = undefined;
-  scheduleMG = undefined;
-  scheduleLB = undefined;
+  text;
+  scheduleMG;
+  scheduleLB;
   coursesListShortId = ZenkitCollections.courses.shortId;
 
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }

@@ -82,6 +82,11 @@ export const RequiredElements  = {
             name: 'Stundenplan',
             type: ElementTypes.files,
             mappedClassPropertyName: 'schedule'
+        },
+        {
+            name: 'Bild',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'image'
         }
     ],
     team: [

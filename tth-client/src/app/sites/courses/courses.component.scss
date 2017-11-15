@@ -17,3 +17,9 @@
         height: 750px;
     }
 }
+
+@media (min-width: $media-breakpoint-md) {
+    .header-image {
+        display: none;
+    }
+}

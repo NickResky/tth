@@ -24,6 +24,7 @@ import { ContactComponent } from './sites/contact/contact.component';
 import { ContactService } from './services/contact.service';
 import { ModelService } from './services/model.service';
 import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
+import { CoursesOverviewComponent } from './courses-overview/courses-overview.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -48,7 +49,8 @@ const routes: Routes = [
     GalleryComponent,
     LocationsComponent,
     ContactComponent,
-    MainPageSectionComponent
+    MainPageSectionComponent,
+    CoursesOverviewComponent
   ],
   imports: [
     BrowserModule,
