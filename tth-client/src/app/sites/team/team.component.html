@@ -1,11 +1,26 @@
-<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>
-<div class="team-member-content">
-  <div *ngFor="let teacher of teachers" class="posts">
-    <h2>{{teacher.name}}</h2>
-    <p>{{teacher.task}}</p>
-    <div class="team-member-content-container">
-      <img src={{getFileSrc(teacher.image)}} class="team-member-picture-frame"/>
-      <div class="team-member-description-container">{{teacher.description}}</div>
+<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)">
+  <div class="header-image-title">
+    <h1>Team</h1>
+  </div>
+</div>
+<div class="team-container">
+  <div *ngFor="let teacher of teachers" class="team-member-container">
+    <div class="team-member-card">
+      <div class="team-member-bg-container" [ngStyle]="getBackgroundStyle(teacher.image)">
+        <div class="team-member-bg-mask">
+        </div>
+        <div class="team-member-about-me-tag">
+            &Uuml;ber Mich
+          </div>
+      </div>
+      <div class="team-member-tag">
+        <div class="team-member-tag-name" [innerHTML]="teacher.name">
+
+        </div>
+        <div class="team-member-tag-task" [innerHTML]="teacher.task">
+            
+        </div>
+      </div>
     </div>
   </div>
 </div>

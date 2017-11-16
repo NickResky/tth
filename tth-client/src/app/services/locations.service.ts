@@ -35,7 +35,7 @@ export class LocationsService {
         const locationData = new LocationData();
         locationData.locationMG = locationMG;
         locationData.locationLB = locationLB;
-        
+
         return locationData;
       });
   }
