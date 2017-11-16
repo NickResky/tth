@@ -58,7 +58,7 @@
         @include transition(background-color 0.5s ease);  
         &:hover {
             cursor: pointer;
-            background-color: #eb484d;  
+            background-color: $accent-color-1;  
         }     
         .navbar-menu-icon {
             width: 35px;
@@ -110,7 +110,7 @@
                     background-color 0.3s
                 );  
                 &:hover {
-                    background-color: #eb484d; 
+                    background-color: $accent-color-1; 
                     padding-left: 70px;               
                 }
             }

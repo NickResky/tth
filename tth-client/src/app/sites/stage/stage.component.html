@@ -1,13 +1,8 @@
-<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>
+<!--<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>-->
 <div class="performances-container">
-  <div *ngFor="let performance of performances" class="posts">
-    <h2 [innerHTML]='performance.title'></h2>
-    <div class="team-member-content-container">
-      <img src={{getFileSrc(performance.poster)}} class="team-member-picture-frame"
-      (click)="dialog.show(performance.gallery, performancesListShortId)"/>
-      <div class="team-member-description-container" [innerHTML]='performance.description'></div>
-    </div>
-  </div>
-</div>
+  <a *ngFor="let performance of performances, let i = index" class="performance-poster-container" [routerLink]="['/auftritte', i]" [ngStyle]="getBackgroundStyle(performance.poster)">
 
-<app-gallery #dialog></app-gallery>
+    <div class="performance-poster-mask"></div>
+    <div class="performance-poster-title" [innerHTML]="performance.title"></div>
+  </a>
+</div>

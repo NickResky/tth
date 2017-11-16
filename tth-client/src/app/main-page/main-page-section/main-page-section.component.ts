@@ -12,9 +12,8 @@ import _ from 'lodash';
 })
 export class MainPageSectionComponent implements OnInit {
 
-  @Input() sectiondata: MainPageSection;  
-  
-  section: MainPageSection; 
+  @Input() sectiondata: MainPageSection;
+  section: MainPageSection;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
 
   constructor(private dynamicContentService: DynamicContentService) { }

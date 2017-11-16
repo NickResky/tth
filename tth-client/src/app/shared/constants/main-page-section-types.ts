@@ -16,7 +16,7 @@ export const MainPageSectionTypes = [
     {
         name: 'Bühne',
         cssClass: 'main-page-section-performances',
-        routerLink: 'buehne'
+        routerLink: 'auftritt'
     },
     {
         name: 'Kurse',

@@ -25,13 +25,16 @@ import { ContactService } from './services/contact.service';
 import { ModelService } from './services/model.service';
 import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
 import { CoursesOverviewComponent } from './courses-overview/courses-overview.component';
+import { PerformanceComponent } from './sites/stage/performance/performance.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
   { path: 'kurse', component: CoursesComponent },
-  { path: 'buehne', component: StageComponent },
+  { path: 'auftritte', component: StageComponent },
+  { path: 'auftritte/:id', component: PerformanceComponent },
   { path: 'locations', component: LocationsComponent },
   { path: 'contact', component: ContactComponent }
 ];
@@ -50,7 +53,9 @@ const routes: Routes = [
     LocationsComponent,
     ContactComponent,
     MainPageSectionComponent,
-    CoursesOverviewComponent
+    CoursesOverviewComponent,
+    PerformanceComponent,
+    ImageSliderComponent
   ],
   imports: [
     BrowserModule,
