@@ -27,7 +27,7 @@ export class LocationsService {
           return location;
         });
         const locationMG = _.find(locations, {
-          name: 'Markgröningen'
+          name: 'Markgroeningen'
         });
         const locationLB = _.find(locations, {
           name: 'Ludwigsburg'

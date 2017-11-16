@@ -128,7 +128,7 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'addressName'
         },
         {
-            name: 'Adresse-Straße',
+            name: 'Adresse-Strasse',
             type: ElementTypes.text,
             mappedClassPropertyName: 'addressStreet'
         },

@@ -4,22 +4,22 @@ export const MainPageSectionTypes = [
         cssClass: 'main-page-section-video',
     },
     {
-        name: 'Philosophie',
+        name: 'Philosophy',
         cssClass: 'main-page-section-philosophy',
         routerLink: ''
     },
     {
-        name: 'Aktuelles',
+        name: 'News',
         cssClass: 'main-page-section-current',
         routerLink: 'aktuelles'
     },
     {
-        name: 'Bühne',
+        name: 'Performances',
         cssClass: 'main-page-section-performances',
         routerLink: 'auftritt'
     },
     {
-        name: 'Kurse',
+        name: 'Courses',
         cssClass: 'main-page-section-courses',
         routerLink: 'kurse'
     },
@@ -29,12 +29,12 @@ export const MainPageSectionTypes = [
         routerLink: 'team'
     },
     {
-        name: 'Standorte',
+        name: 'Locations',
         cssClass: 'main-page-section-locations',
         routerLink: 'locations'
     },
     {
-        name: 'Kontakt',
+        name: 'Contact',
         cssClass: 'main-page-section-contact',
         routerLink: 'contact'
     }

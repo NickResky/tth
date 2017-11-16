@@ -18,7 +18,7 @@ export class CoursesService {
                 label: 'Preise'
             });
             const scheduleMGEntry = _.find(modifiedEntries, {
-                label: 'Stundenplan Markgröningen'
+                label: 'Stundenplan Markgroeningen'
             });
             const scheduleLBEntry = _.find(modifiedEntries, {
                 label: 'Stundenplan Ludwigsburg'

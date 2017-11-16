@@ -37,19 +37,19 @@ export class MainPageService {
         }));
 
         const philosophySection = _.head(_.remove(mainPageSections, {
-          title: 'Philosophie'
+          title: 'Philosophy'
         }));
 
         const blogSection = _.head(_.remove(mainPageSections, {
-          title: 'Aktuelles'
+          title: 'News'
         }));
 
         const coursesSection = _.head(_.remove(mainPageSections, {
-          title: 'Kurse'
+          title: 'Courses'
         }));
 
         const performancesSection = _.head(_.remove(mainPageSections, {
-          title: 'Bühne'
+          title: 'Performances'
         }));
 
         const teamSection = _.head(_.remove(mainPageSections, {
@@ -57,11 +57,11 @@ export class MainPageService {
         }));
 
         const locationsSection = _.head(_.remove(mainPageSections, {
-          title: 'Standorte'
+          title: 'Locations'
         }));
 
         const contactSection = _.head(_.remove(mainPageSections, {
-          title: 'Kontakt'
+          title: 'Contact'
         }));
 
         const mainPageData = new MainPageData();
