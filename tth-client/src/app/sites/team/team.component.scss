@@ -113,3 +113,13 @@
         }
     }
 }
+
+@media (min-width: 1400px){
+    .team-container { 
+        max-width: 1400px;
+        margin: 0 auto;
+        .team-member-container {
+            width: 24%;
+        }
+    }
+}

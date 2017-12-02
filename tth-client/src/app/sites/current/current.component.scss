@@ -72,5 +72,6 @@ $postBorderColor: #e1e1e1;
 @media (min-width: $media-breakpoint-lg){
     .blog-posts {
         max-width: $media-breakpoint-lg;
+        margin: 0 auto;
     }
 }
