@@ -38,7 +38,8 @@ const routes: Routes = [
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
   { path: 'locations', component: LocationsComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
