@@ -1,0 +1,20 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.course-details-component {
+    .course-details-content-container {
+        padding: 20px;
+        color: $main-text-color-on-dark-bg;
+        .course-description {
+            margin-bottom: 100px;
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .course-details-component {
+        .course-deatils-content-container {
+            padding: 50px;
+        }
+    }
+}

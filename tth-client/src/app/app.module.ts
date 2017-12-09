@@ -27,12 +27,14 @@ import { MainPageSectionComponent } from './main-page/main-page-section/main-pag
 import { CoursesOverviewComponent } from './courses-overview/courses-overview.component';
 import { PerformanceComponent } from './sites/stage/performance/performance.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { CourseDetailsComponent } from './sites/courses/course-details/course-details.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
   { path: 'kurse', component: CoursesComponent },
+  { path: 'kurse/:id', component: CourseDetailsComponent },
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
   { path: 'locations', component: LocationsComponent },
@@ -55,7 +57,8 @@ const routes: Routes = [
     MainPageSectionComponent,
     CoursesOverviewComponent,
     PerformanceComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    CourseDetailsComponent
   ],
   imports: [
     BrowserModule,

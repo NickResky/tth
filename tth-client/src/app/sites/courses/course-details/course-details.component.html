@@ -1,0 +1,7 @@
+<div class="course-details-component" *ngIf="course">
+  <app-image-slider [images]='[course.image]' [listid]='coursesListShortId'></app-image-slider>
+  <div class="course-details-content-container">
+    <h1 class="course-title" [innerHTML]="course.title"></h1>
+    <div class="course-description" [innerHTML]="course.description"></div>
+  </div>
+</div>
