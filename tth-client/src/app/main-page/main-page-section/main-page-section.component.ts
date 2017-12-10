@@ -3,6 +3,7 @@ import { DynamicContentService } from './../../services/dynamic-content.service'
 import { MainPageComponent } from './../main-page.component';
 import { MainPageSection } from './../../classes/main-page-section';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import _ from 'lodash';
 
 @Component({
@@ -16,7 +17,7 @@ export class MainPageSectionComponent implements OnInit {
   section: MainPageSection;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor(private dynamicContentService: DynamicContentService, private router: Router) { }
 
   ngOnInit() {
     this.section = this.sectiondata;
@@ -30,5 +31,11 @@ export class MainPageSectionComponent implements OnInit {
     return {
       'background-image': 'url(' + this.getFileSrc(image) + ')'
     };
+  }
+
+  goToSection(section) {
+    if (section.routerLink) {
+      this.router.navigate([section.routerLink]);
+    }
   }
 }

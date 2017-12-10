@@ -3,15 +3,6 @@
 
 .performance-component {
     .performance-content-container {
-        padding: 20px;
         color: $main-text-color-on-dark-bg;
-    }
-}
-
-@media (min-width: $media-breakpoint-md) {
-    .performance-component {
-        .performance-content-container {
-            padding: 50px;
-        }
     }
 }

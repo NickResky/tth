@@ -1,11 +1,12 @@
-<div class="{{section.cssClass}} main-page-section" [ngStyle]="getBackgroundStyle(section.image)">
+<div class="{{section.cssClass}} main-page-section-background" [ngStyle]="getBackgroundStyle(section.image)">
   <div class="main-page-section-container">
-    <div class="main-page-section-content">
-      <a *ngIf="section.routerLink" routerLink="/{{section.routerLink}}" class="main-page-section-caption">{{section.title}}</a>
-      <div *ngIf="!section.routerLink" class="main-page-section-caption">{{section.title}}</div>
-      <p class="main-page-section-description">
-        {{section.description}}
-      </p>
+    <div class="main-page-section-content-container">
+      <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
+        <div  class="main-page-section-caption">{{section.title}}</div>
+        <p class="main-page-section-description">
+          {{section.description}}
+        </p>
+      </div>
     </div>
   </div>
 </div>

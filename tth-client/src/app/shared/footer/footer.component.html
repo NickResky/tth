@@ -1,24 +1,28 @@
-<div class="footer">
-    <div class="footer-section footer-contact-container">
-      <div class="footer-section-heading">
-        Contact
-      </div>
-      <div class="footer-section-content" *ngIf="locationMG && email">
-        <span class="footer-section-content-link">{{locationMG.addressName}}</span>
-        <span class="footer-section-content-link">{{locationMG.addressStreet}}</span>
-        <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressZIP}}</span>
-        <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressCity}}</span>
-        <div class="footer-section-content-break"></div>
-        <span class="footer-section-content-link">{{locationLB.addressName}}</span>
-        <span class="footer-section-content-link">{{locationLB.addressStreet}}</span>
-        <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressZIP}}</span>
-        <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressCity}}</span>
-        <div class="footer-section-content-break"></div>
-        <span class="footer-section-content-link">Tel. {{phone}}</span>
-        <span class="footer-section-content-link">{{email}}</span>
+<div class="footer-container">
+  <div class="footer">
+    <div class="footer-section-container">
+      <div class="footer-section footer-section-contact">
+        <div class="footer-section-heading">
+          Contact
+        </div>
+        <div class="footer-section-content" *ngIf="locationMG && email">
+          <span class="footer-section-content-link">{{locationMG.addressName}}</span>
+          <span class="footer-section-content-link">{{locationMG.addressStreet}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressZIP}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressCity}}</span>
+          <div class="footer-section-content-break"></div>
+          <span class="footer-section-content-link">{{locationLB.addressName}}</span>
+          <span class="footer-section-content-link">{{locationLB.addressStreet}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressZIP}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressCity}}</span>
+          <div class="footer-section-content-break"></div>
+          <span class="footer-section-content-link">Tel. {{phone}}</span>
+          <span class="footer-section-content-link">{{email}}</span>
+        </div>
       </div>
     </div>
-    <div class="footer-section footer-social-container">
+    <div class="footer-section-container">
+      <div class="footer-section footer-section-social">
         <div class="footer-section-heading">
             Social
           </div>
@@ -31,13 +35,17 @@
           </a>
         </div>
       </div>
-    <div class="footer-section footer-legal-container">
-      <div class="footer-section-heading">
-          Disclaimer
-      </div>
-      <div class="footer-section-content">  
-        <div class="footer-section-content-link">Copyright by Tanztheater Anita Hanke 2017</div>
-        <div class="footer-section-content-link">Designed by Niko Reschke and Yasmin Hollenbenders</div>
+    </div>
+    <div class="footer-section-container">
+      <div class="footer-section footer-section-legal">
+        <div class="footer-section-heading">
+            Disclaimer
+        </div>
+        <div class="footer-section-content">  
+          <div class="footer-section-content-link">Copyright by Tanztheater Anita Hanke 2017</div>
+          <div class="footer-section-content-link">Designed by Niko Reschke and Yasmin Hollenbenders</div>
+        </div>
       </div>
     </div>
   </div>
+</div>

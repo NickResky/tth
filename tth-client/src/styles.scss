@@ -39,8 +39,31 @@ app-current {
     background-color: #c7c7c7;        
 }
 
+.main-content-container-padding {
+    padding-left: 20px;
+    padding-right: 20px; 
+}
+
 @media (min-width: $media-breakpoint-md) {
+    .main-content-container {
+        .main-content {
+            max-width: $media-breakpoint-md;
+            margin: 0 auto;
+        }
+    }
+    .main-content-container-padding {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
     .header-image {
         height: 500px;
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .main-content-container {
+        .main-content {
+            max-width: $media-breakpoint-lg;
+        }
     }
 }

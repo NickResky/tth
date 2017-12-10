@@ -9,6 +9,7 @@
     background-color: $main-text-color;
     @include flexbox();
     @include flex-wrap(wrap);
+    justify-content: center;
     width: 100%;
     background-color: #000;
     .performance-poster-container {
@@ -70,7 +71,7 @@
     .performances-container {
         .performance-poster-container {
             width: 33.33%;
-            height: 600px;
+            height: 400px;
             align-items: center;
             justify-content: center;
             .performance-poster-mask {
@@ -87,6 +88,14 @@
                 text-align: center;
                 z-index: 1;                
             }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .performances-container {
+        .performance-poster-container {
+            height: 600px;
         }
     }
 }

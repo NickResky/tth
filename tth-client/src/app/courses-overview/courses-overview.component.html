@@ -6,21 +6,23 @@
       </div>
     </div>
   </div>
-  <div class="course-tags-container">
-    <a *ngFor="let course of courses, let i = index" class="course-tag-container" (mouseenter)="mouseEnter(course)" (mouseleave)="mouseLeave(course)" [routerLink]="['/kurse', i]">
-      <div class="black-bg-mask">
-        <div class="home-thumb-black-bg">
+  <div class="course-tags-container main-content-container">
+    <div class="course-tags main-content">
+      <a *ngFor="let course of courses, let i = index" class="course-tag-container" (mouseenter)="mouseEnter(course)" (mouseleave)="mouseLeave(course)" [routerLink]="['/kurse', i]">
+        <div class="black-bg-mask">
+          <div class="home-thumb-black-bg">
 
+          </div>
         </div>
-      </div>
-      <div class="thumb-info-block">
-        <div class="thumb-spacer">
+        <div class="thumb-info-block">
+          <div class="thumb-spacer">
 
+          </div>
+          <div class="thumb-title">
+            {{course.title}}
+          </div>  
         </div>
-        <div class="thumb-title">
-          {{course.title}}
-        </div>  
+      </a>
       </div>
-    </a>
   </div>
 </div>

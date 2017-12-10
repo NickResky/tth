@@ -5,59 +5,61 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    .course-tags-container {
-        padding-top: 20px;
-        padding-bottom: 60px;
-        @include flexbox();
-        @include flex-wrap(wrap);
-        .course-tag-container {
-            width: 100%;
-            display: inline-block;
-            position: relative;
-            height: 50px;
-            padding: 10px;
-            border-bottom: 1px solid #fff;
-            overflow: hidden;
-            text-decoration: none;
-            @include transition(
-                background-color 0.3s ease,
-                padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
-            );
-              
-            .thumb-info-block {
-                @include transform(translateX(0px) translateY(0px));
-                @include transition(transform 150ms);
-                
-                position: static;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                overflow-x: visible;
-                overflow-y: visible;
+    .course-tags-container {    
+        .course-tags {
+            padding-top: 20px;
+            padding-bottom: 60px;
+            @include flexbox();
+            @include flex-wrap(wrap);
+            .course-tag-container {
                 width: 100%;
-                height: 200%;
-                padding: 10px 10px 15px;
-                @include transform(none);
-
-                .thumb-title {
+                display: inline-block;
+                position: relative;
+                height: 50px;
+                padding: 10px;
+                border-bottom: 1px solid #fff;
+                overflow: hidden;
+                text-decoration: none;
+                @include transition(
+                    background-color 0.3s ease,
+                    padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+                );
+                
+                .thumb-info-block {
+                    @include transform(translateX(0px) translateY(0px));
+                    @include transition(transform 150ms);
+                    
                     position: static;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
                     overflow-x: visible;
                     overflow-y: visible;
                     width: 100%;
-                    margin-top: 10px;
-                    margin-bottom: 0;
-                    padding-right: 0;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    color: #fff;
-                    clear: none;
-                    letter-spacing: 2px;
+                    height: 200%;
+                    padding: 10px 10px 15px;
+                    @include transform(none);
+
+                    .thumb-title {
+                        position: static;
+                        overflow-x: visible;
+                        overflow-y: visible;
+                        width: 100%;
+                        margin-top: 10px;
+                        margin-bottom: 0;
+                        padding-right: 0;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        color: #fff;
+                        clear: none;
+                        letter-spacing: 2px;
+                    }
                 }
-            }
-            &:hover {
-                cursor: pointer;
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -69,16 +71,18 @@
 @media (max-width: $media-breakpoint-md) {
     .courses-overview {
         .course-tags-container {
-            .course-tag-container {
-                .thumb-info-block {
-                    .thumb-title {
-                        font-style: italic;
+            .course-tags {
+                .course-tag-container {
+                    .thumb-info-block {
+                        .thumb-title {
+                            font-style: italic;
+                        }
                     }
+                    &:hover {
+                        background-color: $accent-color-1;
+                        padding-left: 30px;
+                    } 
                 }
-                &:hover {
-                    background-color: $accent-color-1;
-                    padding-left: 30px;
-                } 
             }
         }
     }
@@ -99,11 +103,13 @@
                 top: 0;
                 width: 100%;
                 height: 100%;
-                background-size: cover;            
+                background-size: cover;
+                opacity: 0;            
                 @include transform(translateX(0px) translateY(100%));
-                @include transition(opacity 250ms, transform 250ms);
+                @include transition(opacity 500ms ease, transform 250ms);
                 &.active {
                     @include transform(translateX(0px) translateY(0%));
+                    opacity: 1;
                 }
                 .courses-overview-bg-image-fade {
                     width: 100%;
@@ -113,57 +119,59 @@
             }
         }
         .course-tags-container {
-            padding: 20px 40px;            
-            .course-tag-container {
-                width: 31.33%;
-                padding: 0;
-                margin: 10px 1% 0 1%;  
-                height: 150px; 
-                .black-bg-mask {
-                    position: absolute;
-                    overflow-x: hidden;
-                    overflow-y: hidden;
-                    width: 100%;
-                    height: 100%;
-                    .home-thumb-black-bg {
-                        opacity: 0;
+            padding: 20px 40px;       
+            .course-tags {     
+                .course-tag-container {
+                    width: 31.33%;
+                    padding: 0;
+                    margin: 10px 1% 0 1%;  
+                    height: 150px; 
+                    .black-bg-mask {
                         position: absolute;
+                        overflow-x: hidden;
+                        overflow-y: hidden;
                         width: 100%;
                         height: 100%;
-                        background-color: #1c1c1c;
-                        @include transform(translateX(0px) translateY(100%));
-                        @include transition(opacity 250ms, transform 250ms);
-                    }
-                } 
-                .thumb-info-block {
-                    .thumb-spacer {
-                        position: relative;
-                        display: inline-block;
-                        width: 100%;
-                        height: 50%;
-                        margin-top: -45px;
-                    }
-                    .thumb-title {
-                        @include transition(transform 250ms);
-                        @include transform(translateX(0px) translateY(-5px));
-                    }
-                } 
-                &:hover {
-                    cursor: pointer;
-                    .black-bg-mask {
                         .home-thumb-black-bg {
-                            opacity: 1;
-                            transform: translateX(0px) translateY(0px);
+                            opacity: 0;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: #1c1c1c;
+                            @include transform(translateX(0px) translateY(100%));
+                            @include transition(opacity 250ms, transform 250ms);
                         }
-                    }
+                    } 
                     .thumb-info-block {
-                        @include transform(translateX(0px) translateY(-100px));
-                        .thumb-title {
-                            font-weight: 600;
-                            //@include transform(translateX(0px) translateY(50px));
+                        .thumb-spacer {
+                            position: relative;
+                            display: inline-block;
+                            width: 100%;
+                            height: 50%;
+                            margin-top: -45px;
                         }
-                    }
-                }     
+                        .thumb-title {
+                            @include transition(transform 250ms);
+                            @include transform(translateX(0px) translateY(-5px));
+                        }
+                    } 
+                    &:hover {
+                        cursor: pointer;
+                        .black-bg-mask {
+                            .home-thumb-black-bg {
+                                opacity: 1;
+                                transform: translateX(0px) translateY(0px);
+                            }
+                        }
+                        .thumb-info-block {
+                            @include transform(translateX(0px) translateY(-100px));
+                            .thumb-title {
+                                font-weight: 600;
+                                //@include transform(translateX(0px) translateY(50px));
+                            }
+                        }
+                    }     
+                }
             }
         }
     }

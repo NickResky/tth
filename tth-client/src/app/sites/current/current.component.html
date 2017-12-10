@@ -4,13 +4,15 @@
       <h1>News</h1>
     </div>
   </div>
-  <div class="blog-posts">
-    <div *ngFor="let post of posts" class="post-container">
-      <div class="post">
-        <div class="post-image-container" [ngStyle]="getPostImageBackgroundStyle(post)">
+  <div class="main-content-container main-content-container-padding">
+    <div class="blog-posts main-content">
+      <div *ngFor="let post of posts" class="post-container">
+        <div class="post">
+          <div class="post-image-container" [ngStyle]="getPostImageBackgroundStyle(post)">
+          </div>
+          <h2 [innerHTML]='post.title' class="post-heading"></h2>
+          <div [innerHTML]='post.description'></div>
         </div>
-        <h2 [innerHTML]='post.title' class="post-heading"></h2>
-        <div [innerHTML]='post.description'></div>
       </div>
     </div>
   </div>

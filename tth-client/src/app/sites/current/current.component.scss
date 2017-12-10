@@ -8,7 +8,8 @@ $postBorderColor: #e1e1e1;
 }
 
 .blog-posts {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     .post-container {   
         color: #303030;
         opacity: 0.85;
@@ -28,7 +29,8 @@ $postBorderColor: #e1e1e1;
 
 @media (min-width: $media-breakpoint-md){
     .blog-posts {
-        padding: 50px;        
+        padding-top: 50px;
+        padding-bottom: 50px;        
         @include flexbox();
         @include flex-wrap(wrap);
         .post-container {

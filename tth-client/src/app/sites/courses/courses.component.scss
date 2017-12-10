@@ -1,25 +1,35 @@
 @import '../../../variables';
 
-.content {
+.courses-content-container {
     background-color: $main-text-color;
-    padding: 10px 70px;
-
-    .posts {
-        background-color: #303030;
-        color: #ffffff;
-        opacity: 0.85;
-        padding: 20px;
-        margin: 70px;
-    }
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     .schedule {
         width:100%;
-        height: 750px;
+        height: 350px;
     }
 }
 
 @media (min-width: $media-breakpoint-md) {
     .header-image {
         display: none;
+    }
+    .courses-content-container {  
+        padding-top: 50px;
+        padding-bottom: 50px;      
+        .schedule {
+            height: 600px;
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .courses-content-container {
+        padding-top: 70px;
+        padding-bottom: 70px;       
+        .schedule {
+            height: 750px;
+        }
     }
 }
