@@ -1,4 +1,34 @@
-<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>
+<div class="courses-overview">
+  <div class="courses-overview-bg-images-mask">
+    <div *ngFor="let location of locations" class="courses-overview-bg-image-container" [ngStyle]="getBackgroundStyle(location.gallery[0])">
+      <div class="courses-overview-bg-image-fade">
+
+      </div>
+    </div>
+  </div>
+  <div class="course-tags-container main-content-container">
+    <div class="course-tags main-content">
+      <a *ngFor="let location of locations, let i = index" class="course-tag-container" (mouseenter)="mouseEnter(location)" (mouseleave)="mouseLeave(course)" [routerLink]="['/kurse', i]">
+        <div class="black-bg-mask">
+          <div class="home-thumb-black-bg">
+
+          </div>
+        </div>
+        <div class="thumb-info-block">
+          <div class="thumb-spacer">
+
+          </div>
+          <div class="thumb-title">
+            {{location.name}}
+          </div>  
+        </div>
+      </a>
+      </div>
+  </div>
+</div>
+  
+
+<!-- <div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div> 
 <div class="performances-container">
   <div class="posts" *ngIf="locationMG">
     <h2 [innerHTML]='locationMG.name'></h2>
@@ -20,4 +50,4 @@
   </div>
 </div>
 
-<app-gallery #dialog></app-gallery>
+<app-gallery #dialog></app-gallery>-->
