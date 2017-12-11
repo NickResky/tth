@@ -8,6 +8,7 @@ import { MainPageSection } from './../classes/main-page-section';
 import _ from 'lodash';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
+import Player from '@vimeo/player';
 
 @Component({
   selector: 'app-main-page',
@@ -25,6 +26,7 @@ export class MainPageComponent implements OnInit {
   teamSection: MainPageSection;
   locationsSection: MainPageSection;
   contactSection: MainPageSection;
+  videoLoaded = false;
 
   constructor(
     private dynamicContentService: DynamicContentService,
@@ -44,10 +46,32 @@ export class MainPageComponent implements OnInit {
         this.locationsSection = mainPageData.locationsSection;
         this.contactSection = mainPageData.contactSection;
       });
+
+      const options = {
+        id: 246740715,
+        loop: true,
+        autoplay: true
+      };
+
+      const player = new Player('video-iframe', options);
+
+      const self = this;
+
+      player.on('play', function() {
+        console.log('played the video!');
+        const iframe = document.querySelector('iframe');
+        if (iframe !== null) {
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+        }
+        setTimeout(function(){
+          self.videoLoaded = true;
+         }, 3500);
+    });
     }
 
     getSafeUrl(url) {
-      return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+      return this.domSanitizer.bypassSecurityTrustResourceUrl('https://player.vimeo.com/video/246740715'  + '?wmode=opaque&api=1&autoplay=1&background=1&loop=1&player_id=video_video_817&title=0&byline=0&portrait=0&color=3ab9ff');
     }
 
     getFileSrc(file) {
