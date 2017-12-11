@@ -1,0 +1,10 @@
+@import '../../../../variables';
+@import '../../../../mixins';
+
+.location-component {
+    .location-content-container {
+        .location-content {
+            padding: 50px 0;
+        }
+    }
+}

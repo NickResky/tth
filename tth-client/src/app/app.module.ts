@@ -28,6 +28,7 @@ import { CoursesOverviewComponent } from './courses-overview/courses-overview.co
 import { PerformanceComponent } from './sites/stage/performance/performance.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { CourseDetailsComponent } from './sites/courses/course-details/course-details.component';
+import { LocationComponent } from './sites/locations/location/location.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
   { path: 'locations', component: LocationsComponent },
+  { path: 'location/:id', component: LocationComponent },
   { path: 'contact', component: ContactComponent },
   { path: '**', redirectTo: '' }
 ];
@@ -59,7 +61,8 @@ const routes: Routes = [
     CoursesOverviewComponent,
     PerformanceComponent,
     ImageSliderComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

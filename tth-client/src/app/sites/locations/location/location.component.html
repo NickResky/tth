@@ -1,0 +1,14 @@
+<div class="location-component" *ngIf="location">
+  <div class="header-image" [ngStyle]="getBackgroundStyle(location.gallery[0])">
+    <div class="header-image-title">
+      <h1>{{location.name}}</h1>
+    </div>
+  </div>
+
+  <div class="location-content-container main-content-container main-content-container-padding">
+    <div class="location-content main-content">
+      <div class="location-description" [innerHTML]="location.description"></div>
+    </div>
+  </div>
+  <app-image-slider [images]='location.gallery' [listid]='locationsListShortId'></app-image-slider>
+</div>

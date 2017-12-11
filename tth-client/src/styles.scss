@@ -39,6 +39,10 @@ app-current {
     background-color: #c7c7c7;        
 }
 
+.main-content-container {
+    color: $main-text-color-on-dark-bg;
+}
+
 .main-content-container-padding {
     padding-left: 20px;
     padding-right: 20px; 

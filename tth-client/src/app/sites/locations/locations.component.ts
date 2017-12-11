@@ -14,7 +14,7 @@ import _ from 'lodash';
 })
 export class LocationsComponent implements OnInit {
 
-  backgroundImage;
+  locationsListId = ZenkitCollections.locations.shortId;
   locations: Location[];
   locationMG: Location;
   locationLB: Location;
@@ -28,10 +28,6 @@ export class LocationsComponent implements OnInit {
       this.locationMG = locationData.locationMG;
       this.locationLB = locationData.locationLB;
       this.locations = [locationData.locationMG, locationData.locationLB];
-    });
-
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
-      this.backgroundImage = _.get(mainPageData, ['locationsSection', 'image']);
     });
   }
 
