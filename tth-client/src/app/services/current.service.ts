@@ -23,7 +23,7 @@ export class CurrentService {
           blogPost.date = modifiedEntry.date;
           return blogPost;
         });
-        return posts;
+        return posts.reverse(); // newest posts should be first
       });
   }
 

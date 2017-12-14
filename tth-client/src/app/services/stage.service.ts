@@ -21,7 +21,7 @@ export class StageService {
           performance.gallery = modifiedEntry.gallery;
           return performance;
         });
-        return performances;
+        return performances.reverse(); // newest performances should be first
       });
   }
 
