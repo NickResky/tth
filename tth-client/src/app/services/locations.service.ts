@@ -28,10 +28,10 @@ export class LocationsService {
           return location;
         });
         const locationMG = _.find(locations, {
-          name: 'Markgröningen'
+          initials: 'MG'
         });
         const locationLB = _.find(locations, {
-          name: 'Ludwigsburg'
+          initials: 'LB'
         });
         const locationData = new LocationData();
         locationData.locationMG = locationMG;
