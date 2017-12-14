@@ -24,6 +24,7 @@ export class LocationsService {
           location.description = modifiedEntry.description;
           location.gallery = modifiedEntry.gallery;
           location.embed = modifiedEntry.embed;
+          location.initials = modifiedEntry.initials;
           return location;
         });
         const locationMG = _.find(locations, {

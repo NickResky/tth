@@ -43,7 +43,12 @@ export const RequiredElements  = {
             name: 'YouTube Link',
             type: ElementTypes.text,
             mappedClassPropertyName: 'embed'
-        }
+        },
+        {
+            name: 'Datum',
+            type: ElementTypes.date,
+            mappedClassPropertyName: 'date'
+        },
     ],
     performances: [
         {
@@ -151,6 +156,11 @@ export const RequiredElements  = {
             name: 'Bildergalerie',
             type: ElementTypes.files,
             mappedClassPropertyName: 'gallery'
+        },
+        {
+            name: 'Initialien',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'initials'
         }
     ],
     contact: [

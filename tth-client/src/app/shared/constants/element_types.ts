@@ -6,5 +6,9 @@ export const ElementTypes  = {
     files: {
         category: 'filesData',
         categoryName: 'Files'
+    },
+    date: {
+        category: 'date',
+        categoryName: 'Date'
     }
 };
