@@ -8,4 +8,5 @@ export class Location {
     description: string;
     gallery: string[];
     embed: string;
+    initials: string;
 }

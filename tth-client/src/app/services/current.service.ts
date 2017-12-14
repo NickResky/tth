@@ -20,6 +20,7 @@ export class CurrentService {
           blogPost.description = modifiedEntry.description;
           blogPost.images = modifiedEntry.images;
           blogPost.embed = modifiedEntry.embed;
+          blogPost.date = modifiedEntry.date;
           return blogPost;
         });
         return posts;
