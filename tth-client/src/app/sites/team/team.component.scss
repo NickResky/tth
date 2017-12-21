@@ -13,17 +13,23 @@
             width: 100%;
             position: relative;
             padding: 20px;
+            opacity: 0;
+            animation-name: fade-in;
+            animation-delay: 0.5s;
+            animation-duration: 0.7s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
             .team-member-card {
                 @include flexbox();
                 @include flex-direction(column);
                 display: relative;
-                width: 320px;
+                width: 300px;
                 margin: 0 auto;
                 background-color: #F6F5F5;
                 overflow: hidden;
                 .team-member-bg-container {
-                    height: 300px;
-                    width: 320px;
+                    height: 280px;
+                    width: 300px;
                     background-color: grey;
                     background-size: cover;
                     @include flexbox();
@@ -36,7 +42,7 @@
                         filter 0.2s ease-in-out             
                     );
                     .team-member-bg-mask {
-                        width: 320px;
+                        width: 300px;
                         height: 100%;
                         top: 0;
                         background-color: transparent;
@@ -60,7 +66,7 @@
                     }
                 }
                 .team-member-tag {
-                    width: 300px;
+                    width: 280px;
                     height: 100px;
                     overflow: hidden;
                     text-align: center;
@@ -146,6 +152,43 @@
                 &:nth-child(3n) {
                     .team-member-card {
                         float: right;
+                    }
+                }
+                .team-member-card {
+                    width: 280px;
+                    .team-member-bg-container {
+                        height: 260px;
+                        width: 280px;
+                        .team-member-bg-mask {
+                            width: 280px;
+                        }
+                    }
+                    .team-member-tag {
+                        width: 260px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-xl) {
+    @media (min-width: $media-breakpoint-lg) {
+        .team-content-container {
+            .team-content { 
+                .team-member-container {
+                    .team-member-card {
+                        width: 320px;
+                        .team-member-bg-container {
+                            height: 300px;
+                            width: 320px;
+                            .team-member-bg-mask {
+                                width: 320px;
+                            }
+                        }
+                        .team-member-tag {
+                            width: 300px;
+                        }
                     }
                 }
             }
