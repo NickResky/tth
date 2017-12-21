@@ -103,7 +103,10 @@
                 top: 0;
                 width: 100%;
                 height: 100%;
+                background-attachment: fixed;
                 background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
                 opacity: 0;            
                 @include transform(translateX(0px) translateY(100%));
                 @include transition(opacity 500ms ease, transform 250ms);
