@@ -6,7 +6,7 @@
       </div>
     </div>
   </div>
-  <div class="course-tags-container main-content-container">
+  <div class="course-tags-container main-content-container" *ngIf="courses">
     <div class="course-tags main-content">
       <a *ngFor="let course of courses, let i = index" class="course-tag-container" (mouseenter)="mouseEnter(course)" (mouseleave)="mouseLeave(course)" [routerLink]="['/kurse', i]">
         <div class="black-bg-mask">

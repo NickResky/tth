@@ -25,13 +25,19 @@ $postBorderColor: #e1e1e1;
     }
 }
 
-@media (min-width: $media-breakpoint-md){
+@media (min-width: $media-breakpoint-md) {
     .blog-posts {
         padding-top: 50px;
         padding-bottom: 50px;        
         @include flexbox();
         @include flex-wrap(wrap);
         .post-container {
+            opacity: 0;
+            animation-name: fade-in;
+            animation-delay: 1.3s;
+            animation-duration: 0.7s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
             @include flex-grow(1);
             @include flexbox();
             @include flex-direction(column);

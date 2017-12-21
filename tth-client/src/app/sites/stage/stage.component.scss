@@ -74,6 +74,12 @@
             height: 400px;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            animation-name: fade-in;
+            animation-delay: 0.3s;
+            animation-duration: 0.7s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
             .performance-poster-mask {
                 display: block;
                 position: absolute;
