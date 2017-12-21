@@ -6,6 +6,7 @@ import { LocationData } from '../../../classes/location-data';
 import { Location } from '../../../classes/location';
 import { ActivatedRoute } from '@angular/router';
 import _ from 'lodash';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-location',
@@ -19,7 +20,12 @@ export class LocationComponent implements OnInit {
   locationId: number;
   locationsListShortId = ZenkitCollections.locations.shortId;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService, private route: ActivatedRoute) { }
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private route: ActivatedRoute,
+    private domSanitizer: DomSanitizer
+  ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -42,5 +48,10 @@ export class LocationComponent implements OnInit {
     return {
       'background-image': 'url(' + this.getFileSrc(image) + ')'
     };
+  }
+
+  getSafeUrl(url) {
+    const test = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    return test;
   }
 }

@@ -22,6 +22,7 @@ export class LocationsService {
           location.addressZIP = modifiedEntry.addressZIP;
           location.addressCity = modifiedEntry.addressCity;
           location.description = modifiedEntry.description;
+          location.image = _.head(modifiedEntry.image);
           location.gallery = modifiedEntry.gallery;
           location.embed = modifiedEntry.embed;
           location.initials = modifiedEntry.initials;

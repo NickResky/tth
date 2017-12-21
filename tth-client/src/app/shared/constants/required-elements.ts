@@ -163,6 +163,11 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'embed'
         },
         {
+            name: 'Bild',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'image'
+        },
+        {
             name: 'Bildergalerie',
             type: ElementTypes.files,
             mappedClassPropertyName: 'gallery'
