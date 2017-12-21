@@ -101,6 +101,16 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'name'
         },
         {
+            name: 'Vorname',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'firstName'
+        },
+        {
+            name: 'Nachname',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'lastName'
+        },
+        {
             name: 'Beschreibung',
             type: ElementTypes.text,
             mappedClassPropertyName: 'description'

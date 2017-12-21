@@ -11,11 +11,11 @@
           <div class="team-member-bg-mask">
           </div>
           <div class="team-member-about-me-tag">
-              &Uuml;ber Mich
+              &Uuml;ber {{teacher.firstName}}
             </div>
         </div>
         <div class="team-member-tag">
-          <div class="team-member-tag-name" [innerHTML]="teacher.name">
+          <div class="team-member-tag-name">{{teacher.firstName}} {{teacher.lastName}}
 
           </div>
           <div class="team-member-tag-task" [innerHTML]="teacher.task">
