@@ -16,7 +16,7 @@ export class CurrentComponent implements OnInit {
 
   posts: BlogPost[];
   backgroundImage;
-  currentListShortId: {};
+  currentListShortId: string;
 
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 

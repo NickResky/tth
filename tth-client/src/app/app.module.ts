@@ -29,6 +29,7 @@ import { PerformanceComponent } from './sites/stage/performance/performance.comp
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { CourseDetailsComponent } from './sites/courses/course-details/course-details.component';
 import { LocationComponent } from './sites/locations/location/location.component';
+import { HeaderImageComponent } from './components/header-image/header-image.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -62,7 +63,8 @@ const routes: Routes = [
     PerformanceComponent,
     ImageSliderComponent,
     CourseDetailsComponent,
-    LocationComponent
+    LocationComponent,
+    HeaderImageComponent
   ],
   imports: [
     BrowserModule,

@@ -3,25 +3,23 @@
 
 $postBorderColor: #e1e1e1;
 
-.current-container {
-    background-color: #fff;        
-}
-
-.blog-posts {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    .post-container {   
-        color: #303030;
-        opacity: 0.85;
-        padding-bottom: 50px;        
-        .post {
-            .post-image-container {
-                height: 300px;
-                background-size: cover;
-                background-color: $postBorderColor;
-            }
-            .post-heading {
-                margin: 5px 0 5px 0;
+.main-content-container {
+    background-color: #ffffff;        
+    .blog-posts {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        .post-container {   
+            color: #303030;
+            padding-bottom: 50px;        
+            .post {
+                .post-image-container {
+                    height: 300px;
+                    background-size: cover;
+                    background-color: $postBorderColor;
+                }
+                .post-heading {
+                    margin: 5px 0 5px 0;
+                }
             }
         }
     }

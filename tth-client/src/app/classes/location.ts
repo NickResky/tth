@@ -6,6 +6,7 @@ export class Location {
     addressZIP: string;
     addressCity: string;
     description: string;
+    image: string;
     gallery: string[];
     embed: string;
     initials: string;

@@ -1,11 +1,10 @@
 @import '../../../../variables';
 @import '../../../../mixins';
 
-.course-details-component {
-    .course-details-content-container {
-        color: $main-text-color-on-dark-bg;
-        .course-description {
-            margin-bottom: 100px;
-        }
+.course-details-content-container {
+    color: $main-text-color-on-dark-bg;
+    .course-description {
+        margin-top: 50px;
+        margin-bottom: 100px;
     }
 }

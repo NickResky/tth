@@ -1,18 +1,12 @@
-<div class="current-container">
-  <div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)">
-    <div class="header-image-title">
-      <h1>News</h1>
-    </div>
-  </div>
-  <div class="main-content-container main-content-container-padding">
-    <div class="blog-posts main-content">
-      <div *ngFor="let post of posts" class="post-container">
-        <div class="post">
-          <div class="post-image-container" [ngStyle]="getPostImageBackgroundStyle(post)">
-          </div>
-          <h2 [innerHTML]='post.title' class="post-heading"></h2>
-          <div [innerHTML]='post.description'></div>
+<app-header-image [image]='backgroundImage' [listId]='currentListShortId' title='Aktuelles'></app-header-image>
+<div class="main-content-container main-content-container-padding">
+  <div class="blog-posts main-content">
+    <div *ngFor="let post of posts" class="post-container">
+      <div class="post">
+        <div class="post-image-container" [ngStyle]="getPostImageBackgroundStyle(post)">
         </div>
+        <h2 [innerHTML]='post.title' class="post-heading"></h2>
+        <div [innerHTML]='post.description'></div>
       </div>
     </div>
   </div>

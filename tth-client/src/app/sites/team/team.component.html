@@ -1,8 +1,4 @@
-<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)">
-  <div class="header-image-title">
-    <h1>Team</h1>
-  </div>
-</div>
+<app-header-image [image]='backgroundImage' [listId]='teamListShortId' title='Team'></app-header-image>
 <div class="team-content-container main-content-container main-content-container-padding">
   <div class="team-content main-content">
     <div *ngFor="let teacher of teachers" class="team-member-container">

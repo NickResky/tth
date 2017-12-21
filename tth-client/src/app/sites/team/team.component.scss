@@ -65,6 +65,7 @@
                     overflow: hidden;
                     text-align: center;
                     padding: 10px;
+                    color: $main-text-color-on-light-bg;
                     @include flexbox();
                     @include flex-direction(column);
                     .team-member-tag-name {
