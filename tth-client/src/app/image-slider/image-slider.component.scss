@@ -15,7 +15,9 @@
         overflow: hidden;
         .image-container {
             position: absolute;
-            background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             height: 100%;
             width: 100%;  
             @include transform(translateX(0px) translateY(100%));
