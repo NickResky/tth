@@ -3,6 +3,9 @@
   <a *ngFor="let performance of performances, let i = index" class="performance-poster-container" [routerLink]="['/auftritte', i]" [ngStyle]="getBackgroundStyle(performance.poster)">
 
     <div class="performance-poster-mask"></div>
-    <div class="performance-poster-title" [innerHTML]="performance.title"></div>
+    <div class="performance-poster-label-container">
+      <div class="performance-poster-year-label" *ngIf="performance.date" [innerHTML]="performance.date.getFullYear()"></div>
+      <div class="performance-poster-title" [innerHTML]="performance.title"></div>
+    </div>
   </a>
 </div>

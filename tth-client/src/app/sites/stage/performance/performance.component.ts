@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModelService } from '../../../services/model.service';
 import { Performance } from '../../../classes/performance';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-performance',
@@ -25,5 +26,15 @@ export class PerformanceComponent implements OnInit {
         this.performance = performances[this.performanceId];
       });
    });
+  }
+
+  getDateString() {
+    if (_.isNil(this.performance.date)) {
+      return undefined;
+    }
+    const date = this.performance.date.getDate().toString() + '.'
+      + (this.performance.date.getMonth() + 1).toString() + '.'
+      + this.performance.date.getFullYear();
+    return date;
   }
 }

@@ -70,6 +70,11 @@ export const RequiredElements  = {
             name: 'Bildergallerie',
             type: ElementTypes.files,
             mappedClassPropertyName: 'gallery'
+        },
+        {
+            name: 'Datum',
+            type: ElementTypes.date,
+            mappedClassPropertyName: 'date'
         }
     ],
     courses: [
