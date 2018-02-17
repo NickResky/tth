@@ -4,6 +4,7 @@ import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Contact } from './../../classes/contact';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import _ from 'lodash';
 
 @Component({
@@ -16,6 +17,14 @@ export class ContactComponent implements OnInit {
   backgroundImage;
   contact: Contact = undefined;
   contactListShortId = ZenkitCollections.contact.shortId;
+
+  personInfo = new FormGroup({
+    name: new FormControl(),
+    email: new FormControl(),
+    course: new FormControl(),
+    text: new FormControl(),
+    age: new FormControl()
+  });
 
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 

@@ -37,7 +37,7 @@ export class ModelService {
         private currentService: CurrentService
     ) { }
 
-    getMainPageSections() {
+    getMainPageSections(): Promise<MainPageData> {
         if (_.isNil(this.mainPageData)) {
             this.mainPageData = this.mainPageService.getMainPageSections();
             return this.mainPageData;

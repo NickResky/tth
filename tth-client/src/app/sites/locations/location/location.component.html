@@ -1,8 +1,9 @@
 <app-header-image [image]='location.image' [listId]='locationsListShortId' [title]='location.name' *ngIf="location"></app-header-image>
 
-<div *ngIf="location" class="location-content-container location-content-container main-content-container main-content-container-padding">
+<div *ngIf="location" class="location-content-container  main-content-container main-content-container-padding">
   <div class="location-content main-content">
-    <div class="location-description" [innerHTML]="location.description"></div>
+    <div class="location-description" [innerHTML]="location.description">
+    </div>
   </div>
 </div>
 <div *ngIf="location" class="google-maps-iframe-container">

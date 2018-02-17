@@ -5,12 +5,13 @@
   },
   "apps": [
     {
+      "name": "app",
       "root": "src",
       "outDir": "dist",
       "assets": [
         "assets",
         "favicon.ico",
-        "service-worker.js"        
+        "service-worker.js"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -24,6 +25,19 @@
         "../node_modules/font-awesome/css/font-awesome.css"
       ],
       "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "universal",
+      "root": "src",
+      "outDir": "dist",
+      "platform": "server",
+      "main": "main-server.ts",
+      "tsconfig": "tsconfig.server.json",
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -57,16 +71,13 @@
   },
   "defaults": {
     "styleExt": "scss",
+    "class": {
+      "spec": false
+    },
     "component": {
       "spec": false
     },
-    "service": {
-      "spec": false
-    },
     "directive": {
-      "spec": false
-    },
-    "class": {
       "spec": false
     },
     "module": {
@@ -74,6 +85,9 @@
     },
     "pipe": {
       "spec": false
-    }    
+    },
+    "service": {
+      "spec": false
+    }
   }
 }

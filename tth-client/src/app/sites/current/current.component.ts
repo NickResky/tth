@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainPageSection } from '../../classes/main-page-section';
 import _ from 'lodash';
 import { MainPageData } from '../../classes/main-page-data';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-current',
@@ -14,7 +15,7 @@ import { MainPageData } from '../../classes/main-page-data';
 })
 export class CurrentComponent implements OnInit {
 
-  posts: BlogPost[];
+  posts: Observable<{}>;
   backgroundImage;
   currentListShortId: string;
 
@@ -23,9 +24,19 @@ export class CurrentComponent implements OnInit {
   ngOnInit() {
     this.currentListShortId = ZenkitCollections.current.shortId;
 
-    this.modelService.getPosts().then((posts: BlogPost[]) => {
-      this.posts = posts;
-    });
+    //this.posts = Observable.fromPromise(this.modelService.getPosts());
+
+    this.posts = Observable
+    .of([
+      {
+        title: 'title',
+        description: 'desc',
+        images: null,
+        embed: undefined,
+        date: undefined
+      },
+    ])
+    .delay(1000);
 
     this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
       this.backgroundImage = _.get(mainPageData, ['blogSection', 'image']);
