@@ -1,8 +1,9 @@
 @import '../../../variables';
+@import '../../../mixins';
 
 $main-page-text-color: #fff;
 
-.parallaxSection {
+.main-page-section-background {
     position: relative;
     opacity: 0.8;
     background-attachment: fixed;
@@ -10,39 +11,73 @@ $main-page-text-color: #fff;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
+    .main-page-section-container {
+        position: absolute;
+        top: 30%;
+        width: 100%;
+        .main-page-section-content-container {  
+            .main-page-section-content {
+                left: 0;
+                text-align: center;
+                color: $main-page-text-color;
+                background-color: rgba(77, 77, 77, 0.5);
+                @include transition(background-color 0.2s ease);
+                padding: 30px;
+                &.section-link:hover {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.6);
+                }
+                .main-page-section-caption {
+                    border: 2px solid $main-text-color;
+                    padding: 10px;
+                    font-size: 20px;                
+                    letter-spacing: 10px;
+                    margin: 20px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    color: $main-page-text-color;
+                }
+            
+                .main-page-section-description {
+                    // margin: auto 15px;
+                    font-size: 14px;
+                    padding-top: 20px;
+                }
+            }
+        }
+    }
 }
 
-.container {
-    position: absolute;
-    top: 30%;
-    width: 100%;
-
-    .content {
-        left: 0;
-        text-align: center;
-        color: $main-page-text-color;
-        background-color: rgba(77, 77, 77, 0.5);
-        max-width: 1000px;
-        margin: auto;
-        // margin: auto 130px;
-        // padding: 10px;
-        padding: 30px;
-    
-        .caption {
-            border: 2px solid $main-text-color;
-            padding: 18px;
-            font-size: 30px;
-            letter-spacing: 10px;
-            margin: 20px;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: $main-page-text-color;
+@media (min-width: $media-breakpoint-md) {
+    .main-page-section-background {
+        .main-page-section-container {
+            .main-page-section-content-container {
+                max-width: $media-breakpoint-md;
+                margin: 0 auto; 
+                .main-page-section-content {
+                                   
+                    .main-page-section-caption {
+                        font-size: 30px;  
+                        padding: 18px;                    
+                    }
+                    .main-page-section-description {
+                        font-size: 20px;
+                    }
+                }
+            }
         }
-    
-        .description {
-            // margin: auto 15px;
-            font-size: 20px;
-            padding-top: 20px;
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .main-page-section-background {
+        .main-page-section-container {
+            .main-page-section-content-container {
+                max-width: $media-breakpoint-lg;                
+                .main-page-section-content {
+                    
+                }
+            }
         }
     }
 }

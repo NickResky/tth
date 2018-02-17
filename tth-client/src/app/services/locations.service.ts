@@ -17,22 +17,27 @@ export class LocationsService {
         const locations = _.map(modifiedEntries, (modifiedEntry) => {
           const location = new Location();
           location.name = modifiedEntry.name;
-          location.address = modifiedEntry.address;
+          location.addressName = modifiedEntry.addressName;
+          location.addressStreet = modifiedEntry.addressStreet;
+          location.addressZIP = modifiedEntry.addressZIP;
+          location.addressCity = modifiedEntry.addressCity;
           location.description = modifiedEntry.description;
+          location.image = _.head(modifiedEntry.image);
           location.gallery = modifiedEntry.gallery;
           location.embed = modifiedEntry.embed;
+          location.initials = modifiedEntry.initials;
           return location;
         });
         const locationMG = _.find(locations, {
-          name: 'Markgröningen'
+          initials: 'MG'
         });
         const locationLB = _.find(locations, {
-          name: 'Ludwigsburg'
+          initials: 'LB'
         });
         const locationData = new LocationData();
         locationData.locationMG = locationMG;
         locationData.locationLB = locationLB;
-        
+
         return locationData;
       });
   }

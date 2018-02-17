@@ -1,4 +1,5 @@
 @import '../../variables';
+@import '../../mixins';
 
 div {
     display: block;
@@ -6,15 +7,48 @@ div {
 
 .main-page-title-video-container {
     position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 25px;
-    height: 0;
-    
-    iframe {
+	//padding-bottom: 56.25%; /* 16:9 */
+	//padding-top: 25px;
+    //height: 0;
+    height: 300px;
+    .video-iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+    }
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 1;
+        background-color: #000000;
+        height: 100%;
+        @include transition(opacity 2s ease);
+        &.hide {
+            opacity: 0;
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .main-page-title-video-container {
+        position: relative;
+        //padding-bottom: 56.25%; /* 16:9 */
+        //padding-top: 25px;
+        //height: 0;
+        height: 600px;
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .main-page-title-video-container {
+        position: relative;
+        //padding-bottom: 56.25%; /* 16:9 */
+        //padding-top: 25px;
+        //height: 0;
+        height: calc(100% - 70px);
     }
 }

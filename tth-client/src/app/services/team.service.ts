@@ -15,7 +15,8 @@ export class TeamService {
       .then((modifiedEntries) => {
         const team = _.map(modifiedEntries, (modifiedEntry) => {
           const teacher = new Teacher();
-          teacher.name = modifiedEntry.name;
+          teacher.firstName = modifiedEntry.firstName;
+          teacher.lastName = modifiedEntry.lastName;
           teacher.task = modifiedEntry.task;
           teacher.description = modifiedEntry.description;
           teacher.image = _.head(modifiedEntry.image);

@@ -1,34 +1,88 @@
 @import '../../../variables';
+@import '../../../mixins';
 
-.navbar {
-    overflow: hidden;
-    background-color: #303030;
-    // position: fixed; /* Set the navbar to fixed position */
-    bottom: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
-    z-index: 10;
-
-    .contactContainer {
-        margin: 30px 60px;
+.footer-container {
+    .footer {
+        overflow: hidden;
+        background-color: #000000;
+        bottom: 0; /* Position the navbar at the top of the page */
+        width: 100%; /* Full width */
+        z-index: 10;
         color: $main-text-color;
-        float: left;
-        
-        .badge {
-            background-image: url("../../../resources/tthbadge.png");
-            background-size: 100% 100%;
-            height: 80px;
-            width: 230px;
-        }
-
-        p {
-            padding-top: 5px;
-            margin: 0;
+        .footer-section-container {
+            .footer-section {
+                text-align: center;
+                .footer-section-heading {
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                .footer-section-content {
+                    font-size: 14px;
+                    .footer-section-content-link {
+                        display: block;
+                        text-decoration: none;
+                        color: $main-text-color;
+                    }
+                    .footer-section-content-link-inline {
+                        display: inline-block;
+                    }
+                    .footer-section-content-break {
+                        height: 15px;
+                    }
+                }
+            }
         }
     }
+}
 
-    .container {
-        margin: 30px 60px;
-        color: $main-text-color;
-        float: right;
+@media (max-width: $media-breakpoint-md) {
+    .footer-container {
+        .footer {
+            .footer-section-container {
+                .footer-section {
+                    margin: 30px;      
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .footer-container {
+        padding: 50px;
+        .footer {
+            max-width: $media-breakpoint-md; 
+            margin: 0 auto;            
+            @include flexbox();
+            .footer-section-container {
+                width: 33%;
+                @include flexbox();                 
+                .footer-section {
+                    text-align: left;   
+                    &.footer-section-contact {
+                        padding-right: 50px;
+                    } 
+                    &.footer-section-social {
+                        margin: 0 auto;
+                    } 
+                    &.footer-section-legal {
+                        padding-left: 50px;
+                    }                  
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .footer-container {
+        .footer {
+            max-width: $media-breakpoint-lg;
+            .footer-section-container {
+                .footer-section {
+                    
+                }
+            }
+        }
     }
 }

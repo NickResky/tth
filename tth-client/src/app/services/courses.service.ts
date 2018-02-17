@@ -3,6 +3,7 @@ import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import _ from 'lodash';
 import { CourseData } from '../classes/course-data';
+import { CourseInformation } from '../classes/course-information';
 
 @Injectable()
 export class CoursesService {
@@ -17,16 +18,29 @@ export class CoursesService {
                 label: 'Preise'
             });
             const scheduleMGEntry = _.find(modifiedEntries, {
-                label: 'Stundenplan Markgröningen'
+                label: 'Stundenplan Markgroeningen'
             });
             const scheduleLBEntry = _.find(modifiedEntries, {
                 label: 'Stundenplan Ludwigsburg'
+            });
+
+            const courseEntries = _.filter(modifiedEntries, {
+                label: 'Kurs'
             });
 
             const courseData = new CourseData();
             courseData.text = pricesEntry.description;
             courseData.scheduleMG = _.head(scheduleMGEntry.schedule);
             courseData.scheduleLB = _.head(scheduleLBEntry.schedule);
+
+            courseData.courses = _.map(courseEntries, (courseEntry) => {
+                const course = new CourseInformation();
+                course.title = courseEntry.title;
+                course.description = courseEntry.description;
+                course.image = _.head(courseEntry.image);
+                return course;
+            });
+
             return courseData;
       });
   }

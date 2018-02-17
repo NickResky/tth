@@ -1,0 +1,14 @@
+<div class="performance-component" *ngIf="performance">
+  <div class="performance-content-container main-content-container main-content-container-padding">
+    <div class="main-content">
+      <h1 class="performance-title" [innerHTML]="performance.title"></h1>
+      <div class="performance-date" [innerHTML]="getDateString()"></div>
+    </div>
+  </div>
+  <app-image-slider [images]='performance.gallery' [listid]='performancesListId'></app-image-slider>
+  <div class="performance-content-container main-content-container main-content-container-padding">
+    <div class="main-content">
+      <div class="performance-description" [innerHTML]="performance.description"></div>
+    </div>
+  </div>
+</div>

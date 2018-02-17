@@ -4,19 +4,19 @@ export const MainPageSectionTypes = [
         cssClass: 'main-page-section-video',
     },
     {
-        name: 'Philosophie',
+        name: 'Philosopie',
         cssClass: 'main-page-section-philosophy',
         routerLink: ''
     },
     {
-        name: 'Aktuelles',
+        name: 'Neuigkeiten',
         cssClass: 'main-page-section-current',
         routerLink: 'aktuelles'
     },
     {
-        name: 'Bühne',
+        name: 'Auftritte',
         cssClass: 'main-page-section-performances',
-        routerLink: 'buehne'
+        routerLink: 'auftritte'
     },
     {
         name: 'Kurse',

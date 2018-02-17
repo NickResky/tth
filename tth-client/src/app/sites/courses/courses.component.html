@@ -1,12 +1,15 @@
-<div class="header-image"></div>
-<div class="content">
-  <h2>Übersicht</h2>
+<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)">
+    <div class="header-image-title">
+      <h1>Courses</h1>
+    </div>
 </div>
-<div class="content" [innerHTML]='text'>
-  
-</div>
-<div class="content">
-  <h2>vollständige Stundenpläne</h2>
-  <object type="application/pdf" data="assets/StundenplanMKG.pdf" class="schedule"></object>
-  <object type="application/pdf" data="assets/StundenplanLB.pdf" class="schedule"></object>
+<app-courses-overview></app-courses-overview>
+<div class="courses-content-container main-content-container main-content-container-padding">
+  <div class="courses-content main-content">
+    <h2>&Uuml;bersicht</h2>
+    <div class="courses-gerneral-description" [innerHTML]='text'></div>
+    <h2>vollst&auml;ndige Stundenpl&auml;ne</h2>
+    <object type="application/pdf" data="assets/StundenplanMKG.pdf" class="schedule"></object>
+    <object type="application/pdf" data="assets/StundenplanLB.pdf" class="schedule"></object>
+  </div>
 </div>

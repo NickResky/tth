@@ -27,45 +27,41 @@ export class MainPageService {
           const sectionType = _.find(MainPageSectionTypes, {
             name: modifiedEntry.title
           });
-          mainPageSection.cssClass = sectionType.cssClass;
-          mainPageSection.routerLink = sectionType.routerLink;
+          mainPageSection.cssClass = _.get(sectionType, ['cssClass']);
+          mainPageSection.routerLink =  _.get(sectionType, ['routerLink']);
           return mainPageSection;
         });
 
-        const videoSection = _.head(_.remove(mainPageSections, {
-          title: 'Video'
-        }));
+        const getSection = function(sectionName) {
+          const section = _.head(_.remove(mainPageSections, {
+            title: sectionName
+          }));
 
-        const philosophySection = _.head(_.remove(mainPageSections, {
-          title: 'Philosophie'
-        }));
+          if (_.isNil(section)) {
+            console.log('Section "' + sectionName + '" was not found');
+          }
 
-        const blogSection = _.head(_.remove(mainPageSections, {
-          title: 'Aktuelles'
-        }));
+          return section;
+        };
 
-        const coursesSection = _.head(_.remove(mainPageSections, {
-          title: 'Kurse'
-        }));
+        const videoSection = getSection('Video');
 
-        const performancesSection = _.head(_.remove(mainPageSections, {
-          title: 'Bühne'
-        }));
+        const philosophySection = getSection('Philosophie');
 
-        const teamSection = _.head(_.remove(mainPageSections, {
-          title: 'Team'
-        }));
+        const blogSection = getSection('Neuigkeiten');
 
-        const locationsSection = _.head(_.remove(mainPageSections, {
-          title: 'Standorte'
-        }));
+        const coursesSection = getSection('Kurse');
 
-        const contactSection = _.head(_.remove(mainPageSections, {
-          title: 'Kontact'
-        }));
+        const performancesSection = getSection('Auftritte');
+
+        const teamSection = getSection('Team');
+
+        const locationsSection = getSection('Standorte');
+
+        const contactSection = getSection('Kontakt');
 
         const mainPageData = new MainPageData();
-        mainPageData.video = videoSection.youtubeEmbed;
+        mainPageData.video = _.get(videoSection, ['youtubeEmbed']);
         mainPageData.philosophySection = philosophySection;
         mainPageData.blogSection = blogSection;
         mainPageData.coursesSection = coursesSection;

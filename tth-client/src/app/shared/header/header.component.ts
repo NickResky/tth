@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  isMobileNavOpen = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleMobileNav() {
+    this.isMobileNavOpen = !this.isMobileNavOpen;
+  }
+
+  closeMobileNav() {
+    this.isMobileNavOpen = false;
   }
 
 }

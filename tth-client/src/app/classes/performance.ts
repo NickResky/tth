@@ -3,4 +3,5 @@ export class Performance {
     description: string;
     poster: string;
     gallery: string[];
+    date: Date;
 }

@@ -1,18 +1,51 @@
-<div class="navbar">
-    <div class="contactContainer">
-      <div class="badge"></div>
-      <p>Maulbronnerweg 37, 71706 Markgröningen</p>
-      <p>Liebigstraße 11, 71636 Ludwigsburg</p>
-      <p>Tel. 07141 4873482</p>
-      <p>anita@tanztheater-hanke.de</p>
+<div class="footer-container">
+  <div class="footer">
+    <div class="footer-section-container">
+      <div class="footer-section footer-section-contact">
+        <div class="footer-section-heading">
+          Kontakt
+        </div>
+        <div class="footer-section-content" *ngIf="locationMG && email">
+          <span class="footer-section-content-link">{{locationMG.addressName}}</span>
+          <span class="footer-section-content-link">{{locationMG.addressStreet}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressZIP}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressCity}}</span>
+          <div class="footer-section-content-break"></div>
+          <span class="footer-section-content-link">{{locationLB.addressName}}</span>
+          <span class="footer-section-content-link">{{locationLB.addressStreet}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressZIP}}</span>
+          <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressCity}}</span>
+          <div class="footer-section-content-break"></div>
+          <span class="footer-section-content-link">Tel. {{phone}}</span>
+          <span class="footer-section-content-link">{{email}}</span>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <div>Impressum</div>
-      <div>Copyright c by Tanztheater Anita Hanke 2017</div>
-      <div>Designed by Niko Reschke and Yasmin Hollenbenders</div>
+    <div class="footer-section-container">
+      <div class="footer-section footer-section-social">
+        <div class="footer-section-heading">
+            Social Media
+          </div>
+        <div class="footer-section-content">    
+          <a class="footer-section-content-link" href="#">
+            Facebook
+          </a>
+          <a class="footer-section-content-link" href="#">
+            YouTube
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="container">
-      <div>Facebook</div>
-      <div>YouTube</div>
+    <div class="footer-section-container">
+      <div class="footer-section footer-section-legal">
+        <div class="footer-section-heading">
+            Impressum
+        </div>
+        <div class="footer-section-content">  
+          <div class="footer-section-content-link">Geschützt durch Tanztheater Anita Hanke 2017</div>
+          <div class="footer-section-content-link">Web Design: Niko Reschke and Yasmin Hollenbenders</div>
+        </div>
+      </div>
     </div>
   </div>
+</div>

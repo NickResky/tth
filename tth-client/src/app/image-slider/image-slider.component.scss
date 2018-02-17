@@ -1,0 +1,80 @@
+@import '../../variables';
+@import '../../mixins';
+
+.image-slider-container {
+    width: 100%; 
+    height: 300px;
+    position: relative;
+    overview: hidden;    
+    .image-slider-mask {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        display: block;
+        top: 0;
+        overflow: hidden;
+        .image-container {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+            width: 100%;  
+            @include transform(translateX(0px) translateY(100%));
+            @include transition(opacity 250ms, transform 250ms);
+            &.active {
+                @include transform(translateX(0px) translateY(0%));
+            }    
+        }
+    }
+    .image-slider-control-container {
+        position: absolute;
+        height: 600px;
+        width: 30%;
+        i { 
+            position: absolute;
+            top: 40%;
+            font-size: 50px;
+            color: #fff;
+            text-shadow: 0 0 1px #000;
+            @include transition(color 0.5s ease);
+        }
+        &:hover {
+            cursor: pointer;
+            i {
+                color: $accent-color-1;
+            }
+        }
+    }
+    .image-slider-prev-control-container {
+        left: 0;
+        i {
+            left: 0;
+            margin-left: 20px;
+        }
+    }
+    .image-slider-next-control-container {
+        right: 0;
+        i {
+            margin-right: 20px;
+            right: 0;
+        }
+    }
+    .image-slider-index-panel-container {
+        @include flexbox();
+        position: absolute;
+        bottom: 0;
+        height: 20px;
+        width: 100%;
+        .image-slider-index {
+            @include flex(1);
+            height: 20px;
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .image-slider-container {
+        height: 600px;
+    }
+}

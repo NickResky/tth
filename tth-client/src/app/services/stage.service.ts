@@ -19,9 +19,12 @@ export class StageService {
           performance.description = modifiedEntry.description;
           performance.poster = _.head(modifiedEntry.poster);
           performance.gallery = modifiedEntry.gallery;
+          if (_.isNil(modifiedEntry.date) === false) {
+            performance.date = new Date(modifiedEntry.date);
+          }
           return performance;
         });
-        return performances;
+        return performances.reverse(); // newest performances should be first
       });
   }
 

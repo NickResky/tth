@@ -43,7 +43,12 @@ export const RequiredElements  = {
             name: 'YouTube Link',
             type: ElementTypes.text,
             mappedClassPropertyName: 'embed'
-        }
+        },
+        {
+            name: 'Datum',
+            type: ElementTypes.date,
+            mappedClassPropertyName: 'date'
+        },
     ],
     performances: [
         {
@@ -65,6 +70,11 @@ export const RequiredElements  = {
             name: 'Bildergallerie',
             type: ElementTypes.files,
             mappedClassPropertyName: 'gallery'
+        },
+        {
+            name: 'Datum',
+            type: ElementTypes.date,
+            mappedClassPropertyName: 'date'
         }
     ],
     courses: [
@@ -82,6 +92,11 @@ export const RequiredElements  = {
             name: 'Stundenplan',
             type: ElementTypes.files,
             mappedClassPropertyName: 'schedule'
+        },
+        {
+            name: 'Bild',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'image'
         }
     ],
     team: [
@@ -89,6 +104,16 @@ export const RequiredElements  = {
             name: 'Name',
             type: ElementTypes.text,
             mappedClassPropertyName: 'name'
+        },
+        {
+            name: 'Vorname',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'firstName'
+        },
+        {
+            name: 'Nachname',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'lastName'
         },
         {
             name: 'Beschreibung',
@@ -118,9 +143,24 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'description'
         },
         {
-            name: 'Adresse',
+            name: 'Adresse-Name',
             type: ElementTypes.text,
-            mappedClassPropertyName: 'address'
+            mappedClassPropertyName: 'addressName'
+        },
+        {
+            name: 'Adresse-Strasse',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'addressStreet'
+        },
+        {
+            name: 'Adresse-PLZ',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'addressZIP'
+        },
+        {
+            name: 'Adresse-Stadt',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'addressCity'
         },
         {
             name: 'Google Maps',
@@ -128,9 +168,19 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'embed'
         },
         {
+            name: 'Bild',
+            type: ElementTypes.files,
+            mappedClassPropertyName: 'image'
+        },
+        {
             name: 'Bildergalerie',
             type: ElementTypes.files,
             mappedClassPropertyName: 'gallery'
+        },
+        {
+            name: 'Initialien',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'initials'
         }
     ],
     contact: [

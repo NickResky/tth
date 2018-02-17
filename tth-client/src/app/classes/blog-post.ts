@@ -5,4 +5,5 @@ export class BlogPost {
     description: string;
     images: string[];
     embed: string;
+    date: Date;
 }

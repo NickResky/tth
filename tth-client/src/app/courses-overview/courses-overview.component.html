@@ -1,0 +1,28 @@
+<div class="courses-overview">
+  <div class="courses-overview-bg-images-mask">
+    <div *ngFor="let course of courses" class="courses-overview-bg-image-container" [ngStyle]="getBackgroundStyle(course.image)">
+      <div class="courses-overview-bg-image-fade">
+
+      </div>
+    </div>
+  </div>
+  <div class="course-tags-container main-content-container" *ngIf="courses">
+    <div class="course-tags main-content">
+      <a *ngFor="let course of courses, let i = index" class="course-tag-container" (mouseenter)="mouseEnter(course)" (mouseleave)="mouseLeave(course)" [routerLink]="['/kurse', i]">
+        <div class="black-bg-mask">
+          <div class="home-thumb-black-bg">
+
+          </div>
+        </div>
+        <div class="thumb-info-block">
+          <div class="thumb-spacer">
+
+          </div>
+          <div class="thumb-title">
+            {{course.title}}
+          </div>  
+        </div>
+      </a>
+      </div>
+  </div>
+</div>
