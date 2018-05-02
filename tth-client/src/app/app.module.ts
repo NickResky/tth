@@ -67,7 +67,7 @@ const routes: Routes = [
     HeaderImageComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'tth-universal'}),
     RouterModule.forRoot(routes),
     HttpModule
   ],

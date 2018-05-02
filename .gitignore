@@ -62,6 +62,7 @@ typings/
 # Compiled Output
 dist/
 tmp/
+dist-server/
 
 # Angular
 bazel-*
