@@ -2,6 +2,10 @@
   "name": "tth-client",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "10.4.1",
+    "npm": "3.10.10"
+  },
   "scripts": {
     "ng": "ng",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
