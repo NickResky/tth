@@ -5,7 +5,7 @@ import { DynamicContentService } from './../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import { MainPageService } from './../services/main-page.service';
 import { MainPageSection } from './../classes/main-page-section';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
 import Player from '@vimeo/player';

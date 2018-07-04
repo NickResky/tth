@@ -4,7 +4,7 @@ import { CourseData } from './../../../classes/course-data';
 import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { ModelService } from './../../../services/model.service';
 import { Component, OnInit } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { ZenkitCollections } from '../../../shared/constants/zenkit-collections';
 import { CourseInformation } from '../../../classes/course-information';
 

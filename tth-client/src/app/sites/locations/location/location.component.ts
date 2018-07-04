@@ -5,7 +5,7 @@ import { DynamicContentService } from '../../../services/dynamic-content.service
 import { LocationData } from '../../../classes/location-data';
 import { Location } from '../../../classes/location';
 import { ActivatedRoute } from '@angular/router';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({

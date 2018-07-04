@@ -3,7 +3,7 @@ import { Contact } from './../../classes/contact';
 import { ModelService } from './../../services/model.service';
 import { Component, OnInit } from '@angular/core';
 import { LocationData } from '../../classes/location-data';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-footer',

@@ -1,6 +1,27 @@
 <app-header-image [image]='backgroundImage' [listId]='currentListShortId' title='Aktuelles'></app-header-image>
 <div class="main-content-container main-content-container-padding">
   <div class="blog-posts main-content">
+    <div *ngFor="let dataP of dataPromise | async" class="data-promise">
+      {{dataP.name}}
+    </div>
+    <div *ngFor="let dataO of dataObservable | async" class="data-observable">
+      {{dataO.name}}
+    </div>
+    <div *ngFor="let data of dataPromise2 | async" class="data-promise-2">
+      {{data.name}}
+    </div>
+    <div *ngFor="let data of dataPromise3 | async" class="data-promise-3">
+      {{data.name}}
+    </div>
+    <div *ngFor="let data of dataPromise4  | async " class="data-promise-4">
+      {{data.name | async}}
+    </div>
+    <div *ngFor="let data of dataObservabe2  | async" class="data-observable-2">
+      {{data.name}}
+    </div>
+    <div *ngFor="let data of dataObservabe3 | async" class="data-observable-3">
+      {{data.name}}
+    </div>
     <div *ngFor="let post of posts | async" class="post-container">
       <div class="post">
         <div class="post-image-container" [ngStyle]="getPostImageBackgroundStyle(post)">

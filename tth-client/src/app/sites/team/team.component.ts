@@ -4,7 +4,7 @@ import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Teacher } from './../../classes/teacher';
 import { Component, OnInit } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-team',

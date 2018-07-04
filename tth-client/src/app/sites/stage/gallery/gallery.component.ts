@@ -1,6 +1,6 @@
 import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-gallery',

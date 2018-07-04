@@ -1,7 +1,7 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { Teacher } from '../classes/teacher';
 
 @Injectable()

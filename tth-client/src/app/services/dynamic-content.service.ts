@@ -1,9 +1,10 @@
+import { Observable } from 'rxjs/Observable';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { BlogPost } from './../classes/blog-post';
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/Rx';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Injectable()
 export class DynamicContentService {
@@ -19,57 +20,117 @@ export class DynamicContentService {
   // Only necessary if zenkit collection is not public
   // TODO: Remove before release
   // apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5NzV9LCJpYXQiOjE1MDQ5ODc4Mzl9.j1BVnV32r_h2xZrTxUIsQWEDrzZjiEgzf6Sl6-UtfR0';
+  // headers.append('Authorization', 'Bearer ' + this.apiToken);
 
-  fetchAndTransformZenkitListData(listShortId) {
+  getTestData(listId): Observable<any> {
+    const headers: Headers = new Headers();
+    return this.http
+      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
+      .map((res: Response) => res.json());
+  }
+
+  getTestDataWithPromise(listId): Promise<any> {
+    const headers: Headers = new Headers();
+    return this.http
+      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
+      .toPromise().then((res) => {
+        return new Promise((resolve, reject) => {
+          return resolve(res.json());
+        });
+      });
+  }
+
+  getTestDataWithObservable(listId): Observable<any> {
+    const headers: Headers = new Headers();
+    return this.http
+      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  fetchAndTransformZenkitListData(listShortId): Promise<any> {
     return this.fetchZenkitListData(listShortId)
       .then((results) => {
         return this.transformZenkitListData(results);
       });
   }
 
-  fetchZenkitListData(listId: string) {
+  fetchList(listId): Promise<any> {
     const headers: Headers = new Headers();
-    // headers.append('Authorization', 'Bearer ' + this.apiToken);
-
-    const fetchList = this.http
+    return this.http
       .get(this.apiUrl + 'lists/' + listId, {headers: headers})
       .toPromise();
+  }
 
-    const fetchListElements = this.http
+  fetchListObservable(listId): Observable<any> {
+    const headers: Headers = new Headers();
+    return this.http
+      .get(this.apiUrl + 'lists/' + listId, {headers: headers});
+  }
+
+  fetchListElements(listId): Promise<any> {
+    const headers: Headers = new Headers();
+    return this.http
       .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
       .toPromise();
+  }
 
-    const fetchListEntriesInKanbanMode = (elementIdX: string) => {
-      const httpRequestBody = {
-        filter: {
-          AND: {
-            TERMS: []
-          }
-        },
-        elementIdX: elementIdX
-      };
-      return this.http
-        .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, {headers: headers})
-        .toPromise();
+  fetchListElementsObservable(listId): Observable<any> {
+    const headers: Headers = new Headers();
+    return this.http
+      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers});
+  }
+
+  fetchListEntriesInKanbanMode(elementIdX: string, listId): Promise<any> {
+    const headers: Headers = new Headers();
+    const httpRequestBody = {
+      filter: {
+        AND: {
+          TERMS: []
+        }
+      },
+      elementIdX: elementIdX
     };
+    return this.http
+      .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, {headers: headers})
+      .toPromise();
+  }
 
-    return Promise.all([fetchList, fetchListElements]).then((results) => {
-      const listResponse = results[0];
-      const elementsResponse = results[1];
+  fetchListEntriesInKanbanModeObservable(elementIdX: string, listId): Observable<any> {
+    const headers: Headers = new Headers();
+    const httpRequestBody = {
+      filter: {
+        AND: {
+          TERMS: []
+        }
+      },
+      elementIdX: elementIdX
+    };
+    return this.http
+      .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, {headers: headers});
+  }
 
-      if (listResponse.status === 403  || elementsResponse.status === 403) {
-        throw new Error('It seems like you do not have permission to access this collection');
-      }
-      if (listResponse.status !== 200 || elementsResponse.status !== 200) {
-        throw new Error('Collection not found.');
-      }
+  fetchZenkitListData(listId: string): Promise<any> {
 
-      return Promise
-        .all([
-          listResponse.json(),
-          elementsResponse.json(),
-        ])
-        .then((results) => {
+    return new Promise((resolve, reject) => {
+      return Promise.all([this.fetchList(listId), this.fetchListElements(listId)]).then((results) => {
+        const listResponse: any = results[0];
+        const elementsResponse: any = results[1];
+
+        /* return new Promise((resolve, reject) => {
+          return resolve(elementsResponse.json());
+        }); */
+
+        if (listResponse.status === 403  || listResponse.status === 403) {
+          throw new Error('It seems like you do not have permission to access this collection');
+        }
+        if (listResponse.status !== 200 || listResponse.status !== 200) {
+          throw new Error('Collection not found.');
+        }
+
+        return Promise.all([listResponse.json(), elementsResponse.json()]).then((results) => {
+
           const listJson = results[0];
           const elementsJson = results[1];
 
@@ -79,10 +140,13 @@ export class DynamicContentService {
           });
 
           if (_.has(sectionElement, ['id']) === false) {
-            throw new Error('Missing Section Field! Please define a field called "Sorted Items" for the Zenkit Collection ' + listJson.name + '.');
+            // tslint:disable-next-line:max-line-length
+            throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
           }
 
-          return fetchListEntriesInKanbanMode(sectionElement.id)
+          return resolve(elementsJson);
+          /*
+          return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
             .then((entriesResponse) => {
 
               if (entriesResponse.status === 403) {
@@ -93,20 +157,160 @@ export class DynamicContentService {
                 throw new Error('Collection not found (Collection ID: ' + listId + ').');
               }
 
+              /*return new Promise((resolve, reject) => {
+                return resolve(elementsResponse.json());
+              });
+
               const entriesJson = entriesResponse.json();
 
-              return {
+              return new Promise((resolve, reject) => {
+                return resolve({
+                  list: listJson,
+                  elements: elementsJson,
+                  kanbanEntries: entriesJson,
+                  sectionElement: sectionElement
+                });
+              });
+            });*/
+          });
+      });
+    });
+  }
+
+  fetchZenkitListData2(listId: string): Observable<any> {
+
+    return Observable.forkJoin(this.fetchList(listId), this.fetchListElements(listId)).map((results) => {
+      const listResponse: any = results[0];
+      const elementsResponse: any = results[1];
+
+      /* return new Promise((resolve, reject) => {
+        return resolve(elementsResponse.json());
+      }); */
+
+      if (listResponse.status === 403  || listResponse.status === 403) {
+        throw new Error('It seems like you do not have permission to access this collection');
+      }
+      if (listResponse.status !== 200 || listResponse.status !== 200) {
+        throw new Error('Collection not found.');
+      }
+
+      return Observable.forkJoin(listResponse.json(), elementsResponse.json()).map((results) => {
+
+        const listJson: any = results[0];
+        const elementsJson: any = results[1];
+
+        const sectionElement = _.find(elementsJson, {
+          name: 'Labels',
+          elementcategory: 6
+        });
+
+        if (_.has(sectionElement, ['id']) === false) {
+          // tslint:disable-next-line:max-line-length
+          throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
+        }
+
+        return elementsJson;
+        /*
+        return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
+          .then((entriesResponse) => {
+
+            if (entriesResponse.status === 403) {
+              throw new Error('It seems like you do not have permission to access this collection (Collection ID:' + listId + ').');
+            }
+
+            if (entriesResponse.status !== 200) {
+              throw new Error('Collection not found (Collection ID: ' + listId + ').');
+            }
+
+            /*return new Promise((resolve, reject) => {
+              return resolve(elementsResponse.json());
+            });
+
+            const entriesJson = entriesResponse.json();
+
+            return new Promise((resolve, reject) => {
+              return resolve({
                 list: listJson,
                 elements: elementsJson,
                 kanbanEntries: entriesJson,
                 sectionElement: sectionElement
-              };
+              });
             });
+          });*/
         });
     });
   }
 
-  transformZenkitListData(params) {
+  fetchZenkitListData3(listId: string): Observable<any> {
+
+    return Observable.fromPromise(
+      new Promise((resolve, reject) => {
+        return Promise.all([this.fetchList(listId), this.fetchListElements(listId)]).then((results) => {
+          const listResponse: any = results[0];
+          const elementsResponse: any = results[1];
+
+          /* return new Promise((resolve, reject) => {
+            return resolve(elementsResponse.json());
+          }); */
+
+          if (listResponse.status === 403  || listResponse.status === 403) {
+            throw new Error('It seems like you do not have permission to access this collection');
+          }
+          if (listResponse.status !== 200 || listResponse.status !== 200) {
+            throw new Error('Collection not found.');
+          }
+
+          return Promise.all([listResponse.json(), elementsResponse.json()]).then((results) => {
+
+            const listJson = results[0];
+            const elementsJson = results[1];
+
+            const sectionElement = _.find(elementsJson, {
+              name: 'Labels',
+              elementcategory: 6
+            });
+
+            if (_.has(sectionElement, ['id']) === false) {
+              // tslint:disable-next-line:max-line-length
+              throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
+            }
+
+            return resolve(elementsJson);
+            /*
+            return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
+              .then((entriesResponse) => {
+
+                if (entriesResponse.status === 403) {
+                  throw new Error('It seems like you do not have permission to access this collection (Collection ID:' + listId + ').');
+                }
+
+                if (entriesResponse.status !== 200) {
+                  throw new Error('Collection not found (Collection ID: ' + listId + ').');
+                }
+
+                /*return new Promise((resolve, reject) => {
+                  return resolve(elementsResponse.json());
+                });
+
+                const entriesJson = entriesResponse.json();
+
+                return new Promise((resolve, reject) => {
+                  return resolve({
+                    list: listJson,
+                    elements: elementsJson,
+                    kanbanEntries: entriesJson,
+                    sectionElement: sectionElement
+                  });
+                });
+              });*/
+            });
+        });
+      })
+    );
+  }
+
+
+  transformZenkitListData(params): Promise<{}> {
 
     const getZenkitCollection = (list) => {
       return _.find(ZenkitCollections, {
@@ -117,8 +321,8 @@ export class DynamicContentService {
     const zenkitCollection = getZenkitCollection(params.list);
 
     const modifiedRequiredElements = _
-      .map(zenkitCollection.requiredElements, (requiredElement) => {
-        const fullElement = _.find(params.elements, {
+      .map(zenkitCollection.requiredElements, (requiredElement: any) => {
+        const fullElement: any = _.find(params.elements, {
           name: requiredElement.name
         });
         if (_.isNil(fullElement)) {
@@ -147,8 +351,9 @@ export class DynamicContentService {
           return modifiedEntry;
         }, simplifiedEntry);
       });
-
-    return modifiedEntries;
+    return new Promise((resolve, reject) => {
+      return resolve(modifiedEntries);
+    });
   }
 
   getFileSrc(fileShortId, listShortId) {

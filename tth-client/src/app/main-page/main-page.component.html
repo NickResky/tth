@@ -2,6 +2,7 @@
     <div id="video-iframe" class="video-iframe"></div>
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>
+{{philosophySection.description | async}}
 <app-main-page-section *ngIf="philosophySection" [sectiondata]='philosophySection'></app-main-page-section>
 <app-main-page-section *ngIf="coursesSection" [sectiondata]='coursesSection'></app-main-page-section>
 <app-main-page-section *ngIf="performancesSection" [sectiondata]='performancesSection'></app-main-page-section>

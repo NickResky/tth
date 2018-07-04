@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModelService } from '../../../services/model.service';
 import { Performance } from '../../../classes/performance';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-performance',

@@ -5,7 +5,7 @@ import { DynamicContentService } from './../../services/dynamic-content.service'
 import { Contact } from './../../classes/contact';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-contact',

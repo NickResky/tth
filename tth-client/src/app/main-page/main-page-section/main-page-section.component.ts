@@ -4,7 +4,7 @@ import { MainPageComponent } from './../main-page.component';
 import { MainPageSection } from './../../classes/main-page-section';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-main-page-section',

@@ -1,6 +1,6 @@
 import { DynamicContentService } from './../services/dynamic-content.service';
 import { Component, OnInit, Input } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-image-slider',
@@ -11,7 +11,7 @@ export class ImageSliderComponent implements OnInit {
 
   @Input() images;
   @Input() listid;
-  sliderImages;
+  sliderImages: any;
   zenkitListId;
   currentImageIndex = 0;
 
@@ -22,7 +22,8 @@ export class ImageSliderComponent implements OnInit {
       image['isActive'] = false;
       return image;
     });
-    _.head(this.sliderImages).isActive = true;
+    const firstImage: any = _.head(this.sliderImages);
+    firstImage.isActive = true;
     this.zenkitListId = this.listid;
   }
 

@@ -4,9 +4,11 @@ import { DynamicContentService } from './../../services/dynamic-content.service'
 import { BlogPost } from './../../classes/blog-post';
 import { Component, OnInit } from '@angular/core';
 import { MainPageSection } from '../../classes/main-page-section';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { MainPageData } from '../../classes/main-page-data';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-current',
@@ -15,28 +17,69 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CurrentComponent implements OnInit {
 
-  posts: Observable<{}>;
+  posts: Promise<{}>;
+  dataObservable: Observable<any>;
+  dataPromise: Promise<any>;
+  dataPromise2: Promise<any>;
+  dataPromise3: Promise<any>;
+  dataPromise4: Promise<any>;
+  subscription: Subscription;
+  dataObservabe2: any;
+  dataObservabe3: Observable<any>;
   backgroundImage;
   currentListShortId: string;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
+  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) {
+
+  }
+
+  testFunc(): Promise<any> {
+    return this.dynamicContentService
+    .getTestDataWithPromise(ZenkitCollections.current.shortId)
+    .then((response) => {
+      return new Promise((resolve, reject) => {
+        const test = response;
+        return resolve(test);
+      });
+    });
+  }
+
+  testFunction(): Promise<any> {
+    return this.dynamicContentService
+    .fetchZenkitListData(ZenkitCollections.current.shortId)
+    .then((response) => {
+      return new Promise((resolve, reject) => {
+        const test = _.get(response, ['elements']);
+        const ttest = response;
+        return resolve(ttest);
+      });
+    });
+  }
 
   ngOnInit() {
     this.currentListShortId = ZenkitCollections.current.shortId;
 
-    //this.posts = Observable.fromPromise(this.modelService.getPosts());
+    this.dataPromise2 = this.testFunc();
 
-    this.posts = Observable
-    .of([
-      {
-        title: 'title',
-        description: 'desc',
-        images: null,
-        embed: undefined,
-        date: undefined
-      },
-    ])
-    .delay(1000);
+    this.dataPromise3 = this.testFunction();
+
+    this.dataPromise4 = this.dynamicContentService
+    .fetchZenkitListData(ZenkitCollections.current.shortId);
+
+    this.subscription = this.dynamicContentService.getTestDataWithObservable(ZenkitCollections.current.shortId).subscribe((res) => {
+      this.dataObservabe2 = res;
+    });
+
+    this.dynamicContentService
+    .fetchZenkitListData3(ZenkitCollections.current.shortId).subscribe((res) => {
+      this.dataObservabe3 = res;
+    });
+
+    this.dataObservable = this.dynamicContentService.getTestData(ZenkitCollections.current.shortId);
+
+    this.dataPromise = this.dynamicContentService.getTestDataWithPromise(ZenkitCollections.current.shortId);
+
+    this.posts = this.modelService.getPosts();
 
     this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
       this.backgroundImage = _.get(mainPageData, ['blogSection', 'image']);

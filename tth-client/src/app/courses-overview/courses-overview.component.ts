@@ -4,7 +4,7 @@ import { CourseData } from './../classes/course-data';
 import { ModelService } from './../services/model.service';
 import { DynamicContentService } from './../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-courses-overview',

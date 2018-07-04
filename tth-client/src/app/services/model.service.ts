@@ -14,14 +14,14 @@ import { MainPageData } from './../classes/main-page-data';
 import { MainPageSection } from './../classes/main-page-section';
 import { MainPageService } from './main-page.service';
 import { Injectable } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Injectable()
 export class ModelService {
 
     mainPageData: Promise<MainPageData>;
     contactData: Promise<Contact>;
-    blogPostsData: Promise<BlogPost[]>;
+    blogPostsData: Promise<{}>;
     coursesData: Promise<CourseData>;
     performancesData: Promise<Performance[]>;
     teamData: Promise<Teacher[]>;
@@ -47,14 +47,11 @@ export class ModelService {
         });
     }
 
-    getPosts() {
+    getPosts(): Promise<{}> {
         if (_.isNil(this.blogPostsData)) {
             this.blogPostsData = this.currentService.getPosts();
-            return this.blogPostsData;
         }
-        return new Promise((resolve, reject) => {
-            return resolve(this.blogPostsData);
-        });
+        return this.blogPostsData;
     }
 
     getPerformances() {

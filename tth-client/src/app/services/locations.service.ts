@@ -3,7 +3,7 @@ import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import { Location } from './../classes/location';
 import { LocationData } from './../classes/location-data';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 @Injectable()
 export class LocationsService {

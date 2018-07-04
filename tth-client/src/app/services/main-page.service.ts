@@ -5,7 +5,7 @@ import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import { MainPageSection } from './../classes/main-page-section';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { MainPageData } from '../classes/main-page-data';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { CourseData } from '../classes/course-data';
 import { CourseInformation } from '../classes/course-information';
 
@@ -14,17 +14,17 @@ export class CoursesService {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.courses.shortId)
       .then((modifiedEntries) => {
-            const pricesEntry = _.find(modifiedEntries, {
+            const pricesEntry: any = _.find(modifiedEntries, {
                 label: 'Preise'
             });
-            const scheduleMGEntry = _.find(modifiedEntries, {
+            const scheduleMGEntry: any = _.find(modifiedEntries, {
                 label: 'Stundenplan Markgroeningen'
             });
-            const scheduleLBEntry = _.find(modifiedEntries, {
+            const scheduleLBEntry: any = _.find(modifiedEntries, {
                 label: 'Stundenplan Ludwigsburg'
             });
 
-            const courseEntries = _.filter(modifiedEntries, {
+            const courseEntries: any = _.filter(modifiedEntries, {
                 label: 'Kurs'
             });
 
