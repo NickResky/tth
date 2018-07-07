@@ -22,13 +22,6 @@ export class DynamicContentService {
   // apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5NzV9LCJpYXQiOjE1MDQ5ODc4Mzl9.j1BVnV32r_h2xZrTxUIsQWEDrzZjiEgzf6Sl6-UtfR0';
   // headers.append('Authorization', 'Bearer ' + this.apiToken);
 
-  getTestData(listId): Observable<any> {
-    const headers: Headers = new Headers();
-    return this.http
-      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
-      .map((res: Response) => res.json());
-  }
-
   getTestDataWithPromise(listId): Promise<any> {
     const headers: Headers = new Headers();
     return this.http
@@ -37,15 +30,6 @@ export class DynamicContentService {
         return new Promise((resolve, reject) => {
           return resolve(res.json());
         });
-      });
-  }
-
-  getTestDataWithObservable(listId): Observable<any> {
-    const headers: Headers = new Headers();
-    return this.http
-      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
-      .map((res: Response) => {
-        return res.json();
       });
   }
 
@@ -63,23 +47,11 @@ export class DynamicContentService {
       .toPromise();
   }
 
-  fetchListObservable(listId): Observable<any> {
-    const headers: Headers = new Headers();
-    return this.http
-      .get(this.apiUrl + 'lists/' + listId, {headers: headers});
-  }
-
   fetchListElements(listId): Promise<any> {
     const headers: Headers = new Headers();
     return this.http
       .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
       .toPromise();
-  }
-
-  fetchListElementsObservable(listId): Observable<any> {
-    const headers: Headers = new Headers();
-    return this.http
-      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers});
   }
 
   fetchListEntriesInKanbanMode(elementIdX: string, listId): Promise<any> {
@@ -97,30 +69,11 @@ export class DynamicContentService {
       .toPromise();
   }
 
-  fetchListEntriesInKanbanModeObservable(elementIdX: string, listId): Observable<any> {
-    const headers: Headers = new Headers();
-    const httpRequestBody = {
-      filter: {
-        AND: {
-          TERMS: []
-        }
-      },
-      elementIdX: elementIdX
-    };
-    return this.http
-      .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, {headers: headers});
-  }
-
   fetchZenkitListData(listId: string): Promise<any> {
 
-    return new Promise((resolve, reject) => {
       return Promise.all([this.fetchList(listId), this.fetchListElements(listId)]).then((results) => {
         const listResponse: any = results[0];
         const elementsResponse: any = results[1];
-
-        /* return new Promise((resolve, reject) => {
-          return resolve(elementsResponse.json());
-        }); */
 
         if (listResponse.status === 403  || listResponse.status === 403) {
           throw new Error('It seems like you do not have permission to access this collection');
@@ -134,7 +87,7 @@ export class DynamicContentService {
           const listJson = results[0];
           const elementsJson = results[1];
 
-          const sectionElement = _.find(elementsJson, {
+          const sectionElement: any = _.find(elementsJson, {
             name: 'Labels',
             elementcategory: 6
           });
@@ -144,8 +97,6 @@ export class DynamicContentService {
             throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
           }
 
-          return resolve(elementsJson);
-          /*
           return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
             .then((entriesResponse) => {
 
@@ -157,158 +108,18 @@ export class DynamicContentService {
                 throw new Error('Collection not found (Collection ID: ' + listId + ').');
               }
 
-              /*return new Promise((resolve, reject) => {
-                return resolve(elementsResponse.json());
-              });
-
               const entriesJson = entriesResponse.json();
 
-              return new Promise((resolve, reject) => {
-                return resolve({
-                  list: listJson,
-                  elements: elementsJson,
-                  kanbanEntries: entriesJson,
-                  sectionElement: sectionElement
-                });
-              });
-            });*/
-          });
-      });
-    });
-  }
-
-  fetchZenkitListData2(listId: string): Observable<any> {
-
-    return Observable.forkJoin(this.fetchList(listId), this.fetchListElements(listId)).map((results) => {
-      const listResponse: any = results[0];
-      const elementsResponse: any = results[1];
-
-      /* return new Promise((resolve, reject) => {
-        return resolve(elementsResponse.json());
-      }); */
-
-      if (listResponse.status === 403  || listResponse.status === 403) {
-        throw new Error('It seems like you do not have permission to access this collection');
-      }
-      if (listResponse.status !== 200 || listResponse.status !== 200) {
-        throw new Error('Collection not found.');
-      }
-
-      return Observable.forkJoin(listResponse.json(), elementsResponse.json()).map((results) => {
-
-        const listJson: any = results[0];
-        const elementsJson: any = results[1];
-
-        const sectionElement = _.find(elementsJson, {
-          name: 'Labels',
-          elementcategory: 6
-        });
-
-        if (_.has(sectionElement, ['id']) === false) {
-          // tslint:disable-next-line:max-line-length
-          throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
-        }
-
-        return elementsJson;
-        /*
-        return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
-          .then((entriesResponse) => {
-
-            if (entriesResponse.status === 403) {
-              throw new Error('It seems like you do not have permission to access this collection (Collection ID:' + listId + ').');
-            }
-
-            if (entriesResponse.status !== 200) {
-              throw new Error('Collection not found (Collection ID: ' + listId + ').');
-            }
-
-            /*return new Promise((resolve, reject) => {
-              return resolve(elementsResponse.json());
-            });
-
-            const entriesJson = entriesResponse.json();
-
-            return new Promise((resolve, reject) => {
-              return resolve({
+              return {
                 list: listJson,
                 elements: elementsJson,
                 kanbanEntries: entriesJson,
                 sectionElement: sectionElement
-              });
+              };
             });
-          });*/
-        });
+          });
     });
   }
-
-  fetchZenkitListData3(listId: string): Observable<any> {
-
-    return Observable.fromPromise(
-      new Promise((resolve, reject) => {
-        return Promise.all([this.fetchList(listId), this.fetchListElements(listId)]).then((results) => {
-          const listResponse: any = results[0];
-          const elementsResponse: any = results[1];
-
-          /* return new Promise((resolve, reject) => {
-            return resolve(elementsResponse.json());
-          }); */
-
-          if (listResponse.status === 403  || listResponse.status === 403) {
-            throw new Error('It seems like you do not have permission to access this collection');
-          }
-          if (listResponse.status !== 200 || listResponse.status !== 200) {
-            throw new Error('Collection not found.');
-          }
-
-          return Promise.all([listResponse.json(), elementsResponse.json()]).then((results) => {
-
-            const listJson = results[0];
-            const elementsJson = results[1];
-
-            const sectionElement = _.find(elementsJson, {
-              name: 'Labels',
-              elementcategory: 6
-            });
-
-            if (_.has(sectionElement, ['id']) === false) {
-              // tslint:disable-next-line:max-line-length
-              throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
-            }
-
-            return resolve(elementsJson);
-            /*
-            return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
-              .then((entriesResponse) => {
-
-                if (entriesResponse.status === 403) {
-                  throw new Error('It seems like you do not have permission to access this collection (Collection ID:' + listId + ').');
-                }
-
-                if (entriesResponse.status !== 200) {
-                  throw new Error('Collection not found (Collection ID: ' + listId + ').');
-                }
-
-                /*return new Promise((resolve, reject) => {
-                  return resolve(elementsResponse.json());
-                });
-
-                const entriesJson = entriesResponse.json();
-
-                return new Promise((resolve, reject) => {
-                  return resolve({
-                    list: listJson,
-                    elements: elementsJson,
-                    kanbanEntries: entriesJson,
-                    sectionElement: sectionElement
-                  });
-                });
-              });*/
-            });
-        });
-      })
-    );
-  }
-
 
   transformZenkitListData(params): Promise<{}> {
 

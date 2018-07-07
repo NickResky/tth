@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainPageSection } from '../../classes/main-page-section';
 import * as _ from 'lodash';
 import { MainPageData } from '../../classes/main-page-data';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-current',
@@ -17,15 +15,8 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class CurrentComponent implements OnInit {
 
-  posts: Promise<{}>;
-  dataObservable: Observable<any>;
-  dataPromise: Promise<any>;
-  dataPromise2: Promise<any>;
-  dataPromise3: Promise<any>;
-  dataPromise4: Promise<any>;
-  subscription: Subscription;
-  dataObservabe2: any;
-  dataObservabe3: Observable<any>;
+  posts: Promise<BlogPost[]>;
+  dataPromise: Promise<{}>;
   backgroundImage;
   currentListShortId: string;
 
@@ -33,51 +24,21 @@ export class CurrentComponent implements OnInit {
 
   }
 
-  testFunc(): Promise<any> {
-    return this.dynamicContentService
-    .getTestDataWithPromise(ZenkitCollections.current.shortId)
-    .then((response) => {
-      return new Promise((resolve, reject) => {
-        const test = response;
-        return resolve(test);
-      });
-    });
-  }
-
-  testFunction(): Promise<any> {
-    return this.dynamicContentService
-    .fetchZenkitListData(ZenkitCollections.current.shortId)
-    .then((response) => {
-      return new Promise((resolve, reject) => {
-        const test = _.get(response, ['elements']);
-        const ttest = response;
-        return resolve(ttest);
-      });
-    });
-  }
+  // testFunction(): Promise<any> {
+  //   return this.dynamicContentService
+  //   .fetchZenkitListData(ZenkitCollections.current.shortId)
+  //   .then((response) => {
+  //     return new Promise((resolve, reject) => {
+  //       const test = _.get(response, ['elements']);
+  //       return resolve(test);
+  //     });
+  //   });
+  // }
 
   ngOnInit() {
     this.currentListShortId = ZenkitCollections.current.shortId;
 
-    this.dataPromise2 = this.testFunc();
-
-    this.dataPromise3 = this.testFunction();
-
-    this.dataPromise4 = this.dynamicContentService
-    .fetchZenkitListData(ZenkitCollections.current.shortId);
-
-    this.subscription = this.dynamicContentService.getTestDataWithObservable(ZenkitCollections.current.shortId).subscribe((res) => {
-      this.dataObservabe2 = res;
-    });
-
-    this.dynamicContentService
-    .fetchZenkitListData3(ZenkitCollections.current.shortId).subscribe((res) => {
-      this.dataObservabe3 = res;
-    });
-
-    this.dataObservable = this.dynamicContentService.getTestData(ZenkitCollections.current.shortId);
-
-    this.dataPromise = this.dynamicContentService.getTestDataWithPromise(ZenkitCollections.current.shortId);
+    // this.dataPromise = this.testFunction();
 
     this.posts = this.modelService.getPosts();
 

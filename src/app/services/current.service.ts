@@ -10,7 +10,7 @@ export class CurrentService {
 
   constructor(private dynamicContentService: DynamicContentService) { }
 
-  getPosts(): Promise<{}> {
+  getPosts(): Promise<BlogPost[]> {
     return new Promise((resolve, reject) => {
       this.dynamicContentService
         .fetchAndTransformZenkitListData(ZenkitCollections.current.shortId)

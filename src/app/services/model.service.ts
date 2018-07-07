@@ -21,7 +21,7 @@ export class ModelService {
 
     mainPageData: Promise<MainPageData>;
     contactData: Promise<Contact>;
-    blogPostsData: Promise<{}>;
+    blogPostsData: Promise<BlogPost[]>;
     coursesData: Promise<CourseData>;
     performancesData: Promise<Performance[]>;
     teamData: Promise<Teacher[]>;
@@ -47,7 +47,7 @@ export class ModelService {
         });
     }
 
-    getPosts(): Promise<{}> {
+    getPosts(): Promise<BlogPost[]> {
         if (_.isNil(this.blogPostsData)) {
             this.blogPostsData = this.currentService.getPosts();
         }
