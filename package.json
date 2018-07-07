@@ -9,7 +9,7 @@
     "ng": "ng",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "ts-node --optimize_for_size --max_old_space_size=460 --gc_interval=100 src/server",
-    "build:client-and-server-bundles": "ng build --prod && ng run app:server",
+    "build:client-and-server-bundles": "node --max_old_space_size=460 ./node_modules/.bin/ng build && node --max_old_space_size=460 ./node_modules/.bin/ng run app:server",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "prestart": "npm run build:ssr",
     "start": "npm run serve:ssr",
