@@ -29,6 +29,7 @@ div {
         @include transition(opacity 2s ease);
         &.hide {
             opacity: 0;
+            display: none;
         }
     }
 }

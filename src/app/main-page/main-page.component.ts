@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
   teamSection: MainPageSection;
   locationsSection: MainPageSection;
   contactSection: MainPageSection;
-  videoLoaded = false;
+  videoLoaded = true;
 
   constructor(
     private dynamicContentService: DynamicContentService,
