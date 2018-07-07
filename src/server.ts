@@ -14,6 +14,8 @@ enableProdMode();
 
 const PORT     = process.env.PORT || 4000;
 const DIST_DIR = join(__dirname, '..', 'dist');
+
+console.log('Starting express server');
 const app = express();
 const template = readFileSync(join(DIST_DIR, 'index.html')).toString();
 
