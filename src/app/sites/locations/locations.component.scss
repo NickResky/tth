@@ -1,0 +1,13 @@
+@import './../../../variables.scss';
+
+@media (min-width: $media-breakpoint-md) {
+    .courses-overview {
+        .course-tags-container {
+            .course-tags {     
+                .course-tag-container {
+                    width: 47.9%;
+                }
+            }
+        }
+    }
+}

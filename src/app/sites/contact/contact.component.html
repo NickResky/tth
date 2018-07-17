@@ -1,0 +1,17 @@
+<app-header-image [image]='backgroundImage' [listId]='contactListShortId' title='Kontakt' *ngIf="backgroundImage"></app-header-image>
+<div *ngIf="contact" class="contact-content-container main-content-container main-content-container-padding">
+  <div class="content-content main-content">
+    <form #f="ngForm"  
+      (ngSubmit)="onSubmit(f.value)"  
+      class="ui form">
+      <div class="field">  
+        <label for="skuInput">SKU</label>  
+        <input type="text"  
+          id="skuInput"  
+          placeholder="SKU"  
+          name="sku" ngModel>  
+      </div>
+    <button type="submit" class="ui button">Submit</button>  
+  </form>  
+  </div>
+</div>

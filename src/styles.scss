@@ -1,0 +1,86 @@
+@import './variables.scss';
+
+/* You can add global styles to this file, and also import other style files */
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font: 400 15px/1.8 "Lucida Grande", sans-serif;
+    color: #777;
+    background-color: #000;
+}
+
+.header-image {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .header-image-title {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        h1 {
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: rgba(#000, 0.6);
+            margin: 0;            
+        }
+    }
+}
+
+app-current {
+    background-color: #c7c7c7;        
+}
+
+.main-content-container {
+    color: $main-text-color-on-dark-bg;
+}
+
+.main-content-container-padding {
+    padding-left: 20px;
+    padding-right: 20px; 
+}
+
+/*************
+* ANIMATIONS *
+**************/
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .main-content-container {
+        .main-content {
+            max-width: $media-breakpoint-md;
+            margin: 0 auto;
+        }
+    }
+    .main-content-container-padding {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .header-image {
+        height: 500px;
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .main-content-container {
+        .main-content {
+            max-width: $media-breakpoint-lg;
+        }
+    }
+}
