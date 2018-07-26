@@ -31,6 +31,8 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { CourseDetailsComponent } from './sites/courses/course-details/course-details.component';
 import { LocationComponent } from './sites/locations/location/location.component';
 import { HeaderImageComponent } from './components/header-image/header-image.component';
+import { ImprintComponent } from "./sites/imprint/imprint.component";
+import {ImprintService} from "./services/imprint.service";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -43,6 +45,7 @@ const routes: Routes = [
   { path: 'locations', component: LocationsComponent },
   { path: 'location/:id', component: LocationComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'impressum', component: ImprintComponent},
   { path: '**', redirectTo: '' }
 ];
 
@@ -65,7 +68,8 @@ const routes: Routes = [
     ImageSliderComponent,
     CourseDetailsComponent,
     LocationComponent,
-    HeaderImageComponent
+    HeaderImageComponent,
+    ImprintComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -85,7 +89,8 @@ const routes: Routes = [
     CoursesService,
     LocationsService,
     ContactService,
-    ModelService
+    ModelService,
+    ImprintService
   ],
   bootstrap: [AppComponent]
 })
