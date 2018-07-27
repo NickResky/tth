@@ -1,4 +1,4 @@
-<div class="navbar-container main-content-container main-content-container-padding"> 
+<div class="navbar-container main-content-container main-content-container-padding">
   <div class="navbar main-content" [ngClass]="isMobileNavOpen === true ? 'mobile-nav-open': ''">
     <div routerLink="/" class="logo-container">
       <div class="logo"></div>
@@ -20,9 +20,19 @@
       <a class="navbar-navigation-link home-link" routerLink="/" (click)="toggleMobileNav()">
         Home
       </a>
-      <a class="navbar-navigation-link" routerLink="/kurse" (click)="toggleMobileNav()">
-        Kurse
-      </a> 
+      <div class="dropdown">
+        <a class="navbar-navigation-link" routerLink="/kurse" (click)="toggleMobileNav()">Kurse
+          <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdown-content">
+          <a routerLink="/kurse">Kurse</a>
+          <a routerLink="/kurse">Preise</a>
+          <a routerLink="/kurse">Stundenpläne</a>
+        </div>
+      </div>
+      <!--<a class="navbar-navigation-link" routerLink="/kurse" (click)="toggleMobileNav()">-->
+        <!--Kurse-->
+      <!--</a> -->
       <a class="navbar-navigation-link" routerLink="/aktuelles" (click)="toggleMobileNav()">
         Aktuelles
       </a>
