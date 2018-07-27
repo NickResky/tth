@@ -34,11 +34,13 @@ import { HeaderImageComponent } from './components/header-image/header-image.com
 import { ImprintComponent } from "./sites/imprint/imprint.component";
 import {ImprintService} from "./services/imprint.service";
 import {CourseInformationComponent} from "./sites/courses/course-information/course-information.component";
+import {TeacherDetailsComponent} from "./sites/team/teacher-details/teacher-details.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
+  { path: 'lehrer/:name', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
   { path: 'kurse/:id', component: CourseDetailsComponent },
   { path: 'kurs-informationen', component: CourseInformationComponent },
@@ -59,6 +61,7 @@ const routes: Routes = [
     FooterComponent,
     CurrentComponent,
     TeamComponent,
+    TeacherDetailsComponent,
     CoursesComponent,
     StageComponent,
     GalleryComponent,
