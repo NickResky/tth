@@ -33,6 +33,7 @@ import { LocationComponent } from './sites/locations/location/location.component
 import { HeaderImageComponent } from './components/header-image/header-image.component';
 import { ImprintComponent } from "./sites/imprint/imprint.component";
 import {ImprintService} from "./services/imprint.service";
+import {CourseInformationComponent} from "./sites/courses/course-information/course-information.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'kurse', component: CoursesComponent },
   { path: 'kurse/:id', component: CourseDetailsComponent },
+  { path: 'kurs-informationen', component: CourseInformationComponent },
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
   { path: 'locations', component: LocationsComponent },
@@ -69,7 +71,8 @@ const routes: Routes = [
     CourseDetailsComponent,
     LocationComponent,
     HeaderImageComponent,
-    ImprintComponent
+    ImprintComponent,
+    CourseInformationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -77,8 +80,7 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [
     MainPageService,
