@@ -37,6 +37,7 @@ export class MainPageComponent implements OnInit {
       this.mainPageListShortId = ZenkitCollections.home.shortId;
 
       this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
+
         this.video = mainPageData.video;
         this.philosophySection = mainPageData.philosophySection;
         this.blogSection = mainPageData.blogSection;

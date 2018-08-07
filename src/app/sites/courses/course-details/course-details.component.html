@@ -1,7 +1,9 @@
 <app-header-image [image]='course.image' [listId]='coursesListShortId' [title]='course.title' *ngIf="course"></app-header-image>
 <div class="course-details-content-container main-content-container main-content-container-padding" *ngIf="course">
-  <div class="main-content"> 
+  <div class="main-content">
     <div class="course-description" [innerHTML]="course.description"></div>
   </div>
+
+  <a class="course-details-link" routerLink="/kurs-informationen">zu den Stundenplänen</a>
 </div>
-<app-image-slider [images]='[course.image]' [listid]='coursesListShortId' *ngIf="course"></app-image-slider>
+<!--<app-image-slider [images]='[course.image]' [listid]='coursesListShortId' *ngIf="course"></app-image-slider>-->

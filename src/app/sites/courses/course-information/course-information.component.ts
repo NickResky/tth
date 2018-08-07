@@ -1,19 +1,19 @@
-import { CourseInformation } from './../../classes/course-information';
-import { MainPageData } from './../../classes/main-page-data';
-import { CourseData } from './../../classes/course-data';
-import { ModelService } from './../../services/model.service';
-import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
+import { CourseInformation } from './../../../classes/course-information';
+import { MainPageData } from './../../../classes/main-page-data';
+import { CourseData } from './../../../classes/course-data';
+import { ModelService } from './../../../services/model.service';
+import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
+import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  selector: 'app-course-information',
+  templateUrl: './course-information.component.html',
+  styleUrls: ['./course-information.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class CourseInformationComponent implements OnInit {
 
   backgroundImage;
   text;
@@ -26,6 +26,8 @@ export class CoursesComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.fragment.subscribe();
+
     this.modelService.getCourses().then((coursesData: CourseData) => {
       this.text = coursesData.text;
       this.scheduleMG = coursesData.scheduleMG;

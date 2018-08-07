@@ -199,5 +199,17 @@ export const RequiredElements  = {
             type: ElementTypes.text,
             mappedClassPropertyName: 'phone'
         }
+    ],
+    imprint: [
+        {
+            name: 'Titel',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'title'
+        },
+        {
+            name: 'Beschreibung',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'description'
+        }
     ]
 };

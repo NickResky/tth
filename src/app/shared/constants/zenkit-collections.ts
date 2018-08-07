@@ -29,5 +29,9 @@ export const ZenkitCollections  = {
     contact: {
         shortId: 'B1xo-5tub',
         requiredElements: RequiredElements.contact
+    },
+    imprint: {
+        shortId: 'BkZ0fDvNQ',
+        requiredElements: RequiredElements.imprint
     }
 };

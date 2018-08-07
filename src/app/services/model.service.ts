@@ -15,6 +15,8 @@ import { MainPageSection } from './../classes/main-page-section';
 import { MainPageService } from './main-page.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { Imprint } from "./../classes/imprint";
+import { ImprintService } from "./imprint.service";
 
 @Injectable()
 export class ModelService {
@@ -26,6 +28,7 @@ export class ModelService {
     performancesData: Promise<Performance[]>;
     teamData: Promise<Teacher[]>;
     locationData: Promise<LocationData>;
+    imprintData: Promise<Imprint>;
 
     constructor(
         private mainPageService: MainPageService,
@@ -34,7 +37,8 @@ export class ModelService {
         private teamService: TeamService,
         private locationsService: LocationsService,
         private contactService: ContactService,
-        private currentService: CurrentService
+        private currentService: CurrentService,
+        private imprintService: ImprintService
     ) { }
 
     getMainPageSections(): Promise<MainPageData> {
@@ -101,6 +105,16 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.contactData);
+        });
+    }
+
+    getImprint() {
+        if (_.isNil(this.imprintData)) {
+            this.imprintData = this.imprintService.getImprint();
+            return this.imprintData;
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.imprintData);
         });
     }
 }

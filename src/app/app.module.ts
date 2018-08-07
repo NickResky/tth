@@ -31,18 +31,25 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { CourseDetailsComponent } from './sites/courses/course-details/course-details.component';
 import { LocationComponent } from './sites/locations/location/location.component';
 import { HeaderImageComponent } from './components/header-image/header-image.component';
+import { ImprintComponent } from "./sites/imprint/imprint.component";
+import {ImprintService} from "./services/imprint.service";
+import {CourseInformationComponent} from "./sites/courses/course-information/course-information.component";
+import {TeacherDetailsComponent} from "./sites/team/teacher-details/teacher-details.component";
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
+  { path: 'lehrer/:name', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
   { path: 'kurse/:id', component: CourseDetailsComponent },
+  { path: 'kurs-informationen', component: CourseInformationComponent },
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
   { path: 'locations', component: LocationsComponent },
   { path: 'location/:id', component: LocationComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'impressum', component: ImprintComponent},
   { path: '**', redirectTo: '' }
 ];
 
@@ -54,6 +61,7 @@ const routes: Routes = [
     FooterComponent,
     CurrentComponent,
     TeamComponent,
+    TeacherDetailsComponent,
     CoursesComponent,
     StageComponent,
     GalleryComponent,
@@ -65,7 +73,9 @@ const routes: Routes = [
     ImageSliderComponent,
     CourseDetailsComponent,
     LocationComponent,
-    HeaderImageComponent
+    HeaderImageComponent,
+    ImprintComponent,
+    CourseInformationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -73,8 +83,7 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [
     MainPageService,
@@ -85,7 +94,8 @@ const routes: Routes = [
     CoursesService,
     LocationsService,
     ContactService,
-    ModelService
+    ModelService,
+    ImprintService
   ],
   bootstrap: [AppComponent]
 })
