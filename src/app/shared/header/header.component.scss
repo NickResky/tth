@@ -61,9 +61,17 @@
             overflow: hidden;
 
             &:hover {
+                .dropdown-arrow {
+                    opacity: 1;
+                }
                 .dropdown-content {
                     display: block;
                 }
+            }
+
+            .dropdown-arrow {
+                opacity: 0;
+                @include transition(opacity 0.3s ease);
             }
 
             /* Dropdown content (hidden by default) */
