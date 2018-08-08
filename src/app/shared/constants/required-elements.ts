@@ -97,6 +97,11 @@ export const RequiredElements  = {
             name: 'Bild',
             type: ElementTypes.files,
             mappedClassPropertyName: 'image'
+        },
+        {
+            name: 'YouTube Video ID',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'youtubeId'
         }
     ],
     team: [

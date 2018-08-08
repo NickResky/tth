@@ -38,6 +38,7 @@ export class CoursesService {
                 course.title = courseEntry.title;
                 course.description = courseEntry.description;
                 course.image = _.head(courseEntry.image);
+                course.youtubeId = courseEntry.youtubeId;
                 return course;
             });
 
