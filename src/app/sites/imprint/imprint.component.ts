@@ -4,6 +4,8 @@ import {DynamicContentService} from "../../services/dynamic-content.service";
 import {ModelService} from "../../services/model.service";
 import {Imprint} from "../../classes/imprint";
 import {ZenkitCollections} from "../../shared/constants/zenkit-collections";
+import { Contact } from '../../classes/contact';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -13,13 +15,11 @@ import {ZenkitCollections} from "../../shared/constants/zenkit-collections";
 })
 export class ImprintComponent implements OnInit {
 
-  title: string;
-  description: string;
+  imprint: string;
 
   ngOnInit() {
-    this.modelService.getImprint().then((imprint: Imprint) => {
-      this.title = imprint.title;
-      this.description = imprint.description;
+    this.modelService.getContact().then((contact: Contact) => {
+      this.imprint = _.get(contact, ['imprint']);
     });
   }
 

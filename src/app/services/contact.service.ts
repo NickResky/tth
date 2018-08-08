@@ -18,6 +18,7 @@ export class ContactService {
         contact.name = modifiedEntry.name;
         contact.email = modifiedEntry.email;
         contact.phone = modifiedEntry.phone;
+        contact.imprint = modifiedEntry.imprint;
         return contact;
       });
   }

@@ -213,6 +213,11 @@ export const RequiredElements  = {
             name: 'Telefon',
             type: ElementTypes.text,
             mappedClassPropertyName: 'phone'
+        },
+        {
+            name: 'Impressum',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'imprint'
         }
     ],
     imprint: [
