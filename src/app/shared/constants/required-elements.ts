@@ -181,6 +181,21 @@ export const RequiredElements  = {
             name: 'Initialien',
             type: ElementTypes.text,
             mappedClassPropertyName: 'initials'
+        },
+        {
+            name: '1. Beratungszeit',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'consultationTime1'
+        },
+        {
+            name: '2. Beratungszeit',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'consultationTime2'
+        },
+        {
+            name: '3. Beratungszeit',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'consultationTime3'
         }
     ],
     contact: [

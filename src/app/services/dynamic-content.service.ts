@@ -137,7 +137,7 @@ export class DynamicContentService {
           name: requiredElement.name
         });
         if (_.isNil(fullElement)) {
-          throw new Error('Element ' + requiredElement.name + 'in the Collection ' + params.list.name + ' was not found.');
+          throw new Error('Element ' + requiredElement.name + ' in the Collection ' + params.list.name + ' was not found.');
         }
         requiredElement.uuid = fullElement.uuid;
         return requiredElement;
