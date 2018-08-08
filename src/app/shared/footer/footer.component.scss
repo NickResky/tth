@@ -20,6 +20,11 @@
                 }
                 .footer-section-content {
                     font-size: 14px;
+
+                    &.footer-section-content-social {
+                        text-align: center;
+                    }
+
                     .footer-section-content-link {
                         display: block;
                         text-decoration: none;
@@ -33,8 +38,7 @@
                         display: inline-block;
                         text-decoration: none;
                         color: $main-text-color;
-                        width: 50%;
-                        margin-top: 10px;
+                        margin: 10px;
                     }
                     .footer-section-content-break {
                         height: 15px;
