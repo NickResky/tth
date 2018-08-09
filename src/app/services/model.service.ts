@@ -88,6 +88,16 @@ export class ModelService {
         });
     }
 
+    getTeacherByUrlId(urlId) {
+        return this.getTeam().then((team) => {
+            const teacher = _.find(team, (t: Teacher) => {
+                const teacherUrlId = this.teamService.convertTeacherToUrlId(t);
+                return teacherUrlId === urlId;
+            });
+            return teacher;
+        });
+    }
+
     getLocationData() {
         if (_.isNil(this.locationData)) {
             this.locationData = this.locationsService.getLocationData();

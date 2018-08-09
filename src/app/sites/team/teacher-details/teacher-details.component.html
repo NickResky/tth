@@ -1,24 +1,23 @@
-<app-header-image [image]='backgroundImage' [listId]='teamListShortId' title='Team'></app-header-image>
-<div class="team-content-container main-content-container main-content-container-padding">
-  <!--<div class="team-content main-content">-->
-    <!--<div *ngFor="let teacher of teachers" class="team-member-container">-->
-      <!--<div class="team-member-card">-->
-        <!--<div class="team-member-bg-container" [ngStyle]="getBackgroundStyle(teacher.image)">-->
-          <!--<div class="team-member-bg-mask">-->
-          <!--</div>-->
-          <!--<div class="team-member-about-me-tag">-->
-            <!--&Uuml;ber {{teacher.firstName}}-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="team-member-tag">-->
-          <!--<div class="team-member-tag-name">{{teacher.firstName}} {{teacher.lastName}}-->
+<div class="teacher-content-container main-content-container main-content-container-padding" *ngIf="teacher">
+  <div class="main-content teacher-content">
+    <h1 class="teacher-heading">
+      {{teacher.firstName + " " + teacher.lastName}}
+    </h1>
+    <div class="teacher-flex-container">
+      <div class="teacher-image" [ngStyle]="getBackgroundStyle(teacher.image)">
 
-          <!--</div>-->
-          <!--<div class="team-member-tag-task" [innerHTML]="teacher.task">-->
-
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
+      </div>
+      <div class="teacher-description-container">
+        <h1 class="teacher-heading">
+          {{teacher.firstName + " " + teacher.lastName}}
+        </h1>
+        <div class="teacher-task">
+            {{teacher.task}}
+          </div>
+        <div class="teacher-description">
+          {{teacher.description}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

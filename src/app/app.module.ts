@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'lehrer/:name', component: TeacherDetailsComponent},
+  { path: 'lehrer/:id', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
   { path: 'kurse/:id', component: CourseDetailsComponent },
   { path: 'kurs-informationen', component: CourseInformationComponent },
