@@ -14,13 +14,16 @@ import * as _ from 'lodash';
 export class MainPageSectionComponent implements OnInit {
 
   @Input() sectiondata: MainPageSection;
+  @Input() isFirstSection: boolean;
   section: MainPageSection;
+  firstSection: boolean;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
 
   constructor(private dynamicContentService: DynamicContentService, private router: Router) { }
 
   ngOnInit() {
     this.section = this.sectiondata;
+    this.firstSection = this.isFirstSection;
   }
 
   getFileSrc(file) {

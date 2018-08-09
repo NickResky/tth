@@ -48,6 +48,16 @@ $main-page-text-color: #fff;
     }
 }
 
+@media (max-width: $media-breakpoint-md) {
+    .main-page-section-background {
+        .main-page-section-container {
+            &.first-section-container {
+                top: 10%;
+            }
+        }
+    }
+}
+
 @media (min-width: $media-breakpoint-md) {
     .main-page-section-background {
         .main-page-section-container {

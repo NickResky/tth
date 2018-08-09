@@ -7,6 +7,7 @@ div {
 
 .main-page-title-video-container {
     position: relative;
+    display: none;
 	//padding-bottom: 56.25%; /* 16:9 */
 	//padding-top: 25px;
     //height: 0;
@@ -36,6 +37,7 @@ div {
 
 @media (min-width: $media-breakpoint-md) {
     .main-page-title-video-container {
+        display: block;
         position: relative;
         //padding-bottom: 56.25%; /* 16:9 */
         //padding-top: 25px;
