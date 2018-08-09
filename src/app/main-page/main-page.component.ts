@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
   teamSection: MainPageSection;
   locationsSection: MainPageSection;
   contactSection: MainPageSection;
-  videoLoaded = true;
+  videoLoaded = false;
 
   constructor(
     private dynamicContentService: DynamicContentService,
@@ -51,7 +51,8 @@ export class MainPageComponent implements OnInit {
       const options = {
         id: 246740715,
         loop: true,
-        autoplay: true
+        autoplay: true,
+        muted: true
       };
 
       const player = new Player('video-iframe', options);
@@ -68,7 +69,7 @@ export class MainPageComponent implements OnInit {
         setTimeout(function(){
           self.videoLoaded = true;
          }, 3500);
-    });
+      });
     }
 
     getSafeUrl(url) {
