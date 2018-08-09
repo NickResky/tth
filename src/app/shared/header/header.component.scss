@@ -168,7 +168,7 @@
 
             .navbar-navigation-link:not(.dropdown-link) {
                 height: 25px;
-                margin: 25px 20px 20px 20px;
+                margin: 25px 10px 20px 10px;
                 text-align: center; 
                 border-bottom: 1px transparent;
                 @include transition(border-bottom 0.3s ease);
@@ -220,6 +220,16 @@
 
             .home-link {
                 display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .navbar {
+        .navbar-navigation {
+            .navbar-navigation-link:not(.dropdown-link) {
+                margin: 25px 20px 20px 20px;
             }
         }
     }
