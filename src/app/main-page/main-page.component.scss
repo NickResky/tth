@@ -28,7 +28,6 @@ div {
         background-color: #000000;
         height: 100%;
         @include transition(opacity 2s ease);
-        display: none;
         &.hide {
             opacity: 0;
         }
