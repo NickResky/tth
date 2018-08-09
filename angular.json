@@ -172,8 +172,7 @@
               "src/service-worker.js"
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -231,8 +230,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "src/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "src/styles.scss"
             ],
             "assets": [
               "src/assets",
