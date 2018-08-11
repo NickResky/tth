@@ -13,10 +13,13 @@ import { Contact } from './../classes/contact';
 import { MainPageData } from './../classes/main-page-data';
 import { MainPageSection } from './../classes/main-page-section';
 import { MainPageService } from './main-page.service';
+import { ScheduleService } from './schedule.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { Imprint } from "./../classes/imprint";
-import { ImprintService } from "./imprint.service";
+import { Imprint } from './../classes/imprint';
+import { ImprintService } from './imprint.service';
+import { CourseInformation } from '../classes/course-information';
+import { Appointment } from '../classes/appointment';
 
 @Injectable()
 export class ModelService {
@@ -29,6 +32,7 @@ export class ModelService {
     teamData: Promise<Teacher[]>;
     locationData: Promise<LocationData>;
     imprintData: Promise<Imprint>;
+    courseAppointments: Promise<Appointment[]>;
 
     constructor(
         private mainPageService: MainPageService,
@@ -38,7 +42,8 @@ export class ModelService {
         private locationsService: LocationsService,
         private contactService: ContactService,
         private currentService: CurrentService,
-        private imprintService: ImprintService
+        private imprintService: ImprintService,
+        private scheduleService: ScheduleService
     ) { }
 
     getMainPageSections(): Promise<MainPageData> {
@@ -75,6 +80,16 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.coursesData);
+        });
+    }
+
+    getCourseAppointments() {
+        if (_.isNil(this.courseAppointments)) {
+            this.courseAppointments = this.scheduleService.getCourseAppointments();
+            return this.courseAppointments;
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.courseAppointments);
         });
     }
 

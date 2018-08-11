@@ -94,7 +94,7 @@ export class DynamicContentService {
 
           if (_.has(sectionElement, ['id']) === false) {
             // tslint:disable-next-line:max-line-length
-            throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
+            throw new Error('Missing Section Field! Please define a field called "Labels" for the Zenkit Collection ' + listJson.name + '.');
           }
 
           return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)

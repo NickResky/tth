@@ -104,6 +104,23 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'youtubeId'
         }
     ],
+    schedule: [
+        {
+            name: 'Kurs',
+            type: ElementTypes.reference,
+            mappedClassPropertyName: 'course'
+        },
+        {
+            name: 'Lehrer',
+            type: ElementTypes.reference,
+            mappedClassPropertyName: 'teacher'
+        },
+        {
+            name: 'Startzeit Stunden',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeStartHours'
+        }
+    ],
     team: [
         {
             name: 'Name',
