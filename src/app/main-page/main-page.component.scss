@@ -27,6 +27,7 @@ div {
         opacity: 1;
         background-color: #000000;
         height: 100%;
+        opacity: 0;
         @include transition(opacity 2s ease);
         &.hide {
             opacity: 0;
