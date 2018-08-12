@@ -1,3 +1,4 @@
+import { UtilityService } from './../../services/utility.service';
 import { Appointment } from './../../classes/appointment';
 import { ModelService } from './../../services/model.service';
 import { DynamicContentService } from './../../services/dynamic-content.service';
@@ -17,7 +18,9 @@ export class ScheduleComponent implements OnInit {
   dayTitles = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
 
   constructor(
-    private modelService: ModelService) {  }
+    private modelService: ModelService,
+    private utilityService: UtilityService
+  ) {  }
 
   ngOnInit() {
     this.modelService.getCourseAppointments().then((courseAppointments: Appointment[]) => {
@@ -52,5 +55,9 @@ export class ScheduleComponent implements OnInit {
       minutes = minutes * 10;
     }
     return date.getHours() + '.' + minutes;
+  }
+
+  convertStringToUrlId(string) {
+    return this.utilityService.convertStringToUrlId(string);
   }
 }
