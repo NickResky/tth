@@ -128,6 +128,17 @@ export class ModelService {
         });
     }
 
+    getLocationByInitials(initials) {
+        return this.getLocationData().then((locationData: LocationData) => {
+            if (initials === 'MG') {
+                return locationData.locationMG;
+            } else if (initials === 'LB') {
+                return locationData.locationLB;
+            }
+            return undefined;
+        });
+    }
+
     getContact() {
         if (_.isNil(this.contactData)) {
             this.contactData = this.contactService.getContact();

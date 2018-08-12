@@ -1,5 +1,5 @@
 <div class="schedule-component">
-  <h2 class="schedule-title">Stundenplan</h2>
+  <h2 class="schedule-title">Stundenplan<span *ngIf="location"> {{location.name}}</span></h2>
   <div class="schedule-container">
     <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index">
       <div class="day-title">{{getDayTitle(dayIndex)}}</div>

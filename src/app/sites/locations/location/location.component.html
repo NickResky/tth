@@ -10,4 +10,10 @@
   <iframe id="google-maps-iframe" [src]="getSafeUrl(location.embed)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 <app-image-slider *ngIf="location" [images]='location.gallery' [listid]='locationsListShortId'></app-image-slider>
+
+<div *ngIf="location" class="location-content-container  main-content-container main-content-container-padding">
+  <div class="location-content main-content">
+    <app-schedule [locationInitials]='location.initials'></app-schedule>
+  </div>
+</div>
 <div class="location-bottom-space"></div>
