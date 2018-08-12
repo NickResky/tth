@@ -156,7 +156,8 @@ export class DynamicContentService {
 
         const simplifiedEntry = {
           label: label.name,
-          uuid: entry.uuid
+          uuid: entry.uuid,
+          shortId: entry.shortId
         };
 
         return _.reduce(modifiedRequiredElements, (modifiedEntry, modifiedElement) => {

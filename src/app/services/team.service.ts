@@ -3,11 +3,16 @@ import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Teacher } from '../classes/teacher';
+import { UtilityService } from './utility.service';
+
 
 @Injectable()
 export class TeamService {
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor(
+    private dynamicContentService: DynamicContentService,
+    private utilityService: UtilityService
+  ) { }
 
   getTeam() {
     return this.dynamicContentService
@@ -27,23 +32,9 @@ export class TeamService {
       });
   }
 
-  convertStringToUrlId(string) {
-
-    const convertedString = _
-      .chain(string.toLowerCase())
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/ /g, '-')
-      .value();
-
-    return convertedString;
-  }
-
   convertTeacherToUrlId(teacher: Teacher) {
-    const convertedFirstName = this.convertStringToUrlId(teacher.firstName);
-    const convertedLastName = this.convertStringToUrlId(teacher.lastName);
+    const convertedFirstName = this.utilityService.convertStringToUrlId(teacher.firstName);
+    const convertedLastName = this.utilityService.convertStringToUrlId(teacher.lastName);
     return convertedFirstName + '-' + convertedLastName;
   }
 }

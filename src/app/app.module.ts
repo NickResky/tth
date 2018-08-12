@@ -37,6 +37,7 @@ import { CourseInformationComponent } from './sites/courses/course-information/c
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
+import { UtilityService } from './services/utility.service';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'lehrer/:id', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
-  { path: 'kurse/:id', component: CourseDetailsComponent },
+  { path: 'kurse/:shortId', component: CourseDetailsComponent },
+  { path: 'kurse/:shortId/:title', component: CourseDetailsComponent },
   { path: 'kurs-informationen', component: CourseInformationComponent },
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
@@ -99,7 +101,8 @@ const routes: Routes = [
     ContactService,
     ModelService,
     ImprintService,
-    ScheduleService
+    ScheduleService,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

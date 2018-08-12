@@ -19,7 +19,7 @@ export class CourseDetailsComponent implements OnInit {
 
   backgroundImage;
   coursesListShortId = ZenkitCollections.courses.shortId;
-  courseId: number;
+  courseShortId: string;
   course: CourseInformation;
   private sub: any;
 
@@ -32,9 +32,11 @@ export class CourseDetailsComponent implements OnInit {
 
     ngOnInit() {
       this.sub = this.route.params.subscribe(params => {
-        this.courseId = +params['id'];
+        this.courseShortId = params['shortId'];
         this.modelService.getCourses().then((coursesData: CourseData) => {
-          this.course = coursesData.courses[this.courseId];
+          this.course = _.find(coursesData.courses, (course) => {
+            return course.shortId === this.courseShortId;
+          });
         });
      });
     }
