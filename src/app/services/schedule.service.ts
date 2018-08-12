@@ -12,6 +12,8 @@ import { LocationData } from '../classes/location-data';
 @Injectable()
 export class ScheduleService {
 
+  dayIndices = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag'];
+
   constructor(private dynamicContentService: DynamicContentService) { }
 
   getCourseAppointments (courses: CourseInformation[], teachers: Teacher[], locationData: LocationData) {
@@ -21,6 +23,7 @@ export class ScheduleService {
         const appointments: Appointment[] = _.map(modifiedEntries, (modifiedEntry) => {
             const appointment = new Appointment();
             appointment.uuid = modifiedEntry.uuid;
+            appointment.title = modifiedEntry.title;
             appointment.timeStartHours = modifiedEntry.timeStartHours;
             appointment.dateStart = new Date(2018, 0, 0, modifiedEntry.timeStartHours, modifiedEntry.timeStartMinutes);
             appointment.dateEnd = new Date(2018, 0, 0, modifiedEntry.timeEndHours, modifiedEntry.timeEndMinutes);
@@ -40,6 +43,10 @@ export class ScheduleService {
             const locations = [locationData.locationMG, locationData.locationLB];
             appointment.location = _.find(locations, (location) => {
                 return location.uuid === locationUuid;
+            });
+
+            appointment.dayIndex = _.findIndex(this.dayIndices, (dayIndex) => {
+                return _.includes(modifiedEntry.label.toLowerCase(), dayIndex);
             });
 
             return appointment;

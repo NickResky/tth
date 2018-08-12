@@ -1,2 +1,19 @@
 @import '../../../variables.scss';
 @import '../../../mixins.scss';
+
+
+@media (min-width: $media-breakpoint-md) {
+    .schedule-component {
+        .schedule-container {
+            display: flex;
+            flex-direction: row;
+            .day-container {
+                width: 19%;
+                .appointment-container {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

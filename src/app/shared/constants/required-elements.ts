@@ -106,6 +106,11 @@ export const RequiredElements  = {
     ],
     schedule: [
         {
+            name: 'Titel',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'title'
+        },
+        {
             name: 'Kurs',
             type: ElementTypes.reference,
             mappedClassPropertyName: 'course'

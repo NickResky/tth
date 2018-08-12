@@ -5,8 +5,10 @@ import { Location } from './location';
 
 export class Appointment {
     uuid: string;
+    title: string;
     dateStart: Date;
     dateEnd: Date;
+    dayIndex: number;
     timeStartHours: number;
     timeStartMinutes: number;
     timeEndHours: number;
