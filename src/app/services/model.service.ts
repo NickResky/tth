@@ -1,3 +1,4 @@
+import { CourseInformation } from './../classes/course-information';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
 import { LocationsService } from './locations.service';
@@ -85,8 +86,13 @@ export class ModelService {
 
     getCourseAppointments() {
         if (_.isNil(this.courseAppointments)) {
-            this.courseAppointments = this.scheduleService.getCourseAppointments();
-            return this.courseAppointments;
+            return Promise.all([this.getCourses(), this.getTeam(), this.getLocationData()]).then((result: any) => {
+                const courses: CourseInformation[] = _.get(result[0], ['courses']);
+                const teachers: Teacher[] = result[1];
+                const locationData: LocationData = result[2];
+                this.courseAppointments = this.scheduleService.getCourseAppointments(courses, teachers, locationData);
+                return this.courseAppointments;
+            });
         }
         return new Promise((resolve, reject) => {
             return resolve(this.courseAppointments);

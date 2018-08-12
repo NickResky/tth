@@ -16,6 +16,7 @@ export class LocationsService {
       .then((modifiedEntries) => {
         const locations = _.map(modifiedEntries, (modifiedEntry) => {
           const location = new Location();
+          location.uuid = modifiedEntry.uuid;
           location.name = modifiedEntry.name;
           location.addressName = modifiedEntry.addressName;
           location.addressStreet = modifiedEntry.addressStreet;

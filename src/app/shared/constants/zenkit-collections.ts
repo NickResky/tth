@@ -7,7 +7,6 @@ export const ZenkitCollections  = {
     },
     current: {
         shortId: 'SyNHkctub',
-        // LOCAL shortId: 'BJFD1TY9W',
         requiredElements: RequiredElements.current
     },
     performances: {
@@ -19,7 +18,7 @@ export const ZenkitCollections  = {
         requiredElements: RequiredElements.courses
     },
     schedule: {
-        shortId: 'BkZ0fDvNQ',
+        shortId: 'Bkgc6Bs3r7',
         requiredElements: RequiredElements.schedule
     },
     team: {

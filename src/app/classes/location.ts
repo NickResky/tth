@@ -1,4 +1,5 @@
 export class Location {
+    uuid: string;
     name: string;
     address: string;
     addressName: string;

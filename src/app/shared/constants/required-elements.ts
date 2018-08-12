@@ -116,9 +116,29 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'teacher'
         },
         {
+            name: 'Standort',
+            type: ElementTypes.reference,
+            mappedClassPropertyName: 'location'
+        },
+        {
             name: 'Startzeit Stunden',
             type: ElementTypes.number,
             mappedClassPropertyName: 'timeStartHours'
+        },
+        {
+            name: 'Startzeit Minuten',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeStartMinutes'
+        },
+        {
+            name: 'Endzeit Stunden',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeEndHours'
+        },
+        {
+            name: 'Endzeit Minuten',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeEndMinutes'
         }
     ],
     team: [

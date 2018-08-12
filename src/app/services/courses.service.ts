@@ -35,6 +35,7 @@ export class CoursesService {
 
             courseData.courses = _.map(courseEntries, (courseEntry) => {
                 const course = new CourseInformation();
+                course.uuid = courseEntry.uuid;
                 course.title = courseEntry.title;
                 course.description = courseEntry.description;
                 course.image = _.head(courseEntry.image);
