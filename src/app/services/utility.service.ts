@@ -15,6 +15,7 @@ export class UtilityService {
           .replace(/ü/g, 'ue')
           .replace(/ß/g, 'ss')
           .replace(/ /g, '-')
+          .replace(/\//g, '')
           .value();
 
         return convertedString;
