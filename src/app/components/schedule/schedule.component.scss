@@ -1,6 +1,24 @@
 @import '../../../variables.scss';
 @import '../../../mixins.scss';
 
+.schedule-component {
+    .schedule-container {
+        .day-container {
+            .day-title {
+                border-bottom: 1px solid $main-text-color;
+            }
+            .appointment-container {
+                font-size: 13px;
+                margin-bottom: 10px;
+                @include transition(color 0.3s ease);
+                &:hover {
+                    color: $accent-color-1;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
 
 @media (min-width: $media-breakpoint-md) {
     .schedule-component {
@@ -9,9 +27,16 @@
             flex-direction: row;
             .day-container {
                 width: 19%;
+                .day-title {
+
+                }
                 .appointment-container {
+                    padding-right: 15px;
                     display: flex;
                     flex-direction: column;
+                }
+                .day-title, .appointment-container {
+                    
                 }
             }
         }

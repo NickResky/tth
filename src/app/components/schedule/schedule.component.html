@@ -1,17 +1,14 @@
 <div class="schedule-component">
-  Stundenplan
+  <h2 class="schedule-title">Stundenplan</h2>
   <div class="schedule-container">
     <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index">
       <div class="day-title">{{getDayTitle(dayIndex)}}</div>
       <div class="appointment-container" *ngFor="let appointment of appointments">
-        <div class="appointment-course">
-          {{appointment.course.title}}
-        </div>
-        <div class="appointment-title">
-          {{appointment.title}}
         <div class="appointment-time">
           {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr
         </div>
+        <div class="appointment-title">
+          {{appointment.title}}
       </div>
     </div>
   </div>
