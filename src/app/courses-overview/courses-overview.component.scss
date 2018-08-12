@@ -38,7 +38,7 @@
                     overflow-y: visible;
                     width: 100%;
                     height: 200%;
-                    padding: 10px 10px 15px;
+                    padding: 10px 10px 15px 10px;
                     @include transform(none);
 
                     .thumb-title {
@@ -81,6 +81,11 @@
                     &:hover {
                         background-color: $accent-color-1;
                         padding-left: 30px;
+                        .thumb-title {
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
                     } 
                 }
             }
@@ -151,6 +156,7 @@
                         }
                     } 
                     .thumb-info-block {
+                        width: calc(100% - 20px);
                         .thumb-spacer {
                             position: relative;
                             display: inline-block;
@@ -176,6 +182,15 @@
                             .thumb-title {
                                 font-weight: 600;
                                 //@include transform(translateX(0px) translateY(50px));
+                            }
+                        }
+                    }
+                    &:not(:hover) {
+                        .thumb-info-block {
+                            .thumb-title {
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
                             }
                         }
                     }     
