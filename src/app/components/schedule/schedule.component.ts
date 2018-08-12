@@ -72,11 +72,21 @@ export class ScheduleComponent implements OnInit {
   }
 
   getTimeString(date: Date) {
-    let minutes = date.getMinutes();
+    const minutes = date.getMinutes();
+    let minutesString = minutes.toString();
     if (minutes < 10) {
-      minutes = minutes * 10;
+      minutesString = minutesString + '0';
     }
-    return date.getHours() + '.' + minutes;
+    return date.getHours() + '.' + minutesString;
+  }
+
+  getCourseLink(appointment: Appointment) {
+    if (appointment.course) {
+      const courseShortId = _.get(appointment, ['course', 'shortId']);
+      const courseTitle = _.get(appointment, ['course', 'title']);
+      return '/kurse/' + courseShortId + '/' + this.convertStringToUrlId(courseTitle);
+    }
+    return undefined;
   }
 
   convertStringToUrlId(string) {

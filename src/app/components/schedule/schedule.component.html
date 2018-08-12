@@ -3,7 +3,7 @@
   <div class="schedule-container">
     <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index">
       <div class="day-title">{{getDayTitle(dayIndex)}}</div>
-      <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="['/kurse', appointment.course.shortId, convertStringToUrlId(appointment.course.title)]">
+      <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="getCourseLink(appointment) ? 'has-course-link' : ''">
         <div class="appointment-time">
           {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr
         </div>
@@ -11,8 +11,8 @@
           {{appointment.title}}
         </div>
         <div class="appointment-location" *ngIf="!location">
-            in {{appointment.location.name}}
-          </div>
+          in {{appointment.location.name}}
+        </div>
       </div>
     </div>
   </div>
