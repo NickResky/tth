@@ -1,4 +1,3 @@
-import { CourseInformation } from './../classes/course-information';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
 import { LocationsService } from './locations.service';
