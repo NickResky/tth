@@ -20,7 +20,12 @@ export class ScheduleService {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.schedule.shortId)
       .then((modifiedEntries) => {
-        const appointments: Appointment[] = _.map(modifiedEntries, (modifiedEntry) => {
+        const appointments: Appointment[] = _.reduce(modifiedEntries, (results: Appointment[], modifiedEntry) => {
+
+            if (!modifiedEntry.label || !modifiedEntry.title) {
+                return results;
+            }
+
             const appointment = new Appointment();
             appointment.uuid = modifiedEntry.uuid;
             appointment.title = modifiedEntry.title;
@@ -45,12 +50,14 @@ export class ScheduleService {
                 return location.uuid === locationUuid;
             });
 
-            appointment.dayIndex = _.findIndex(this.dayIndices, (dayIndex) => {
-                return _.includes(modifiedEntry.label.toLowerCase(), dayIndex);
-            });
-
-            return appointment;
-        });
+            if (modifiedEntry.label) {
+                appointment.dayIndex = _.findIndex(this.dayIndices, (dayIndex) => {
+                    return _.includes(modifiedEntry.label.toLowerCase(), dayIndex);
+                });
+            }
+            results.push(appointment);
+            return results;
+        }, []);
         return appointments;
       });
   }

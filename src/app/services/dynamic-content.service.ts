@@ -155,7 +155,7 @@ export class DynamicContentService {
         });
 
         const simplifiedEntry = {
-          label: label.name,
+          label: _.get(label, ['name']),
           uuid: entry.uuid,
           shortId: entry.shortId
         };
