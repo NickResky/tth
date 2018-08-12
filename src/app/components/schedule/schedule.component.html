@@ -9,6 +9,10 @@
         </div>
         <div class="appointment-title">
           {{appointment.title}}
+        </div>
+        <div class="appointment-location" *ngIf="!location">
+            in {{appointment.location.name}}
+          </div>
       </div>
     </div>
   </div>

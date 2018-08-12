@@ -28,10 +28,9 @@ export class ScheduleComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    const locationInitials = this.locationInitials;
     Promise.all([
       this.modelService.getCourseAppointments(),
-      this.modelService.getLocationByInitials(locationInitials)
+      this.modelService.getLocationByInitials(this.locationInitials)
       ]).then((results: any) => {
         this.courseAppointments = results[0];
         this.location = results[1];
@@ -40,6 +39,13 @@ export class ScheduleComponent implements OnInit {
         if (this.location) {
           this.courseAppointments = _.filter(this.courseAppointments, {
             'location': this.location
+          });
+        }
+
+        // Filter appointments by course category
+        if (this.courseShortId) {
+          this.courseAppointments = _.filter(this.courseAppointments, (appointment) => {
+            return _.get(appointment, ['course', 'shortId']) === this.courseShortId;
           });
         }
 

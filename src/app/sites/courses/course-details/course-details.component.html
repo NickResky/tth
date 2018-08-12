@@ -3,7 +3,8 @@
   <div class="main-content">
     <div class="course-description" [innerHTML]="course.description"></div>
 
-    <a class="course-details-link" routerLink="/kurs-informationen">zu den Stundenplänen</a>
+    <app-schedule [courseShortId]='course.shortId'></app-schedule>
+
     <iframe class="course-details-video" *ngIf="course.youtubeId" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 </div>
