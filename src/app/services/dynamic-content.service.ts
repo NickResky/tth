@@ -19,7 +19,7 @@ export class DynamicContentService {
 
   // Only necessary if zenkit collection is not public
   // TODO: Remove before release
-  // apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5NzV9LCJpYXQiOjE1MDQ5ODc4Mzl9.j1BVnV32r_h2xZrTxUIsQWEDrzZjiEgzf6Sl6-UtfR0';
+  apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5NzV9LCJpYXQiOjE1MDQ5ODc4Mzl9.j1BVnV32r_h2xZrTxUIsQWEDrzZjiEgzf6Sl6-UtfR0';
   // headers.append('Authorization', 'Bearer ' + this.apiToken);
 
   getTestDataWithPromise(listId): Promise<any> {
@@ -42,6 +42,7 @@ export class DynamicContentService {
 
   fetchList(listId): Promise<any> {
     const headers: Headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.apiToken);
     return this.http
       .get(this.apiUrl + 'lists/' + listId, {headers: headers})
       .toPromise();
@@ -49,6 +50,7 @@ export class DynamicContentService {
 
   fetchListElements(listId): Promise<any> {
     const headers: Headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.apiToken);
     return this.http
       .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
       .toPromise();
@@ -56,6 +58,7 @@ export class DynamicContentService {
 
   fetchListEntriesInKanbanMode(elementIdX: string, listId): Promise<any> {
     const headers: Headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.apiToken);
     const httpRequestBody = {
       filter: {
         AND: {
@@ -152,7 +155,8 @@ export class DynamicContentService {
         });
 
         const simplifiedEntry = {
-          label: label.name
+          label: label.name,
+          uuid: entry.uuid
         };
 
         return _.reduce(modifiedRequiredElements, (modifiedEntry, modifiedElement) => {
