@@ -13,8 +13,8 @@ export class LocationsService {
   getLocationData() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.locations.shortId)
-      .then((modifiedEntries) => {
-        const locations = _.map(modifiedEntries, (modifiedEntry) => {
+      .then((zenkitListData) => {
+        const locations = _.map(zenkitListData.entries, (modifiedEntry) => {
           const location = new Location();
           location.uuid = modifiedEntry.uuid;
           location.name = modifiedEntry.name;

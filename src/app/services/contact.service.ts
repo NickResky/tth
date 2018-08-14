@@ -12,8 +12,8 @@ export class ContactService {
   getContact() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.contact.shortId)
-      .then((modifiedEntries) => {
-        const modifiedEntry: any = _.head(modifiedEntries);
+      .then((zenkitListData) => {
+        const modifiedEntry: any = _.head(zenkitListData.entries);
         const contact = new Contact();
         contact.name = modifiedEntry.name;
         contact.email = modifiedEntry.email;

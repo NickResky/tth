@@ -16,4 +16,6 @@ export class Appointment {
     course: CourseInformation;
     teacher: Teacher;
     location: Location;
+    levels: any[];
+    ageGroups: any[];
 }

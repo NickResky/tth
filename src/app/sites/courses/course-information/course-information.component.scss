@@ -1,5 +1,9 @@
 @import '../../../../variables.scss';
 
+.header-image {
+  display: none;
+}
+
 .courses-content-container {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -12,7 +16,7 @@
 
 @media (min-width: $media-breakpoint-md) {
   .header-image {
-    display: none;
+    display: block;
   }
   .courses-content-container {
     padding-top: 50px;

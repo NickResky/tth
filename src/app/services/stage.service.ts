@@ -12,8 +12,8 @@ export class StageService {
   getPerformances() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.performances.shortId)
-      .then((modifiedEntries) => {
-        const performances = _.map(modifiedEntries, (modifiedEntry) => {
+      .then((zenkitListData) => {
+        const performances = _.map(zenkitListData.entries, (modifiedEntry) => {
           const performance = new Performance();
           performance.title = modifiedEntry.title;
           performance.description = modifiedEntry.description;

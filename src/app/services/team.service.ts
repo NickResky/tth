@@ -17,8 +17,8 @@ export class TeamService {
   getTeam() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.team.shortId)
-      .then((modifiedEntries) => {
-        const team = _.map(modifiedEntries, (modifiedEntry) => {
+      .then((zenkitListData) => {
+        const team = _.map(zenkitListData.entries, (modifiedEntry) => {
           const teacher = new Teacher();
           teacher.uuid = modifiedEntry.uuid;
           teacher.firstName = modifiedEntry.firstName;

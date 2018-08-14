@@ -19,4 +19,8 @@ export const ElementTypes  = {
         category: 'number',
         categoryName: 'Number'
     },
+    labels: {
+        category: 'categories',
+        categoryName: 'Labels'
+    }
 };

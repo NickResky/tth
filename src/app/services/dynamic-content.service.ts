@@ -1,3 +1,4 @@
+import { ElementTypes } from './../shared/constants/element_types';
 import { Observable } from 'rxjs/Observable';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { BlogPost } from './../classes/blog-post';
@@ -134,6 +135,8 @@ export class DynamicContentService {
 
     const zenkitCollection = getZenkitCollection(params.list);
 
+    const predefinedCategories: any = {};
+
     const modifiedRequiredElements = _
       .map(zenkitCollection.requiredElements, (requiredElement: any) => {
         const fullElement: any = _.find(params.elements, {
@@ -141,6 +144,18 @@ export class DynamicContentService {
         });
         if (_.isNil(fullElement)) {
           throw new Error('Element ' + requiredElement.name + ' in the Collection ' + params.list.name + ' was not found.');
+        }
+        // Save element data for labels
+        if (_.isEqual(requiredElement.type, ElementTypes.labels)) {
+          requiredElement.predefinedCategories = fullElement.elementData.predefinedCategories;
+          const predefinedCategory = _.map(requiredElement.predefinedCategories, (c) => {
+            return {
+              name: c.name,
+              id: c.id,
+              colorHex: c.colorHex
+            };
+          });
+          predefinedCategories[requiredElement.mappedClassPropertyName] = (predefinedCategory);
         }
         requiredElement.uuid = fullElement.uuid;
         return requiredElement;
@@ -161,14 +176,32 @@ export class DynamicContentService {
         };
 
         return _.reduce(modifiedRequiredElements, (modifiedEntry, modifiedElement) => {
+          // Handle label elements
+          let value;
+          if (_.isEqual(modifiedElement.type,  ElementTypes.labels)) {
+            const labelsIds1 = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
 
-          const value = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
+            if (_.isEmpty(labelsIds1) === false) {
+              value = _.map(labelsIds1, (labelId) => {
+                const label = _.find(modifiedElement.predefinedCategories, {
+                  id: labelId
+                });
+                return _.get(label, ['name']);
+              });
+            }
+          // Handle other elements
+          } else {
+            value = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
+          }
           modifiedEntry[modifiedElement.mappedClassPropertyName] = value;
           return modifiedEntry;
         }, simplifiedEntry);
       });
     return new Promise((resolve, reject) => {
-      return resolve(modifiedEntries);
+      return resolve({
+        entries: modifiedEntries,
+        prefefinedCategories: predefinedCategories
+      });
     });
   }
 

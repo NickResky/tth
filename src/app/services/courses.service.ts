@@ -13,18 +13,18 @@ export class CoursesService {
   getCourses() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.courses.shortId)
-      .then((modifiedEntries) => {
-            const pricesEntry: any = _.find(modifiedEntries, {
+      .then((zenkitListData) => {
+            const pricesEntry: any = _.find(zenkitListData.entries, {
                 label: 'Preise'
             });
-            const scheduleMGEntry: any = _.find(modifiedEntries, {
+            const scheduleMGEntry: any = _.find(zenkitListData.entries, {
                 label: 'Stundenplan Markgroeningen'
             });
-            const scheduleLBEntry: any = _.find(modifiedEntries, {
+            const scheduleLBEntry: any = _.find(zenkitListData.entries, {
                 label: 'Stundenplan Ludwigsburg'
             });
 
-            const courseEntries: any = _.filter(modifiedEntries, {
+            const courseEntries: any = _.filter(zenkitListData.entries, {
                 label: 'Kurs'
             });
 

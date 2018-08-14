@@ -1,3 +1,4 @@
+import { ScheduleData } from './../classes/schedule-data';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
 import { LocationsService } from './locations.service';
@@ -32,7 +33,7 @@ export class ModelService {
     teamData: Promise<Teacher[]>;
     locationData: Promise<LocationData>;
     imprintData: Promise<Imprint>;
-    courseAppointments: Promise<Appointment[]>;
+    scheduleData: Promise<ScheduleData>;
 
     constructor(
         private mainPageService: MainPageService,
@@ -83,18 +84,18 @@ export class ModelService {
         });
     }
 
-    getCourseAppointments() {
-        if (_.isNil(this.courseAppointments)) {
+    getScheduleData() {
+        if (_.isNil(this.scheduleData)) {
             return Promise.all([this.getCourses(), this.getTeam(), this.getLocationData()]).then((result: any) => {
                 const courses: CourseInformation[] = _.get(result[0], ['courses']);
                 const teachers: Teacher[] = result[1];
                 const locationData: LocationData = result[2];
-                this.courseAppointments = this.scheduleService.getCourseAppointments(courses, teachers, locationData);
-                return this.courseAppointments;
+                this.scheduleData = this.scheduleService.getScheduleData(courses, teachers, locationData);
+                return this.scheduleData;
             });
         }
         return new Promise((resolve, reject) => {
-            return resolve(this.courseAppointments);
+            return resolve(this.scheduleData);
         });
     }
 

@@ -126,6 +126,16 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'location'
         },
         {
+            name: 'Schwierigkeitsgrade',
+            type: ElementTypes.labels,
+            mappedClassPropertyName: 'levels'
+        },
+        {
+            name: 'Altersgruppen',
+            type: ElementTypes.labels,
+            mappedClassPropertyName: 'ageGroups'
+        },
+        {
             name: 'Startzeit Stunden',
             type: ElementTypes.number,
             mappedClassPropertyName: 'timeStartHours'
