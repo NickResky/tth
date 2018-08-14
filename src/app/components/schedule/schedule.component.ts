@@ -106,23 +106,27 @@ export class ScheduleComponent implements OnInit {
       return results;
     }, []);
 
-    this.courseAppointmentsByDay = _.map        (this.courseAppointmentsByDayAll, (day) => {
-      return _.reduce(day, (results: Appointment[], appointment) => {
-        if (_.isEmpty(appointment.ageGroups)) {
-          // results.push(appointment);
-        } else {
-          const appointmentAgeGroupsStrings = _.map(appointment.ageGroups, (ageGroup) => {
-            return ageGroup.title;
-          });
-          const intersection = _.intersection(activeAgeGroupsStrings, appointmentAgeGroupsStrings);
-          if (_.isEmpty(intersection) === false) {
-            results.push(appointment);
+    if (activeAgeGroupsStrings.length === this.ageGroups.length) {
+      this.courseAppointmentsByDay = this.courseAppointmentsByDayAll;
+    } else {
+      this.courseAppointmentsByDay = _.map        (this.courseAppointmentsByDayAll, (day) => {
+        return _.reduce(day, (results: Appointment[], appointment) => {
+          if (_.isEmpty(appointment.ageGroups)) {
+            // results.push(appointment);
+          } else {
+            const appointmentAgeGroupsStrings = _.map(appointment.ageGroups, (ageGroup) => {
+              return ageGroup.title;
+            });
+            const intersection = _.intersection(activeAgeGroupsStrings, appointmentAgeGroupsStrings);
+            if (_.isEmpty(intersection) === false) {
+              results.push(appointment);
 
+            }
           }
-        }
-        return results;
-      }, []);
-    });
+          return results;
+        }, []);
+      });
+    }
 
     const activeLevelsStrings = _.reduce(this.levels, (results, level) => {
       if (level.isActive) {
@@ -131,22 +135,24 @@ export class ScheduleComponent implements OnInit {
       return results;
     }, []);
 
-    this.courseAppointmentsByDay = _.map        (this.courseAppointmentsByDay, (day) => {
-      return _.reduce(day, (results: Appointment[], appointment) => {
-        if (_.isEmpty(appointment.levels)) {
-          // results.push(appointment);
-        } else {
-          const appointmentLevelsStrings = _.map(appointment.levels, (level) => {
-            return level.title;
-          });
-          const intersection = _.intersection(activeLevelsStrings, appointmentLevelsStrings);
-          if (_.isEmpty(intersection) === false) {
-            results.push(appointment);
+    if (activeLevelsStrings.length !== this.levels.length) {
+      this.courseAppointmentsByDay = _.map        (this.courseAppointmentsByDay, (day) => {
+        return _.reduce(day, (results: Appointment[], appointment) => {
+          if (_.isEmpty(appointment.levels)) {
+            // results.push(appointment);
+          } else {
+            const appointmentLevelsStrings = _.map(appointment.levels, (level) => {
+              return level.title;
+            });
+            const intersection = _.intersection(activeLevelsStrings, appointmentLevelsStrings);
+            if (_.isEmpty(intersection) === false) {
+              results.push(appointment);
+            }
           }
-        }
-        return results;
-      }, []);
-    });
+          return results;
+        }, []);
+      });
+    }
   }
 
   getDayTitle(index: number) {
