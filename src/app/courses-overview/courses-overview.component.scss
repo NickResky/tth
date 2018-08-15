@@ -7,7 +7,6 @@
     position: relative;
     .course-tags-container {    
         .course-tags {
-            padding-top: 20px;
             padding-bottom: 60px;
             @include flexbox();
             @include flex-wrap(wrap);

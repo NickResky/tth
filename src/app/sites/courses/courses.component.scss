@@ -1,36 +1,15 @@
 @import '../../../variables.scss';
 
 .courses-content-container {
-    background-color: $main-text-color;
     padding-top: 20px;
-    padding-bottom: 20px;
-    color: $main-text-color-on-light-bg;
-
-    .schedule {
-        width:100%;
-        height: 350px;
+    color:$main-text-color;
+    .courses-title { 
+        margin-top: 20px;
     }
 }
 
 @media (min-width: $media-breakpoint-md) {
-    .header-image {
-        display: none;
-    }
     .courses-content-container {  
-        padding-top: 50px;
-        padding-bottom: 50px;      
-        .schedule {
-            height: 600px;
-        }
-    }
-}
-
-@media (min-width: $media-breakpoint-md) {
-    .courses-content-container {
-        padding-top: 70px;
-        padding-bottom: 70px;       
-        .schedule {
-            height: 750px;
-        }
+        display: none;
     }
 }

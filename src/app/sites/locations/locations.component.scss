@@ -1,7 +1,16 @@
 @import './../../../variables.scss';
 @import './../../courses-overview/courses-overview.component';
 
+.locations-content-container {
+    .locations-title {
+        margin-top: 20px;
+    }
+}
+
 @media (min-width: $media-breakpoint-md) {
+    .locations-content-container {
+        display: none;
+    }
     .courses-overview {
         .course-tags-container {
             .course-tags {     
