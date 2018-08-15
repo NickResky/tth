@@ -8,39 +8,49 @@
         }
         .schedule-navigation-container {
             margin-bottom: 20px;
-            .schedule-navigation-segment {
-                display: inline-block;
-                &.schedule-navigation-age-groups {
-                    margin-right: 20px;
+            &.schedule-navigation-hide-filters {
+                .schedule-navigation-filter-segments {
+                    display: none;
                 }
-                select {
-                    color: $main-text-color;
-                    background-color: $main-background-color-dark;
-                    height: 30px;
-                    margin-bottom: 10px;
-                }
-                .schedule-navigation-element {
+            }
+            .schedule-navigation-filter-segments {
+                .schedule-navigation-segment {
                     display: inline-block;
-                    margin-right: 15px;
-                    &:hover {
-                        cursor: pointer;
+                    &.schedule-navigation-age-groups {
+                        margin-right: 20px;
                     }
-                    &.active {
-                        .schedule-navigation-text {
-                            border-bottom: 1px solid $main-text-color;
-                        }
+                    select {
+                        color: $main-text-color;
+                        background-color: $main-background-color-dark;
+                        height: 30px;
+                        margin-bottom: 10px;
                     }
-                    &:not(.active) {
-                        .schedule-info-icon {
-                            color: #414141 !important;
-                            border-color: #414141 !important;
-                        }
-                    }
-                    .schedule-navigation-text {
-                        margin-left: 10px;
+                    .schedule-navigation-element {
                         display: inline-block;
+                        margin-right: 15px;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &.active {
+                            .schedule-navigation-text {
+                                border-bottom: 1px solid $main-text-color;
+                            }
+                        }
+                        &:not(.active) {
+                            .schedule-info-icon {
+                                color: #414141 !important;
+                                border-color: #414141 !important;
+                            }
+                        }
+                        .schedule-navigation-text {
+                            margin-left: 10px;
+                            display: inline-block;
+                        }
                     }
                 }
+            }
+            .schedule-navigation-style-selector {
+                display: none;
             }
         }
     }
@@ -88,13 +98,14 @@
                         font-size: 1.5em;
                     }
                     .appointment-time {
-                        color: #9f9f9f;
                         font-size: 1.2em;
+                    }
+                    .schedule-no-colors-label { 
+                        display: inline-block;
                     }
                     .appointment-info-icons-container {
                         font-size: 1.2em;
                         .schedule-info-icon {
-                            background-color: transparent !important;
                             color: $main-text-color !important;
                         }
                     }
@@ -107,9 +118,6 @@
 
 @media (min-width: $media-breakpoint-md) {
     .schedule-component {
-        .schedule-mobile-text {
-            display: none;
-        }
         .schedule-header {
             display: flex;
             flex-direction: row;
@@ -117,11 +125,17 @@
                 flex: 1;
             }
             .schedule-navigation-container {
-                // display: flex;
-                // flex-direction: row;
                 margin-top: 8px;
-                .schedule-navigation-age-groups {
-                    // flex: 1;
+                .schedule-navigation-style-selector {
+                    display: block;
+                    font-size: 12px;
+                    float: right;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    .schedule-navigation-style-selector-icon {
+                        margin-right: 3px;
+                    }
                 }
             }
         }
@@ -141,20 +155,33 @@
                     &.has-course-link:hover {
                         background-color: #222222;
                     }
-                    .appointment-info-icons-container {
-                        display: inline-block;
-                        .appointment-age-groups, .appointment-levels {
-                            display: inline-block;
+                    &:not(.display-colors) {
+                        .appointment-info-icons-container {
+                            font-size: 11px;
+                            .schedule-info-icon {
+                                color: $main-text-color !important;
+                            }
                         }
-                        .schedule-info-icon {
-                            min-width: 20px;
-                            height: 20px;
-                            text-align: center;
-                            font-size: 12px;
-                            border-radius: 10px;
-                            padding: 0 7px;
-                            border: 1px solid;
-                            margin-bottom: 5px;
+                    }
+                    &.display-colors {
+                        .appointment-info-icons-container {
+                            display: inline-block;
+                            .schedule-no-colors-label {
+                                display: none;
+                            }
+                            .appointment-age-groups, .appointment-levels {
+                                display: inline-block;
+                            }
+                            .schedule-info-icon {
+                                min-width: 20px;
+                                height: 20px;
+                                text-align: center;
+                                font-size: 12px;
+                                border-radius: 10px;
+                                padding: 0 7px;
+                                border: 1px solid;
+                                margin-bottom: 5px;
+                            }
                         }
                     }
                 }

@@ -27,6 +27,8 @@ export class ScheduleComponent implements OnInit {
   location: Location;
   levels: any[];
   ageGroups: any[];
+  displayColors = true;
+  localStorage = window.localStorage;
 
   constructor(
     private modelService: ModelService,
@@ -34,6 +36,11 @@ export class ScheduleComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
+    const displayColorsStoredValue = localStorage.getItem('tth-schedule-display-colors');
+    if (displayColorsStoredValue) {
+      this.displayColors = displayColorsStoredValue === 'true';
+    }
+
     Promise.all([
       this.modelService.getScheduleData(),
       this.modelService.getLocationByInitials(this.locationInitials)
@@ -242,5 +249,10 @@ export class ScheduleComponent implements OnInit {
       });
     }
     this.updateSchedule();
+  }
+
+  toggleDisplayColors() {
+    this.displayColors = !this.displayColors;
+    localStorage.setItem('tth-schedule-display-colors', this.displayColors.toString());
   }
 }

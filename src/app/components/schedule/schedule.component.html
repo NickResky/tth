@@ -1,45 +1,35 @@
 <div class="schedule-component">
   <div class="schedule-header">
     <h2 class="schedule-title">Stundenplan<span *ngIf="location"> Studio {{location.name}}</span></h2>
-    <div class="schedule-navigation-container" *ngIf="!courseShortId">
-      <div class="schedule-navigation-segment schedule-navigation-age-groups">
-        <!-- <div class="schedule-navigation-element schedule-navigation-age-group" *ngFor="let ageGroup of ageGroups" [ngClass]="ageGroup.isActive ? 'active' : ''" (click)="toggleAgeGroup(ageGroup)">
-          <div class="schedule-info-icon" [ngStyle]="getScheduleIconStyle(ageGroup.hexColor)">
-            {{ageGroup.title}}
-          </div>
-          <div class="schedule-navigation-text">
-            {{ageGroup.title}}
-          </div>
-        </div> -->
-        <form>
-            <select name="selectedAgeGroups" (change)="selectAgeGroup($event.target.value)">
-              <option value="">Alle Altersgruppen</option>
-              <option *ngFor="let ageGroup of ageGroups" [ngValue]="ageGroup">{{ageGroup.title}}</option>
+    <div class="schedule-navigation-container" [ngClass]="courseShortId ? 'schedule-navigation-hide-filters' : ''">
+      <div class="schedule-navigation-filter-segments">
+        <div class="schedule-navigation-segment schedule-navigation-age-groups">
+          <form>
+              <select name="selectedAgeGroups" (change)="selectAgeGroup($event.target.value)">
+                <option value="">Alle Altersgruppen</option>
+                <option *ngFor="let ageGroup of ageGroups" [ngValue]="ageGroup">{{ageGroup.title}}</option>
+              </select>
+            </form>
+        </div>
+        <div class="schedule-navigation-segment schedule-navigation-levels">
+          <form>
+            <select name="selectedLevels" (change)="selectLevel($event.target.value)">
+              <option value="">Alle Niveaus</option>
+              <option *ngFor="let level of levels" [ngValue]="level">{{level.title}}</option>
             </select>
           </form>
+        </div>
       </div>
-      <div class="schedule-navigation-segment schedule-navigation-levels">
-        <!-- <div class="schedule-navigation-element schedule-navigation-level" *ngFor="let level of levels" [ngClass]="level.isActive ? 'active' : ''" (click)="toggleLevel(level)">
-          <div class="schedule-info-icon" [ngStyle]="getScheduleIconStyle(level.hexColor)">
-            {{level.title}}
-          </div>
-          <div class="schedule-navigation-text">
-            {{level.title}}
-          </div>
-        </div> -->
-        <form>
-          <select name="selectedLevels" (change)="selectLevel($event.target.value)">
-            <option value="">Alle Niveaus</option>
-            <option *ngFor="let level of levels" [ngValue]="level">{{level.title}}</option>
-          </select>
-        </form>
+      <div class="schedule-navigation-style-selector" (click)="toggleDisplayColors()">
+          <i class="far schedule-navigation-style-selector-icon" [ngClass]="displayColors ? 'fa-check-circle' : 'fa-circle'"></i>
+          <span class="schedule-navigation-style-label">Stundenplan einfärben</span>
       </div>
     </div>
   </div>
   <div class="schedule-container">
     <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index" [ngClass]="appointments.length === 0 ? 'day-container-empty' : ''">
       <div class="day-title">{{getDayTitle(dayIndex)}}</div>
-      <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="getCourseLink(appointment) ? 'has-course-link' : ''">
+      <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="[getCourseLink(appointment) ? 'has-course-link' : '', displayColors ? 'display-colors' : '']">
         <div class="appointment-time appointment-text">
           {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr
         </div>
@@ -51,16 +41,16 @@
         </div>
         <div class="appointment-info-icons-container">
           <div class="appointment-age-groups" *ngIf="appointment.ageGroups && appointment.ageGroups.length > 0">
-            <span class="schedule-mobile-text">Für </span> 
+            <span class="schedule-no-colors-label">Für </span> 
             <div class="schedule-info-icon appointment-age-group" *ngFor="let ageGroup of appointment.ageGroups" [ngStyle]="getScheduleIconStyle(ageGroup.hexColor)">
               {{ageGroup.title}}
             </div>
           </div>
           <div class="appointment-levels" *ngIf="appointment.levels && appointment.levels.length > 0">
-            <span class="schedule-mobile-text">Niveau: </span> 
-            <div class="schedule-info-icon appointment-level" *ngFor="let level of appointment.levels, let i = index" [ngStyle]="getScheduleIconStyle(level.hexColor)">
-              {{level.title}}<span *ngIf="appointment.levels.length > 1 && i < appointment.levels.length - 1" class="schedule-mobile-text"> / </span>
-            </div>
+            <span class="schedule-no-colors-label">Niveau: </span> 
+            <span class="schedule-info-icon appointment-level" *ngFor="let level of appointment.levels, let i = index" [ngStyle]="getScheduleIconStyle(level.hexColor)">
+              {{level.title}}<span *ngIf="appointment.levels.length > 1 && i < appointment.levels.length - 1" class="schedule-no-colors-label"> / </span>
+            </span>
           </div>
         </div>
       </div>
