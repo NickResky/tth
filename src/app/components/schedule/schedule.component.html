@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="schedule-container">
-    <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index">
+    <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index" [ngClass]="appointments.length === 0 ? 'day-container-empty' : ''">
       <div class="day-title">{{getDayTitle(dayIndex)}}</div>
       <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="getCourseLink(appointment) ? 'has-course-link' : ''">
         <div class="appointment-time appointment-text">
