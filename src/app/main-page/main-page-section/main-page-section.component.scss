@@ -48,7 +48,7 @@ $main-page-text-color: #fff;
     }
 }
 
-@media (max-width: $media-breakpoint-md) {
+@media (max-width: $media-breakpoint-md - 1) {
     .main-page-section-background {
         .main-page-section-container {
             &.first-section-container {

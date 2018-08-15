@@ -77,7 +77,7 @@
     }
 }
 
-@media (max-width: $media-breakpoint-md) {
+@media (max-width: $media-breakpoint-md - 1) {
     .navbar {
         .navbar-menu-icon-container {
             position: fixed;

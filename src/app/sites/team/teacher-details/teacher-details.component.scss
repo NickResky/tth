@@ -28,7 +28,7 @@
     }
 }
 
-@media (max-width: $media-breakpoint-md) {
+@media (max-width: $media-breakpoint-md - 1) {
     .teacher-content-container {
         .teacher-content {
             &>.teacher-heading {

@@ -49,7 +49,7 @@
     }
 }
 
-@media (max-width: $media-breakpoint-md) {
+@media (max-width: $media-breakpoint-md - 1) {
     .footer-container {
         .footer {
             .footer-section-container {
