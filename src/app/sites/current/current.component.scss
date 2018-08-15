@@ -26,58 +26,62 @@ $postBorderColor: #e1e1e1;
 }
 
 @media (min-width: $media-breakpoint-md) {
-    .blog-posts {
-        padding-top: 50px;
-        padding-bottom: 50px;        
-        @include flexbox();
-        @include flex-wrap(wrap);
-        .post-container {
-            opacity: 0;
-            animation-name: fade-in;
-            animation-delay: 1.3s;
-            animation-duration: 0.7s;
-            animation-timing-function: ease;
-            animation-fill-mode: forwards;
-            @include flex-grow(1);
+    .main-content-container {
+        .blog-posts {
+            padding-top: 50px;
+            padding-bottom: 50px;        
             @include flexbox();
-            @include flex-direction(column);
-            padding-bottom: 0;
-            display: inline-block;
-            width: 49%;
-            border-bottom: 1px solid $postBorderColor; 
-            .post {
-                padding-bottom: 50px;
-                padding-top: 50px;
-            }
-            &:nth-child(odd) {
-                border-right: 1px solid $postBorderColor;            
+            @include flex-wrap(wrap);
+            .post-container {
+                opacity: 0;
+                animation-name: fade-in;
+                animation-delay: 1.3s;
+                animation-duration: 0.7s;
+                animation-timing-function: ease;
+                animation-fill-mode: forwards;
+                @include flex-grow(1);
+                @include flexbox();
+                @include flex-direction(column);
+                padding-bottom: 0;
+                display: inline-block;
+                width: 49%;
+                border-bottom: 1px solid $postBorderColor; 
                 .post {
-                    padding-right: 50px;
+                    padding-bottom: 50px;
+                    padding-top: 50px;
                 }
-            }
-            &:nth-child(even) {
-                .post {
-                    padding-left: 50px;
+                &:nth-child(odd) {
+                    border-right: 1px solid $postBorderColor;            
+                    .post {
+                        padding-right: 50px;
+                    }
                 }
-            }
-            &:nth-child(-n+2) {
-                .post {
-                    padding-top: 0;
+                &:nth-child(even) {
+                    .post {
+                        padding-left: 50px;
+                    }
                 }
-            }
-            &:nth-last-child(-n+2) {
-                border-bottom: none;            
-                .post {
-                    padding-bottom: 0;            
+                &:nth-child(-n+2) {
+                    .post {
+                        padding-top: 0;
+                    }
+                }
+                &:nth-last-child(-n+2) {
+                    border-bottom: none;            
+                    .post {
+                        padding-bottom: 0;            
+                    }
                 }
             }
         }
     }
 }
 
-@media (min-width: $media-breakpoint-lg){
-    .blog-posts {
-        max-width: $media-breakpoint-lg;
-        margin: 0 auto;
+@media (min-width: $media-breakpoint-lg) {
+    .main-content-container {
+        .blog-posts {
+            max-width: $media-breakpoint-lg;
+            margin: 0 auto;
+        }
     }
 }
