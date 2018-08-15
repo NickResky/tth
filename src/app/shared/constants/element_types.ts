@@ -10,5 +10,17 @@ export const ElementTypes  = {
     date: {
         category: 'date',
         categoryName: 'Date'
+    },
+    reference: {
+        category: 'references',
+        categoryName: 'References'
+    },
+    number: {
+        category: 'number',
+        categoryName: 'Number'
+    },
+    labels: {
+        category: 'categories',
+        categoryName: 'Labels'
     }
 };

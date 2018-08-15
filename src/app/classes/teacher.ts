@@ -1,4 +1,5 @@
 export class Teacher {
+    uuid: string;
     firstName: string;
     lastName: string;
     task: string;

@@ -30,7 +30,7 @@ $main-page-text-color: #fff;
                 .main-page-section-caption {
                     border: 2px solid $main-text-color;
                     padding: 10px;
-                    font-size: 20px;                
+                    font-size: 14px;                
                     letter-spacing: 10px;
                     margin: 20px;
                     text-transform: uppercase;
@@ -43,6 +43,16 @@ $main-page-text-color: #fff;
                     font-size: 14px;
                     padding-top: 20px;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-md - 1) {
+    .main-page-section-background {
+        .main-page-section-container {
+            &.first-section-container {
+                top: 10%;
             }
         }
     }

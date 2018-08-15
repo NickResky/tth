@@ -1,3 +1,4 @@
+import { ScheduleData } from './../classes/schedule-data';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
 import { LocationsService } from './locations.service';
@@ -13,10 +14,13 @@ import { Contact } from './../classes/contact';
 import { MainPageData } from './../classes/main-page-data';
 import { MainPageSection } from './../classes/main-page-section';
 import { MainPageService } from './main-page.service';
+import { ScheduleService } from './schedule.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { Imprint } from "./../classes/imprint";
-import { ImprintService } from "./imprint.service";
+import { Imprint } from './../classes/imprint';
+import { ImprintService } from './imprint.service';
+import { CourseInformation } from '../classes/course-information';
+import { Appointment } from '../classes/appointment';
 
 @Injectable()
 export class ModelService {
@@ -29,6 +33,7 @@ export class ModelService {
     teamData: Promise<Teacher[]>;
     locationData: Promise<LocationData>;
     imprintData: Promise<Imprint>;
+    scheduleData: Promise<ScheduleData>;
 
     constructor(
         private mainPageService: MainPageService,
@@ -38,7 +43,8 @@ export class ModelService {
         private locationsService: LocationsService,
         private contactService: ContactService,
         private currentService: CurrentService,
-        private imprintService: ImprintService
+        private imprintService: ImprintService,
+        private scheduleService: ScheduleService
     ) { }
 
     getMainPageSections(): Promise<MainPageData> {
@@ -78,6 +84,21 @@ export class ModelService {
         });
     }
 
+    getScheduleData() {
+        if (_.isNil(this.scheduleData)) {
+            return Promise.all([this.getCourses(), this.getTeam(), this.getLocationData()]).then((result: any) => {
+                const courses: CourseInformation[] = _.get(result[0], ['courses']);
+                const teachers: Teacher[] = result[1];
+                const locationData: LocationData = result[2];
+                this.scheduleData = this.scheduleService.getScheduleData(courses, teachers, locationData);
+                return this.scheduleData;
+            });
+        }
+        return new Promise((resolve, reject) => {
+            return resolve(this.scheduleData);
+        });
+    }
+
     getTeam() {
         if (_.isNil(this.teamData)) {
             this.teamData = this.teamService.getTeam();
@@ -88,6 +109,16 @@ export class ModelService {
         });
     }
 
+    getTeacherByUrlId(urlId) {
+        return this.getTeam().then((team) => {
+            const teacher = _.find(team, (t: Teacher) => {
+                const teacherUrlId = this.teamService.convertTeacherToUrlId(t);
+                return teacherUrlId === urlId;
+            });
+            return teacher;
+        });
+    }
+
     getLocationData() {
         if (_.isNil(this.locationData)) {
             this.locationData = this.locationsService.getLocationData();
@@ -95,6 +126,17 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.locationData);
+        });
+    }
+
+    getLocationByInitials(initials) {
+        return this.getLocationData().then((locationData: LocationData) => {
+            if (initials === 'MG') {
+                return locationData.locationMG;
+            } else if (initials === 'LB') {
+                return locationData.locationLB;
+            }
+            return undefined;
         });
     }
 

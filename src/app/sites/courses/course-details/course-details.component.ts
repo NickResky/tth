@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { ZenkitCollections } from '../../../shared/constants/zenkit-collections';
 import { CourseInformation } from '../../../classes/course-information';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-course-details',
@@ -17,19 +19,31 @@ export class CourseDetailsComponent implements OnInit {
 
   backgroundImage;
   coursesListShortId = ZenkitCollections.courses.shortId;
-  courseId: number;
+  courseShortId: string;
   course: CourseInformation;
   private sub: any;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService, private route: ActivatedRoute) { }
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private route: ActivatedRoute,
+    private domSanitizer: DomSanitizer
+  ) { }
 
     ngOnInit() {
       this.sub = this.route.params.subscribe(params => {
-        this.courseId = +params['id'];
+        this.courseShortId = params['shortId'];
         this.modelService.getCourses().then((coursesData: CourseData) => {
-          this.course = coursesData.courses[this.courseId];
+          this.course = _.find(coursesData.courses, (course) => {
+            return course.shortId === this.courseShortId;
+          });
         });
      });
+    }
+
+    getYoutubeLink() {
+      const url = 'https://www.youtube.com/embed/'  + this.course.youtubeId;
+      return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
     }
 
     getFileSrc(file) {

@@ -11,6 +11,8 @@
     margin-top: 100px;
 }
 
-.location-bottom-space {
-    height: 100px;
+@media (min-width: $media-breakpoint-md) {
+    .location-bottom-space {
+        height: 50px;
+    }
 }

@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { TeamService } from './../../../services/team.service';
 import { MainPageData } from './../../../classes/main-page-data';
 import { ModelService } from './../../../services/model.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
@@ -13,33 +15,35 @@ import * as _ from 'lodash';
 })
 export class TeacherDetailsComponent implements OnInit {
 
-  // backgroundImage;
-  // teachers: Teacher[];
-  // showModalDialog = false;
-  // teamListShortId = undefined;
-  //
-  // constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
-  //
+  teacher: Teacher;
+  teamListShortId = ZenkitCollections.team.shortId;
+  private sub: any;
+
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private teamService: TeamService,
+    private route: ActivatedRoute
+  ) { }
+
+
   ngOnInit() {
-  //   this.teamListShortId = ZenkitCollections.team.shortId;
-  //
-  //   this.modelService.getTeam().then((teachers: Teacher[]) => {
-  //     this.teachers = teachers;
-  //   });
-  //
-  //   this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
-  //     this.backgroundImage = _.get(mainPageData, ['teamSection', 'image']);
-  //   });
+    this.sub = this.route.params.subscribe(params => {
+      const teacherUrlId = params['id'];
+      this.modelService.getTeacherByUrlId(teacherUrlId).then((teacher: Teacher) => {
+        this.teacher = teacher;
+      });
+    });
   }
-  //
-  // getFileSrc(file) {
-  //   return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.teamListShortId);
-  // }
-  //
-  // getBackgroundStyle(image) {
-  //   return {
-  //     'background-image': 'url(' + this.getFileSrc(image) + ')'
-  //   };
-  // }
+
+  getFileSrc(file) {
+    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.teamListShortId);
+  }
+
+  getBackgroundStyle(image) {
+    return {
+      'background-image': 'url(' + this.getFileSrc(image) + ')'
+    };
+  }
 
 }

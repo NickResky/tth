@@ -10,11 +10,19 @@
           <span class="footer-section-content-link">{{locationMG.addressStreet}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressZIP}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressCity}}</span>
+          <span class="footer-section-content-link">Beratungszeiten:</span>
+          <span class="footer-section-content-link">{{locationMG.consultationTime1}}</span>
+          <span class="footer-section-content-link" *ngIf="locationMG.consultationTime2">{{locationMG.consultationTime2}}</span>
+          <span class="footer-section-content-link" *ngIf="locationMG.consultationTime3">{{locationMG.consultationTime3}}</span>
           <div class="footer-section-content-break"></div>
           <span class="footer-section-content-link">{{locationLB.addressName}}</span>
           <span class="footer-section-content-link">{{locationLB.addressStreet}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressZIP}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressCity}}</span>
+          <span class="footer-section-content-link">Beratungszeiten:</span>
+          <span class="footer-section-content-link">{{locationLB.consultationTime1}}</span>
+          <span class="footer-section-content-link" *ngIf="locationLB.consultationTime2">{{locationLB.consultationTime2}}</span>
+          <span class="footer-section-content-link" *ngIf="locationLB.consultationTime3">{{locationLB.consultationTime3}}</span>
           <div class="footer-section-content-break"></div>
           <span class="footer-section-content-link">Tel. {{phone}}</span>
           <span class="footer-section-content-link">{{email}}</span>
@@ -26,9 +34,12 @@
         <div class="footer-section-heading">
             Social Media
         </div>
-        <div class="footer-section-content">
+        <div class="footer-section-content footer-section-content-social">
           <a class="footer-section-content-link-icon" href="https://www.facebook.com/Tanztheater/">
             <i class="fab fa-facebook-square fa-3x"></i>
+          </a>
+          <a class="footer-section-content-link-icon" href="https://www.instagram.com/das_tanztheater/">
+            <i class="fab fa-instagram fa-3x"></i>
           </a>
           <a class="footer-section-content-link-icon" href="https://www.youtube.com/user/TanztheaterAnitaHank/videos?view=0&sort=dd&flow=grid">
             <i class="fab fa-youtube fa-3x"></i>

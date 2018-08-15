@@ -1,10 +1,12 @@
 @import '../../../../variables.scss';
 
+.header-image {
+  display: none;
+}
+
 .courses-content-container {
-  background-color: $main-text-color;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: $main-text-color-on-light-bg;
 
   .schedule {
     width:100%;
@@ -14,7 +16,7 @@
 
 @media (min-width: $media-breakpoint-md) {
   .header-image {
-    display: none;
+    display: block;
   }
   .courses-content-container {
     padding-top: 50px;

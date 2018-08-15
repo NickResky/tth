@@ -1,3 +1,4 @@
+import { UtilityService } from './../services/utility.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { CourseInformation } from './../classes/course-information';
 import { CourseData } from './../classes/course-data';
@@ -17,7 +18,11 @@ export class CoursesOverviewComponent implements OnInit {
   coursesListShortId: string = ZenkitCollections.courses.shortId;
   activeImageContainer;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private utilityService: UtilityService
+  ) { }
 
     ngOnInit() {
       this.modelService.getCourses().then((coursesData: CourseData) => {
@@ -44,5 +49,9 @@ export class CoursesOverviewComponent implements OnInit {
 
     mouseLeave(course) {
       this.activeImageContainer.classList.remove('active');
+    }
+
+    convertStringToUrlId(string) {
+      return this.utilityService.convertStringToUrlId(string);
     }
 }

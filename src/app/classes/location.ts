@@ -1,4 +1,5 @@
 export class Location {
+    uuid: string;
     name: string;
     address: string;
     addressName: string;
@@ -10,4 +11,7 @@ export class Location {
     gallery: string[];
     embed: string;
     initials: string;
+    consultationTime1: string;
+    consultationTime2: string;
+    consultationTime3: string;
 }

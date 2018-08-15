@@ -97,6 +97,63 @@ export const RequiredElements  = {
             name: 'Bild',
             type: ElementTypes.files,
             mappedClassPropertyName: 'image'
+        },
+        {
+            name: 'YouTube Video ID',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'youtubeId'
+        }
+    ],
+    schedule: [
+        {
+            name: 'Titel',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'title'
+        },
+        {
+            name: 'Kurs',
+            type: ElementTypes.reference,
+            mappedClassPropertyName: 'course'
+        },
+        {
+            name: 'Lehrer',
+            type: ElementTypes.reference,
+            mappedClassPropertyName: 'teacher'
+        },
+        {
+            name: 'Standort',
+            type: ElementTypes.reference,
+            mappedClassPropertyName: 'location'
+        },
+        {
+            name: 'Schwierigkeitsgrade',
+            type: ElementTypes.labels,
+            mappedClassPropertyName: 'levels'
+        },
+        {
+            name: 'Altersgruppen',
+            type: ElementTypes.labels,
+            mappedClassPropertyName: 'ageGroups'
+        },
+        {
+            name: 'Startzeit Stunden',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeStartHours'
+        },
+        {
+            name: 'Startzeit Minuten',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeStartMinutes'
+        },
+        {
+            name: 'Endzeit Stunden',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeEndHours'
+        },
+        {
+            name: 'Endzeit Minuten',
+            type: ElementTypes.number,
+            mappedClassPropertyName: 'timeEndMinutes'
         }
     ],
     team: [
@@ -181,6 +238,21 @@ export const RequiredElements  = {
             name: 'Initialien',
             type: ElementTypes.text,
             mappedClassPropertyName: 'initials'
+        },
+        {
+            name: '1. Beratungszeit',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'consultationTime1'
+        },
+        {
+            name: '2. Beratungszeit',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'consultationTime2'
+        },
+        {
+            name: '3. Beratungszeit',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'consultationTime3'
         }
     ],
     contact: [
@@ -198,6 +270,11 @@ export const RequiredElements  = {
             name: 'Telefon',
             type: ElementTypes.text,
             mappedClassPropertyName: 'phone'
+        },
+        {
+            name: 'Impressum',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'imprint'
         }
     ],
     imprint: [

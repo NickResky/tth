@@ -5,6 +5,7 @@ import { DynamicContentService } from './../../services/dynamic-content.service'
 import { Teacher } from './../../classes/teacher';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { TeamService } from '../../services/team.service';
 
 @Component({
   selector: 'app-team',
@@ -18,7 +19,11 @@ export class TeamComponent implements OnInit {
   showModalDialog = false;
   teamListShortId = undefined;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private teamService: TeamService
+  ) { }
 
   ngOnInit() {
     this.teamListShortId = ZenkitCollections.team.shortId;
@@ -30,6 +35,11 @@ export class TeamComponent implements OnInit {
     this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
       this.backgroundImage = _.get(mainPageData, ['teamSection', 'image']);
     });
+  }
+
+  getTeacherUrlId(teacher) {
+    const urlId = this.teamService.convertTeacherToUrlId(teacher);
+    return urlId;
   }
 
   getFileSrc(file) {

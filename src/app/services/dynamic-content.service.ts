@@ -1,3 +1,4 @@
+import { ElementTypes } from './../shared/constants/element_types';
 import { Observable } from 'rxjs/Observable';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { BlogPost } from './../classes/blog-post';
@@ -19,7 +20,7 @@ export class DynamicContentService {
 
   // Only necessary if zenkit collection is not public
   // TODO: Remove before release
-  // apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5NzV9LCJpYXQiOjE1MDQ5ODc4Mzl9.j1BVnV32r_h2xZrTxUIsQWEDrzZjiEgzf6Sl6-UtfR0';
+  apiToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo5NzV9LCJpYXQiOjE1MDQ5ODc4Mzl9.j1BVnV32r_h2xZrTxUIsQWEDrzZjiEgzf6Sl6-UtfR0';
   // headers.append('Authorization', 'Bearer ' + this.apiToken);
 
   getTestDataWithPromise(listId): Promise<any> {
@@ -42,6 +43,7 @@ export class DynamicContentService {
 
   fetchList(listId): Promise<any> {
     const headers: Headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.apiToken);
     return this.http
       .get(this.apiUrl + 'lists/' + listId, {headers: headers})
       .toPromise();
@@ -49,6 +51,7 @@ export class DynamicContentService {
 
   fetchListElements(listId): Promise<any> {
     const headers: Headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.apiToken);
     return this.http
       .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
       .toPromise();
@@ -56,6 +59,7 @@ export class DynamicContentService {
 
   fetchListEntriesInKanbanMode(elementIdX: string, listId): Promise<any> {
     const headers: Headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.apiToken);
     const httpRequestBody = {
       filter: {
         AND: {
@@ -94,7 +98,7 @@ export class DynamicContentService {
 
           if (_.has(sectionElement, ['id']) === false) {
             // tslint:disable-next-line:max-line-length
-            throw new Error('Missing Section Field! Please define a field called "Sorted  Items" for the Zenkit Collection ' + listJson.name + '.');
+            throw new Error('Missing Section Field! Please define a field called "Labels" for the Zenkit Collection ' + listJson.name + '.');
           }
 
           return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
@@ -131,13 +135,27 @@ export class DynamicContentService {
 
     const zenkitCollection = getZenkitCollection(params.list);
 
+    const predefinedCategories: any = {};
+
     const modifiedRequiredElements = _
       .map(zenkitCollection.requiredElements, (requiredElement: any) => {
         const fullElement: any = _.find(params.elements, {
           name: requiredElement.name
         });
         if (_.isNil(fullElement)) {
-          throw new Error('Element ' + requiredElement.name + 'in the Collection ' + params.list.name + ' was not found.');
+          throw new Error('Element ' + requiredElement.name + ' in the Collection ' + params.list.name + ' was not found.');
+        }
+        // Save element data for labels
+        if (_.isEqual(requiredElement.type, ElementTypes.labels)) {
+          requiredElement.predefinedCategories = fullElement.elementData.predefinedCategories;
+          const predefinedCategory = _.map(requiredElement.predefinedCategories, (c) => {
+            return {
+              name: c.name,
+              id: c.id,
+              colorHex: c.colorHex
+            };
+          });
+          predefinedCategories[requiredElement.mappedClassPropertyName] = (predefinedCategory);
         }
         requiredElement.uuid = fullElement.uuid;
         return requiredElement;
@@ -152,18 +170,38 @@ export class DynamicContentService {
         });
 
         const simplifiedEntry = {
-          label: label.name
+          label: _.get(label, ['name']),
+          uuid: entry.uuid,
+          shortId: entry.shortId
         };
 
         return _.reduce(modifiedRequiredElements, (modifiedEntry, modifiedElement) => {
+          // Handle label elements
+          let value;
+          if (_.isEqual(modifiedElement.type,  ElementTypes.labels)) {
+            const labelsIds1 = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
 
-          const value = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
+            if (_.isEmpty(labelsIds1) === false) {
+              value = _.map(labelsIds1, (labelId) => {
+                const label = _.find(modifiedElement.predefinedCategories, {
+                  id: labelId
+                });
+                return _.get(label, ['name']);
+              });
+            }
+          // Handle other elements
+          } else {
+            value = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
+          }
           modifiedEntry[modifiedElement.mappedClassPropertyName] = value;
           return modifiedEntry;
         }, simplifiedEntry);
       });
     return new Promise((resolve, reject) => {
-      return resolve(modifiedEntries);
+      return resolve({
+        entries: modifiedEntries,
+        prefefinedCategories: predefinedCategories
+      });
     });
   }
 

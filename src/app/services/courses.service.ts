@@ -13,18 +13,18 @@ export class CoursesService {
   getCourses() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.courses.shortId)
-      .then((modifiedEntries) => {
-            const pricesEntry: any = _.find(modifiedEntries, {
+      .then((zenkitListData) => {
+            const pricesEntry: any = _.find(zenkitListData.entries, {
                 label: 'Preise'
             });
-            const scheduleMGEntry: any = _.find(modifiedEntries, {
+            const scheduleMGEntry: any = _.find(zenkitListData.entries, {
                 label: 'Stundenplan Markgroeningen'
             });
-            const scheduleLBEntry: any = _.find(modifiedEntries, {
+            const scheduleLBEntry: any = _.find(zenkitListData.entries, {
                 label: 'Stundenplan Ludwigsburg'
             });
 
-            const courseEntries: any = _.filter(modifiedEntries, {
+            const courseEntries: any = _.filter(zenkitListData.entries, {
                 label: 'Kurs'
             });
 
@@ -35,9 +35,12 @@ export class CoursesService {
 
             courseData.courses = _.map(courseEntries, (courseEntry) => {
                 const course = new CourseInformation();
+                course.uuid = courseEntry.uuid;
+                course.shortId = courseEntry.shortId;
                 course.title = courseEntry.title;
                 course.description = courseEntry.description;
                 course.image = _.head(courseEntry.image);
+                course.youtubeId = courseEntry.youtubeId;
                 return course;
             });
 

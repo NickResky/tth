@@ -13,9 +13,10 @@ export class LocationsService {
   getLocationData() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.locations.shortId)
-      .then((modifiedEntries) => {
-        const locations = _.map(modifiedEntries, (modifiedEntry) => {
+      .then((zenkitListData) => {
+        const locations = _.map(zenkitListData.entries, (modifiedEntry) => {
           const location = new Location();
+          location.uuid = modifiedEntry.uuid;
           location.name = modifiedEntry.name;
           location.addressName = modifiedEntry.addressName;
           location.addressStreet = modifiedEntry.addressStreet;
@@ -26,6 +27,9 @@ export class LocationsService {
           location.gallery = modifiedEntry.gallery;
           location.embed = modifiedEntry.embed;
           location.initials = modifiedEntry.initials;
+          location.consultationTime1 = modifiedEntry.consultationTime1;
+          location.consultationTime2 = modifiedEntry.consultationTime2;
+          location.consultationTime3 = modifiedEntry.consultationTime3;
           return location;
         });
         const locationMG = _.find(locations, {

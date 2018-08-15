@@ -1,12 +1,12 @@
-<app-header-image [image]='backgroundImage' [listId]='coursesListShortId' title='Preise und Stundenpläne'></app-header-image>
+<!-- <div class="header-image">
+  <app-header-image [image]='backgroundImage' [listId]='coursesListShortId' title='Preise und Stundenpläne'></app-header-image>
+</div> -->
 <div class="courses-content-container main-content-container main-content-container-padding">
   <div class="courses-content main-content">
+    <app-schedule locationInitials='MG'></app-schedule>
+    <app-schedule locationInitials='LB'></app-schedule>
     <a name="preise"></a>
     <h2 id="preise">Preise</h2>
     <div class="courses-gerneral-description" [innerHTML]='text'></div>
-    <a name="stundenplaene"></a>
-    <h2 id="stundenplaene">vollständige Stundenpläne</h2>
-    <object type="application/pdf" data="assets/StundenplanMKG.pdf" class="schedule"></object>
-    <object type="application/pdf" data="assets/StundenplanLB.pdf" class="schedule"></object>
   </div>
 </div>

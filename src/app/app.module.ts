@@ -31,18 +31,22 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { CourseDetailsComponent } from './sites/courses/course-details/course-details.component';
 import { LocationComponent } from './sites/locations/location/location.component';
 import { HeaderImageComponent } from './components/header-image/header-image.component';
-import { ImprintComponent } from "./sites/imprint/imprint.component";
-import {ImprintService} from "./services/imprint.service";
-import {CourseInformationComponent} from "./sites/courses/course-information/course-information.component";
-import {TeacherDetailsComponent} from "./sites/team/teacher-details/teacher-details.component";
+import { ImprintComponent } from './sites/imprint/imprint.component';
+import { ImprintService } from './services/imprint.service';
+import { CourseInformationComponent } from './sites/courses/course-information/course-information.component';
+import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { ScheduleService } from './services/schedule.service';
+import { UtilityService } from './services/utility.service';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'aktuelles', component: CurrentComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'lehrer/:name', component: TeacherDetailsComponent},
+  { path: 'lehrer/:id', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
-  { path: 'kurse/:id', component: CourseDetailsComponent },
+  { path: 'kurse/:shortId', component: CourseDetailsComponent },
+  { path: 'kurse/:shortId/:title', component: CourseDetailsComponent },
   { path: 'kurs-informationen', component: CourseInformationComponent },
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:id', component: PerformanceComponent },
@@ -75,7 +79,8 @@ const routes: Routes = [
     LocationComponent,
     HeaderImageComponent,
     ImprintComponent,
-    CourseInformationComponent
+    CourseInformationComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -95,7 +100,9 @@ const routes: Routes = [
     LocationsService,
     ContactService,
     ModelService,
-    ImprintService
+    ImprintService,
+    ScheduleService,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,63 @@
+@import '../../../../variables.scss';
+@import '../../../../mixins.scss';
+
+.teacher-content-container {
+    .teacher-content {
+        padding-top: 30px;
+        padding-bottom: 50px;
+        .teacher-heading {
+            text-transform: uppercase;
+            display: none;
+            margin: 0;
+        }
+        .teacher-flex-container {
+
+            .teacher-image {
+                margin: 0 auto 50px auto;
+                max-width: 300px;
+                height: 400px;
+                background-size: cover;
+            }
+            .teacher-description-container {
+                .teacher-task {
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-md - 1) {
+    .teacher-content-container {
+        .teacher-content {
+            &>.teacher-heading {
+                display: block;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .teacher-content-container {
+        .teacher-content {
+            .teacher-flex-container {
+                display: flex;
+                flex-direction: row;
+                .teacher-image {
+                    width: 300px;
+                }
+                .teacher-description-container {
+                    margin-left: 50px;
+                    flex: 1;
+
+                    &>.teacher-heading {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -16,8 +16,8 @@ export class MainPageService {
   getMainPageSections() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.home.shortId)
-      .then((modifiedEntries) => {
-        const mainPageSections = _.map(modifiedEntries, (modifiedEntry) => {
+      .then((zenkitListData) => {
+        const mainPageSections = _.map(zenkitListData.entries, (modifiedEntry) => {
           const mainPageSection = new MainPageSection();
           mainPageSection.title = modifiedEntry.title;
           mainPageSection.description = modifiedEntry.description;

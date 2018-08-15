@@ -13,8 +13,8 @@ export class ImprintService {
   getImprint() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.imprint.shortId)
-      .then((modifiedEntries) => {
-        const modifiedEntry: any = _.head(modifiedEntries);
+      .then((zenkitListData) => {
+        const modifiedEntry: any = _.head(zenkitListData.entries);
         const imprint = new Imprint();
         imprint.title = modifiedEntry.title;
         imprint.description = modifiedEntry.description;

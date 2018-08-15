@@ -38,7 +38,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/lodash": "^4.14.110",
     "@types/node": "^6.0.113",
-    "@vimeo/player": "^2.6.1",
+    "@vimeo/player": "^2.6.3",
     "core-js": "^2.5.7",
     "hoek": "^5.0.3",
     "lodash": "^4.17.10",

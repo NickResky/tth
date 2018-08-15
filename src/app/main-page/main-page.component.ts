@@ -26,7 +26,7 @@ export class MainPageComponent implements OnInit {
   teamSection: MainPageSection;
   locationsSection: MainPageSection;
   contactSection: MainPageSection;
-  videoLoaded = true;
+  videoLoaded = false;
 
   constructor(
     private dynamicContentService: DynamicContentService,
@@ -48,27 +48,28 @@ export class MainPageComponent implements OnInit {
         this.contactSection = mainPageData.contactSection;
       });
 
-      const options = {
-        id: 246740715,
-        loop: true,
-        autoplay: true
-      };
+      // const options = {
+      //   id: 246740715,
+      //   loop: true,
+      //   autoplay: true,
+      //   muted: true
+      // };
 
-      const player = new Player('video-iframe', options);
+      // const player = new Player('video-iframe', options);
 
-      const self = this;
+      // const self = this;
 
-      player.on('play', function() {
-        console.log('played the video!');
-        const iframe = document.querySelector('iframe');
-        if (iframe !== null) {
-          iframe.style.width = '100%';
-          iframe.style.height = '100%';
-        }
-        setTimeout(function(){
-          self.videoLoaded = true;
-         }, 3500);
-    });
+      // player.on('play', function() {
+      //   console.log('played the video!');
+      //   const iframe = document.querySelector('iframe');
+      //   if (iframe !== null) {
+      //     iframe.style.width = '100%';
+      //     iframe.style.height = '100%';
+      //   }
+      //   setTimeout(function(){
+      //     self.videoLoaded = true;
+      //    }, 3500);
+      // });
     }
 
     getSafeUrl(url) {

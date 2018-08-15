@@ -14,8 +14,8 @@ export class CurrentService {
     return new Promise((resolve, reject) => {
       this.dynamicContentService
         .fetchAndTransformZenkitListData(ZenkitCollections.current.shortId)
-        .then((modifiedEntries) => {
-          let posts: BlogPost[] = _.map(modifiedEntries, (modifiedEntry) => {
+        .then((zenkitListData) => {
+          let posts: BlogPost[] = _.map(zenkitListData.entries, (modifiedEntry) => {
             const blogPost = new BlogPost();
             blogPost.title = modifiedEntry.title;
             blogPost.description = modifiedEntry.description;

@@ -5,10 +5,33 @@
     color: $main-text-color-on-dark-bg;
     .course-description {
         margin-top: 50px;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
+    }
+    .course-details-link {
+        color: $main-text-color-on-dark-bg;
+        display: block;
+        margin-bottom: 50px;
+    }
+    .course-details-video {
+        width: 100%;
+        height: 300px;
     }
 }
 
-.course-details-link {
-    color: $main-text-color-on-dark-bg;
+@media (min-width: $media-breakpoint-md) {
+    .course-details-content-container {
+        .course-details-video {
+            height: 400px;
+        }
+    }
 }
+
+@media (min-width: $media-breakpoint-lg) {
+    .course-details-content-container {
+        .course-details-video {
+            height: 500px;
+        }
+    }
+}
+
+

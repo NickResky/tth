@@ -22,16 +22,13 @@
       </a>
       <div class="dropdown">
         <a class="navbar-navigation-link" routerLink="/kurse" (click)="toggleMobileNav()">Kurse
-          <i class="fa fa-caret-down"></i>
+          <i class="dropdown-arrow fa fa-caret-down"></i>
         </a>
         <div class="dropdown-content">
-          <a routerLink="/kurse">Kurse</a>
-          <a routerLink="/kurs-informationen">Preise und Stundenpläne</a>
+          <a class="navbar-navigation-link dropdown-link" routerLink="/kurse" (click)="toggleMobileNav()">Kurse</a>
+          <a class="navbar-navigation-link dropdown-link" routerLink="/kurs-informationen" (click)="toggleMobileNav()">Preise und Stundenpläne</a>
         </div>
       </div>
-      <!--<a class="navbar-navigation-link" routerLink="/kurse" (click)="toggleMobileNav()">-->
-        <!--Kurse-->
-      <!--</a> -->
       <a class="navbar-navigation-link" routerLink="/aktuelles" (click)="toggleMobileNav()">
         Aktuelles
       </a>

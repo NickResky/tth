@@ -45,6 +45,7 @@
     }
     .navbar-navigation {
         display: block;
+
         .navbar-navigation-link {
             display: block;
             color: $header-link-color;
@@ -76,7 +77,7 @@
     }
 }
 
-@media (max-width: $media-breakpoint-md) {
+@media (max-width: $media-breakpoint-md - 1) {
     .navbar {
         .navbar-menu-icon-container {
             position: fixed;
@@ -102,10 +103,11 @@
             overflow: hidden;
             z-index: 1;
             background-color: #202020;
+
             .navbar-navigation-link {
                 font-style: italic;
-                font-size: 2em;
-                padding: 15px 0 15px 50px;
+                font-size: 1.8em;
+                padding: 4px 0 4px 50px;
                 @include transition(
                     padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
                     background-color 0.3s
@@ -113,6 +115,20 @@
                 &:hover {
                     background-color: $accent-color-1;
                     padding-left: 70px;
+                }
+            }
+
+            .dropdown {
+                display: block;
+
+                /* Only display the dropdown content on mobile so that "Kurse" is only displayed once */
+                > .navbar-navigation-link {
+                    display: none;
+                }
+                
+                .dropdown-content {
+                    display: block;
+
                 }
             }
         }
@@ -149,16 +165,59 @@
             @include flex(1);
             @include flexbox();
             @include justify-content(flex-end);
-            .navbar-navigation-link {
+
+            .navbar-navigation-link:not(.dropdown-link) {
+                height: 25px;
+                margin: 25px 10px 20px 10px;
+                text-align: center; 
                 border-bottom: 1px transparent;
                 @include transition(border-bottom 0.3s ease);
-                height: 25px;
-                margin: 25px 20px 20px 20px;
-                text-align: center;
                 &:hover {
-                   border-bottom: 1px solid #fff;
+                    border-bottom: 1px solid #fff;
+                 }
+            }
+
+            .dropdown {
+                overflow: hidden;
+
+                &:hover {
+                    .dropdown-arrow {
+                        opacity: 1;
+                    }
+                    .dropdown-content {
+                        display: block;
+                    }
+                }
+
+                .dropdown-arrow {
+                    opacity: 0;
+                    @include transition(opacity 0.3s ease);
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+
+                    .dropdown-link {
+                        float: none;
+                        color: black;
+                        margin: 0;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                        text-align: left;
+
+                        &:hover {
+                            background-color: #ddd;
+                        }
+                    }
                 }
             }
+
             .home-link {
                 display: none;
             }
@@ -166,48 +225,12 @@
     }
 }
 
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  border: none;
-  outline: none;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+@media (min-width: $media-breakpoint-lg) {
+    .navbar {
+        .navbar-navigation {
+            .navbar-navigation-link:not(.dropdown-link) {
+                margin: 25px 20px 20px 20px;
+            }
+        }
+    }
 }
