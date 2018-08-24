@@ -149,8 +149,8 @@
                     margin-right: 15px;
                     display: flex;
                     flex-direction: column;
-                    border: 1px solid #2c2c2c;
-                    background-color: #171717;
+                    border: 1px solid $border-color-dark-2;
+                    background-color: $background-color-dark-2;
                     border-radius: 3px;
                     &.has-course-link:hover {
                         background-color: #222222;

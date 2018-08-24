@@ -1,3 +1,4 @@
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -80,7 +81,8 @@ const routes: Routes = [
     HeaderImageComponent,
     ImprintComponent,
     CourseInformationComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    CookiesNotificationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
