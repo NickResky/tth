@@ -29,7 +29,7 @@
     }
     .image-slider-control-container {
         position: absolute;
-        height: 600px;
+        height: 300px;
         width: 30%;
         i { 
             position: absolute;
@@ -76,5 +76,8 @@
 @media (min-width: $media-breakpoint-md) {
     .image-slider-container {
         height: 600px;
+        .image-slider-control-container {
+            height: 600px;
+        }
     }
 }
