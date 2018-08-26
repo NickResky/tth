@@ -4,6 +4,17 @@
   <div class="location-content main-content">
     <div class="location-description" [innerHTML]="location.description">
     </div>
+    <div class="location-info-container">
+      <span class="location-info-heading">Adresse</span>
+      <span>{{location.addressName}}</span>
+      <span>{{location.addressStreet}}</span>
+      <span class="text-inline">{{location.addressZIP}}</span>
+      <span class="text-inline">&nbsp;{{location.addressCity}}</span>
+      <span class="location-info-heading">Beratungszeiten</span>
+      <span>{{location.consultationTime1}}</span>
+      <span *ngIf="location.consultationTime2">{{location.consultationTime2}}</span>
+      <span *ngIf="location.consultationTime3">{{location.consultationTime3}}</span>
+    </div>
   </div>
 </div>
 <div *ngIf="location" class="google-maps-iframe-container">

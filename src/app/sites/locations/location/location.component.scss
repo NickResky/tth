@@ -4,6 +4,19 @@
 .location-content-container {
     .location-content {
         padding-top: 50px;
+        .location-info-container {
+            margin-top: 30px;
+            span {
+                display: block;
+            }
+            .location-info-heading {
+                margin-top: 20px;
+                font-weight: 600;
+            }
+            .text-inline {
+                display: inline-block;
+            }
+        }
     }
 }
 .google-maps-iframe-container {
