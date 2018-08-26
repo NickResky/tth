@@ -13,12 +13,49 @@ $postBorderColor: #e1e1e1;
             padding-bottom: 50px;        
             .post {
                 .post-image-container {
+                    display: block;
                     height: 300px;
                     background-size: cover;
                     background-color: $postBorderColor;
                 }
+                .post-date {
+                    margin-top: 30px;
+                    display: inline-block;
+                    font-size: 12px;
+                    padding: 0 10px;
+                    font-weight: 600;
+                    background-color: $main-background-color-dark;
+                    color: $main-text-color-on-dark-bg; 
+                }
                 .post-heading {
-                    margin: 5px 0 5px 0;
+                    margin: 10px 0 5px 0;
+                    line-height: 30px;
+                }
+                .post-description-container {
+                    height: 150px;
+                    padding-bottom: 20px;
+                    text-overflow: ellipsis;
+                    position: relative;
+                    .post-description {
+                        height: 160px;
+                        overflow: hidden;
+                    }
+                    .post-description-overlay {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 75px;
+                        background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,white));
+                        background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%,white 100%);
+                        background: -o-linear-gradient(top,rgba(255,255,255,0) 0%,white 100%);
+                        background: -ms-linear-gradient(top,rgba(255,255,255,0) 0%,white 100%);
+                        background: linear-gradient(to bottom,rgba(255,255,255,0) 0%,white 100%);
+                    }
+                }
+                .post-more-button {
+                    margin-top: 20px;
+                    text-decoration: underline;
                 }
             }
         }

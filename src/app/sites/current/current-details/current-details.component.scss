@@ -1,0 +1,26 @@
+@import '../../../../variables.scss';
+@import '../../../../mixins.scss';
+
+.blog-post-details {
+    .blog-post-details-content {
+        .post-title {
+            text-align: center;
+            text-transform: uppercase;
+            margin: 20px 0 0 0;
+        }
+        .post-date {
+            display: inline-block;
+            margin: 0 0 100px 0;
+            font-size: 18px;
+            display: inline-block;
+            font-size: 12px;
+            padding: 0 10px;
+            font-weight: 600;
+            border: 1px solid $main-text-color-on-dark-bg;
+        }
+        .post-description {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+    }
+}

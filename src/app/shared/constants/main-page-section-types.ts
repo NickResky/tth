@@ -11,7 +11,7 @@ export const MainPageSectionTypes = [
     {
         name: 'Neuigkeiten',
         cssClass: 'main-page-section-current',
-        routerLink: 'aktuelles'
+        routerLink: 'blog'
     },
     {
         name: 'Auftritte',

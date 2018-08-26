@@ -1,3 +1,4 @@
+import { UtilityService } from './../../../services/utility.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -17,7 +18,11 @@ export class PerformanceComponent implements OnInit {
   performance: Performance;
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private modelService: ModelService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private modelService: ModelService,
+    private utilityService: UtilityService
+  ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -28,13 +33,7 @@ export class PerformanceComponent implements OnInit {
    });
   }
 
-  getDateString() {
-    if (_.isNil(this.performance.date)) {
-      return undefined;
-    }
-    const date = this.performance.date.getDate().toString() + '.'
-      + (this.performance.date.getMonth() + 1).toString() + '.'
-      + this.performance.date.getFullYear();
-    return date;
+  getDateStringLong() {
+    return this.utilityService.convertDateToStringLong(this.performance.date);
   }
 }

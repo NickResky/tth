@@ -64,6 +64,15 @@ export class ModelService {
         return this.blogPostsData;
     }
 
+    getPostByShortId(shortId: string): Promise<BlogPost> {
+        return this.getPosts().then((posts) => {
+            const post = _.find(posts, (p: BlogPost) => {
+                return p.shortId === shortId;
+            });
+            return post;
+        });
+    }
+
     getPerformances() {
         if (_.isNil(this.performancesData)) {
             this.performancesData = this.stageService.getPerformances();

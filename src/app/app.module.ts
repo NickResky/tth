@@ -1,3 +1,4 @@
+import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,7 +43,9 @@ import { UtilityService } from './services/utility.service';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'aktuelles', component: CurrentComponent },
+  { path: 'blog', component: CurrentComponent },
+  { path: 'blog/:shortId', component: CurrentDetailsComponent },
+  { path: 'blog/:shortId/:title/:date', component: CurrentDetailsComponent },
   { path: 'team', component: TeamComponent },
   { path: 'lehrer/:id', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
@@ -65,6 +68,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CurrentComponent,
+    CurrentDetailsComponent,
     TeamComponent,
     TeacherDetailsComponent,
     CoursesComponent,

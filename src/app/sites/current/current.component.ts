@@ -1,3 +1,4 @@
+import { UtilityService } from './../../services/utility.service';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { DynamicContentService } from './../../services/dynamic-content.service';
@@ -20,7 +21,11 @@ export class CurrentComponent implements OnInit {
   backgroundImage;
   currentListShortId: string;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) {
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private utilityService: UtilityService
+  ) {
 
   }
 
@@ -60,5 +65,9 @@ export class CurrentComponent implements OnInit {
   getPostImageBackgroundStyle(post) {
     const image = _.head(post.images);
     return this.getBackgroundStyle(image);
+  }
+
+  getDateStringLong(date) {
+    return this.utilityService.convertDateToStringLong(date);
   }
 }
