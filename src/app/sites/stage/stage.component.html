@@ -1,11 +1,14 @@
 <!--<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>-->
-<div class="performances-container">
-  <a *ngFor="let performance of performances, let i = index" class="performance-poster-container" [routerLink]="performance.routerLink" [ngStyle]="getBackgroundStyle(performance.poster)">
-
-    <div class="performance-poster-mask"></div>
-    <div class="performance-poster-label-container">
-      <div class="performance-poster-year-label" *ngIf="performance.date" [innerHTML]="performance.date.getFullYear()"></div>
-      <div class="performance-poster-title" [innerHTML]="performance.title"></div>
+<div class="performances-content-container main-content-container main-content-container-padding">
+  <div class="performances-content main-content">
+    <div *ngFor="let performance of performances, let i = index" class="performance-poster-container" >
+      <a class="performance-poster" [routerLink]="performance.routerLink" [ngStyle]="getBackgroundStyle(performance.poster)">
+        <div class="performance-poster-mask"></div>
+        <div class="performance-poster-label-container">
+          <div class="performance-poster-year-label" *ngIf="performance.date" [innerHTML]="performance.date.getFullYear()"></div>
+          <div class="performance-poster-title" [innerHTML]="performance.title"></div>
+        </div>
+      </a>
     </div>
-  </a>
+  </div>
 </div>
