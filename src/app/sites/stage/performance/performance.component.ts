@@ -13,7 +13,6 @@ import * as _ from 'lodash';
 })
 export class PerformanceComponent implements OnInit {
 
-  performanceId: number;
   performancesListId: string = ZenkitCollections.performances.shortId;
   performance: Performance;
   private sub: any;
@@ -26,9 +25,9 @@ export class PerformanceComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.performanceId = +params['id']; // (+) converts string 'id' to a number
-      this.modelService.getPerformances().then((performances: Performance[]) => {
-        this.performance = performances[this.performanceId];
+      const performanceShortId = params['shortId']; // (+) converts string 'id' to a number
+      this.modelService.getPerformanceByShortId(performanceShortId).then((performance) => {
+        this.performance = performance;
       });
    });
   }

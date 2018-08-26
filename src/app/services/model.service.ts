@@ -83,6 +83,15 @@ export class ModelService {
         });
     }
 
+    getPerformanceByShortId(shortId: string) {
+        return this.getPerformances().then((performances) => {
+            const performance = _.find(performances, (p) => {
+                return p.shortId === shortId;
+            });
+            return performance;
+        });
+    }
+
     getCourses() {
         if (_.isNil(this.coursesData)) {
             this.coursesData = this.coursesService.getCourses();
