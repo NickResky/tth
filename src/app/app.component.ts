@@ -28,8 +28,8 @@ export class AppComponent implements OnInit {
 
     this.modelService.isPageLoaded().subscribe(
         (x) => {
-            this.pageLoaded = x;
             setTimeout(() => {
+                this.pageLoaded = x;
                 this.removeOverlay = x;
             }, 300);
         }

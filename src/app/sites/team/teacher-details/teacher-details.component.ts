@@ -28,10 +28,12 @@ export class TeacherDetailsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.sub = this.route.params.subscribe(params => {
       const teacherUrlId = params['id'];
       this.modelService.getTeacherByUrlId(teacherUrlId).then((teacher: Teacher) => {
         this.teacher = teacher;
+        this.modelService.setPageLoaded(true);
       });
     });
   }

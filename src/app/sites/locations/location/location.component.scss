@@ -2,6 +2,12 @@
 @import '../../../../mixins.scss';
 
 .location-content-container {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-delay: 1.7s;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
     .location-content {
         padding-top: 50px;
         .location-info-container {
@@ -20,6 +26,12 @@
     }
 }
 .google-maps-iframe-container {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-delay: 2.5s;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
     margin-bottom: 100px;
     margin-top: 100px;
 }

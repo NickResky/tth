@@ -29,12 +29,11 @@ export class ContactComponent implements OnInit {
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
-    this.modelService.getContact().then((contact: Contact) => {
-      this.contact = contact;
-    });
-
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
-      this.backgroundImage = _.get(mainPageData, ['contactSection', 'image']);
+    this.modelService.setPageLoaded(false);
+    Promise.all([this.modelService.getContact(), this.modelService.getMainPageSections()]).then((results: any) => {
+      this.contact = results[0];
+      this.backgroundImage = _.get(results[1], ['contactSection', 'image']);
+      this.modelService.setPageLoaded(true);
     });
   }
 

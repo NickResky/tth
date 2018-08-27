@@ -52,6 +52,9 @@ export class MainPageComponent implements OnInit {
         this.locationsSection = mainPageData.locationsSection;
         this.contactSection = mainPageData.contactSection;
 
+        if (window.innerWidth < 768) {
+          this.modelService.setPageLoaded(true);
+        }
       });
 
       // const options = {

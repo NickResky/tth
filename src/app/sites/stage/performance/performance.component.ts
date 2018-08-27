@@ -24,10 +24,12 @@ export class PerformanceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.sub = this.route.params.subscribe(params => {
       const performanceShortId = params['shortId']; // (+) converts string 'id' to a number
       this.modelService.getPerformanceByShortId(performanceShortId).then((performance) => {
         this.performance = performance;
+        this.modelService.setPageLoaded(true);
       });
    });
   }

@@ -33,12 +33,14 @@ export class CurrentDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.currentListShortId = ZenkitCollections.current.shortId;
 
     this.sub = this.route.params.subscribe(params => {
         const blogPostShortId = params['shortId'];
         this.modelService.getPostByShortId(blogPostShortId).then((blogPost) => {
             this.blogPost = blogPost;
+            this.modelService.setPageLoaded(true);
         });
     });
   }

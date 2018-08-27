@@ -1,22 +1,20 @@
 @import '../../../variables.scss';
 @import '../../../mixins.scss';
 
-$postBorderColor: #e1e1e1;
-
 .main-content-container {
-    background-color: #ffffff;        
+    //background-color: #ffffff;        
     .blog-posts {
         padding-top: 20px;
         padding-bottom: 20px;
         .post-container {   
-            color: #303030;
+            //color: #303030;
             padding-bottom: 50px;        
             .post {
                 .post-image-container {
                     display: block;
                     height: 300px;
                     background-size: cover;
-                    background-color: $postBorderColor;
+                    background-color: $border-color-dark-2;
                 }
                 .post-date {
                     margin-top: 30px;
@@ -24,8 +22,8 @@ $postBorderColor: #e1e1e1;
                     font-size: 12px;
                     padding: 0 10px;
                     font-weight: 600;
-                    background-color: $main-background-color-dark;
-                    color: $main-text-color-on-dark-bg; 
+                    color: $main-background-color-dark;
+                    background-color: $main-text-color-on-dark-bg; 
                 }
                 .post-heading {
                     margin: 10px 0 5px 0;
@@ -46,11 +44,11 @@ $postBorderColor: #e1e1e1;
                         left: 0;
                         width: 100%;
                         height: 75px;
-                        background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,white));
-                        background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%,white 100%);
-                        background: -o-linear-gradient(top,rgba(255,255,255,0) 0%,white 100%);
-                        background: -ms-linear-gradient(top,rgba(255,255,255,0) 0%,white 100%);
-                        background: linear-gradient(to bottom,rgba(255,255,255,0) 0%,white 100%);
+                        background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(255,255,255,0)),color-stop(100%,black));
+                        background: -webkit-linear-gradient(top,rgba(255,255,255,0) 0%,black 100%);
+                        background: -o-linear-gradient(top,rgba(255,255,255,0) 0%,black 100%);
+                        background: -ms-linear-gradient(top,rgba(255,255,255,0) 0%,black 100%);
+                        background: linear-gradient(to bottom,rgba(255,255,255,0) 0%,black 100%);
                     }
                 }
                 .post-more-button {
@@ -82,13 +80,13 @@ $postBorderColor: #e1e1e1;
                 padding-bottom: 0;
                 display: inline-block;
                 width: 49%;
-                border-bottom: 1px solid $postBorderColor; 
+                border-bottom: 1px solid $border-color-dark-2;
                 .post {
                     padding-bottom: 50px;
                     padding-top: 50px;
                 }
                 &:nth-child(odd) {
-                    border-right: 1px solid $postBorderColor;            
+                    border-right: 1px solid $border-color-dark-2;          
                     .post {
                         padding-right: 50px;
                     }

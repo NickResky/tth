@@ -19,19 +19,20 @@ export class FooterComponent implements OnInit {
   phone: string;
   facebook: string;
   youtube: string;
+  footerLoaded = false;
 
   constructor(private modelService: ModelService) { }
 
   ngOnInit() {
-    this.modelService.getContact().then((contact: Contact) => {
+    Promise.all([this.modelService.getContact(), this.modelService.getLocationData()]).then((results: any) => {
+      const contact = results[0];
+      const locationData = results[1];
       this.name = contact.name;
       this.email = contact.email;
       this.phone = contact.phone;
-    });
-
-    this.modelService.getLocationData().then((locationData: LocationData) => {
       this.locationMG = locationData.locationMG;
       this.locationLB = locationData.locationLB;
+      this.footerLoaded = true;
     });
   }
 

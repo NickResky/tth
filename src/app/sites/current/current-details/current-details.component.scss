@@ -2,6 +2,12 @@
 @import '../../../../mixins.scss';
 
 .blog-post-details {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-delay: 0.3s;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
     .blog-post-details-content {
         .post-title {
             text-align: center;

@@ -16,7 +16,7 @@ import 'rxjs/Rx';
 })
 export class CurrentComponent implements OnInit {
 
-  posts: Promise<BlogPost[]>;
+  posts: BlogPost[];
   dataPromise: Promise<{}>;
   backgroundImage;
   currentListShortId: string;
@@ -41,14 +41,16 @@ export class CurrentComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.currentListShortId = ZenkitCollections.current.shortId;
 
     // this.dataPromise = this.testFunction();
 
-    this.posts = this.modelService.getPosts();
-
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
+    Promise.all([this.modelService.getPosts(), this.modelService.getMainPageSections()]).then((results) => {
+      this.posts = results[0];
+      const mainPageData = results[1];
       this.backgroundImage = _.get(mainPageData, ['blogSection', 'image']);
+      this.modelService.setPageLoaded(true);
     });
   }
 

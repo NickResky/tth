@@ -31,12 +31,14 @@ export class CourseDetailsComponent implements OnInit {
   ) { }
 
     ngOnInit() {
+      this.modelService.setPageLoaded(false);
       this.sub = this.route.params.subscribe(params => {
         this.courseShortId = params['shortId'];
         this.modelService.getCourses().then((coursesData: CourseData) => {
           this.course = _.find(coursesData.courses, (course) => {
             return course.shortId === this.courseShortId;
           });
+          this.modelService.setPageLoaded(true);
         });
      });
     }
