@@ -40,6 +40,7 @@ import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-de
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -95,7 +96,8 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule
+    FormsModule,
+    YoutubePlayerModule
   ],
   providers: [
     MainPageService,

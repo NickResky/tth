@@ -1,4 +1,12 @@
 <app-header></app-header>
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
+<div class="loading-overlay" [ngClass]="[pageLoaded ? 'hide-overlay' : '', removeOverlay ? 'remove-overlay' : '']">
+  <div class="vertical-centered-box">
+    <div class="loader-circle"></div>
+    <div class="loader-line-mask">
+      <div class="loader-line"></div>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>
 <app-cookies-notification></app-cookies-notification>

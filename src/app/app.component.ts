@@ -1,3 +1,4 @@
+import { ModelService } from './services/model.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -9,8 +10,13 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  pageLoaded = true;
+  removeOverlay = true;
 
-  constructor(private router: Router) { }
+  constructor(
+        private router: Router,
+        private modelService: ModelService
+    ) { }
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
@@ -19,5 +25,14 @@ export class AppComponent implements OnInit {
         }
         window.scrollTo(0, 0);
     });
-}
+
+    this.modelService.isPageLoaded().subscribe(
+        (x) => {
+            this.pageLoaded = x;
+            setTimeout(() => {
+                this.removeOverlay = x;
+            }, 300);
+        }
+    );
+  }
 }

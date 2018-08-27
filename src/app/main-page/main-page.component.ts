@@ -8,7 +8,7 @@ import { MainPageSection } from './../classes/main-page-section';
 import * as _ from 'lodash';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
-import Player from '@vimeo/player';
+
 
 @Component({
   selector: 'app-main-page',
@@ -27,6 +27,9 @@ export class MainPageComponent implements OnInit {
   locationsSection: MainPageSection;
   contactSection: MainPageSection;
   videoLoaded = false;
+  player: YT.Player;
+  videoId: string;
+  loadedVideoFraction = 0;
 
   constructor(
     private dynamicContentService: DynamicContentService,
@@ -34,11 +37,13 @@ export class MainPageComponent implements OnInit {
     private domSanitizer: DomSanitizer) { }
 
     ngOnInit() {
+      this.modelService.setPageLoaded(false);
+
       this.mainPageListShortId = ZenkitCollections.home.shortId;
 
       this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
 
-        this.video = mainPageData.video;
+        this.videoId = mainPageData.video;
         this.philosophySection = mainPageData.philosophySection;
         this.blogSection = mainPageData.blogSection;
         this.coursesSection = mainPageData.coursesSection;
@@ -46,6 +51,7 @@ export class MainPageComponent implements OnInit {
         this.teamSection = mainPageData.teamSection;
         this.locationsSection = mainPageData.locationsSection;
         this.contactSection = mainPageData.contactSection;
+
       });
 
       // const options = {
@@ -72,11 +78,47 @@ export class MainPageComponent implements OnInit {
       // });
     }
 
+    savePlayer(player) {
+      this.player = player;
+    }
+
+    onStateChange(event) {
+      if (this.player.getPlayerState() === 1) {
+        this.modelService.setPageLoaded(true);
+      }
+      const loadedFraction = event.target.getVideoLoadedFraction();
+    }
+
     getSafeUrl(url) {
       return this.domSanitizer.bypassSecurityTrustResourceUrl('https://player.vimeo.com/video/246740715'  + '?wmode=opaque&api=1&autoplay=1&background=1&loop=1&player_id=video_video_817&title=0&byline=0&portrait=0&color=3ab9ff');
     }
 
     getFileSrc(file) {
       return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
+    }
+
+    getPlayerStyle() {
+      return {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        rel: 0
+      };
+    }
+
+    getPlayerVars() {
+      return {
+        controls: 0,
+        showinfo: 0,
+        autoplay: 1,
+        loop: 1,
+        playlist: 'zLtXD9J2ZhU',
+        frameborder: '0',
+        allow: 'autoplay',
+        modestbranding: 1,
+        'ytp-pause-overlay': 0
+      };
     }
 }
