@@ -54,6 +54,10 @@ export class MainPageComponent implements OnInit {
 
         if (window.innerWidth < 768) {
           this.modelService.setPageLoaded(true);
+        } else {
+          setTimeout(() => {
+            this.modelService.setPageLoaded(true);
+          }, 4000);
         }
       });
 
@@ -83,6 +87,7 @@ export class MainPageComponent implements OnInit {
 
     savePlayer(player) {
       this.player = player;
+      this.player.playVideo();
     }
 
     onStateChange(event) {
