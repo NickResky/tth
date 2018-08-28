@@ -4,7 +4,7 @@ export const MainPageSectionTypes = [
         cssClass: 'main-page-section-video',
     },
     {
-        name: 'Philosopie',
+        name: 'Philosophie',
         cssClass: 'main-page-section-philosophy',
         routerLink: ''
     },
