@@ -27,6 +27,7 @@ export class MainPageComponent implements OnInit {
   locationsSection: MainPageSection;
   contactSection: MainPageSection;
   videoLoaded = false;
+  hideVideo = true;
   player: YT.Player;
   youtubeVideoId: string;
   loadedVideoFraction = 0;
@@ -91,8 +92,22 @@ export class MainPageComponent implements OnInit {
     }
 
     onStateChange(event) {
+      /*
+        Player state 0 = ended
+        Player state 1 = play
+        Player state 2 = pause
+      */
+      console.log('player state: ' + this.player.getPlayerState());
       if (this.player.getPlayerState() === 1) {
         this.modelService.setPageLoaded(true);
+        this.hideVideo = false;
+      }
+      if (this.player.getPlayerState() === 2) {
+        this.modelService.setPageLoaded(true);
+        this.hideVideo = true;
+      }
+      if (this.player.getPlayerState() === 0) {
+        this.player.playVideo();
       }
       const loadedFraction = event.target.getVideoLoadedFraction();
     }

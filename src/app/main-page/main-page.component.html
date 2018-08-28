@@ -1,4 +1,4 @@
-<div class="main-page-title-video-container">
+<div class="main-page-title-video-container" [ngClass]="hideVideo === true  ? 'hide' : ''">
     <youtube-player *ngIf="youtubeVideoId"
         [videoId]="youtubeVideoId"
         height='100%'
