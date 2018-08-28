@@ -19,11 +19,17 @@ export class FooterComponent implements OnInit {
   phone: string;
   facebook: string;
   youtube: string;
-  footerLoaded = false;
+  footerContentLoaded = false;
+  mainPageContentLoaded = false;
 
   constructor(private modelService: ModelService) { }
 
   ngOnInit() {
+    this.modelService.isPageLoaded().subscribe(
+      (x) => {
+        this.mainPageContentLoaded = x;
+      });
+
     Promise.all([this.modelService.getContact(), this.modelService.getLocationData()]).then((results: any) => {
       const contact = results[0];
       const locationData = results[1];
@@ -32,7 +38,7 @@ export class FooterComponent implements OnInit {
       this.phone = contact.phone;
       this.locationMG = locationData.locationMG;
       this.locationLB = locationData.locationLB;
-      this.footerLoaded = true;
+      this.footerContentLoaded = true;
     });
   }
 

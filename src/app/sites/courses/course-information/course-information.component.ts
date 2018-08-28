@@ -17,8 +17,6 @@ export class CourseInformationComponent implements OnInit {
 
   backgroundImage;
   text;
-  scheduleMG;
-  scheduleLB;
   coursesListShortId = ZenkitCollections.courses.shortId;
 
   constructor(private modelService: ModelService,
@@ -26,15 +24,19 @@ export class CourseInformationComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.fragment.subscribe();
+    this.modelService.setPageLoaded(false);
 
-    this.modelService.getCourses().then((coursesData: CourseData) => {
-      this.text = coursesData.text;
-      this.scheduleMG = coursesData.scheduleMG;
-      this.scheduleLB = coursesData.scheduleLB;
-    });
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
+    Promise.all([
+      this.modelService.getCourses(), this.modelService.getMainPageSections(),
+      this.modelService.getScheduleData()
+    ]).then((results: any) => {
+      const courseData: CourseData = results[0];
+      const mainPageData: MainPageData = results[1];
+
+      this.text = courseData.text;
+
       this.backgroundImage = _.get(mainPageData, ['coursesSection', 'image']);
+      this.modelService.setPageLoaded(true);
     });
   }
 
