@@ -13,8 +13,6 @@ import { ScheduleData } from '../classes/schedule-data';
 @Injectable()
 export class ScheduleService {
 
-  dayIndices = ['montag', 'dienstag', 'mittwoch', 'donnerstag', 'freitag'];
-
   constructor(private dynamicContentService: DynamicContentService) { }
 
   getScheduleData (courses: CourseInformation[], teachers: Teacher[], locationData: LocationData) {
@@ -84,6 +82,15 @@ export class ScheduleService {
 
         scheduleData.levelLabels = levelLabels;
 
+        const dayLabels = _.map(_.get(zenkitListData, ['prefefinedCategories', 'days']), (dayLabel) => {
+            const labelName = _.get(dayLabel, ['name']);
+            return {
+                title: labelName
+            };
+        });
+
+        scheduleData.dayLabels = dayLabels;
+
         const appointments: Appointment[] = _.reduce(zenkitListData.entries, (results: Appointment[], modifiedEntry) => {
 
             // Every appointments needs to have a day label and title
@@ -134,9 +141,9 @@ export class ScheduleService {
                 return location.uuid === locationUuid;
             });
 
-            if (modifiedEntry.label) {
-                appointment.dayIndex = _.findIndex(this.dayIndices, (dayIndex) => {
-                    return _.includes(modifiedEntry.label.toLowerCase(), dayIndex);
+            if (modifiedEntry.days && _.head(modifiedEntry.days)) {
+                appointment.dayIndex = _.findIndex(_.get(zenkitListData, ['prefefinedCategories', 'days']), (day: any) => {
+                    return day.name === _.head(modifiedEntry.days);
                 });
             }
             results.push(appointment);

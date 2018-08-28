@@ -87,6 +87,7 @@
     .schedule-component {
         .schedule-container {
             .day-container {
+                width: 100% !important;
                 &.day-container-empty {
                     display: none;
                 }
@@ -143,7 +144,6 @@
             display: flex;
             flex-direction: row;
             .day-container {
-                width: 20%;
                 .appointment-container {
                     padding: 5px 10px;
                     margin-right: 15px;

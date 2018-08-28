@@ -111,6 +111,11 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'title'
         },
         {
+            name: 'Labels',
+            type: ElementTypes.labels,
+            mappedClassPropertyName: 'days'
+        },
+        {
             name: 'Kurs',
             type: ElementTypes.reference,
             mappedClassPropertyName: 'course'
