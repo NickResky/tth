@@ -38,18 +38,18 @@ export class UtilityService {
       }
       const monthString = _
         .chain(date.getMonth().toString())
-        .replace(/12/, 'Dezember')
-        .replace(/11/, 'November')
-        .replace(/10/, 'October')
-        .replace(/9/, 'September')
-        .replace(/8/, 'August')
-        .replace(/7/, 'July')
-        .replace(/6/, 'Juni')
-        .replace(/5/, 'Mai')
-        .replace(/4/, 'April')
-        .replace(/3/, 'März')
-        .replace(/2/, 'Februar')
-        .replace(/1/, 'Januar')
+        .replace(/11/, 'Dezember')
+        .replace(/10/, 'November')
+        .replace(/9/, 'October')
+        .replace(/8/, 'September')
+        .replace(/7/, 'August')
+        .replace(/6/, 'July')
+        .replace(/5/, 'Juni')
+        .replace(/4/, 'Mai')
+        .replace(/3/, 'April')
+        .replace(/2/, 'März')
+        .replace(/1/, 'Februar')
+        .replace(/0/, 'Januar')
         .value();
 
       const dateString = date.getDate().toString() + '. '
