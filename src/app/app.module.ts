@@ -56,9 +56,9 @@ const routes: Routes = [
   { path: 'auftritte', component: StageComponent },
   { path: 'auftritte/:shortId', component: PerformanceComponent },
   { path: 'auftritte/:shortId/:title/:date', component: PerformanceComponent },
-  { path: 'locations', component: LocationsComponent },
-  { path: 'location/:id', component: LocationComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'standorte', component: LocationsComponent },
+  { path: 'standorte/:id', component: LocationComponent },
+  { path: 'kontakt', component: ContactComponent },
   { path: 'impressum', component: ImprintComponent},
   { path: '**', redirectTo: '' }
 ];
