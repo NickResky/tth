@@ -28,7 +28,7 @@ export class MainPageComponent implements OnInit {
   contactSection: MainPageSection;
   videoLoaded = false;
   player: YT.Player;
-  videoId: string;
+  youtubeVideoId: string;
   loadedVideoFraction = 0;
 
   constructor(
@@ -43,7 +43,7 @@ export class MainPageComponent implements OnInit {
 
       this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
 
-        this.videoId = mainPageData.video;
+        this.youtubeVideoId = mainPageData.youtubeVideoId;
         this.philosophySection = mainPageData.philosophySection;
         this.blogSection = mainPageData.blogSection;
         this.coursesSection = mainPageData.coursesSection;

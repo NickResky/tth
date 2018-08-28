@@ -5,7 +5,7 @@ export class BlogPost {
     title: string;
     description: string;
     images: string[];
-    embed: string;
+    youtubeVideoId: string;
     date: Date;
     routerLink: string;
 }

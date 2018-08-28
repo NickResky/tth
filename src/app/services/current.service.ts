@@ -25,7 +25,7 @@ export class CurrentService {
             blogPost.title = modifiedEntry.title;
             blogPost.description = modifiedEntry.description;
             blogPost.images = modifiedEntry.images;
-            blogPost.embed = modifiedEntry.embed;
+            blogPost.youtubeVideoId = modifiedEntry.youtubeVideoId;
             blogPost.date = modifiedEntry.date;
             if (_.isNil(modifiedEntry.date) === false) {
               blogPost.date = new Date(modifiedEntry.date);

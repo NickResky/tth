@@ -22,7 +22,7 @@ export class MainPageService {
           mainPageSection.title = modifiedEntry.title;
           mainPageSection.description = modifiedEntry.description;
           mainPageSection.image = _.head(modifiedEntry.image);
-          mainPageSection.youtubeEmbed = modifiedEntry.videoEmbed;
+          mainPageSection.youtubeVideoId = modifiedEntry.youtubeVideoId;
 
           const sectionType = _.find(MainPageSectionTypes, {
             name: modifiedEntry.title
@@ -61,7 +61,7 @@ export class MainPageService {
         const contactSection = getSection('Kontakt');
 
         const mainPageData = new MainPageData();
-        mainPageData.video = _.get(videoSection, ['youtubeEmbed']);
+        mainPageData.youtubeVideoId = _.get(videoSection, ['youtubeVideoId']);
         mainPageData.philosophySection = philosophySection;
         mainPageData.blogSection = blogSection;
         mainPageData.coursesSection = coursesSection;
