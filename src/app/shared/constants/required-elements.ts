@@ -89,9 +89,9 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'description'
         },
         {
-            name: 'Stundenplan',
+            name: 'Datei',
             type: ElementTypes.files,
-            mappedClassPropertyName: 'schedule'
+            mappedClassPropertyName: 'file'
         },
         {
             name: 'Bild',

@@ -23,6 +23,12 @@ export class CoursesService {
             const scheduleLBEntry: any = _.find(zenkitListData.entries, {
                 label: 'Stundenplan Ludwigsburg'
             });
+            const registrationChildEntry: any = _.find(zenkitListData.entries, {
+                label: 'Anmeldung Kind'
+            });
+            const registrationAdultEntry: any = _.find(zenkitListData.entries, {
+                label: 'Anmeldung Erwachsener'
+            });
 
             const courseEntries: any = _.filter(zenkitListData.entries, {
                 label: 'Kurs'
@@ -30,8 +36,10 @@ export class CoursesService {
 
             const courseData = new CourseData();
             courseData.text = pricesEntry.description;
-            courseData.scheduleMG = _.head(scheduleMGEntry.schedule);
-            courseData.scheduleLB = _.head(scheduleLBEntry.schedule);
+            courseData.scheduleMG = _.head(scheduleMGEntry.file);
+            courseData.scheduleLB = _.head(scheduleLBEntry.file);
+            courseData.registrationChild = _.head(registrationChildEntry.file);
+            courseData.registrationAdult = _.head(registrationAdultEntry.file);
 
             courseData.courses = _.map(courseEntries, (courseEntry) => {
                 const course = new CourseInformation();

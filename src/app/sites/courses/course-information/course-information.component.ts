@@ -20,6 +20,8 @@ export class CourseInformationComponent implements OnInit {
   scheduleMG;
   scheduleLB;
   coursesListShortId = ZenkitCollections.courses.shortId;
+  registrationChild;
+  registrationAdult;
 
   constructor(private modelService: ModelService,
               private dynamicContentService: DynamicContentService,
@@ -32,6 +34,8 @@ export class CourseInformationComponent implements OnInit {
       this.text = coursesData.text;
       this.scheduleMG = coursesData.scheduleMG;
       this.scheduleLB = coursesData.scheduleLB;
+      this.registrationChild = this.getFileSrc(coursesData.registrationChild);
+      this.registrationAdult = this.getFileSrc(coursesData.registrationAdult);
     });
     this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
       this.backgroundImage = _.get(mainPageData, ['coursesSection', 'image']);
