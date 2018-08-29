@@ -38,22 +38,114 @@ import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-de
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
+import {SeoService} from "./services/seo.service";
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent },
-  { path: 'aktuelles', component: CurrentComponent },
-  { path: 'team', component: TeamComponent },
-  { path: 'lehrer/:id', component: TeacherDetailsComponent},
-  { path: 'kurse', component: CoursesComponent },
-  { path: 'kurse/:shortId', component: CourseDetailsComponent },
-  { path: 'kurse/:shortId/:title', component: CourseDetailsComponent },
-  { path: 'kurs-informationen', component: CourseInformationComponent },
-  { path: 'auftritte', component: StageComponent },
-  { path: 'auftritte/:id', component: PerformanceComponent },
-  { path: 'locations', component: LocationsComponent },
-  { path: 'location/:id', component: LocationComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'impressum', component: ImprintComponent},
+  { path: '',
+    component: MainPageComponent,
+    data: {
+      title: "Tanztheater Anita Hanke",
+      metatags: {
+        description: "Tanzschule in Markgröningen und Ludwigsburg. Kursangebot von Ballett über Jazz und Modern bis hin zu Hip Hop und Breakdance",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater, Tanzen, Ballett, Jazz, Musical, Hip Hop, Breakdance, Modern, Contemporary, Kreativ, Kinder"
+      }
+    }
+  },
+  { path: 'aktuelles',
+    component: CurrentComponent,
+      data: {
+      title: "Aktuelles | Tanztheater Anita Hanke",
+        metatags: {
+          description: "Neuigkeiten aus dem Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+          keywords: "Neuigkeiten, Tanzschule, Markgröningen, Ludwigsburg, Tanztheater"
+      }
+    }
+  },
+  { path: 'team',
+    component: TeamComponent,
+    data: {
+      title: "Team | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Alle Lehrer des Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Lehrer, Team, Tanzschule, Markgröningen, Ludwigsburg, Tanztheater"
+      }
+    }
+  },
+  { path: 'lehrer/:id',
+    component: TeacherDetailsComponent
+  },
+  { path: 'kurse',
+    component: CoursesComponent,
+    data: {
+      title: "Kurse | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Kursangebot (Ballett, Kreativer Kindertanz, Jazz, Modern, Contemporary, Musical Jazz, Hip Hop, Breakdance) des Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Kurse, Tanzschule, Markgröningen, Ludwigsburg, Tanztheater, Ballett, Jazz, Musical, Hip Hop, Breakdance, Modern, Contemporary, Kreativ"
+      }
+    }
+  },
+  { path: 'kurse/:shortId',
+    component: CourseDetailsComponent
+  },
+  { path: 'kurse/:shortId/:title',
+    component: CourseDetailsComponent
+  },
+  { path: 'kurs-informationen',
+    component: CourseInformationComponent,
+    data: {
+      title: "Kurs Informationen | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Preise und Stundenpläne des Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater, Preis, Stundenplan"
+      }
+    }
+  },
+  { path: 'auftritte',
+    component: StageComponent,
+    data: {
+      title: "Auftritte | Tanztheater Anita Hanke",
+      metatags: {
+        description: "vergangene Auftritte des Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater, Auftritt"
+      }
+    }
+  },
+  { path: 'auftritte/:id',
+    component: PerformanceComponent
+  },
+  { path: 'locations',
+    component: LocationsComponent,
+    data: {
+      title: "Standorte | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Standorte des Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater, Standort"
+      }
+    }
+  },
+  { path: 'location/:id',
+    component: LocationComponent
+  },
+  { path: 'contact',
+    component: ContactComponent,
+    data: {
+      title: "Kontakt | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater"
+      }
+    }
+  },
+  { path: 'impressum',
+    component: ImprintComponent,
+    data: {
+      title: "Impressum | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater"
+      }
+    }
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -102,7 +194,8 @@ const routes: Routes = [
     ModelService,
     ImprintService,
     ScheduleService,
-    UtilityService
+    UtilityService,
+    SeoService
   ],
   bootstrap: [AppComponent]
 })
