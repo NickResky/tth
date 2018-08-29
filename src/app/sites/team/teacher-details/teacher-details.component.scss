@@ -2,6 +2,12 @@
 @import '../../../../mixins.scss';
 
 .teacher-content-container {
+    opacity: 0;
+    animation-delay: 0.3s;
+    animation-name: fade-in;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
     .teacher-content {
         padding-top: 30px;
         padding-bottom: 50px;

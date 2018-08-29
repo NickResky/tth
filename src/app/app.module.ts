@@ -1,3 +1,5 @@
+import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -38,10 +40,13 @@ import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-de
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
+// import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'aktuelles', component: CurrentComponent },
+  { path: 'blog', component: CurrentComponent },
+  { path: 'blog/:shortId', component: CurrentDetailsComponent },
+  { path: 'blog/:shortId/:title/:date', component: CurrentDetailsComponent },
   { path: 'team', component: TeamComponent },
   { path: 'lehrer/:id', component: TeacherDetailsComponent},
   { path: 'kurse', component: CoursesComponent },
@@ -49,10 +54,11 @@ const routes: Routes = [
   { path: 'kurse/:shortId/:title', component: CourseDetailsComponent },
   { path: 'kurs-informationen', component: CourseInformationComponent },
   { path: 'auftritte', component: StageComponent },
-  { path: 'auftritte/:id', component: PerformanceComponent },
-  { path: 'locations', component: LocationsComponent },
-  { path: 'location/:id', component: LocationComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'auftritte/:shortId', component: PerformanceComponent },
+  { path: 'auftritte/:shortId/:title/:date', component: PerformanceComponent },
+  { path: 'standorte', component: LocationsComponent },
+  { path: 'standorte/:id', component: LocationComponent },
+  { path: 'kontakt', component: ContactComponent },
   { path: 'impressum', component: ImprintComponent},
   { path: '**', redirectTo: '' }
 ];
@@ -64,6 +70,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CurrentComponent,
+    CurrentDetailsComponent,
     TeamComponent,
     TeacherDetailsComponent,
     CoursesComponent,
@@ -80,7 +87,8 @@ const routes: Routes = [
     HeaderImageComponent,
     ImprintComponent,
     CourseInformationComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    CookiesNotificationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -89,6 +97,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule,
     FormsModule
+    // YoutubePlayerModule
   ],
   providers: [
     MainPageService,

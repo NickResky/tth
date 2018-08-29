@@ -1,4 +1,4 @@
-<app-header-image [image]='backgroundImage' [listId]='teamListShortId' title='Team'></app-header-image>
+<app-header-image *ngIf="backgroundImage" [image]='backgroundImage' [listId]='teamListShortId' title='Team'></app-header-image>
 <div class="team-content-container main-content-container main-content-container-padding">
   <div class="team-content main-content">
     <div *ngFor="let teacher of teachers" class="team-member-container">

@@ -22,13 +22,14 @@ export class ScheduleComponent implements OnInit {
   courseAppointmentsAll: Appointment[];
   courseAppointmentsByDay: Array<Appointment[]>;
   courseAppointmentsByDayAll: Array<Appointment[]>;
-  dayTitles = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
+  days: any;
   private sub: any;
   location: Location;
   levels: any[];
   ageGroups: any[];
   displayColors = true;
   localStorage = window.localStorage;
+  columnWidth: string;
 
   constructor(
     private modelService: ModelService,
@@ -73,11 +74,17 @@ export class ScheduleComponent implements OnInit {
           });
         }
 
+        this.days = _.get(scheduleData, ['dayLabels']);
+
         // Categorize appointments by day
+        const daysTotal = _.get(scheduleData, ['dayLabels', 'length']);
         const sortedAppointments = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < daysTotal; i++) {
           sortedAppointments[i] = [];
         }
+
+        this.columnWidth = ((1 / daysTotal) * 100) + '%';
+
         // tslint:disable-next-line:max-line-length
         this.courseAppointmentsByDay = _.reduce(this.courseAppointments, (sortedArray: any, appointment: Appointment) => {
           sortedArray[appointment.dayIndex].push(appointment);
@@ -163,7 +170,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   getDayTitle(index: number) {
-    return this.dayTitles[index];
+    return _.get(this.days[index], ['title']);
   }
 
   getTimeString(date: Date) {

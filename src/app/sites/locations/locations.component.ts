@@ -24,10 +24,12 @@ export class LocationsComponent implements OnInit {
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.modelService.getLocationData().then((locationData: LocationData) => {
       this.locationMG = locationData.locationMG;
       this.locationLB = locationData.locationLB;
       this.locations = [locationData.locationMG, locationData.locationLB];
+      this.modelService.setPageLoaded(true);
     });
   }
 

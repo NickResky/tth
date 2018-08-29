@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { ScheduleData } from './../classes/schedule-data';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
@@ -21,6 +22,7 @@ import { Imprint } from './../classes/imprint';
 import { ImprintService } from './imprint.service';
 import { CourseInformation } from '../classes/course-information';
 import { Appointment } from '../classes/appointment';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ModelService {
@@ -34,6 +36,14 @@ export class ModelService {
     locationData: Promise<LocationData>;
     imprintData: Promise<Imprint>;
     scheduleData: Promise<ScheduleData>;
+    pageLoaded = new Subject<boolean>();
+
+
+    // pageLoaded = Observable.create(observer => {
+    //     observer.onNext(false);
+    //     observer.onCompleted();
+    //     return observer;
+    // });
 
     constructor(
         private mainPageService: MainPageService,
@@ -46,6 +56,14 @@ export class ModelService {
         private imprintService: ImprintService,
         private scheduleService: ScheduleService
     ) { }
+
+    isPageLoaded() {
+        return this.pageLoaded;
+    }
+
+    setPageLoaded(value) {
+        this.pageLoaded.next(value);
+    }
 
     getMainPageSections(): Promise<MainPageData> {
         if (_.isNil(this.mainPageData)) {
@@ -64,6 +82,15 @@ export class ModelService {
         return this.blogPostsData;
     }
 
+    getPostByShortId(shortId: string): Promise<BlogPost> {
+        return this.getPosts().then((posts) => {
+            const post = _.find(posts, (p: BlogPost) => {
+                return p.shortId === shortId;
+            });
+            return post;
+        });
+    }
+
     getPerformances() {
         if (_.isNil(this.performancesData)) {
             this.performancesData = this.stageService.getPerformances();
@@ -71,6 +98,15 @@ export class ModelService {
         }
         return new Promise((resolve, reject) => {
             return resolve(this.performancesData);
+        });
+    }
+
+    getPerformanceByShortId(shortId: string) {
+        return this.getPerformances().then((performances) => {
+            const performance = _.find(performances, (p: Performance) => {
+                return p.shortId === shortId;
+            });
+            return performance;
         });
     }
 

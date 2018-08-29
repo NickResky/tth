@@ -2,7 +2,7 @@ import { ContactService } from './../services/contact.service';
 import { MainPageComponent } from './../main-page/main-page.component';
 import { MainPageSection } from './main-page-section';
 export class MainPageData {
-    video: string;
+    youtubeVideoId: string;
     philosophySection: MainPageSection;
     blogSection: MainPageSection;
     coursesSection: MainPageSection;

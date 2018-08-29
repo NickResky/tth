@@ -1,0 +1,8 @@
+<div class="blog-post-details main-content-container main-content-container-padding" *ngIf="blogPost">
+    <div class="blog-post-details-content main-content">
+        <h1 class="post-title">{{blogPost.title}}</h1>
+        <app-image-slider [images]='blogPost.images' [listid]='currentListShortId'></app-image-slider>
+        <div class="post-description" [innerHTML]="blogPost.description"></div>
+        <div class="post-date">{{getDateStringLong()}}</div>
+    </div>
+</div>

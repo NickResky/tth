@@ -18,9 +18,9 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'image'
         },
         {
-            name: 'Youtube',
+            name: 'YouTube Video ID',
             type: ElementTypes.text,
-            mappedClassPropertyName: 'videoEmbed'
+            mappedClassPropertyName: 'youtubeVideoId'
         }
     ],
     current: [
@@ -40,9 +40,9 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'images'
         },
         {
-            name: 'YouTube Link',
+            name: 'YouTube Video ID',
             type: ElementTypes.text,
-            mappedClassPropertyName: 'embed'
+            mappedClassPropertyName: 'youtubeVideoId'
         },
         {
             name: 'Datum',
@@ -109,6 +109,11 @@ export const RequiredElements  = {
             name: 'Titel',
             type: ElementTypes.text,
             mappedClassPropertyName: 'title'
+        },
+        {
+            name: 'Labels',
+            type: ElementTypes.labels,
+            mappedClassPropertyName: 'days'
         },
         {
             name: 'Kurs',
