@@ -103,7 +103,7 @@ export class ModelService {
 
     getPerformanceByShortId(shortId: string) {
         return this.getPerformances().then((performances) => {
-            const performance = _.find(performances, (p) => {
+            const performance = _.find(performances, (p: Performance) => {
                 return p.shortId === shortId;
             });
             return performance;

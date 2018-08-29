@@ -144,4 +144,10 @@ export class MainPageComponent implements OnInit {
         'ytp-pause-overlay': 0
       };
     }
+
+    getYoutubeLink() {
+      // tslint:disable-next-line:max-line-length
+      const url = 'https://www.youtube.com/embed/'  + this.youtubeVideoId + '?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playlist=zLtXD9J2ZhU';
+      return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    }
 }
