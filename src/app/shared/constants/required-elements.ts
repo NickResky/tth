@@ -89,9 +89,9 @@ export const RequiredElements  = {
             mappedClassPropertyName: 'description'
         },
         {
-            name: 'Stundenplan',
+            name: 'Datei',
             type: ElementTypes.files,
-            mappedClassPropertyName: 'schedule'
+            mappedClassPropertyName: 'file'
         },
         {
             name: 'Bild',
@@ -275,11 +275,6 @@ export const RequiredElements  = {
             name: 'Telefon',
             type: ElementTypes.text,
             mappedClassPropertyName: 'phone'
-        },
-        {
-            name: 'Impressum',
-            type: ElementTypes.text,
-            mappedClassPropertyName: 'imprint'
         }
     ],
     imprint: [

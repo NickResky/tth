@@ -4,4 +4,6 @@ export class CourseData {
     courses: CourseInformation[];
     scheduleMG: string;
     scheduleLB: string;
+    registrationChild: string;
+    registrationAdult: string;
 }

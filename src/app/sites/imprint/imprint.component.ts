@@ -15,11 +15,11 @@ import * as _ from 'lodash';
 })
 export class ImprintComponent implements OnInit {
 
-  imprint: string;
+  imprint: Imprint;
 
   ngOnInit() {
-    this.modelService.getContact().then((contact: Contact) => {
-      this.imprint = _.get(contact, ['imprint']);
+    this.modelService.getImprint().then((imprint: Imprint) => {
+      this.imprint = imprint;
     });
   }
 

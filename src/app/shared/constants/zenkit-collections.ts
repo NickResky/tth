@@ -34,7 +34,7 @@ export const ZenkitCollections  = {
         requiredElements: RequiredElements.contact
     },
     imprint: {
-        shortId: 'BkZ0fDvNQ',
+        shortId: 'HkLziF2WUm',
         requiredElements: RequiredElements.imprint
     }
 };
