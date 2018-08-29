@@ -3,7 +3,8 @@
   <div class="blog-posts main-content">
     <div *ngFor="let post of posts" class="post-container">
       <div class="post">
-        <a class="post-image-container" [routerLink]="post.routerLink" [ngStyle]="getPostImageBackgroundStyle(post)">
+        <a class="post-image-container" [routerLink]="post.routerLink" [ngStyle]="getPostImageBackgroundStyle(post)" *ngIf="post.images && post.images.length > 0">
+            <i class="default-icon" *ngIf="!post.images || post.images.length === 0"></i>
         </a>
         <div class="post-date">{{getDateStringLong(post.date)}}</div>
         <a [routerLink]="post.routerLink">
