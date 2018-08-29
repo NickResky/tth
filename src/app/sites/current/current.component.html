@@ -1,12 +1,19 @@
-<app-header-image [image]='backgroundImage' [listId]='currentListShortId' title='Aktuelles'></app-header-image>
+<app-header-image *ngIf="backgroundImage" [image]='backgroundImage' [listId]='currentListShortId' title='Aktuelles'></app-header-image>
 <div class="main-content-container main-content-container-padding">
   <div class="blog-posts main-content">
-    <div *ngFor="let post of posts | async" class="post-container">
+    <div *ngFor="let post of posts" class="post-container">
       <div class="post">
-        <div class="post-image-container" [ngStyle]="getPostImageBackgroundStyle(post)">
+        <a class="post-image-container" [routerLink]="post.routerLink" [ngStyle]="getPostImageBackgroundStyle(post)">
+        </a>
+        <div class="post-date">{{getDateStringLong(post.date)}}</div>
+        <a [routerLink]="post.routerLink">
+          <h2 [innerHTML]='post.title' class="post-heading"></h2>
+        </a>
+        <div class="post-description-container">
+          <div class="post-description" [innerHTML]='post.description'></div>
+          <div class="post-description-overlay"></div>
         </div>
-        <h2 [innerHTML]='post.title' class="post-heading"></h2>
-        <div [innerHTML]='post.description'></div>
+        <a class="post-more-button" [routerLink]="post.routerLink">Mehr erfahren</a>
       </div>
     </div>
   </div>

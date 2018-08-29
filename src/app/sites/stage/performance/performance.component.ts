@@ -1,3 +1,4 @@
+import { UtilityService } from './../../../services/utility.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,29 +13,28 @@ import * as _ from 'lodash';
 })
 export class PerformanceComponent implements OnInit {
 
-  performanceId: number;
   performancesListId: string = ZenkitCollections.performances.shortId;
   performance: Performance;
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private modelService: ModelService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private modelService: ModelService,
+    private utilityService: UtilityService
+  ) { }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.sub = this.route.params.subscribe(params => {
-      this.performanceId = +params['id']; // (+) converts string 'id' to a number
-      this.modelService.getPerformances().then((performances: Performance[]) => {
-        this.performance = performances[this.performanceId];
+      const performanceShortId = params['shortId']; // (+) converts string 'id' to a number
+      this.modelService.getPerformanceByShortId(performanceShortId).then((performance) => {
+        this.performance = performance;
+        this.modelService.setPageLoaded(true);
       });
    });
   }
 
-  getDateString() {
-    if (_.isNil(this.performance.date)) {
-      return undefined;
-    }
-    const date = this.performance.date.getDate().toString() + '.'
-      + (this.performance.date.getMonth() + 1).toString() + '.'
-      + this.performance.date.getFullYear();
-    return date;
+  getDateStringLong() {
+    return this.utilityService.convertDateToStringLong(this.performance.date);
   }
 }

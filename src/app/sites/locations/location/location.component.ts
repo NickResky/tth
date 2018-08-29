@@ -28,6 +28,7 @@ export class LocationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.sub = this.route.params.subscribe(params => {
       this.locationId = +params['id'];
       this.modelService.getLocationData().then((locationData: LocationData) => {
@@ -36,6 +37,7 @@ export class LocationComponent implements OnInit {
         } else {
           this.location = locationData.locationLB;
         }
+        this.modelService.setPageLoaded(true);
       });
    });
   }

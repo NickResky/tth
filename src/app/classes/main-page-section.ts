@@ -3,6 +3,6 @@ export class MainPageSection {
     description: string;
     cssClass: string;
     image: string;
-    youtubeEmbed: string;
+    youtubeVideoId: string;
     routerLink: string;
 }

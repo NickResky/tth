@@ -2,6 +2,12 @@
 @import '../../../../mixins.scss';
 
 .course-details-content-container {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-delay: 1.7s;
+    animation-duration: 0.7s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
     color: $main-text-color-on-dark-bg;
     .course-description {
         margin-top: 50px;

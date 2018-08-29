@@ -25,8 +25,10 @@ export class CoursesOverviewComponent implements OnInit {
   ) { }
 
     ngOnInit() {
+      this.modelService.setPageLoaded(false);
       this.modelService.getCourses().then((coursesData: CourseData) => {
         this.courses = coursesData.courses;
+        this.modelService.setPageLoaded(true);
       });
     }
 

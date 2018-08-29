@@ -1,0 +1,16 @@
+<div class="cookies-notification-container" *ngIf="displayCookiesNotification">
+    <div class="cookies-notification">
+        <div class="cookies-notification-content">
+            <div class="cookies-notification-description-container">
+                <div class="cookies-notification-description">
+                    Wir verwenden Cookies, um Ihnen ein optimales Nutzererlebnis zu bieten und Social Media einzubinden. Nutzen Sie unsere Website weiter, stimmen Sie der Verwendung zu. <a routerLink="/impressum" class="cookies-notification-description-link">Mehr Informationen</a>
+                </div>
+            </div>
+            <div class="cookies-notification-buttons-container">
+                <div class="cookies-notification-okay-button" (click)="acceptCookies()">
+                    Okay
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

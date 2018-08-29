@@ -26,14 +26,13 @@ export class TeamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.teamListShortId = ZenkitCollections.team.shortId;
 
-    this.modelService.getTeam().then((teachers: Teacher[]) => {
-      this.teachers = teachers;
-    });
-
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
-      this.backgroundImage = _.get(mainPageData, ['teamSection', 'image']);
+    Promise.all([this.modelService.getTeam(), this.modelService.getMainPageSections()]).then((results: any) => {
+      this.teachers = results[0];
+      this.backgroundImage = _.get(results[1], ['teamSection', 'image']);
+      this.modelService.setPageLoaded(true);
     });
   }
 

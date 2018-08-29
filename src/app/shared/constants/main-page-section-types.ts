@@ -11,7 +11,7 @@ export const MainPageSectionTypes = [
     {
         name: 'Neuigkeiten',
         cssClass: 'main-page-section-current',
-        routerLink: 'aktuelles'
+        routerLink: 'blog'
     },
     {
         name: 'Auftritte',
@@ -31,11 +31,11 @@ export const MainPageSectionTypes = [
     {
         name: 'Standorte',
         cssClass: 'main-page-section-locations',
-        routerLink: 'locations'
+        routerLink: 'standorte'
     },
     {
         name: 'Kontakt',
         cssClass: 'main-page-section-contact',
-        routerLink: 'contact'
+        routerLink: 'kontakt'
     }
 ];

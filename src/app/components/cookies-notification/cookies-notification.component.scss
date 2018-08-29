@@ -1,0 +1,91 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.cookies-notification-container {
+    position: fixed;
+    bottom: 0;
+    background-color: $background-color-dark-2;
+    color: $main-text-color-on-dark-bg;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid $border-color-dark-2;
+    .cookies-notification {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 10px;
+        .cookies-notification-content {
+            .cookies-notification-description-container {
+                font-size: 12px;
+                .cookies-notification-description {
+                    .cookies-notification-description-link {
+                        text-decoration: underline;
+                        color: $main-text-color-on-dark-bg;
+                        &:hover {
+                            cursor: pointer;
+                            color: $accent-color-1;
+                        }
+                    }
+                }
+            }
+            .cookies-notification-buttons-container {
+                padding: 0 20px;
+                flex: 0;
+                .cookies-notification-okay-button {
+                    border: 1px solid white;
+                    padding: 10px 20px;
+                    display: inline-block;
+                    width: 100px;
+                    text-align: center;
+                    @include transition(background-color 0.3s ease);
+                    &:hover {
+                        color: $main-text-color-on-light-bg;
+                        background-color: $main-text-color-on-dark-bg;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-md - 1) {
+    .cookies-notification-container {
+        .cookies-notification {
+            .cookies-notification-content {
+                .cookies-notification-description-container {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $media-breakpoint-md) {
+    .cookies-notification-container {
+        position: fixed;
+        .cookies-notification {
+            .cookies-notification-content {
+                display: flex;
+                flex-direction: row;
+                .cookies-notification-description-container {
+                    text-align: left;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .cookies-notification-description {
+                        flex: 1;
+                    }
+                }
+                .cookies-notification-buttons-container {
+                    flex: 0;
+                    display: flex;
+                    flex-direction: row;
+                    .cookies-notification-okay-button {
+                        flex: 1;
+                        align-self: flex-end;
+                    }
+                }
+            }
+        }
+    }
+}

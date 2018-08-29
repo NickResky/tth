@@ -21,12 +21,11 @@ export class StageComponent implements OnInit {
   constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
   ngOnInit() {
-    this.modelService.getPerformances().then((performances: Performance[]) => {
-      this.performances = performances;
-    });
-
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
-      this.backgroundImage = _.get(mainPageData, ['performancesSection', 'image']);
+    this.modelService.setPageLoaded(false);
+    Promise.all([this.modelService.getPerformances(), this.modelService.getMainPageSections()]).then((results: any) => {
+      this.performances = results[0];
+      this.backgroundImage = _.get(results[1], ['performancesSection', 'image']);
+      this.modelService.setPageLoaded(true);
     });
   }
 

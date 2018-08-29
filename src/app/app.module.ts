@@ -1,3 +1,5 @@
+import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -39,6 +41,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
 import {SeoService} from "./services/seo.service";
+// import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
   { path: '',
@@ -51,7 +54,7 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'aktuelles',
+  { path: 'blog',
     component: CurrentComponent,
       data: {
       title: "Aktuelles | Tanztheater Anita Hanke",
@@ -60,6 +63,12 @@ const routes: Routes = [
           keywords: "Neuigkeiten, Tanzschule, Markgröningen, Ludwigsburg, Tanztheater"
       }
     }
+  },
+  { path: 'blog/:shortId',
+    component: CurrentDetailsComponent
+  },
+  { path: 'blog/:shortId/:title/:date',
+    component: CurrentDetailsComponent
   },
   { path: 'team',
     component: TeamComponent,
@@ -110,10 +119,13 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'auftritte/:id',
+  { path: 'auftritte/:shortId',
     component: PerformanceComponent
   },
-  { path: 'locations',
+  { path: 'auftritte/:shortId/:title/:date',
+    component: PerformanceComponent
+  },
+  { path: 'standorte',
     component: LocationsComponent,
     data: {
       title: "Standorte | Tanztheater Anita Hanke",
@@ -123,10 +135,10 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'location/:id',
+  { path: 'standorte/:id',
     component: LocationComponent
   },
-  { path: 'contact',
+  { path: 'kontakt',
     component: ContactComponent,
     data: {
       title: "Kontakt | Tanztheater Anita Hanke",
@@ -156,6 +168,7 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     CurrentComponent,
+    CurrentDetailsComponent,
     TeamComponent,
     TeacherDetailsComponent,
     CoursesComponent,
@@ -172,7 +185,8 @@ const routes: Routes = [
     HeaderImageComponent,
     ImprintComponent,
     CourseInformationComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    CookiesNotificationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -181,6 +195,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule,
     FormsModule
+    // YoutubePlayerModule
   ],
   providers: [
     MainPageService,

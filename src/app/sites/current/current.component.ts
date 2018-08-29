@@ -1,3 +1,4 @@
+import { UtilityService } from './../../services/utility.service';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { DynamicContentService } from './../../services/dynamic-content.service';
@@ -15,12 +16,16 @@ import 'rxjs/Rx';
 })
 export class CurrentComponent implements OnInit {
 
-  posts: Promise<BlogPost[]>;
+  posts: BlogPost[];
   dataPromise: Promise<{}>;
   backgroundImage;
   currentListShortId: string;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) {
+  constructor(
+    private modelService: ModelService,
+    private dynamicContentService: DynamicContentService,
+    private utilityService: UtilityService
+  ) {
 
   }
 
@@ -36,14 +41,16 @@ export class CurrentComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.modelService.setPageLoaded(false);
     this.currentListShortId = ZenkitCollections.current.shortId;
 
     // this.dataPromise = this.testFunction();
 
-    this.posts = this.modelService.getPosts();
-
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
+    Promise.all([this.modelService.getPosts(), this.modelService.getMainPageSections()]).then((results) => {
+      this.posts = results[0];
+      const mainPageData = results[1];
       this.backgroundImage = _.get(mainPageData, ['blogSection', 'image']);
+      this.modelService.setPageLoaded(true);
     });
   }
 
@@ -60,5 +67,9 @@ export class CurrentComponent implements OnInit {
   getPostImageBackgroundStyle(post) {
     const image = _.head(post.images);
     return this.getBackgroundStyle(image);
+  }
+
+  getDateStringLong(date) {
+    return this.utilityService.convertDateToStringLong(date);
   }
 }
