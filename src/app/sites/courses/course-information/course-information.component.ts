@@ -36,8 +36,8 @@ export class CourseInformationComponent implements OnInit {
       const mainPageData: MainPageData = results[1];
 
       this.text = courseData.text;
-      this.registrationChild = this.getFileSrc(coursesData.registrationChild);
-      this.registrationAdult = this.getFileSrc(coursesData.registrationAdult);
+      this.registrationChild = this.getFileSrc(courseData.registrationChild);
+      this.registrationAdult = this.getFileSrc(courseData.registrationAdult);
 
       this.backgroundImage = _.get(mainPageData, ['coursesSection', 'image']);
       this.modelService.setPageLoaded(true);
