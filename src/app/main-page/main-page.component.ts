@@ -28,7 +28,7 @@ export class MainPageComponent implements OnInit {
   contactSection: MainPageSection;
   videoLoaded = false;
   hideVideo = true;
-  player: YT.Player;
+  // player: YT.Player;
   youtubeVideoId: string;
   loadedVideoFraction = 0;
 
@@ -86,31 +86,31 @@ export class MainPageComponent implements OnInit {
       // });
     }
 
-    savePlayer(player) {
-      this.player = player;
-      this.player.playVideo();
-    }
+    // savePlayer(player) {
+    //   this.player = player;
+    //   this.player.playVideo();
+    // }
 
-    onStateChange(event) {
-      /*
-        Player state 0 = ended
-        Player state 1 = play
-        Player state 2 = pause
-      */
-      console.log('player state: ' + this.player.getPlayerState());
-      if (this.player.getPlayerState() === 1) {
-        this.modelService.setPageLoaded(true);
-        this.hideVideo = false;
-      }
-      if (this.player.getPlayerState() === 2) {
-        this.modelService.setPageLoaded(true);
-        this.hideVideo = true;
-      }
-      if (this.player.getPlayerState() === 0) {
-        this.player.playVideo();
-      }
-      const loadedFraction = event.target.getVideoLoadedFraction();
-    }
+    // onStateChange(event) {
+    //   /*
+    //     Player state 0 = ended
+    //     Player state 1 = play
+    //     Player state 2 = pause
+    //   */
+    //   console.log('player state: ' + this.player.getPlayerState());
+    //   if (this.player.getPlayerState() === 1) {
+    //     this.modelService.setPageLoaded(true);
+    //     this.hideVideo = false;
+    //   }
+    //   if (this.player.getPlayerState() === 2) {
+    //     this.modelService.setPageLoaded(true);
+    //     this.hideVideo = true;
+    //   }
+    //   if (this.player.getPlayerState() === 0) {
+    //     this.player.playVideo();
+    //   }
+    //   const loadedFraction = event.target.getVideoLoadedFraction();
+    // }
 
     getSafeUrl(url) {
       return this.domSanitizer.bypassSecurityTrustResourceUrl('https://player.vimeo.com/video/246740715'  + '?wmode=opaque&api=1&autoplay=1&background=1&loop=1&player_id=video_video_817&title=0&byline=0&portrait=0&color=3ab9ff');
