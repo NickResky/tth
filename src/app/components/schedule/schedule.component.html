@@ -41,7 +41,7 @@
         </div>
         <div class="appointment-info-icons-container">
           <div class="appointment-age-groups" *ngIf="appointment.ageGroups && appointment.ageGroups.length > 0">
-            <span class="schedule-no-colors-label">Für </span> 
+            <span class="schedule-no-colors-label">Für </span>
             <div class="schedule-info-icon appointment-age-group" *ngFor="let ageGroup of appointment.ageGroups" [ngStyle]="getScheduleIconStyle(ageGroup.hexColor)">
               {{ageGroup.title}}
             </div>
