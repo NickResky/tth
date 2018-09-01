@@ -3,6 +3,7 @@ import {DynamicContentService} from "./dynamic-content.service";
 import {ZenkitCollections} from "../shared/constants/zenkit-collections";
 import {Imprint} from "../classes/imprint";
 import * as _ from 'lodash';
+import {Teacher} from "../classes/teacher";
 
 @Injectable()
 export class ImprintService {
@@ -10,15 +11,17 @@ export class ImprintService {
   constructor(private dynamicContentService: DynamicContentService) {
   }
 
-  getImprint() {
+  getEntries() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.imprint.shortId)
       .then((zenkitListData) => {
-        const modifiedEntry: any = _.head(zenkitListData.entries);
-        const imprint = new Imprint();
-        imprint.title = modifiedEntry.title;
-        imprint.description = modifiedEntry.description;
-        return imprint;
+        const entries = _.map(zenkitListData.entries, (modifiedEntry) => {
+          const entry = new Imprint();
+          entry.title = modifiedEntry.title;
+          entry.description = modifiedEntry.description;
+          return entry;
+        });
+        return entries;
       });
   }
 }
