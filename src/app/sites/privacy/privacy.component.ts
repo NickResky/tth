@@ -9,17 +9,17 @@ import * as _ from 'lodash';
 
 
 @Component({
-  selector: 'app-imprint',
-  templateUrl: './imprint.component.html',
-  styleUrls: ['./imprint.component.scss']
+  selector: 'app-privacy',
+  templateUrl: './privacy.component.html',
+  styleUrls: ['./privacy.component.scss']
 })
-export class ImprintComponent implements OnInit {
+export class PrivacyComponent implements OnInit {
 
-  imprint: Imprint;
+  privacy: Imprint;
 
   ngOnInit() {
     this.modelService.getEntries().then((results: any) => {
-      this.imprint = results[0];
+      this.privacy = results[1];
     });
   }
 

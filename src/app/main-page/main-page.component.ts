@@ -112,9 +112,9 @@ export class MainPageComponent implements OnInit {
     //   const loadedFraction = event.target.getVideoLoadedFraction();
     // }
 
-    getSafeUrl(url) {
-      return this.domSanitizer.bypassSecurityTrustResourceUrl('https://player.vimeo.com/video/246740715'  + '?wmode=opaque&api=1&autoplay=1&background=1&loop=1&player_id=video_video_817&title=0&byline=0&portrait=0&color=3ab9ff');
-    }
+    // getSafeUrl(url) {
+    //   return this.domSanitizer.bypassSecurityTrustResourceUrl('https://player.vimeo.com/video/246740715'  + '?wmode=opaque&api=1&autoplay=1&background=1&loop=1&player_id=video_video_817&title=0&byline=0&portrait=0&color=3ab9ff');
+    // }
 
     getFileSrc(file) {
       return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
@@ -147,7 +147,7 @@ export class MainPageComponent implements OnInit {
 
     getYoutubeLink() {
       // tslint:disable-next-line:max-line-length
-      const url = 'https://www.youtube.com/embed/'  + this.youtubeVideoId + '?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playlist=zLtXD9J2ZhU';
+      const url = 'https://www.youtube.com/embed/'  + this.youtubeVideoId + '?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playlist=' + this.youtubeVideoId;
       return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
     }
 }

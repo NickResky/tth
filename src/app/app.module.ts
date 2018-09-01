@@ -41,6 +41,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
 import {SeoService} from "./services/seo.service";
+import {PrivacyComponent} from "./sites/privacy/privacy.component";
 // import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
@@ -158,6 +159,16 @@ const routes: Routes = [
       }
     }
   },
+  { path: 'datenschutz',
+    component: PrivacyComponent,
+    data: {
+      title: "Datenschutz | Tanztheater Anita Hanke",
+      metatags: {
+        description: "Tanztheater Anita Hanke in Markgröningen und Ludwigsburg",
+        keywords: "Tanzschule, Markgröningen, Ludwigsburg, Tanztheater"
+      }
+    }
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -186,7 +197,8 @@ const routes: Routes = [
     ImprintComponent,
     CourseInformationComponent,
     ScheduleComponent,
-    CookiesNotificationComponent
+    CookiesNotificationComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule.withServerTransition({

@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+
+.imprint-content-container {
+  background-color: $main-background-color-imprint;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: $main-text-color-on-dark-bg;
+
+  .imprint-heading {
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: $media-breakpoint-md) {
+  .imprint-content-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+  .imprint-content-container {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}

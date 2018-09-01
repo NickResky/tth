@@ -9,6 +9,7 @@ import { MainPageSection } from '../../../classes/main-page-section';
 import * as _ from 'lodash';
 import { MainPageData } from '../../../classes/main-page-data';
 import 'rxjs/Rx';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-current-details',
@@ -27,7 +28,8 @@ export class CurrentDetailsComponent implements OnInit {
       private modelService: ModelService,
       private dynamicContentService: DynamicContentService,
       private route: ActivatedRoute,
-      private utilityService: UtilityService
+      private utilityService: UtilityService,
+      private domSanitizer: DomSanitizer
     ) {
 
   }
@@ -62,5 +64,10 @@ export class CurrentDetailsComponent implements OnInit {
 
   getDateStringLong() {
     return this.utilityService.convertDateToStringLong(this.blogPost.date);
+  }
+
+  getYoutubeLink() {
+    const url = 'https://www.youtube.com/embed/'  + this.blogPost.youtubeVideoId;
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

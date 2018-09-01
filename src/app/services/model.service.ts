@@ -34,7 +34,7 @@ export class ModelService {
     performancesData: Promise<Performance[]>;
     teamData: Promise<Teacher[]>;
     locationData: Promise<LocationData>;
-    imprintData: Promise<Imprint>;
+    imprintData: Promise<Imprint[]>;
     scheduleData: Promise<ScheduleData>;
     pageLoaded = new Subject<boolean>();
 
@@ -186,9 +186,9 @@ export class ModelService {
         });
     }
 
-    getImprint() {
+    getEntries() {
         if (_.isNil(this.imprintData)) {
-            this.imprintData = this.imprintService.getImprint();
+            this.imprintData = this.imprintService.getEntries();
             return this.imprintData;
         }
         return new Promise((resolve, reject) => {
