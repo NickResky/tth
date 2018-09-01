@@ -5,4 +5,5 @@
         <div class="post-description" [innerHTML]="blogPost.description"></div>
         <div class="post-date">{{getDateStringLong()}}</div>
     </div>
+    <iframe class="blog-post-details-video" *ngIf="blogPost.youtubeVideoId" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>

@@ -29,4 +29,24 @@
             margin-bottom: 50px;
         }
     }
+  .blog-post-details-video {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media (min-width: $media-breakpoint-md) {
+  .blog-post-details {
+    .blog-post-details-video {
+      height: 400px;
+    }
+  }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+  .blog-post-details {
+    .blog-post-details-video {
+      height: 500px;
+    }
+  }
 }
