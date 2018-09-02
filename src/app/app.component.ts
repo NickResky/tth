@@ -11,7 +11,7 @@ import {SeoService} from "./services/seo.service";
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  pageLoaded = true;
+  pageLoaded = false;
   removeOverlay = true;
 
   constructor(private router: Router,
