@@ -3,111 +3,125 @@
 
 $main-page-text-color: #fff;
 
-.main-page-section-background {
-    position: relative;
-    opacity: 0.8;
-    background-attachment: scroll;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 200px;;
-    .main-page-section-container {
-        display: none;
-        position: absolute;
-        top: 30%;
+.main-page-section {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-delay: 0.5s;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    .main-page-section-background {
+        position: relative;
+        opacity: 0.8;
+        background-attachment: scroll;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 100%;
-        .main-page-section-content-container {  
-            .main-page-section-content {
-                left: 0;
-                text-align: center;
-                color: $main-page-text-color;
-                background-color: rgba(77, 77, 77, 0.5);
-                @include transition(background-color 0.2s ease);
-                padding: 30px;
-                &.section-link:hover {
-                    cursor: pointer;
-                    background-color: rgba(0, 0, 0, 0.6);
-                }
-                .main-page-section-caption {
-                    border: 2px solid $main-text-color;
-                    padding: 10px;
-                    font-size: 14px;                
-                    letter-spacing: 10px;
-                    margin: 20px;
-                    text-transform: uppercase;
-                    text-decoration: none;
+        height: 200px;;
+        .main-page-section-container {
+            display: none;
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            .main-page-section-content-container {  
+                .main-page-section-content {
+                    left: 0;
+                    text-align: center;
                     color: $main-page-text-color;
-                }
-            
-                .main-page-section-description {
-                    // margin: auto 15px;
-                    font-size: 14px;
-                    padding-top: 20px;
+                    background-color: rgba(77, 77, 77, 0.5);
+                    @include transition(background-color 0.2s ease);
+                    padding: 30px;
+                    &.section-link:hover {
+                        cursor: pointer;
+                        background-color: rgba(0, 0, 0, 0.6);
+                    }
+                    .main-page-section-caption {
+                        border: 2px solid $main-text-color;
+                        padding: 10px;
+                        font-size: 14px;                
+                        letter-spacing: 10px;
+                        margin: 20px;
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        color: $main-page-text-color;
+                    }
+                
+                    .main-page-section-description {
+                        // margin: auto 15px;
+                        font-size: 14px;
+                        padding-top: 20px;
+                    }
                 }
             }
         }
     }
-}
 
-.main-page-section-content.mobile-only {  
-    text-align: center;
-    color: $main-page-text-color;
-    padding: 30px;
-    &.section-link:hover {
-        cursor: pointer;
-    }
-    .main-page-section-caption {
-        border: 2px solid $main-text-color;
-        padding: 10px;
-        font-size: 14px;                
-        letter-spacing: 10px;
-        margin: 20px;
-        text-transform: uppercase;
-        text-decoration: none;
+    .main-page-section-content.mobile-only {  
+        text-align: center;
         color: $main-page-text-color;
-    }
+        padding: 30px;
+        &.section-link:hover {
+            cursor: pointer;
+        }
+        .main-page-section-caption {
+            border: 2px solid $main-text-color;
+            padding: 10px;
+            font-size: 14px;                
+            letter-spacing: 10px;
+            margin: 20px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $main-page-text-color;
+        }
 
-    .main-page-section-description {
-        font-size: 14px;
-        padding-top: 20px;
+        .main-page-section-description {
+            font-size: 14px;
+            padding-top: 20px;
+        }
     }
 }
 
 @media (max-width: $media-breakpoint-md - 1) {
-    .main-page-section-background {
-        .main-page-section-container {
-            &.first-section-container {
-                top: 10%;
+    .main-page-section {
+        .main-page-section-background {
+            .main-page-section-container {
+                &.first-section-container {
+                    top: 10%;
+                }
             }
         }
     }
 }
 
 @media (min-width: $media-breakpoint-md) {
-    .main-page-section-background {
+    .main-page-section {
         min-height: 100%;
-        background-attachment: fixed;
-        .main-page-section-container {
-            display: block;
-            .main-page-section-content-container {
-                max-width: $media-breakpoint-md;
-                margin: 0 auto; 
-                .main-page-section-content {
-                                   
-                    .main-page-section-caption {
-                        font-size: 30px;  
-                        padding: 18px;                    
-                    }
-                    .main-page-section-description {
-                        font-size: 20px;
+        .main-page-section-background {
+            height: 100%;
+            background-attachment: fixed;
+            position: absolute;
+            .main-page-section-container {
+                display: block;
+                .main-page-section-content-container {
+                    max-width: $media-breakpoint-md;
+                    margin: 0 auto; 
+                    .main-page-section-content {
+                                    
+                        .main-page-section-caption {
+                            font-size: 30px;  
+                            padding: 18px;                    
+                        }
+                        .main-page-section-description {
+                            font-size: 20px;
+                        }
                     }
                 }
             }
         }
-    }
-    .main-page-section-content.mobile-only {  
-        display: none;
+        .main-page-section-content.mobile-only {  
+            display: none;
+        }
     }
 }
 
