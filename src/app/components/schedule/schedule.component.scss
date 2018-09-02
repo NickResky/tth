@@ -1,13 +1,45 @@
 @import '../../../variables.scss';
 @import '../../../mixins.scss';
 
+@keyframes rotate90deg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
 .schedule-component {
     .schedule-header {
         .schedule-title {
             margin-top: 0;
+            &:hover {
+                cursor: pointer;
+            }
+            .navigation-icon {
+                font-size: 1.2em;
+                margin-right: 10px;
+                &.schedule-open {
+                    animation-name: rotate90deg;
+                    animation-duration: 0.3s;
+                    animation-timing-function: ease;
+                    animation-fill-mode: forwards;  
+                }
+            }
         }
         .schedule-navigation-container {
             margin-bottom: 20px;
+            &.schedule-open {
+                height: auto;
+                animation-name: fade-in;
+                animation-duration: 1s;
+                animation-timing-function: ease;
+                animation-fill-mode: forwards;
+            }
+            &.schedule-closed {
+                opacity: 0;
+            }
             &.schedule-navigation-hide-filters {
                 .schedule-navigation-filter-segments {
                     display: none;
@@ -55,6 +87,19 @@
         }
     }
     .schedule-container {
+        overflow: hidden;
+        &.schedule-closed {
+            height: 0;
+            opacity: 0;
+        }
+        &.schedule-open {
+            height: auto;
+            animation-name: fade-in;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards; 
+            margin-bottom: 50px;
+        }
         .day-container {
             .day-title {
                 border-bottom: 1px solid $main-text-color;
@@ -81,7 +126,6 @@
             }
         }
     }
-    margin-bottom: 50px;
 }
 
 @media (max-width: $media-breakpoint-md - 1) {
