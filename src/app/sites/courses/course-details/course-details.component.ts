@@ -44,7 +44,7 @@ export class CourseDetailsComponent implements OnInit {
     }
 
     getYoutubeLink() {
-      const url = 'https://www.youtube.com/embed/'  + this.course.youtubeId;
+      const url = 'https://www.youtube.com/embed/'  + this.course.youtubeId + '?rel=0&amp;showinfo=0&amp;loop=1&amp;playlist=' + this.course.youtubeId;
       return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
     }
 
