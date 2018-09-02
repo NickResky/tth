@@ -120,7 +120,6 @@
                     .schedule-info-icon {
                         display: inline-block;
                         margin-right: 10px;
-                        margin-left: 7px;
                     }
                 }
             }
@@ -153,6 +152,7 @@
                         font-size: 1.2em;
                         .schedule-info-icon {
                             color: $main-text-color !important;
+                            margin-left: 7px;
                         }
                     }
                 }
