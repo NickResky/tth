@@ -12,7 +12,7 @@ import {SeoService} from "./services/seo.service";
 export class AppComponent implements OnInit {
   title = 'app';
   pageLoaded = false;
-  removeOverlay = true;
+  removeOverlay = false;
 
   constructor(private router: Router,
               private seoService: SeoService,
@@ -30,10 +30,8 @@ export class AppComponent implements OnInit {
 
     this.modelService.isPageLoaded().subscribe(
         (x) => {
-            setTimeout(() => {
-                this.pageLoaded = x;
-                this.removeOverlay = x;
-            }, 300);
+            this.pageLoaded = x;
+            this.removeOverlay = x;
         }
     );
   }
