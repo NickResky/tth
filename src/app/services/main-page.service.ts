@@ -46,7 +46,7 @@ export class MainPageService {
 
         const videoSection = getSection('Video');
 
-        const philosophySection = getSection('Philosophie');
+        const philosophySection = getSection('das Tanztheater');
 
         const blogSection = getSection('Neuigkeiten');
 
