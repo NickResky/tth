@@ -18,6 +18,7 @@ export class ScheduleComponent implements OnInit {
 
   @Input() locationInitials: string;
   @Input() courseShortId: string;
+  @Input() displayNavigationDrawer: string;
   courseAppointments: Appointment[];
   courseAppointmentsAll: Appointment[];
   courseAppointmentsByDay: Array<Appointment[]>;
@@ -30,6 +31,8 @@ export class ScheduleComponent implements OnInit {
   displayColors = true;
   localStorage = window.localStorage;
   columnWidth: string;
+  displayDrawer: boolean;
+  scheduleOpen: boolean;
 
   constructor(
     private modelService: ModelService,
@@ -40,6 +43,14 @@ export class ScheduleComponent implements OnInit {
     const displayColorsStoredValue = localStorage.getItem('tth-schedule-display-colors');
     if (displayColorsStoredValue) {
       this.displayColors = displayColorsStoredValue === 'true';
+    }
+
+    if (this.displayNavigationDrawer === 'true') {
+      this.scheduleOpen = false;
+      this.displayDrawer = true;
+    } else {
+      this.scheduleOpen = true;
+      this.displayDrawer = false;
     }
 
     Promise.all([
@@ -261,5 +272,9 @@ export class ScheduleComponent implements OnInit {
   toggleDisplayColors() {
     this.displayColors = !this.displayColors;
     localStorage.setItem('tth-schedule-display-colors', this.displayColors.toString());
+  }
+
+  toggleScheduleOpen() {
+    this.scheduleOpen = !this.scheduleOpen;
   }
 }

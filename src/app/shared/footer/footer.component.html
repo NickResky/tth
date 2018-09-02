@@ -24,8 +24,8 @@
           <span class="footer-section-content-link" *ngIf="locationLB.consultationTime2">{{locationLB.consultationTime2}}</span>
           <span class="footer-section-content-link" *ngIf="locationLB.consultationTime3">{{locationLB.consultationTime3}}</span>
           <div class="footer-section-content-break"></div>
-          <span class="footer-section-content-link">Tel. {{phone}}</span>
-          <span class="footer-section-content-link">{{email}}</span>
+          <span class="footer-section-content-link"><a [href]="['tel:', phone, '?']" target="_top">Tel. {{phone}}</a></span>
+          <span class="footer-section-content-link"><a [href]="['mailto:', email, '?']" target="_top">{{email}}</a></span>
         </div>
       </div>
     </div>

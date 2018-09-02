@@ -4,6 +4,6 @@
         <app-image-slider [images]='blogPost.images' [listid]='currentListShortId' *ngIf="blogPost.images && blogPost.images.length > 0"></app-image-slider>
         <div class="post-description" [innerHTML]="blogPost.description"></div>
         <div class="post-date">{{getDateStringLong()}}</div>
+        <iframe class="blog-post-details-video" *ngIf="blogPost.youtubeVideoId" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-    <iframe class="blog-post-details-video" *ngIf="blogPost.youtubeVideoId" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>

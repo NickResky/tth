@@ -3,13 +3,13 @@
     <div class="image-container" *ngFor="let image of sliderImages" [class.active]="image.isActive" [ngStyle]="getBackgroundStyle(image)" >
     </div>
   </div>
-  <div class="image-slider-prev-control-container image-slider-control-container" (click)="prev()">
+  <div class="image-slider-prev-control-container image-slider-control-container" (click)="prev()" *ngIf="sliderImages && sliderImages.length > 1">
     <i class="fa fa-angle-left"></i>
   </div>
-  <div class="image-slider-next-control-container image-slider-control-container" (click)="next()">
+  <div class="image-slider-next-control-container image-slider-control-container" (click)="next()" *ngIf="sliderImages && sliderImages.length > 1">
     <i class="fa fa-angle-right"></i>
   </div>
-  <div class="image-slider-index-panel-container">
+  <div class="image-slider-index-panel-container" *ngIf="sliderImages && sliderImages.length > 1">
     <div *ngFor="let image of sliderImages" class="image-slider-index" [class.active]="image.isActive"></div>
   </div>
 </div>
