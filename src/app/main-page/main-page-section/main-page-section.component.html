@@ -10,3 +10,9 @@
     </div>
   </div>
 </div>
+<div class="main-page-section-content mobile-only" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
+  <div  class="main-page-section-caption">{{section.title}}</div>
+  <p class="main-page-section-description">
+    {{section.description}}
+  </p>
+</div>
