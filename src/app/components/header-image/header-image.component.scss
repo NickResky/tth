@@ -40,7 +40,7 @@
             height: 100%;
             position: absolute;
             top: 0;
-            background-attachment: fixed;
+            background-attachment: initial;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -56,4 +56,15 @@
             }
         }
     }
+}
+
+
+@media (min-width: $media-breakpoint-md) {
+  .header-image-component {
+    .header-image-container {
+      .header-image {
+        background-attachment: fixed;
+      }
+    }
+  }
 }
