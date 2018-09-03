@@ -1,12 +1,20 @@
-<div class="{{section.cssClass}} main-page-section-background" [ngStyle]="getBackgroundStyle(section.image)">
-  <div class="main-page-section-container" [ngClass]="firstSection ? 'first-section-container' : ''">
-    <div class="main-page-section-content-container">
-      <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
-        <div  class="main-page-section-caption">{{section.title}}</div>
-        <p class="main-page-section-description">
-          {{section.description}}
-        </p>
+<div class="main-page-section">
+  <div class="{{section.cssClass}} main-page-section-background" [ngStyle]="getBackgroundStyle(section.image)">
+    <div class="main-page-section-container" [ngClass]="firstSection ? 'first-section-container' : ''">
+      <div class="main-page-section-content-container">
+        <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
+          <div  class="main-page-section-caption">{{section.title}}</div>
+          <p class="main-page-section-description">
+            {{section.description}}
+          </p>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="main-page-section-content mobile-only" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
+    <div  class="main-page-section-caption">{{section.title}}</div>
+    <p class="main-page-section-description">
+      {{section.description}}
+    </p>
   </div>
 </div>
