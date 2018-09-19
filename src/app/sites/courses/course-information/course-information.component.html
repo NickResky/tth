@@ -3,8 +3,10 @@
 </div> -->
 <div class="courses-content-container main-content-container main-content-container-padding" *ngIf="text">
   <div class="courses-content main-content">
-    <app-schedule locationInitials='MG' displayNavigationDrawer='true'></app-schedule>
-    <app-schedule locationInitials='LB' displayNavigationDrawer='true'></app-schedule>
+    <app-schedule locationInitials='MG' displayNavigationDrawer='true' schedule = 'scheduleMG'></app-schedule>
+    <app-schedule locationInitials='LB' displayNavigationDrawer='true' schedule = 'scheduleLB'></app-schedule>
+    <a class="download-link" href={{scheduleMG}} download="Stundenplan_Markgroeningen">Stundenplan Markgröningen zum Download hier klicken</a><br>
+    <a class="download-link" href={{scheduleLB}} download="Stundenplan_Ludwigsburg">Stundenplan Ludwigsburg zum Download hier klicken</a><br>
     <a name="preise"></a>
     <h2 id="preise">Preise</h2>
     <div class="courses-gerneral-description" [innerHTML]='text'></div>
