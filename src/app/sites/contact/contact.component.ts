@@ -17,6 +17,7 @@ export class ContactComponent implements OnInit {
   backgroundImage;
   contact: Contact = undefined;
   contactListShortId = ZenkitCollections.contact.shortId;
+  mainPageListShortId = ZenkitCollections.home.shortId;
 
   personInfo = new FormGroup({
     name: new FormControl(),
@@ -30,6 +31,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
+
     Promise.all([this.modelService.getContact(), this.modelService.getMainPageSections()]).then((results: any) => {
       this.contact = results[0];
       this.backgroundImage = _.get(results[1], ['contactSection', 'image']);

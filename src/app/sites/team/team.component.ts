@@ -17,7 +17,9 @@ export class TeamComponent implements OnInit {
   backgroundImage;
   teachers: Teacher[];
   showModalDialog = false;
-  teamListShortId = undefined;
+  teamListShortId = ZenkitCollections.team.shortId;
+  mainPageListShortId = ZenkitCollections.home.shortId;
+
 
   constructor(
     private modelService: ModelService,
@@ -27,7 +29,6 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
-    this.teamListShortId = ZenkitCollections.team.shortId;
 
     Promise.all([this.modelService.getTeam(), this.modelService.getMainPageSections()]).then((results: any) => {
       this.teachers = results[0];

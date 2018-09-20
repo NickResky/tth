@@ -19,7 +19,8 @@ export class CurrentComponent implements OnInit {
   posts: BlogPost[];
   dataPromise: Promise<{}>;
   backgroundImage;
-  currentListShortId: string;
+  currentListShortId = ZenkitCollections.current.shortId;
+  mainPageListShortId = ZenkitCollections.home.shortId;
 
   constructor(
     private modelService: ModelService,
@@ -42,7 +43,6 @@ export class CurrentComponent implements OnInit {
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
-    this.currentListShortId = ZenkitCollections.current.shortId;
 
     // this.dataPromise = this.testFunction();
 
