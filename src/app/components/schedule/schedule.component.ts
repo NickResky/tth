@@ -1,3 +1,4 @@
+import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { ScheduleData } from './../../classes/schedule-data';
 import { LocationData } from './../../classes/location-data';
 import { UtilityService } from './../../services/utility.service';
@@ -33,10 +34,13 @@ export class ScheduleComponent implements OnInit {
   columnWidth: string;
   displayDrawer: boolean;
   scheduleOpen: boolean;
+  schedulePDF: any;
+  coursesListShortId = ZenkitCollections.courses.shortId;
 
   constructor(
     private modelService: ModelService,
-    private utilityService: UtilityService
+    private utilityService: UtilityService,
+    private dynamicContentService: DynamicContentService
   ) {  }
 
   ngOnInit() {
@@ -55,11 +59,20 @@ export class ScheduleComponent implements OnInit {
 
     Promise.all([
       this.modelService.getScheduleData(),
-      this.modelService.getLocationByInitials(this.locationInitials)
+      this.modelService.getLocationByInitials(this.locationInitials),
+      this.modelService.getCourses()
       ]).then((results: any) => {
         const scheduleData: ScheduleData = results[0];
         this.courseAppointments = scheduleData.appointments;
         this.location = results[1];
+
+        if (this.locationInitials === 'MG') {
+          const schedulePDFData = _.get(results[2], ['scheduleMG']);
+          this.schedulePDF = this.dynamicContentService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+        } else if (this.locationInitials === 'LB') {
+          const schedulePDFData = _.get(results[2], ['scheduleLB']);
+          this.schedulePDF = this.dynamicContentService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+        }
 
         this.ageGroups = _.map(scheduleData.ageGroupLabels, (ageGroupLabel) => {
           ageGroupLabel.isActive = true;

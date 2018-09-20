@@ -60,4 +60,10 @@
       </div>
     </div>
   </div>
+  <div class="tth-button-container" *ngIf="schedulePDF">
+      <a class="tth-button" href={{schedulePDF}} download="Stundenplan_Markgroeningen" target="_blank">
+        <i class="tth-button-icon fas fa-cloud-download-alt"></i>
+        <span class="tth-button-label">Download Stundenplan</span>
+      </a>
+    </div>
 </div>

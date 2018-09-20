@@ -11,6 +11,7 @@
 }
 
 .schedule-component {
+    margin-bottom: 20px;
     .schedule-header {
         .schedule-title {
             margin-top: 0;
@@ -39,6 +40,9 @@
             }
             &.schedule-closed {
                 opacity: 0;
+                height: 0;
+                overflow: hidden;
+                margin: 0;
             }
             &.schedule-navigation-hide-filters {
                 .schedule-navigation-filter-segments {
