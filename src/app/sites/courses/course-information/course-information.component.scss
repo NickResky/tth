@@ -14,16 +14,6 @@
   }
 }
 
-.download-link {
-  color: $download-link-color;
-
-  &:hover {
-    cursor: pointer;
-    color: $accent-color-1;
-  }
-
-}
-
 @media (min-width: $media-breakpoint-md) {
   .header-image {
     display: block;

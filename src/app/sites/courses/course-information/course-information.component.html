@@ -3,12 +3,22 @@
 </div> -->
 <div class="courses-content-container main-content-container main-content-container-padding" *ngIf="text">
   <div class="courses-content main-content">
-    <app-schedule locationInitials='MG' displayNavigationDrawer='true'></app-schedule>
-    <app-schedule locationInitials='LB' displayNavigationDrawer='true'></app-schedule>
+    <app-schedule locationInitials='MG' displayNavigationDrawer='true' schedule = 'scheduleMG'></app-schedule>
+    <app-schedule locationInitials='LB' displayNavigationDrawer='true' schedule = 'scheduleLB'></app-schedule>
     <a name="preise"></a>
     <h2 id="preise">Preise</h2>
     <div class="courses-gerneral-description" [innerHTML]='text'></div>
-    <a class="download-link" href={{registrationChild}} download="Anmeldung_Kind_Tanztheater_Hanke">Anmeldung Kinder zum Download hier klicken</a><br>
-    <a class="download-link" href={{registrationAdult}} download="Anmeldung_Erwachsener_Tanztheater_Hanke">Anmeldung Erwachsene zum Download hier klicken</a>
+    <div class="tth-button-container">
+      <a class="tth-button" href={{registrationChild}} download="Anmeldung_Kind_Tanztheater_Hanke" target="_blank">
+        <i class="tth-button-icon fas fa-cloud-download-alt"></i>
+        <span class="tth-button-label">Downlaod Anmeldung Kinder</span>
+      </a>
+    </div>
+    <div class="tth-button-container">
+      <a class="tth-button" href={{registrationAdult}} download="Anmeldung_Erwachsener_Tanztheater_Hanke" target="_blank">
+        <i class="tth-button-icon fas fa-cloud-download-alt"></i>
+        <span class="tth-button-label">Download Anmeldung Erwachsene</span>
+      </a>
+    </div>
   </div>
 </div>
