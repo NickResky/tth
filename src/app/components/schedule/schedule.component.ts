@@ -188,7 +188,7 @@ export class ScheduleComponent implements OnInit {
     const minutes = date.getMinutes();
     let minutesString = minutes.toString();
     if (minutes < 10) {
-      minutesString = minutesString + '0';
+      minutesString = '0' + minutesString;
     }
     return date.getHours() + '.' + minutesString;
   }
