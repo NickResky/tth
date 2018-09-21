@@ -12,7 +12,6 @@
     "build:client-and-server-bundles": "node ./node_modules/.bin/ng build && node ./node_modules/.bin/ng run app:server",
     "webpack:server": "webpack --config ./webpack.server.config.js --progress --colors",
     "install-dev": "npm install --only=development",
-    "postinstall": "npm run build:ssr",
     "start": "npm run serve:ssr",
     "lint": "npm run ng lint",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
