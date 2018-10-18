@@ -147,7 +147,7 @@ export class MainPageComponent implements OnInit {
 
     getYoutubeLink() {
       // tslint:disable-next-line:max-line-length
-      const url = 'https://www.youtube.com/embed/'  + this.youtubeVideoId + '?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playlist=' + this.youtubeVideoId;
+      const url = 'https://www.youtube.com/embed/'  + this.youtubeVideoId + '?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;playlist=' + this.youtubeVideoId;
       return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
     }
 }
