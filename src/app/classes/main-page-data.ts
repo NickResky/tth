@@ -3,6 +3,8 @@ import { MainPageComponent } from './../main-page/main-page.component';
 import { MainPageSection } from './main-page-section';
 export class MainPageData {
     youtubeVideoId: string;
+    videoFileSection: MainPageSection;
+    titleImageSection: MainPageSection;
     philosophySection: MainPageSection;
     blogSection: MainPageSection;
     coursesSection: MainPageSection;

@@ -11,8 +11,40 @@
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>-->
 <div class="main-page-title-video-container">
-    <iframe id="video-iframe" class="video-iframe" width="560" height="315" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="title-image-container" [ngClass]="displayTitleImage === true  ? 'show' : ''">
+        <img class="title-image" *ngIf="titleImageSection" [src]="getFileSrc(titleImageSection.image)" (load)="imageLoaded()"/>
+    </div>
+    <iframe id="video-iframe" class="video-iframe" width="560" height="315" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen *ngIf="hideTitle"></iframe>
+    <!--<video muted loop controls="true" *ngIf="videoFileSection" id="video" (loadeddata)="videoDataLoaded()" [ngClass]="hideTitle === true  ? 'show' : ''">
+        <source [src]="getFileSrc(videoFileSection.image)" type="video/mp4">
+    </video>-->
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
+    <div class="title-container" *ngIf="contentLoaded && !hideTitle" [ngClass]="hideTitle === true  ? 'hide' : ''">
+        <div class="logo-container">
+            <div class="logo"></div>
+        </div>
+        <div class="title-row">
+            <app-text-animation textParam="Schule" animationDelayParam="0.5s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="für" animationDelayParam="0.7s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="klassisches" animationDelayParam="0.9s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="Ballett" animationDelayParam="1.1s" animationDurationParam="0.5s"></app-text-animation>
+        </div>
+        <div class="title-row">
+            <app-text-animation textParam="und" animationDelayParam="1.3s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="modernen" animationDelayParam="1.5s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="Tanz" animationDelayParam="1.7s" animationDurationParam="0.5s"></app-text-animation>
+        </div>
+        <div class="play-icon-container" (click)="playVideoButtonClicked()">
+            <div class="fas fa-play play-icon"></div>
+            <span class="play-icon-label">Video abspielen</span>
+        </div>
+    </div>
+    <div class="scroll-icon-container" [ngClass]="(pageLoaded && !hideTitle)  ? 'show' : 'hide'">
+        <div class="scroll-icon">
+
+        </div>
+        <div class="scroll-label">Scroll</div>
+    </div>
 </div>
 <app-main-page-section *ngIf="philosophySection" [sectiondata]='philosophySection' isFirstSection='true'></app-main-page-section>
 <app-main-page-section *ngIf="blogSection" [sectiondata]='blogSection'></app-main-page-section>

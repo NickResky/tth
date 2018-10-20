@@ -8,22 +8,56 @@ div {
 .main-page-title-video-container {
     position: relative;
     display: none;
+    width: 100%;
+    overflow: hidden;
 	//padding-bottom: 56.25%; /* 16:9 */
 	//padding-top: 25px;
     //height: 0;
     height: 300px;
-    &.hide {
-        opacity: 0;
-        height: 0px;
-        overflow: hidden;
-    }
-    iframe {
+
+    iframe, video {
         opacity: 1;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        background-color: $main-background-color-dark;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    video {
+        opacity: 0;
+        @include transition(opacity 0.5s ease);
+        transition-delay: 1s;
+        &.show {
+            opacity: 1;
+        }
+    }
+
+    .title-image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        @include transition(opacity 1s ease);
+        &.show {
+            opacity: 1;
+            .title-image {
+                animation: slow-zoom-image-out 20s ease forwards, fade-in 2s ease forwards;
+            }
+        }
+        .title-image {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-attachment: fixed;
+            object-fit: cover;
+        }
     }
     .video-overlay {
         display: none;
@@ -32,12 +66,144 @@ div {
         left: 0;
         width: 100%;
         opacity: 1;
-        background-color: #000000;
+        background-color: $main-background-color-dark;
         height: 100%;
         opacity: 0;
-        @include transition(opacity 2s ease);
+        @include transition(opacity 3s ease);
         &.hide {
             opacity: 0;
+        }
+    }
+    .title-container {
+        z-index: 2;
+        position: absolute;
+        top: 10%;
+        width: 100%;
+        text-align: center;
+        color: $main-text-color-on-dark-bg;
+        @include transition(opacity 0.5s ease);
+        opacity: 1;
+        &.hide {
+            opacity: 0;
+        }
+        .logo-container {
+            margin-bottom: 10px;
+            .logo {
+                margin: 0 auto;
+                background-image: url("../../resources/Logo.png"); 
+                background-size: 100% 100%;
+                height: 75px;
+                width: 30px;
+                transform: translateY(15px);
+                opacity: 0;
+                animation: fade-in 1s ease forwards, slide-up 1s ease forwards;
+                animation-delay: 2.5s;
+            }
+        }
+        .play-icon-container {
+            display: inline-block;
+            margin: 0 auto;
+            background-color: $main-text-color-on-dark-bg;
+            margin-top: 20px;
+            @include border-radius(3px);
+            padding: 3px 10px;
+            opacity: 0;
+            transform: translateY(-15px);
+            animation: fade-in 0.5s ease forwards, slide-down 0.5s ease forwards;
+                animation-delay: 2.5s;
+                &:hover {
+                    cursor: pointer;
+                }
+            .play-icon{
+                display: inline-block;
+                margin-right: 5px;
+                color: $main-text-color-on-light-bg;
+            }
+            .play-icon-label {
+                display: inline-block;
+                color: $main-text-color-on-light-bg;
+            }
+        }
+    }
+
+    .scroll-icon-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        opacity: 1;
+        @include transition(opacity 0.5s ease);
+        .scroll-icon {
+            width: 2px;
+            height: 0px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            @include transition(height 0.5s ease);
+            transition-delay: 2.5s;
+        }
+        .scroll-label {
+            position: absolute;
+            bottom: 14px;
+            left: calc(50% + 15px);
+            color: $main-text-color-on-dark-bg;
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0;
+            @include transition(opacity 0.5s ease);
+            transition-delay: 3s;
+        }
+        &.show {
+            .scroll-icon {
+                height: 40px;
+            }
+            .scroll-label {
+                opacity: 1;
+            }
+        }
+        &.hide {
+            opacity: 0;
+        }
+    }
+    .title-container {
+        position: absolute;
+        top: 5%;
+        width: 100%;
+        text-align: center;
+        color: $main-text-color-on-dark-bg;
+        @include transition(opacity 0.5s ease);
+        .hide-title {
+            opacity: 0;
+        }
+    }
+    .scroll-icon-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        .scroll-icon {
+            width: 2px;
+            height: 0px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            @include transition(height 0.5s ease);
+            transition-delay: 1.5s;
+        }
+        .scroll-label {
+            position: absolute;
+            bottom: 14px;
+            left: calc(50% + 15px);
+            color: $main-text-color-on-dark-bg;
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0;
+            @include transition(opacity 0.5s ease);
+            transition-delay: 2s;
+        }
+        &.show {
+            .scroll-icon {
+                height: 40px;
+            }
+            .scroll-label {
+                opacity: 1;
+            }
         }
     }
 }

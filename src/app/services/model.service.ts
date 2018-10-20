@@ -22,7 +22,7 @@ import { Imprint } from './../classes/imprint';
 import { ImprintService } from './imprint.service';
 import { CourseInformation } from '../classes/course-information';
 import { Appointment } from '../classes/appointment';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ModelService {
@@ -36,7 +36,7 @@ export class ModelService {
     locationData: Promise<LocationData>;
     imprintData: Promise<Imprint[]>;
     scheduleData: Promise<ScheduleData>;
-    pageLoaded = new Subject<boolean>();
+    pageLoaded = new BehaviorSubject<boolean>(false);
 
 
     // pageLoaded = Observable.create(observer => {
@@ -63,6 +63,7 @@ export class ModelService {
 
     setPageLoaded(value) {
         this.pageLoaded.next(value);
+        return value;
     }
 
     getMainPageSections(): Promise<MainPageData> {

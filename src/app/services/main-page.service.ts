@@ -60,6 +60,10 @@ export class MainPageService {
 
         const contactSection = getSection('Kontakt');
 
+        const videoFileSection = getSection('Videodatei');
+
+        const titleImageSection = getSection('Titelbild');
+
         const mainPageData = new MainPageData();
         mainPageData.youtubeVideoId = _.get(videoSection, ['youtubeVideoId']);
         mainPageData.philosophySection = philosophySection;
@@ -69,6 +73,9 @@ export class MainPageService {
         mainPageData.teamSection = teamSection;
         mainPageData.locationsSection = locationsSection;
         mainPageData.contactSection = contactSection;
+        mainPageData.videoFileSection = videoFileSection;
+        mainPageData.titleImageSection = titleImageSection;
+
         return mainPageData;
       });
     }

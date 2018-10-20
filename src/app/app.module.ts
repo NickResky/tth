@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainPageService } from './services/main-page.service';
+import { TextAnimationComponent } from './main-page/text-animation/text-animation.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
@@ -40,8 +41,8 @@ import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-de
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
-import {SeoService} from "./services/seo.service";
-import {PrivacyComponent} from "./sites/privacy/privacy.component";
+import {SeoService} from './services/seo.service';
+import {PrivacyComponent} from './sites/privacy/privacy.component';
 // import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
@@ -198,7 +199,8 @@ const routes: Routes = [
     CourseInformationComponent,
     ScheduleComponent,
     CookiesNotificationComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    TextAnimationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
