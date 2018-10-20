@@ -55,7 +55,6 @@ div {
             width: 100%;
             height: 100%;
             opacity: 0;
-            background-attachment: fixed;
             object-fit: cover;
         }
     }
@@ -226,5 +225,10 @@ div {
         //padding-top: 25px;
         //height: 0;
         height: calc(100% - 70px);
+        .title-image-container {
+            .title-image {
+                background-attachment: fixed;
+            }
+        }
     }
 }

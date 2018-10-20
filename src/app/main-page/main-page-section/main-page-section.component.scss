@@ -99,7 +99,6 @@ $main-page-text-color: #fff;
         min-height: 100%;
         .main-page-section-background {
             height: 100%;
-            background-attachment: fixed;
             position: absolute;
             .main-page-section-container {
                 display: block;
@@ -126,10 +125,13 @@ $main-page-text-color: #fff;
 }
 
 @media (min-width: $media-breakpoint-lg) {
-    .main-page-section-background {
-        .main-page-section-container {
-            .main-page-section-content-container {
-                max-width: $media-breakpoint-lg;                
+    .main-page-section {
+        .main-page-section-background {
+            background-attachment: fixed;
+            .main-page-section-container {
+                .main-page-section-content-container {
+                    max-width: $media-breakpoint-lg;                
+                }
             }
         }
     }
