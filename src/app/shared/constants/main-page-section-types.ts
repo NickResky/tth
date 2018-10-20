@@ -4,6 +4,10 @@ export const MainPageSectionTypes = [
         cssClass: 'main-page-section-video',
     },
     {
+        name: 'Titelbild',
+        cssClass: 'main-page-section-video',
+    },
+    {
         name: 'das Tanztheater',
         cssClass: 'main-page-section-philosophy',
         routerLink: ''

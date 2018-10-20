@@ -83,6 +83,33 @@ app-current {
     }
 }
 
+@keyframes slide-up {
+    from {
+        transform: translateY(15px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-15px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slow-zoom-image-out {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1.0);
+    }
+}
+
 @media (min-width: $media-breakpoint-md) {
     .main-content-container {
         .main-content {

@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.text-animation-container {
+    display: inline-block;
+    text-transform: uppercase;
+    transform: translateY(15px);
+    opacity: 0;
+    animation-name: fade-in, slide-down;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    font-size: 34px;
+    font-weight: 600;
+}
+
+@media (max-width: $media-breakpoint-md - 1) {
+    
+}
+
+@media (min-width: $media-breakpoint-md) {
+    
+}
+
+@media (min-width: $media-breakpoint-lg) {
+
+}

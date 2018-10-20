@@ -6,6 +6,8 @@
     position: absolute;
     z-index: 2;
     width: 100%;
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
     .navbar {
         @include flexbox();
         height: 70px;
