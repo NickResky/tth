@@ -68,6 +68,7 @@ export class MainPageComponent implements OnInit {
         this.titleImageSection = mainPageData.titleImageSection;
 
         this.contentLoaded = true;
+        this.pageLoaded = this.modelService.setPageLoaded(true);
 
         // remove video timeout
         setTimeout(() => {
@@ -114,7 +115,6 @@ export class MainPageComponent implements OnInit {
 
     imageLoaded() {
       console.log('title image loaded!');
-      this.pageLoaded = this.modelService.setPageLoaded(true);
       this.titleImageLoaded = true;
       this.checkIfTitleImageShouldBeDisplayed();
     }
