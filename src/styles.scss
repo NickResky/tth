@@ -65,6 +65,7 @@ app-current {
         margin-right: 10px;
     }
     &:hover {
+        cursor: pointer;
         color: $main-background-color-dark;
         background-color: $main-text-color;
     }
