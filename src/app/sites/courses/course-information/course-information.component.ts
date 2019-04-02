@@ -6,7 +6,7 @@ import { ZenkitCollections } from './../../../shared/constants/zenkit-collection
 import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-course-information',
