@@ -1,6 +1,7 @@
 import { DynamicContentService } from './../../services/dynamic-content.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { ModelService } from '../../services/model.service';
 
 @Component({
   selector: 'app-cookies-notification',
@@ -10,11 +11,21 @@ import * as _ from 'lodash';
 export class CookiesNotificationComponent implements OnInit {
 
   displayCookiesNotification = false;
+  isBrowser;
 
-  constructor() { }
+  constructor(
+    private modelService: ModelService
+  ) { }
 
   ngOnInit() {
-    const cookiesAcceptedStoredValue = localStorage.getItem('tth-cookies-accepted');
+    let cookiesAcceptedStoredValue;
+
+    this.isBrowser = this.modelService.isPlatformBrowser();
+
+    if (this.isBrowser) {
+      cookiesAcceptedStoredValue = localStorage.getItem('tth-cookies-accepted');
+    }
+
     if (_.isNil(cookiesAcceptedStoredValue)) {
       this.displayCookiesNotification = true;
     }
@@ -22,6 +33,8 @@ export class CookiesNotificationComponent implements OnInit {
 
   acceptCookies() {
     this.displayCookiesNotification = false;
-    localStorage.setItem('tth-cookies-accepted', 'true');
+    if (this.modelService.isPlatformBrowser()) {
+      localStorage.setItem('tth-cookies-accepted', 'true');
+    }
   }
 }

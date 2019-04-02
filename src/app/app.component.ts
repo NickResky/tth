@@ -21,17 +21,22 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.router.events.subscribe((evt) => {
         if (!(evt instanceof NavigationEnd)) {
             return;
         }
-        window.scrollTo(0, 0);
+        if (this.modelService.isPlatformBrowser()) {
+          window.scrollTo(0, 0);
+        }
     });
 
     this.modelService.isPageLoaded().subscribe(
         (x) => {
+          if (this.modelService.isPlatformBrowser()) {
             this.pageLoaded = x;
             this.removeOverlay = x;
+          }
         }
     );
   }
