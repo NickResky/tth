@@ -8,6 +8,7 @@ import { MainPageSection } from './../classes/main-page-section';
 import * as _ from 'lodash';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 
 @Component({
@@ -43,6 +44,7 @@ export class MainPageComponent implements OnInit {
   showTitleTimeout = false;
   hideTitle = false;
   videoElement: any;
+  isBrowser: boolean;
 
   constructor(
     private dynamicContentService: DynamicContentService,
@@ -51,6 +53,14 @@ export class MainPageComponent implements OnInit {
 
     ngOnInit() {
       this.pageLoaded = this.modelService.setPageLoaded(false);
+      this.isBrowser = this.modelService.isPlatformBrowser();
+      if (this.isBrowser) {
+        this.isBrowser = true;
+        console.log('platform is browser');
+      } else {
+        this.isBrowser = false;
+        console.log('platform is server');
+      }
 
       this.mainPageListShortId = ZenkitCollections.home.shortId;
 
@@ -70,17 +80,19 @@ export class MainPageComponent implements OnInit {
         this.contentLoaded = true;
         this.pageLoaded = this.modelService.setPageLoaded(true);
 
-        // remove video timeout
-        setTimeout(() => {
-          if (this.videoLoaded === false) {
-            this.removeVideo = true;
-          }
-        }, this.loadVideoTimeout);
+        if (this.isBrowser) {
+          // remove video timeout
+          setTimeout(() => {
+            if (this.videoLoaded === false) {
+              this.removeVideo = true;
+            }
+          }, this.loadVideoTimeout);
 
-        // play video after this timeout
-        setTimeout(() => {
-          this.showTitleImageTimeoutPassed = true;
-        }, this.showTitleImageTimeout);
+          // play video after this timeout
+          setTimeout(() => {
+            this.showTitleImageTimeoutPassed = true;
+          }, this.showTitleImageTimeout);
+        }
       });
     }
 
@@ -120,12 +132,14 @@ export class MainPageComponent implements OnInit {
     }
 
     checkIfTitleImageShouldBeDisplayed() {
-      if (this.showTitleImageTimeoutPassed) {
-        this.displayTitleImage = true;
-      } else {
-        setTimeout(() => {
-          this.checkIfTitleImageShouldBeDisplayed();
-        }, 200);
+      if (this.isBrowser) {
+        if (this.showTitleImageTimeoutPassed) {
+          this.displayTitleImage = true;
+        } else {
+          setTimeout(() => {
+            this.checkIfTitleImageShouldBeDisplayed();
+          }, 200);
+        }
       }
     }
 
@@ -136,16 +150,18 @@ export class MainPageComponent implements OnInit {
     }
 
     checkIfVideoShouldBePlayed() {
-      if (this.showTitleImageTimeoutPassed) {
-        this.setVideoElement();
-        this.videoElement.muted = true;
-        this.videoElement.autoplay = true;
-        this.videoElement.play();
-        this.playVideo = true;
-      } else {
-        setTimeout(() => {
-          this.checkIfVideoShouldBePlayed();
-        }, 200);
+      if (this.isBrowser) {
+        if (this.showTitleImageTimeoutPassed) {
+          this.setVideoElement();
+          this.videoElement.muted = true;
+          this.videoElement.autoplay = true;
+          this.videoElement.play();
+          this.playVideo = true;
+        } else {
+          setTimeout(() => {
+            this.checkIfVideoShouldBePlayed();
+          }, 200);
+        }
       }
     }
 }

@@ -10,7 +10,7 @@
     ></youtube-player>
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>-->
-<div class="main-page-title-video-container">
+<div class="main-page-title-video-container" *ngIf="isBrowser">
     <div class="title-image-container" [ngClass]="displayTitleImage === true  ? 'show' : ''">
         <img class="title-image" *ngIf="titleImageSection" [src]="getFileSrc(titleImageSection.image)" (load)="imageLoaded()"/>
     </div>

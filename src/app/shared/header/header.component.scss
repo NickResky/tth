@@ -190,6 +190,8 @@
                     overflow: hidden;
 
                     &:hover {
+                        overflow: visible;
+                        height: 250px;
                         .dropdown-arrow {
                             opacity: 1;
                         }

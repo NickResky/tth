@@ -15,12 +15,13 @@
     .schedule-header {
         .schedule-title {
             margin-top: 0;
+            line-height: 1.5em;
             &:hover {
                 cursor: pointer;
             }
             .navigation-icon {
-                font-size: 1.2em;
-                margin-right: 10px;
+                font-size: 0.7em;
+                margin-left: 20px;
                 &.schedule-open {
                     animation-name: rotate90deg;
                     animation-duration: 0.3s;

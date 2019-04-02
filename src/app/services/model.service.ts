@@ -16,13 +16,15 @@ import { MainPageData } from './../classes/main-page-data';
 import { MainPageSection } from './../classes/main-page-section';
 import { MainPageService } from './main-page.service';
 import { ScheduleService } from './schedule.service';
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import * as _ from 'lodash';
 import { Imprint } from './../classes/imprint';
 import { ImprintService } from './imprint.service';
 import { CourseInformation } from '../classes/course-information';
 import { Appointment } from '../classes/appointment';
 import { BehaviorSubject } from 'rxjs';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+
 
 @Injectable()
 export class ModelService {
@@ -38,7 +40,6 @@ export class ModelService {
     scheduleData: Promise<ScheduleData>;
     pageLoaded = new BehaviorSubject<boolean>(false);
 
-
     // pageLoaded = Observable.create(observer => {
     //     observer.onNext(false);
     //     observer.onCompleted();
@@ -46,6 +47,7 @@ export class ModelService {
     // });
 
     constructor(
+        @Inject(PLATFORM_ID) private platformId: Object,
         private mainPageService: MainPageService,
         private stageService: StageService,
         private coursesService: CoursesService,
@@ -56,6 +58,10 @@ export class ModelService {
         private imprintService: ImprintService,
         private scheduleService: ScheduleService
     ) { }
+
+    isPlatformBrowser() {
+        return isPlatformBrowser(this.platformId);
+    }
 
     isPageLoaded() {
         return this.pageLoaded;

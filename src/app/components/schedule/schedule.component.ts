@@ -30,7 +30,6 @@ export class ScheduleComponent implements OnInit {
   levels: any[];
   ageGroups: any[];
   displayColors = true;
-  localStorage = window.localStorage;
   columnWidth: string;
   displayDrawer: boolean;
   scheduleOpen: boolean;
@@ -44,7 +43,13 @@ export class ScheduleComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    const displayColorsStoredValue = localStorage.getItem('tth-schedule-display-colors');
+
+    let displayColorsStoredValue;
+
+    if (this.modelService.isPlatformBrowser()) {
+      displayColorsStoredValue = window.localStorage.getItem('tth-schedule-display-colors');
+    }
+
     if (displayColorsStoredValue) {
       this.displayColors = displayColorsStoredValue === 'true';
     }
@@ -284,7 +289,10 @@ export class ScheduleComponent implements OnInit {
 
   toggleDisplayColors() {
     this.displayColors = !this.displayColors;
-    localStorage.setItem('tth-schedule-display-colors', this.displayColors.toString());
+    if (this.modelService.isPlatformBrowser()) {
+      window.localStorage.setItem('tth-schedule-display-colors', this.displayColors.toString());
+
+    }
   }
 
   toggleScheduleOpen() {
