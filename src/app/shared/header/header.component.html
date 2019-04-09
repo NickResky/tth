@@ -1,4 +1,23 @@
 <div class="navbar-container">
+  <div class="loading-animation-container">
+    <div class="loader-container" [ngClass]="[pageLoaded ? 'hide' : '']">
+      <div class="loader-circle"></div>
+      <div class="loader-line-mask">
+        <div class="loader-line"></div>
+      </div>
+    </div>
+    <div class="logo-container" [ngClass]="[pageLoaded ? 'show' : '']">
+      <div class="logo-container-inner">  
+        <div class="logo" routerLink="/"></div>
+      </div>
+    </div>
+    <!-- <div class="logo-container" *ngIf="!pageIsHome">
+        <div class="logo" routerLink="/"></div>
+    </div> -->
+    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[pageInitiallyLoaded ? 'move-up' : '']">
+      <div class="title" routerLink="/">Tanztheater<br/>Anita Hanke</div>
+    </div> 
+  </div>
   <div class="main-content-container main-content-container-padding">
     <div class="navbar main-content" [ngClass]="isMobileNavOpen === true ? 'mobile-nav-open': ''">
       <div routerLink="/" class="logo-container">
@@ -17,6 +36,9 @@
           <div class="bar bar3"></div>
         </div>
       </div>
+      <div class="navbar-page-overlay" [ngClass]="isMobileNavOpen === true ? 'show': ''" (click)="closeMobileNav()">
+
+      </div>
       <div class="navbar-navigation">
         <a class="navbar-navigation-link home-link" routerLink="/" (click)="closeMobileNav()">
           Home
@@ -27,7 +49,7 @@
           </a>
           <div class="dropdown-content">
             <a class="navbar-navigation-link dropdown-link" routerLink="/kurse" (click)="closeMobileNav()">Kurse</a>
-            <a class="navbar-navigation-link dropdown-link" routerLink="/kurs-informationen" (click)="closeMobileNav()">Preise und Stundenpläne</a>
+            <a class="navbar-navigation-link dropdown-link" routerLink="/kurs-informationen" (click)="closeMobileNav()">Preise &amp; Stundenpläne</a>
           </div>
         </div>
         <a class="navbar-navigation-link" routerLink="/blog" (click)="closeMobileNav()">

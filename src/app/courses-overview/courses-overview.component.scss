@@ -94,7 +94,8 @@
 
 @media (min-width: $media-breakpoint-md) {
     .courses-overview {
-        height: calc(100% - 70px);
+        // height: calc(100% - 70px);
+        height: 100%;
         .courses-overview-bg-images-mask {
             display: block;
             position: absolute;
@@ -126,7 +127,7 @@
             }
         }
         .course-tags-container {
-            padding: 20px 40px;   
+            padding: 110px 40px 20px 40px;   
             opacity: 0;
             animation-name: fade-in;
             animation-delay: 0.3s;

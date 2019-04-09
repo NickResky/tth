@@ -6,7 +6,7 @@ body, html {
     height: 100%;
     width: 100%;
     margin: 0;
-    font: 400 15px/1.8 "Lucida Grande", sans-serif;
+    font: 400 15px/1.8 "Raleway", sans-serif;
     color: #777;
     background-color: #000;
 }
@@ -48,6 +48,10 @@ app-current {
 .main-content-container-padding {
     padding-left: 20px;
     padding-right: 20px; 
+}
+
+.main-content-navbar-spacer {
+    margin-top: 80px;
 }
 
 .main-title {

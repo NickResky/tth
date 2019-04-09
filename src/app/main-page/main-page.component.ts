@@ -36,7 +36,7 @@ export class MainPageComponent implements OnInit {
   titleImageLoaded = false;
   displayTitleImage = false;
   videoLoaded = false;
-  showTitleImageTimeout = 4000;
+  showTitleImageTimeout = 0;
   showTitleImageTimeoutPassed = false;
   playVideo = false;
   pageLoaded = false;

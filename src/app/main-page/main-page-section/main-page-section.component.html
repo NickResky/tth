@@ -1,4 +1,4 @@
-<div class="main-page-section">
+<div class="main-page-section" [ngClass]="firstSection ? 'first-section' : ''">
   <div class="{{section.cssClass}} main-page-section-background" [ngStyle]="getBackgroundStyle(section.image)">
     <div class="main-page-section-container" [ngClass]="firstSection ? 'first-section-container' : ''">
       <div class="main-page-section-content-container">

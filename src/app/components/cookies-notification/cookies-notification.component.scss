@@ -9,6 +9,13 @@
     width: 100%;
     text-align: center;
     border-top: 1px solid $border-color-dark-2;
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-delay: 13s;
+    z-index: 2;
     .cookies-notification {
         display: inline-block;
         margin: 0 auto;
