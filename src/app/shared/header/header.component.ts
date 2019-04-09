@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   pageLoaded;
   pageInitiallyLoaded;
   pageIsHome;
+  isBrowser;
 
   constructor(
     private modelService: ModelService,
@@ -22,7 +23,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.modelService.isPlatformBrowser()) {
+    this.isBrowser = this.modelService.isPlatformBrowser();
+    if (this.isBrowser) {
       this.pageLoaded = false;
       this.pageInitiallyLoaded = false;
     } else {

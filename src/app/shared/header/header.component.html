@@ -1,5 +1,5 @@
 <div class="navbar-container">
-  <div class="loading-animation-container">
+  <div class="loading-animation-container" *ngIf="isBrowser">
     <div class="loader-container" [ngClass]="[pageLoaded ? 'hide' : '']">
       <div class="loader-circle"></div>
       <div class="loader-line-mask">
@@ -14,7 +14,7 @@
     <!-- <div class="logo-container" *ngIf="!pageIsHome">
         <div class="logo" routerLink="/"></div>
     </div> -->
-    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[pageInitiallyLoaded ? 'move-up' : '']">
+    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[pageInitiallyLoaded && isBrowser ? '' : '']">
       <div class="title" routerLink="/">Tanztheater<br/>Anita Hanke</div>
     </div> 
   </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="navbar-menu-icon-container" (click)="toggleMobileNav()">
+      <div class="navbar-menu-icon-container" (click)="toggleMobileNav()" *ngIf="isBrowser">
         <div class="navbar-menu-icon">
           <div class="bar bar1"></div>
           <div class="bar bar2"></div>

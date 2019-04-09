@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   pageLoaded;
   removeOverlay;
+  isBrowser;
 
   constructor(private router: Router,
               private seoService: SeoService,
@@ -22,7 +23,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.modelService.isPlatformBrowser()) {
+    this.isBrowser = this.modelService.isPlatformBrowser();
+    if (this.isBrowser) {
       this.pageLoaded = false;
       this.removeOverlay = false;
     } else {

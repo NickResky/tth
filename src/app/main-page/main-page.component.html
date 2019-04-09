@@ -10,8 +10,8 @@
     ></youtube-player>
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>-->
-<div class="main-page-title-video-container" *ngIf="isBrowser">
-    <div class="title-image-container" [ngClass]="displayTitleImage === true  ? 'show' : ''">
+<div class="main-page-title-video-container">
+    <div class="title-image-container" [ngClass]="displayTitleImage && isBrowser  ? 'show' : ''">
         <img class="title-image" *ngIf="titleImageSection" [src]="getFileSrc(titleImageSection.image)" (load)="imageLoaded()"/>
     </div>
     <iframe id="video-iframe" class="video-iframe" width="560" height="315" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen *ngIf="hideTitle"></iframe>
@@ -19,7 +19,7 @@
         <source [src]="getFileSrc(videoFileSection.image)" type="video/mp4">
     </video>-->
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
-    <div class="title-container" *ngIf="contentLoaded && !hideTitle" [ngClass]="hideTitle === true  ? 'hide' : ''">
+    <div class="title-container" *ngIf="contentLoaded && !hideTitle && isBrowser" [ngClass]="hideTitle === true  ? 'hide' : ''">
         <!-- <div class="logo-container">
             <div class="logo"></div>
         </div> -->
@@ -43,7 +43,7 @@
             <app-text-animation textParam="Tanz" animationDelayParam="3.7s" animationDurationParam="0.5s"></app-text-animation>
         </div> -->
     </div>
-    <div class="scroll-icon-container" [ngClass]="contentLoaded  ? 'show' : ''">
+    <div class="scroll-icon-container" [ngClass]="contentLoaded && isBrowser ? 'show' : ''">
         <div class="scroll-icon">
 
         </div>
