@@ -14,7 +14,7 @@
     <!-- <div class="logo-container" *ngIf="!pageIsHome">
         <div class="logo" routerLink="/"></div>
     </div> -->
-    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[pageInitiallyLoaded && isBrowser ? '' : '']">
+    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[pageLoaded && pageInitiallyLoaded && isBrowser ? '' : '']">
       <div class="title" routerLink="/">Tanztheater<br/>Anita Hanke</div>
     </div> 
   </div>

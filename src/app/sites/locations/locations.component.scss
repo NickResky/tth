@@ -4,6 +4,21 @@
 .locations-content-container {
     .locations-title {
         margin-top: 20px;
+        opacity: 0;
+        animation-name: fade-in;
+        animation-delay: 0.3s;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards; 
+    }
+}
+
+@media (max-width: $media-breakpoint-md - 1) {
+    .locations-content-container {
+        margin-top: 70px;
+        .locations-title {
+            margin-bottom: 20px;
+        }
     }
 }
 

@@ -71,7 +71,7 @@ div {
         background-color: $main-background-color-dark;
         height: 100%;
         opacity: 0;
-        @include transition(opacity 3s ease);
+        @include transition(opacity 1.5s ease);
         &.hide {
             opacity: 0;
         }
@@ -97,7 +97,7 @@ div {
             animation-duration: 1s;
             animation-timing-function: ease;
             animation-fill-mode: forwards;
-            animation-delay: 3s;
+            animation-delay: 1.5s;
             font-size: 30px;
             line-height: 40px;
             font-weight: 600;
@@ -140,7 +140,7 @@ div {
                 animation-duration: 0.5s;
                 animation-timing-function: ease;
                 animation-fill-mode: forwards;
-                animation-delay: 5s;
+                animation-delay: 3s;
                 @include transition(
                     background-color 0.3s ease
                 );
@@ -175,7 +175,7 @@ div {
         bottom: 0;
         width: 100%;
         opacity: 0;
-        @include transition(opacity 0.5s 5s ease);
+        @include transition(opacity 0.5s 3s ease);
         .scroll-icon {
             width: 1px;
             height: 0px;
