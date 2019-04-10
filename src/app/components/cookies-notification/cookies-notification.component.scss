@@ -4,19 +4,39 @@
 .cookies-notification-container {
     position: fixed;
     bottom: 0;
-    background-color: $background-color-dark-2;
     color: $main-text-color-on-dark-bg;
-    width: 100%;
     text-align: center;
-    border-top: 1px solid $border-color-dark-2;
+    opacity: 0;
+    width: calc(100% - 20px);
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-delay: 13s;
+    z-index: 2;
+    padding: 10px;
     .cookies-notification {
+        position: relative;
         display: inline-block;
-        margin: 0 auto;
-        padding: 10px;
+        @include border-radius(10px);
+        border: 1px solid $border-color-dark-2;
+        background-color: $background-color-dark-2;
         .cookies-notification-content {
             .cookies-notification-description-container {
+                padding: 10px;
                 font-size: 12px;
+                @include flexbox();
+                @include flex-direction(row);
+                .cookies-icon-container {
+                    width: 35px;
+                    text-align: center;
+                    .cookies-icon {
+                        font-size: 16px;
+                    }
+                }
                 .cookies-notification-description {
+                    flex: 1;
+                    text-align: left;
                     .cookies-notification-description-link {
                         text-decoration: underline;
                         color: $main-text-color-on-dark-bg;
@@ -28,19 +48,23 @@
                 }
             }
             .cookies-notification-buttons-container {
-                padding: 0 20px;
                 flex: 0;
-                .cookies-notification-okay-button {
-                    border: 1px solid white;
-                    padding: 10px 20px;
+                @include flexbox();
+                @include flex-direction(row);
+                .cookies-notification-button {
+                    flex: 1;
                     display: inline-block;
-                    width: 100px;
-                    text-align: center;
-                    @include transition(background-color 0.3s ease);
+                    font-size: 12px;
+                    position: relative;
                     &:hover {
-                        color: $main-text-color-on-light-bg;
-                        background-color: $main-text-color-on-dark-bg;
                         cursor: pointer;
+                    }
+                    .cookies-notification-button-text {
+                        width: 100%;
+                        text-align: center;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -10px;
                     }
                 }
             }
@@ -53,7 +77,16 @@
         .cookies-notification {
             .cookies-notification-content {
                 .cookies-notification-description-container {
-                    margin-bottom: 10px;
+                    .cookies-icon-container {
+                        display: none;
+                    }
+                }
+                .cookies-notification-buttons-container {
+                    height: 40px;
+                    border-top: 1px solid $border-color-dark-2;
+                    .cookies-notification-okay-button {
+                        border-left: 1px solid $border-color-dark-2;
+                    }
                 }
             }
         }
@@ -63,29 +96,43 @@
 @media (min-width: $media-breakpoint-md) {
     .cookies-notification-container {
         position: fixed;
+        width: calc(100% - 20px);
+        right: 0;
+        float: right;
         .cookies-notification {
             .cookies-notification-content {
-                display: flex;
-                flex-direction: row;
+                @include flexbox();
+                @include flex-direction(row);
                 .cookies-notification-description-container {
-                    text-align: left;
-                    display: flex;
-                    flex-direction: row;
                     align-items: center;
-                    .cookies-notification-description {
-                        flex: 1;
+                    .cookies-icon-container {
+                        width: 70px;
+                        .cookies-icon {
+                            font-size: 25px;
+                        }
                     }
                 }
                 .cookies-notification-buttons-container {
                     flex: 0;
-                    display: flex;
-                    flex-direction: row;
-                    .cookies-notification-okay-button {
+                    @include flex-direction(column);
+                    border-left: 1px solid $border-color-dark-2;
+                    .cookies-notification-button {
                         flex: 1;
-                        align-self: flex-end;
+                        position: relative;
+                        width: 100px;
+                    }
+                    .cookies-notification-okay-button {
+                        border-top: 1px solid $border-color-dark-2;
                     }
                 }
             }
         }
+    }
+}
+
+@media (min-width: $media-breakpoint-lg) {
+    .cookies-notification-container {
+        position: fixed;
+        width: calc(40% - 20px);
     }
 }

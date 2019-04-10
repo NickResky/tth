@@ -10,8 +10,8 @@
     ></youtube-player>
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>-->
-<div class="main-page-title-video-container" *ngIf="isBrowser">
-    <div class="title-image-container" [ngClass]="displayTitleImage === true  ? 'show' : ''">
+<div class="main-page-title-video-container">
+    <div class="title-image-container" [ngClass]="displayTitleImage && isBrowser  ? 'show' : ''">
         <img class="title-image" *ngIf="titleImageSection" [src]="getFileSrc(titleImageSection.image)" (load)="imageLoaded()"/>
     </div>
     <iframe id="video-iframe" class="video-iframe" width="560" height="315" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen *ngIf="hideTitle"></iframe>
@@ -19,38 +19,44 @@
         <source [src]="getFileSrc(videoFileSection.image)" type="video/mp4">
     </video>-->
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
-    <div class="title-container" *ngIf="contentLoaded && !hideTitle" [ngClass]="hideTitle === true  ? 'hide' : ''">
-        <div class="logo-container">
+    <div class="title-container" *ngIf="contentLoaded && !hideTitle && isBrowser" [ngClass]="hideTitle === true  ? 'hide' : ''">
+        <!-- <div class="logo-container">
             <div class="logo"></div>
+        </div> -->
+        <div class="play-icon-container">
+            <div class="play-icon-outer-ring" (click)="playVideoButtonClicked()">
+                <div class="play-icon-inner-ring">
+                    <div class="fas fa-play play-icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="title">Schule für klassisches Ballett und modernen Tanz </div>
+        <!-- <div class="title-row">
+            <app-text-animation textParam="Schule" animationDelayParam="2.5s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="für" animationDelayParam="2.7s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="klassisches" animationDelayParam="2.9s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="Ballett" animationDelayParam="3.1s" animationDurationParam="0.5s"></app-text-animation>
         </div>
         <div class="title-row">
-            <app-text-animation textParam="Schule" animationDelayParam="0.5s" animationDurationParam="0.5s"></app-text-animation>
-            <app-text-animation textParam="für" animationDelayParam="0.7s" animationDurationParam="0.5s"></app-text-animation>
-            <app-text-animation textParam="klassisches" animationDelayParam="0.9s" animationDurationParam="0.5s"></app-text-animation>
-            <app-text-animation textParam="Ballett" animationDelayParam="1.1s" animationDurationParam="0.5s"></app-text-animation>
-        </div>
-        <div class="title-row">
-            <app-text-animation textParam="und" animationDelayParam="1.3s" animationDurationParam="0.5s"></app-text-animation>
-            <app-text-animation textParam="modernen" animationDelayParam="1.5s" animationDurationParam="0.5s"></app-text-animation>
-            <app-text-animation textParam="Tanz" animationDelayParam="1.7s" animationDurationParam="0.5s"></app-text-animation>
-        </div>
-        <div class="play-icon-container" (click)="playVideoButtonClicked()">
-            <div class="fas fa-play play-icon"></div>
-            <span class="play-icon-label">Video abspielen</span>
-        </div>
+            <app-text-animation textParam="und" animationDelayParam="3.3s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="modernen" animationDelayParam="3.5s" animationDurationParam="0.5s"></app-text-animation>
+            <app-text-animation textParam="Tanz" animationDelayParam="3.7s" animationDurationParam="0.5s"></app-text-animation>
+        </div> -->
     </div>
-    <div class="scroll-icon-container" [ngClass]="(pageLoaded && !hideTitle)  ? 'show' : 'hide'">
+    <div class="scroll-icon-container" [ngClass]="contentLoaded && isBrowser ? 'show' : ''">
         <div class="scroll-icon">
 
         </div>
         <div class="scroll-label">Scroll</div>
     </div>
 </div>
-<app-main-page-section *ngIf="philosophySection" [sectiondata]='philosophySection' isFirstSection='true'></app-main-page-section>
-<app-main-page-section *ngIf="blogSection" [sectiondata]='blogSection'></app-main-page-section>
-<app-main-page-section *ngIf="coursesSection" [sectiondata]='coursesSection'></app-main-page-section>
-<app-main-page-section *ngIf="performancesSection" [sectiondata]='performancesSection'></app-main-page-section>
-<app-main-page-section *ngIf="performancesSection" [sectiondata]='teamSection'></app-main-page-section>
-<app-main-page-section *ngIf="locationsSection" [sectiondata]='locationsSection'></app-main-page-section>
-<app-main-page-section *ngIf="contactSection" [sectiondata]='contactSection'></app-main-page-section>
+<div class="main-page-section-container">
+    <app-main-page-section *ngIf="philosophySection" [sectiondata]='philosophySection' isFirstSection='true'></app-main-page-section>
+    <app-main-page-section *ngIf="blogSection" [sectiondata]='blogSection'></app-main-page-section>
+    <app-main-page-section *ngIf="coursesSection" [sectiondata]='coursesSection'></app-main-page-section>
+    <app-main-page-section *ngIf="performancesSection" [sectiondata]='performancesSection'></app-main-page-section>
+    <app-main-page-section *ngIf="performancesSection" [sectiondata]='teamSection'></app-main-page-section>
+    <app-main-page-section *ngIf="locationsSection" [sectiondata]='locationsSection'></app-main-page-section>
+    <app-main-page-section *ngIf="contactSection" [sectiondata]='contactSection'></app-main-page-section>
+</div>
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelService } from '../../services/model.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -8,10 +11,41 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   isMobileNavOpen = false;
+  pageLoaded;
+  pageInitiallyLoaded;
+  pageIsHome;
+  isBrowser;
 
-  constructor() { }
+  constructor(
+    private modelService: ModelService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+
+    this.isBrowser = this.modelService.isPlatformBrowser();
+    if (this.isBrowser) {
+      this.pageLoaded = false;
+      this.pageInitiallyLoaded = false;
+    } else {
+      this.pageLoaded = true;
+      this.pageInitiallyLoaded = true;
+    }
+
+    this.modelService.isPageLoaded().subscribe(
+      (x) => {
+        if (this.modelService.isPlatformBrowser()) {
+          this.pageLoaded = x;
+          if (x && !this.pageInitiallyLoaded) {
+            this.pageInitiallyLoaded = true;
+          }
+        }
+      }
+    );
+
+    this.router.events.subscribe((evt: any) => {
+      this.pageIsHome = evt.url === '/';
+    });
   }
 
   toggleMobileNav() {

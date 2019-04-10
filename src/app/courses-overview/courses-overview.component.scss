@@ -5,7 +5,13 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    .course-tags-container {    
+    .course-tags-container {   
+        opacity: 0;
+        animation-name: fade-in;
+        animation-delay: 0.3s;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;  
         .course-tags {
             padding-bottom: 60px;
             @include flexbox();
@@ -14,9 +20,9 @@
                 width: 100%;
                 display: inline-block;
                 position: relative;
-                height: 50px;
-                padding: 10px;
-                border-bottom: 1px solid #fff;
+                // height: 50px;
+                padding: 0 10px;
+                border-bottom: 1px solid $border-color-dark-2;
                 overflow: hidden;
                 text-decoration: none;
                 @include transition(
@@ -39,13 +45,15 @@
                     height: 200%;
                     padding: 10px 10px 15px 10px;
                     @include transform(none);
-
+                    .thumb-index {
+                        font-size: 12px;
+                        font-style: italic;
+                        margin-right: 20px;
+                    }
                     .thumb-title {
                         position: static;
                         overflow-x: visible;
                         overflow-y: visible;
-                        width: 100%;
-                        margin-top: 10px;
                         margin-bottom: 0;
                         padding-right: 0;
                         text-decoration: none;
@@ -72,8 +80,17 @@
         .course-tags-container {
             .course-tags {
                 .course-tag-container {
+                    overflow: hidden;
                     .thumb-info-block {
+                        @include flexbox();
+                        .thumb-index {
+                            flex: 0;
+                        }
                         .thumb-title {
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            flex: 1;
                             //font-style: italic;
                         }
                     }
@@ -94,7 +111,8 @@
 
 @media (min-width: $media-breakpoint-md) {
     .courses-overview {
-        height: calc(100% - 70px);
+        // height: calc(100% - 70px);
+        height: 100%;
         .courses-overview-bg-images-mask {
             display: block;
             position: absolute;
@@ -126,19 +144,14 @@
             }
         }
         .course-tags-container {
-            padding: 20px 40px;   
-            opacity: 0;
-            animation-name: fade-in;
-            animation-delay: 0.3s;
-            animation-duration: 1s;
-            animation-timing-function: ease;
-            animation-fill-mode: forwards;  
+            padding: 110px 40px 20px 40px;    
             .course-tags {     
                 .course-tag-container {
                     width: 31.33%;
                     padding: 0;
                     margin: 10px 1% 0 1%;  
                     height: 150px; 
+                    border-bottom: 1px solid $main-text-color-on-dark-bg;
                     .black-bg-mask {
                         position: absolute;
                         overflow-x: hidden;
@@ -164,7 +177,12 @@
                             height: 50%;
                             margin-top: -45px;
                         }
+                        .thumb-index {
+                            display: none;
+                        }
                         .thumb-title {
+                            width: 100%;
+                            margin-top: 10px;
                             @include transition(transform 250ms);
                             @include transform(translateX(0px) translateY(-5px));
                         }

@@ -114,6 +114,9 @@
                 font-size: 13px;
                 margin-bottom: 10px;
                 @include transition(color 0.3s ease);
+                &:focus {
+                    outline: none;
+                }
                 &.has-course-link:hover {
                     cursor: pointer;
                 }

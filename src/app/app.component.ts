@@ -1,7 +1,7 @@
 import { ModelService } from './services/model.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import {SeoService} from "./services/seo.service";
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,9 @@ import {SeoService} from "./services/seo.service";
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  pageLoaded = false;
-  removeOverlay = false;
+  pageLoaded;
+  removeOverlay;
+  isBrowser;
 
   constructor(private router: Router,
               private seoService: SeoService,
@@ -21,6 +22,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.isBrowser = this.modelService.isPlatformBrowser();
+    if (this.isBrowser) {
+      this.pageLoaded = false;
+      this.removeOverlay = false;
+    } else {
+      this.pageLoaded = true;
+      this.removeOverlay = true;
+    }
 
     this.router.events.subscribe((evt) => {
         if (!(evt instanceof NavigationEnd)) {

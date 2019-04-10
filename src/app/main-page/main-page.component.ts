@@ -36,7 +36,7 @@ export class MainPageComponent implements OnInit {
   titleImageLoaded = false;
   displayTitleImage = false;
   videoLoaded = false;
-  showTitleImageTimeout = 4000;
+  showTitleImageTimeout = 0;
   showTitleImageTimeoutPassed = false;
   playVideo = false;
   pageLoaded = false;
@@ -53,6 +53,7 @@ export class MainPageComponent implements OnInit {
 
     ngOnInit() {
       this.pageLoaded = this.modelService.setPageLoaded(false);
+      this.hideTitle = false;
       this.isBrowser = this.modelService.isPlatformBrowser();
       if (this.isBrowser) {
         this.isBrowser = true;

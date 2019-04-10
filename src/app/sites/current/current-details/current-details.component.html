@@ -1,4 +1,4 @@
-<div class="blog-post-details main-content-container main-content-container-padding" *ngIf="blogPost">
+<div class="blog-post-details main-content-container main-content-container-padding main-content-navbar-spacer" *ngIf="blogPost">
     <div class="blog-post-details-content main-content">
         <h1 class="post-title">{{blogPost.title}}</h1>
         <app-image-slider [images]='blogPost.images' [listid]='currentListShortId' *ngIf="blogPost.images && blogPost.images.length > 0"></app-image-slider>
