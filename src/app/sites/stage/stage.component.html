@@ -1,5 +1,6 @@
 <!--<div class="header-image" [ngStyle]="getBackgroundStyle(backgroundImage)"></div>-->
 <div class="performances-content-container main-content-container main-content-container-padding main-content-navbar-spacer">
+  <div class="main-title performances-title">Auftritte</div>
   <div class="performances-content main-content">
     <div *ngFor="let performance of performances, let i = index" class="performance-poster-container" >
       <a class="performance-poster" [routerLink]="performance.routerLink" [ngStyle]="getBackgroundStyle(performance.poster)">

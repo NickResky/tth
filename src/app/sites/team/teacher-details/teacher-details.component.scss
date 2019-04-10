@@ -9,10 +9,8 @@
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
     .teacher-content {
-        padding-top: 30px;
         padding-bottom: 50px;
         .teacher-heading {
-            text-transform: uppercase;
             display: none;
             margin: 0;
         }
@@ -49,6 +47,7 @@
 @media (min-width: $media-breakpoint-md) {
     .teacher-content-container {
         .teacher-content {
+            padding-top: 30px;
             .teacher-flex-container {
                 display: flex;
                 flex-direction: row;

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   pageInitiallyLoaded;
   pageIsHome;
   isBrowser;
+  scrolledToTop = true;
 
   constructor(
     private modelService: ModelService,
@@ -46,6 +47,13 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((evt: any) => {
       this.pageIsHome = evt.url === '/';
     });
+
+    if (this.modelService.isPlatformBrowser()) {
+      window.addEventListener('scroll', function(e) {
+        const last_known_scroll_position = window.scrollY;
+        this.scrolledToTop = last_known_scroll_position === 0;
+      }.bind(this));
+    }
   }
 
   toggleMobileNav() {

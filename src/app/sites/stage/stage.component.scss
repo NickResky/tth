@@ -64,7 +64,12 @@
 
 @media (max-width: $media-breakpoint-md - 1) {
     .performances-content-container {
-        padding: 50px 0;
+        padding-bottom: 50px;
+        padding-left: 0;
+        padding-right: 0;
+        .performances-title {
+            margin-left: 20px;
+        }
         .performances-content {
             .performance-poster-container {
                 border-bottom: 1px solid $border-color-dark-2;
@@ -86,6 +91,9 @@
 
 @media (min-width: $media-breakpoint-md) {
     .performances-content-container {
+        .performances-title {
+            margin-bottom: 40px;
+        }
         .performances-content {
             .performance-poster-container {
                 width: 50%;

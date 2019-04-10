@@ -94,7 +94,7 @@
                             //font-style: italic;
                         }
                     }
-                    &:hover {
+                    &:hover, &:focus {
                         background-color: $accent-color-1;
                         padding-left: 30px;
                         .thumb-title {
@@ -163,7 +163,8 @@
                             position: absolute;
                             width: 100%;
                             height: 100%;
-                            background-color: #1c1c1c;
+                            background-color: $background-color-dark-3;
+                            //background-color: #1c1c1c;
                             @include transform(translateX(0px) translateY(100%));
                             @include transition(opacity 250ms, transform 250ms);
                         }

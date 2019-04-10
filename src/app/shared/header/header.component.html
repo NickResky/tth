@@ -6,7 +6,7 @@
         <div class="loader-line"></div>
       </div>
     </div>
-    <div class="logo-container" [ngClass]="[pageLoaded ? 'show' : '']">
+    <div class="logo-container" [ngClass]="[pageLoaded ? 'show' : '', scrolledToTop ? '' : 'background-active']">
       <div class="logo-container-inner">  
         <div class="logo" routerLink="/"></div>
       </div>
@@ -14,7 +14,7 @@
     <!-- <div class="logo-container" *ngIf="!pageIsHome">
         <div class="logo" routerLink="/"></div>
     </div> -->
-    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[pageLoaded && pageInitiallyLoaded && isBrowser ? '' : '']">
+    <div class="title-container" *ngIf="pageIsHome" [ngClass]="[scrolledToTop ? 'show' : 'hide']">
       <div class="title" routerLink="/">Tanztheater<br/>Anita Hanke</div>
     </div> 
   </div>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <a class="navbar-navigation-link" routerLink="/blog" (click)="closeMobileNav()">
-          Aktuelles
+          Aktuelles            
         </a>
         <a class="navbar-navigation-link" routerLink="/auftritte" (click)="closeMobileNav()">
           Auftritte
