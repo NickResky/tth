@@ -1,7 +1,6 @@
 import { Location } from './../classes/location';
 import { CourseInformation } from './../classes/course-information';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../services/dynamic-content.service';
 import { Contact } from './../classes/contact';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
@@ -9,17 +8,20 @@ import { Appointment } from '../classes/appointment';
 import { Teacher } from '../classes/teacher';
 import { LocationData } from '../classes/location-data';
 import { ScheduleData } from '../classes/schedule-data';
+import { UtilityService } from './utility.service';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class ScheduleService {
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   getScheduleData (courses: CourseInformation[], teachers: Teacher[], locationData: LocationData) {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.schedule.shortId)
-      .then((zenkitListData) => {
-
+    const listShortId = ZenkitCollections.schedule.shortId;
+    return wrc.getZenkitListData({
+        listShortId: listShortId,
+        requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      }).then((zenkitListData) => {
         const getAgeGroupDetails = (ageGroupString) => {
             let hexColor: string;
             let iconString: string;

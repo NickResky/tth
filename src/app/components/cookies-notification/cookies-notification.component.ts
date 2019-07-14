@@ -1,4 +1,3 @@
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { ModelService } from '../../services/model.service';

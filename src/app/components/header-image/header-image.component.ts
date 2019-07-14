@@ -1,4 +1,4 @@
-import { DynamicContentService } from './../../services/dynamic-content.service';
+import { UtilityService } from './../../services/utility.service';
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 
@@ -13,14 +13,14 @@ export class HeaderImageComponent implements OnInit {
   @Input() listId;
   @Input() title;
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   ngOnInit() {
 
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.listId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.listId);
   }
 
   getBackgroundStyle(image) {

@@ -1,12 +1,10 @@
+import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 
-@Injectable()
-export class UtilityService {
+export const UtilityService = {
 
-    constructor() { }
-
-    convertStringToUrlId(string) {
+    convertStringToUrlId: (string) => {
 
         const convertedString = _
           .chain(string.toLowerCase())
@@ -20,9 +18,9 @@ export class UtilityService {
           .value();
 
         return convertedString;
-    }
+    },
 
-    convertDateToString(date) {
+    convertDateToString: (date) => {
         if (_.isNil(date)) {
           return undefined;
         }
@@ -30,9 +28,9 @@ export class UtilityService {
           + (date.getMonth() + 1).toString() + '.'
           + date.getFullYear();
         return dateString;
-    }
+    },
 
-    convertDateToStringLong(date) {
+    convertDateToStringLong: (date) => {
       if (_.isNil(date)) {
         return undefined;
       }
@@ -56,5 +54,19 @@ export class UtilityService {
         + (monthString).toString() + ' '
         + date.getFullYear();
       return dateString;
+  },
+
+  getRequiredElementsByList: (listShortId): any => {
+    return UtilityService.getZenkitCollection(listShortId).requiredElements;
+  },
+
+  getZenkitCollection: (listShortId): any => {
+    return _.find(ZenkitCollections, {
+        shortId: listShortId
+    });
+  },
+
+  getFileSrc: (fileShortId: string, listShortId: string) => {
+    return (fileShortId && listShortId) ? ZenkitCollections.apiUrl + 'lists/' + listShortId + '/files/' + fileShortId : '';
   }
-}
+};

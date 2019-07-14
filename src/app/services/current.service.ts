@@ -1,24 +1,22 @@
 import { UtilityService } from './utility.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { DynamicContentService } from './dynamic-content.service';
 import { BlogPost } from '../classes/blog-post';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class CurrentService {
 
-  constructor(
-    private dynamicContentService: DynamicContentService,
-    private utilityService: UtilityService
-  ) { }
+  constructor() { }
 
   getPosts(): Promise<BlogPost[]> {
     return new Promise((resolve, reject) => {
-      this.dynamicContentService
-        .fetchAndTransformZenkitListData(ZenkitCollections.current.shortId)
-        .then((zenkitListData) => {
+      const listShortId = ZenkitCollections.current.shortId;
+      return wrc.getZenkitListData({
+        listShortId: listShortId,
+        requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      }).then((zenkitListData) => {
           let posts: BlogPost[] = _.map(zenkitListData.entries, (modifiedEntry) => {
             const blogPost = new BlogPost();
             blogPost.shortId = modifiedEntry.shortId;
@@ -31,14 +29,14 @@ export class CurrentService {
               blogPost.date = new Date(modifiedEntry.date);
             }
             if (blogPost.title && blogPost.date) {
-              const dateString = this.utilityService.convertDateToString(blogPost.date);
+              const dateString = UtilityService.convertDateToString(blogPost.date);
               blogPost.routerLink =
                 '/blog/' +
                 blogPost.shortId +
                 '/' +
-                this.utilityService.convertStringToUrlId(blogPost.title) +
+                UtilityService.convertStringToUrlId(blogPost.title) +
                 '/' +
-                this.utilityService.convertStringToUrlId(dateString);
+                UtilityService.convertStringToUrlId(dateString);
             } else {
               blogPost.routerLink = '/blog/' + blogPost.shortId;
             }

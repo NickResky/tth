@@ -1,6 +1,5 @@
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
-import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -215,7 +214,6 @@ const routes: Routes = [
     MainPageService,
     CurrentService,
     TeamService,
-    DynamicContentService,
     StageService,
     CoursesService,
     LocationsService,
@@ -223,7 +221,6 @@ const routes: Routes = [
     ModelService,
     ImprintService,
     ScheduleService,
-    UtilityService,
     SeoService
   ],
   bootstrap: [AppComponent]

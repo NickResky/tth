@@ -1,22 +1,21 @@
 import { UtilityService } from './utility.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Performance } from './../classes/performance';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class StageService {
 
-  constructor(
-    private dynamicContentService: DynamicContentService,
-    private utilityService: UtilityService
-  ) { }
+  constructor() { }
 
   getPerformances() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.performances.shortId)
-      .then((zenkitListData) => {
+    const listShortId = ZenkitCollections.performances.shortId;
+    return wrc.getZenkitListData({
+      listShortId: listShortId,
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+    }).then((zenkitListData) => {
         const performances = _.map(zenkitListData.entries, (modifiedEntry) => {
           const performance = new Performance();
           performance.shortId = modifiedEntry.shortId;
@@ -28,14 +27,14 @@ export class StageService {
             performance.date = new Date(modifiedEntry.date);
           }
           if (performance.title && performance.date) {
-            const dateString = this.utilityService.convertDateToString(performance.date);
+            const dateString = UtilityService.convertDateToString(performance.date);
             performance.routerLink =
               '/auftritte/' +
               performance.shortId +
               '/' +
-              this.utilityService.convertStringToUrlId(performance.title) +
+              UtilityService.convertStringToUrlId(performance.title) +
               '/' +
-              this.utilityService.convertStringToUrlId(dateString);
+              UtilityService.convertStringToUrlId(dateString);
           } else {
             performance.routerLink = '/auftritte/' + performance.shortId;
           }

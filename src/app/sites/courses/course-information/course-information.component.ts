@@ -3,10 +3,10 @@ import { MainPageData } from './../../../classes/main-page-data';
 import { CourseData } from './../../../classes/course-data';
 import { ModelService } from './../../../services/model.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import {ActivatedRoute} from '@angular/router';
+import { UtilityService } from '../../../services/utility.service';
 
 @Component({
   selector: 'app-course-information',
@@ -23,9 +23,10 @@ export class CourseInformationComponent implements OnInit {
   scheduleMG;
   scheduleLB;
 
-  constructor(private modelService: ModelService,
-              private dynamicContentService: DynamicContentService,
-              private route: ActivatedRoute) { }
+  constructor(
+    private modelService: ModelService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
@@ -49,7 +50,7 @@ export class CourseInformationComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
   }
 
   getBackgroundStyle(image) {

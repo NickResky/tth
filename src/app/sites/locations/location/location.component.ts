@@ -1,12 +1,12 @@
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import { ModelService } from '../../../services/model.service';
-import { DynamicContentService } from '../../../services/dynamic-content.service';
 import { LocationData } from '../../../classes/location-data';
 import { Location } from '../../../classes/location';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { UtilityService } from '../../../services/utility.service';
 
 @Component({
   selector: 'app-location',
@@ -22,7 +22,6 @@ export class LocationComponent implements OnInit {
 
   constructor(
     private modelService: ModelService,
-    private dynamicContentService: DynamicContentService,
     private route: ActivatedRoute,
     private domSanitizer: DomSanitizer
   ) { }
@@ -43,7 +42,7 @@ export class LocationComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.locationsListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.locationsListShortId);
   }
 
   getBackgroundStyle(image) {

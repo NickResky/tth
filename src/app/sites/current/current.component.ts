@@ -1,7 +1,6 @@
 import { UtilityService } from './../../services/utility.service';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { BlogPost } from './../../classes/blog-post';
 import { Component, OnInit } from '@angular/core';
 import { MainPageSection } from '../../classes/main-page-section';
@@ -24,22 +23,9 @@ export class CurrentComponent implements OnInit {
 
   constructor(
     private modelService: ModelService,
-    private dynamicContentService: DynamicContentService,
-    private utilityService: UtilityService
   ) {
 
   }
-
-  // testFunction(): Promise<any> {
-  //   return this.dynamicContentService
-  //   .fetchZenkitListData(ZenkitCollections.current.shortId)
-  //   .then((response) => {
-  //     return new Promise((resolve, reject) => {
-  //       const test = _.get(response, ['elements']);
-  //       return resolve(test);
-  //     });
-  //   });
-  // }
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
@@ -55,7 +41,7 @@ export class CurrentComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.currentListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.currentListShortId);
   }
 
   getBackgroundStyle(image) {
@@ -70,6 +56,6 @@ export class CurrentComponent implements OnInit {
   }
 
   getDateStringLong(date) {
-    return this.utilityService.convertDateToStringLong(date);
+    return UtilityService.convertDateToStringLong(date);
   }
 }

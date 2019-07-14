@@ -5,7 +5,6 @@ import { UtilityService } from './../../services/utility.service';
 import { Appointment } from './../../classes/appointment';
 import { Location } from './../../classes/location';
 import { ModelService } from './../../services/model.service';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 import { NgForm } from '@angular/forms';
@@ -37,9 +36,7 @@ export class ScheduleComponent implements OnInit {
   coursesListShortId = ZenkitCollections.courses.shortId;
 
   constructor(
-    private modelService: ModelService,
-    private utilityService: UtilityService,
-    private dynamicContentService: DynamicContentService
+    private modelService: ModelService
   ) {  }
 
   ngOnInit() {
@@ -73,10 +70,10 @@ export class ScheduleComponent implements OnInit {
 
         if (this.locationInitials === 'MG') {
           const schedulePDFData = _.get(results[2], ['scheduleMG']);
-          this.schedulePDF = this.dynamicContentService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+          this.schedulePDF = UtilityService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
         } else if (this.locationInitials === 'LB') {
           const schedulePDFData = _.get(results[2], ['scheduleLB']);
-          this.schedulePDF = this.dynamicContentService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+          this.schedulePDF = UtilityService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
         }
 
         this.ageGroups = _.map(scheduleData.ageGroupLabels, (ageGroupLabel) => {
@@ -237,7 +234,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   convertStringToUrlId(string) {
-    return this.utilityService.convertStringToUrlId(string);
+    return UtilityService.convertStringToUrlId(string);
   }
 
   getAgeGroupDetails(ageGroup) {

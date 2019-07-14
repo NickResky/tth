@@ -1,10 +1,10 @@
 import { MainPageData } from './../../classes/main-page-data';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Performance } from './../../classes/performance';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-stage',
@@ -18,7 +18,9 @@ export class StageComponent implements OnInit {
   showModalDialog = false;
   performancesListShortId = ZenkitCollections.performances.shortId;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
+  constructor(
+    private modelService: ModelService
+  ) { }
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
@@ -30,7 +32,7 @@ export class StageComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.performancesListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.performancesListShortId);
   }
 
   getBackgroundStyle(image) {

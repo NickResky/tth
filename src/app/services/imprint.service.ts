@@ -1,20 +1,22 @@
 import {Injectable} from "@angular/core";
-import {DynamicContentService} from "./dynamic-content.service";
 import {ZenkitCollections} from "../shared/constants/zenkit-collections";
 import {Imprint} from "../classes/imprint";
 import * as _ from 'lodash';
 import {Teacher} from "../classes/teacher";
+import { UtilityService } from "./utility.service";
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class ImprintService {
 
-  constructor(private dynamicContentService: DynamicContentService) {
-  }
+  constructor() { }
 
   getEntries() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.imprint.shortId)
-      .then((zenkitListData) => {
+    const listShortId = ZenkitCollections.imprint.shortId;
+    return wrc.getZenkitListData({
+      listShortId: listShortId,
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+    }).then((zenkitListData) => {
         const entries = _.map(zenkitListData.entries, (modifiedEntry) => {
           const entry = new Imprint();
           entry.title = modifiedEntry.title;

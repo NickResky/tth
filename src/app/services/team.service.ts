@@ -1,23 +1,22 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Teacher } from '../classes/teacher';
 import { UtilityService } from './utility.service';
-
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class TeamService {
 
   constructor(
-    private dynamicContentService: DynamicContentService,
-    private utilityService: UtilityService
   ) { }
 
   getTeam() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.team.shortId)
-      .then((zenkitListData) => {
+    const listShortId = ZenkitCollections.team.shortId;
+    return wrc.getZenkitListData({
+      listShortId: listShortId,
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+    }).then((zenkitListData) => {
         const team = _.map(zenkitListData.entries, (modifiedEntry) => {
           const teacher = new Teacher();
           teacher.uuid = modifiedEntry.uuid;
@@ -33,8 +32,8 @@ export class TeamService {
   }
 
   convertTeacherToUrlId(teacher: Teacher) {
-    const convertedFirstName = this.utilityService.convertStringToUrlId(teacher.firstName);
-    const convertedLastName = this.utilityService.convertStringToUrlId(teacher.lastName);
+    const convertedFirstName = UtilityService.convertStringToUrlId(teacher.firstName);
+    const convertedLastName = UtilityService.convertStringToUrlId(teacher.lastName);
     return convertedFirstName + '-' + convertedLastName;
   }
 }

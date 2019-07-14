@@ -2,14 +2,13 @@ import { UtilityService } from './../../../services/utility.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModelService } from './../../../services/model.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { BlogPost } from './../../../classes/blog-post';
 import { Component, OnInit } from '@angular/core';
 import { MainPageSection } from '../../../classes/main-page-section';
 import * as _ from 'lodash';
 import { MainPageData } from '../../../classes/main-page-data';
 import 'rxjs/Rx';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-current-details',
@@ -26,9 +25,7 @@ export class CurrentDetailsComponent implements OnInit {
 
   constructor(
       private modelService: ModelService,
-      private dynamicContentService: DynamicContentService,
       private route: ActivatedRoute,
-      private utilityService: UtilityService,
       private domSanitizer: DomSanitizer
     ) {
 
@@ -48,7 +45,7 @@ export class CurrentDetailsComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.currentListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.currentListShortId);
   }
 
   getBackgroundStyle(image) {
@@ -63,7 +60,7 @@ export class CurrentDetailsComponent implements OnInit {
   }
 
   getDateStringLong() {
-    return this.utilityService.convertDateToStringLong(this.blogPost.date);
+    return UtilityService.convertDateToStringLong(this.blogPost.date);
   }
 
   getYoutubeLink() {

@@ -1,11 +1,11 @@
 import { MainPageData } from './../../classes/main-page-data';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Contact } from './../../classes/contact';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-contact',
@@ -27,7 +27,9 @@ export class ContactComponent implements OnInit {
     age: new FormControl()
   });
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
+  constructor(
+    private modelService: ModelService
+  ) { }
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
@@ -40,7 +42,7 @@ export class ContactComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.contactListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.contactListShortId);
   }
 
   getBackgroundStyle(image) {

@@ -1,19 +1,22 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import { Location } from './../classes/location';
 import { LocationData } from './../classes/location-data';
 import * as _ from 'lodash';
+import { UtilityService } from './utility.service';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class LocationsService {
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   getLocationData() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.locations.shortId)
-      .then((zenkitListData) => {
+    const listShortId = ZenkitCollections.locations.shortId;
+    return wrc.getZenkitListData({
+      listShortId: listShortId,
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+    }).then((zenkitListData) => {
         const locations = _.map(zenkitListData.entries, (modifiedEntry) => {
           const location = new Location();
           location.uuid = modifiedEntry.uuid;

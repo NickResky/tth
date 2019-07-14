@@ -1,7 +1,6 @@
 import { MainPageData } from './../classes/main-page-data';
 import { ModelService } from './../services/model.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import { MainPageService } from './../services/main-page.service';
 import { MainPageSection } from './../classes/main-page-section';
@@ -9,6 +8,7 @@ import * as _ from 'lodash';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { UtilityService } from '../services/utility.service';
 
 
 @Component({
@@ -47,7 +47,6 @@ export class MainPageComponent implements OnInit {
   isBrowser: boolean;
 
   constructor(
-    private dynamicContentService: DynamicContentService,
     private modelService: ModelService,
     private domSanitizer: DomSanitizer) { }
 
@@ -98,7 +97,7 @@ export class MainPageComponent implements OnInit {
     }
 
     getFileSrc(file) {
-      return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
+      return UtilityService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
     }
 
     setVideoElement() {

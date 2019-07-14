@@ -1,6 +1,6 @@
-import { DynamicContentService } from './../services/dynamic-content.service';
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
+import { UtilityService } from '../services/utility.service';
 
 @Component({
   selector: 'app-image-slider',
@@ -15,7 +15,7 @@ export class ImageSliderComponent implements OnInit {
   zenkitListId;
   currentImageIndex = 0;
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   ngOnInit() {
     this.sliderImages = _.map(this.images, (image) => {
@@ -28,7 +28,7 @@ export class ImageSliderComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.zenkitListId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.zenkitListId);
   }
 
   getBackgroundStyle(image) {

@@ -1,6 +1,6 @@
-import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { UtilityService } from '../../../services/utility.service';
 
 @Component({
   selector: 'app-gallery',
@@ -21,7 +21,7 @@ export class GalleryComponent implements OnInit {
     {'source' : 'assets/stage/H34A3738.JPG', 'isVisible': false}
   ];
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   ngOnInit() {
     this.showSlides(1);
@@ -70,7 +70,7 @@ export class GalleryComponent implements OnInit {
     this.showSlides(this.slideIndex = slideNumber);
   }
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(file.shortId, this.listShortId);
+    return UtilityService.getFileSrc(file.shortId, this.listShortId);
   }
 
 }

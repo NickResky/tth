@@ -1,13 +1,13 @@
 import { ActivatedRoute } from '@angular/router';
 import { MainPageData } from './../../../classes/main-page-data';
 import { CourseData } from './../../../classes/course-data';
-import { DynamicContentService } from './../../../services/dynamic-content.service';
 import { ModelService } from './../../../services/model.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { ZenkitCollections } from '../../../shared/constants/zenkit-collections';
 import { CourseInformation } from '../../../classes/course-information';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UtilityService } from '../../../services/utility.service';
 
 
 @Component({
@@ -25,9 +25,8 @@ export class CourseDetailsComponent implements OnInit {
 
   constructor(
     private modelService: ModelService,
-    private dynamicContentService: DynamicContentService,
     private route: ActivatedRoute,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
   ) { }
 
     ngOnInit() {
@@ -49,7 +48,7 @@ export class CourseDetailsComponent implements OnInit {
     }
 
     getFileSrc(file) {
-      return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
+      return UtilityService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
     }
 
     getBackgroundStyle(image) {

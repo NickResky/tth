@@ -3,9 +3,9 @@ import { LocationData } from './../../classes/location-data';
 import { Location } from './../../classes/location';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-locations',
@@ -21,7 +21,9 @@ export class LocationsComponent implements OnInit {
   locationsListShortId = ZenkitCollections.locations.shortId;
   activeImageContainer;
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
+  constructor(
+    private modelService: ModelService
+  ) { }
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
@@ -34,7 +36,7 @@ export class LocationsComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.locationsListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.locationsListShortId);
   }
 
   getBackgroundStyle(image) {

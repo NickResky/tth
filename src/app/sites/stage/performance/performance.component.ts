@@ -19,8 +19,7 @@ export class PerformanceComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private modelService: ModelService,
-    private utilityService: UtilityService
+    private modelService: ModelService
   ) { }
 
   ngOnInit() {
@@ -35,6 +34,6 @@ export class PerformanceComponent implements OnInit {
   }
 
   getDateStringLong() {
-    return this.utilityService.convertDateToStringLong(this.performance.date);
+    return UtilityService.convertDateToStringLong(this.performance.date);
   }
 }

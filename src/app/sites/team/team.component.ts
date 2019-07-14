@@ -1,11 +1,11 @@
 import { MainPageData } from './../../classes/main-page-data';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Teacher } from './../../classes/teacher';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { TeamService } from '../../services/team.service';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-team',
@@ -23,7 +23,6 @@ export class TeamComponent implements OnInit {
 
   constructor(
     private modelService: ModelService,
-    private dynamicContentService: DynamicContentService,
     private teamService: TeamService
   ) { }
 
@@ -43,7 +42,7 @@ export class TeamComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.teamListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.teamListShortId);
   }
 
   getBackgroundStyle(image) {

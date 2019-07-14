@@ -1,6 +1,7 @@
 import { RequiredElements } from './required-elements';
 
 export const ZenkitCollections  = {
+    apiUrl : 'https://zenkit.com/api/v1/',
     home: {
         shortId: 'S1k_AYFu-',
         requiredElements: RequiredElements.home

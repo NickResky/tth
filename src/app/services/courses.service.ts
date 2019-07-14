@@ -1,19 +1,22 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { CourseData } from '../classes/course-data';
 import { CourseInformation } from '../classes/course-information';
+import { UtilityService } from './utility.service';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class CoursesService {
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+    constructor() { }
 
   getCourses() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.courses.shortId)
-      .then((zenkitListData) => {
+    const listShortId = ZenkitCollections.courses.shortId;
+    return wrc.getZenkitListData({
+        listShortId: listShortId,
+        requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      }).then((zenkitListData) => {
             const pricesEntry: any = _.find(zenkitListData.entries, {
                 label: 'Preise'
             });

@@ -24,6 +24,7 @@ import { CourseInformation } from '../classes/course-information';
 import { Appointment } from '../classes/appointment';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { ZenkitCollections } from '../shared/constants/zenkit-collections';
 
 
 @Injectable()

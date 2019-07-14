@@ -3,7 +3,6 @@ import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { CourseInformation } from './../classes/course-information';
 import { CourseData } from './../classes/course-data';
 import { ModelService } from './../services/model.service';
-import { DynamicContentService } from './../services/dynamic-content.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
@@ -20,8 +19,6 @@ export class CoursesOverviewComponent implements OnInit {
 
   constructor(
     private modelService: ModelService,
-    private dynamicContentService: DynamicContentService,
-    private utilityService: UtilityService
   ) { }
 
     ngOnInit() {
@@ -33,7 +30,7 @@ export class CoursesOverviewComponent implements OnInit {
     }
 
     getFileSrc(file) {
-      return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
+      return UtilityService.getFileSrc(_.get(file, ['shortId']), this.coursesListShortId);
     }
 
     getBackgroundStyle(image) {
@@ -54,6 +51,6 @@ export class CoursesOverviewComponent implements OnInit {
     }
 
     convertStringToUrlId(string) {
-      return this.utilityService.convertStringToUrlId(string);
+      return UtilityService.convertStringToUrlId(string);
     }
 }

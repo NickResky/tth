@@ -1,5 +1,4 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
@@ -18,7 +17,9 @@ export class TextAnimationComponent implements OnInit {
   animationDelay: string;
   animationDuration: string;
 
-  constructor(private dynamicContentService: DynamicContentService, private router: Router) { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.text = this.textParam;

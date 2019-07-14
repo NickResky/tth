@@ -1,18 +1,22 @@
+import { UtilityService } from './utility.service';
+import { RequiredElements } from './../shared/constants/required-elements';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../services/dynamic-content.service';
 import { Contact } from './../classes/contact';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class ContactService {
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   getContact() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.contact.shortId)
-      .then((zenkitListData) => {
+    const listShortId = ZenkitCollections.contact.shortId;
+    return wrc.getZenkitListData({
+      listShortId: listShortId,
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+    }).then((zenkitListData) => {
         const modifiedEntry: any = _.head(zenkitListData.entries);
         const contact = new Contact();
         contact.name = modifiedEntry.name;

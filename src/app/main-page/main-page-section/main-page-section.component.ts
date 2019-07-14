@@ -1,10 +1,10 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
 import { MainPageComponent } from './../main-page.component';
 import { MainPageSection } from './../../classes/main-page-section';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-main-page-section',
@@ -19,7 +19,9 @@ export class MainPageSectionComponent implements OnInit {
   firstSection: boolean;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
 
-  constructor(private dynamicContentService: DynamicContentService, private router: Router) { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.section = this.sectiondata;
@@ -27,7 +29,7 @@ export class MainPageSectionComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
+    return UtilityService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
   }
 
   getBackgroundStyle(image) {

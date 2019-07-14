@@ -1,22 +1,27 @@
+import { UtilityService } from './utility.service';
+import { ModelService } from './model.service';
 import { CourseInformation } from './../classes/course-information';
 import { MainPageComponent } from './../main-page/main-page.component';
 import { MainPageSectionTypes } from './../shared/constants/main-page-section-types';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './dynamic-content.service';
 import { Injectable } from '@angular/core';
 import { MainPageSection } from './../classes/main-page-section';
 import * as _ from 'lodash';
 import { MainPageData } from '../classes/main-page-data';
+import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class MainPageService {
 
-  constructor(private dynamicContentService: DynamicContentService) { }
+  constructor() { }
 
   getMainPageSections() {
-    return this.dynamicContentService
-      .fetchAndTransformZenkitListData(ZenkitCollections.home.shortId)
-      .then((zenkitListData) => {
+
+    const listShortId = ZenkitCollections.home.shortId;
+    return wrc.getZenkitListData({
+      listShortId: listShortId,
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+    }).then((zenkitListData) => {
         const mainPageSections = _.map(zenkitListData.entries, (modifiedEntry) => {
           const mainPageSection = new MainPageSection();
           mainPageSection.title = modifiedEntry.title;
