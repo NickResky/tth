@@ -8,8 +8,7 @@ import { Appointment } from '../classes/appointment';
 import { Teacher } from '../classes/teacher';
 import { LocationData } from '../classes/location-data';
 import { ScheduleData } from '../classes/schedule-data';
-import { UtilityService } from './utility.service';
-import * as wrc from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
 
 @Injectable()
 export class ScheduleService {
@@ -18,9 +17,9 @@ export class ScheduleService {
 
   getScheduleData (courses: CourseInformation[], teachers: Teacher[], locationData: LocationData) {
     const listShortId = ZenkitCollections.schedule.shortId;
-    return wrc.getZenkitListData({
+    return ZenkitDataService.getZenkitListData({
         listShortId: listShortId,
-        requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+        requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
       }).then((zenkitListData) => {
         const getAgeGroupDetails = (ageGroupString) => {
             let hexColor: string;

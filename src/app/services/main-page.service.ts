@@ -1,4 +1,4 @@
-import { UtilityService } from './utility.service';
+import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
 import { ModelService } from './model.service';
 import { CourseInformation } from './../classes/course-information';
 import { MainPageComponent } from './../main-page/main-page.component';
@@ -8,7 +8,6 @@ import { Injectable } from '@angular/core';
 import { MainPageSection } from './../classes/main-page-section';
 import * as _ from 'lodash';
 import { MainPageData } from '../classes/main-page-data';
-import * as wrc from 'webapps-reschke-common';
 
 @Injectable()
 export class MainPageService {
@@ -18,9 +17,9 @@ export class MainPageService {
   getMainPageSections() {
 
     const listShortId = ZenkitCollections.home.shortId;
-    return wrc.getZenkitListData({
+    return ZenkitDataService.getZenkitListData({
       listShortId: listShortId,
-      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
     }).then((zenkitListData) => {
         const mainPageSections = _.map(zenkitListData.entries, (modifiedEntry) => {
           const mainPageSection = new MainPageSection();

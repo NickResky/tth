@@ -1,10 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ZenkitCollections} from "../shared/constants/zenkit-collections";
-import {Imprint} from "../classes/imprint";
+import {Injectable} from '@angular/core';
+import {ZenkitCollections} from '../shared/constants/zenkit-collections';
+import {Imprint} from '../classes/imprint';
 import * as _ from 'lodash';
-import {Teacher} from "../classes/teacher";
-import { UtilityService } from "./utility.service";
-import * as wrc from 'webapps-reschke-common';
+import {Teacher} from '../classes/teacher';
+import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
 
 @Injectable()
 export class ImprintService {
@@ -13,9 +12,9 @@ export class ImprintService {
 
   getEntries() {
     const listShortId = ZenkitCollections.imprint.shortId;
-    return wrc.getZenkitListData({
+    return ZenkitDataService.getZenkitListData({
       listShortId: listShortId,
-      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
     }).then((zenkitListData) => {
         const entries = _.map(zenkitListData.entries, (modifiedEntry) => {
           const entry = new Imprint();

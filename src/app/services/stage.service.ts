@@ -1,9 +1,8 @@
-import { UtilityService } from './utility.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Performance } from './../classes/performance';
-import * as wrc from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
 
 @Injectable()
 export class StageService {
@@ -12,9 +11,9 @@ export class StageService {
 
   getPerformances() {
     const listShortId = ZenkitCollections.performances.shortId;
-    return wrc.getZenkitListData({
+    return ZenkitDataService.getZenkitListData({
       listShortId: listShortId,
-      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
     }).then((zenkitListData) => {
         const performances = _.map(zenkitListData.entries, (modifiedEntry) => {
           const performance = new Performance();

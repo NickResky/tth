@@ -5,7 +5,7 @@ import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { UtilityService } from '../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-locations',

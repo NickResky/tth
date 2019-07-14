@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { CourseData } from '../classes/course-data';
 import { CourseInformation } from '../classes/course-information';
-import { UtilityService } from './utility.service';
-import * as wrc from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
 
 @Injectable()
 export class CoursesService {
@@ -13,9 +12,9 @@ export class CoursesService {
 
   getCourses() {
     const listShortId = ZenkitCollections.courses.shortId;
-    return wrc.getZenkitListData({
+    return ZenkitDataService.getZenkitListData({
         listShortId: listShortId,
-        requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+        requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
       }).then((zenkitListData) => {
             const pricesEntry: any = _.find(zenkitListData.entries, {
                 label: 'Preise'

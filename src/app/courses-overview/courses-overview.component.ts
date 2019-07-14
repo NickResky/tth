@@ -1,4 +1,4 @@
-import { UtilityService } from './../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { CourseInformation } from './../classes/course-information';
 import { CourseData } from './../classes/course-data';

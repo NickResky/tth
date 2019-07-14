@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { UtilityService } from '../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 
 @Component({

@@ -1,7 +1,7 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { ScheduleData } from './../../classes/schedule-data';
 import { LocationData } from './../../classes/location-data';
-import { UtilityService } from './../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 import { Appointment } from './../../classes/appointment';
 import { Location } from './../../classes/location';
 import { ModelService } from './../../services/model.service';

@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Location } from './../classes/location';
 import { LocationData } from './../classes/location-data';
 import * as _ from 'lodash';
-import { UtilityService } from './utility.service';
-import * as wrc from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
 
 @Injectable()
 export class LocationsService {
@@ -13,9 +12,9 @@ export class LocationsService {
 
   getLocationData() {
     const listShortId = ZenkitCollections.locations.shortId;
-    return wrc.getZenkitListData({
+    return ZenkitDataService.getZenkitListData({
       listShortId: listShortId,
-      requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+      requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
     }).then((zenkitListData) => {
         const locations = _.map(zenkitListData.entries, (modifiedEntry) => {
           const location = new Location();

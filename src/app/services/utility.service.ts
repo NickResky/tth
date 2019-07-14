@@ -56,12 +56,12 @@ export const UtilityService = {
       return dateString;
   },
 
-  getRequiredElementsByList: (listShortId): any => {
-    return UtilityService.getZenkitCollection(listShortId).requiredElements;
+  getRequiredElementsByList: (listShortId, zenkitCollections): any => {
+    return UtilityService.getZenkitCollection(listShortId, zenkitCollections).requiredElements;
   },
 
-  getZenkitCollection: (listShortId): any => {
-    return _.find(ZenkitCollections, {
+  getZenkitCollection: (listShortId, zenkitCollections): any => {
+    return _.find(zenkitCollections, {
         shortId: listShortId
     });
   },

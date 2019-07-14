@@ -1,4 +1,4 @@
-import { UtilityService } from './../../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

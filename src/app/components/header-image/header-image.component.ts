@@ -1,4 +1,4 @@
-import { UtilityService } from './../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 

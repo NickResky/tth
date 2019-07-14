@@ -39,7 +39,6 @@ import { CourseInformationComponent } from './sites/courses/course-information/c
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
-import { UtilityService } from './services/utility.service';
 import {SeoService} from './services/seo.service';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
 // import { YoutubePlayerModule } from 'ngx-youtube-player';

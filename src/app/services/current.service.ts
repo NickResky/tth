@@ -1,9 +1,8 @@
-import { UtilityService } from './utility.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { BlogPost } from '../classes/blog-post';
-import * as wrc from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService} from 'webapps-reschke-common';
 
 @Injectable()
 export class CurrentService {
@@ -13,9 +12,9 @@ export class CurrentService {
   getPosts(): Promise<BlogPost[]> {
     return new Promise((resolve, reject) => {
       const listShortId = ZenkitCollections.current.shortId;
-      return wrc.getZenkitListData({
+      return ZenkitDataService.getZenkitListData({
         listShortId: listShortId,
-        requiredElements: UtilityService.getRequiredElementsByList(listShortId)
+        requiredElements: UtilityService.getRequiredElementsByList(listShortId, ZenkitCollections)
       }).then((zenkitListData) => {
           let posts: BlogPost[] = _.map(zenkitListData.entries, (modifiedEntry) => {
             const blogPost = new BlogPost();

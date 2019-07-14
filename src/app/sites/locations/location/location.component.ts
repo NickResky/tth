@@ -6,7 +6,7 @@ import { Location } from '../../../classes/location';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { UtilityService } from '../../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-location',

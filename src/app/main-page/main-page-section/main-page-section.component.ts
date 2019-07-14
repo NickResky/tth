@@ -4,7 +4,7 @@ import { MainPageSection } from './../../classes/main-page-section';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
-import { UtilityService } from '../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-main-page-section',

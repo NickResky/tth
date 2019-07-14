@@ -5,7 +5,7 @@ import { Teacher } from './../../classes/teacher';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { TeamService } from '../../services/team.service';
-import { UtilityService } from '../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-team',

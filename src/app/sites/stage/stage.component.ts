@@ -4,7 +4,7 @@ import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { Performance } from './../../classes/performance';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { UtilityService } from '../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-stage',

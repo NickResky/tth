@@ -5,7 +5,7 @@ import { Contact } from './../../classes/contact';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
-import { UtilityService } from '../../services/utility.service';
+import { UtilityService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-contact',

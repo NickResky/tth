@@ -2,7 +2,6 @@ import { ModelService } from './services/model.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SeoService } from './services/seo.service';
-import * as wrc from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +23,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    wrc.printMsg();
     this.isBrowser = this.modelService.isPlatformBrowser();
     if (this.isBrowser) {
       this.pageLoaded = false;
