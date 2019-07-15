@@ -24,7 +24,7 @@ div {
         width: 100%;
         height: calc(100% - 70px);
         margin-top: 70px;
-        background-color: $main-background-color-dark;
+        background-color: $main-background-color;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -68,7 +68,7 @@ div {
         left: 0;
         width: 100%;
         opacity: 1;
-        background-color: $main-background-color-dark;
+        background-color: $main-background-color;
         height: 100%;
         opacity: 0;
         @include transition(opacity 1.5s ease);

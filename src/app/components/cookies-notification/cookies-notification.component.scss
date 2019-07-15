@@ -20,7 +20,7 @@
         display: inline-block;
         @include border-radius(10px);
         border: 1px solid $border-color-dark-2;
-        background-color: $background-color-dark-2;
+        background-color: $main-background-color-2;
         .cookies-notification-content {
             .cookies-notification-description-container {
                 padding: 10px;

@@ -58,7 +58,7 @@
                     }
                     select {
                         color: $main-text-color;
-                        background-color: $main-background-color-dark;
+                        background-color: $main-background-color;
                         height: 30px;
                         margin-bottom: 10px;
                     }
@@ -203,7 +203,7 @@
                     display: flex;
                     flex-direction: column;
                     border: 1px solid $border-color-dark-2;
-                    background-color: $background-color-dark-2;
+                    background-color: $main-background-color-2;
                     border-radius: 3px;
                     &.has-course-link:hover {
                         background-color: #222222;
