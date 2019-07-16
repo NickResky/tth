@@ -1,7 +1,7 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { BlogPost } from '../classes/blog-post';
+import { BlogPost } from 'webapps-reschke-common';
 import { UtilityService, ZenkitDataService} from 'webapps-reschke-common';
 
 @Injectable()

@@ -1,14 +1,17 @@
-import { Location } from './../classes/location';
-import { CourseInformation } from './../classes/course-information';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { Contact } from './../classes/contact';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { Appointment } from '../classes/appointment';
-import { Teacher } from '../classes/teacher';
-import { LocationData } from '../classes/location-data';
-import { ScheduleData } from '../classes/schedule-data';
-import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
+import {
+    UtilityService,
+    ZenkitDataService,
+    Contact,
+    Appointment,
+    CourseInformation,
+    Location,
+    LocationData,
+    ScheduleData,
+    Teacher
+} from 'webapps-reschke-common';
 
 @Injectable()
 export class ScheduleService {

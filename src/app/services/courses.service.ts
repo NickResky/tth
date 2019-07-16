@@ -1,9 +1,7 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { CourseData } from '../classes/course-data';
-import { CourseInformation } from '../classes/course-information';
-import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService, CourseData, CourseInformation } from 'webapps-reschke-common';
 
 @Injectable()
 export class CoursesService {

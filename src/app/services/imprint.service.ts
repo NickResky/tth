@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ZenkitCollections} from '../shared/constants/zenkit-collections';
-import {Imprint} from '../classes/imprint';
 import * as _ from 'lodash';
 import {Teacher} from '../classes/teacher';
-import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService, Imprint } from 'webapps-reschke-common';
 
 @Injectable()
 export class ImprintService {

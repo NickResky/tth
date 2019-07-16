@@ -1,12 +1,10 @@
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import { ModelService } from '../../../services/model.service';
-import { LocationData } from '../../../classes/location-data';
-import { Location } from '../../../classes/location';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { UtilityService } from 'webapps-reschke-common';
+import { UtilityService, Appointment, Location, LocationData } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-location',

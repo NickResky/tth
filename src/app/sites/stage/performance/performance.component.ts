@@ -1,9 +1,8 @@
-import { UtilityService } from 'webapps-reschke-common';
+import { UtilityService, Performance } from 'webapps-reschke-common';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModelService } from '../../../services/model.service';
-import { Performance } from '../../../classes/performance';
 import * as _ from 'lodash';
 
 @Component({

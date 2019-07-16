@@ -1,11 +1,9 @@
-import { MainPageData } from './../../classes/main-page-data';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { Contact } from './../../classes/contact';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
-import { UtilityService } from 'webapps-reschke-common';
+import { UtilityService, Contact, MainPageData } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-contact',

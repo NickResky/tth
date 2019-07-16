@@ -1,12 +1,9 @@
-import { CourseInformation } from './../../../classes/course-information';
-import { MainPageData } from './../../../classes/main-page-data';
-import { CourseData } from './../../../classes/course-data';
 import { ModelService } from './../../../services/model.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import {ActivatedRoute} from '@angular/router';
-import { UtilityService } from 'webapps-reschke-common';
+import { UtilityService, CourseData, CourseInformation, MainPageData } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-course-information',

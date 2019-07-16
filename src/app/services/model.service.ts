@@ -1,27 +1,27 @@
 import { Observable } from 'rxjs/Observable';
-import { ScheduleData } from './../classes/schedule-data';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
 import { LocationsService } from './locations.service';
-import { LocationData } from './../classes/location-data';
 import { TeamService } from './team.service';
-import { CourseData } from './../classes/course-data';
 import { CoursesService } from './courses.service';
-import { Performance } from './../classes/performance';
 import { StageService } from './stage.service';
-import { Teacher } from './../classes/teacher';
-import { BlogPost } from './../classes/blog-post';
-import { Contact } from './../classes/contact';
-import { MainPageData } from './../classes/main-page-data';
-import { MainPageSection } from './../classes/main-page-section';
 import { MainPageService } from './main-page.service';
 import { ScheduleService } from './schedule.service';
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import * as _ from 'lodash';
-import { Imprint } from './../classes/imprint';
 import { ImprintService } from './imprint.service';
-import { CourseInformation } from '../classes/course-information';
-import { Appointment } from '../classes/appointment';
+import {
+    Appointment,
+    BlogPost,
+    Contact,
+    CourseData,
+    CourseInformation,
+    Imprint,
+    LocationData,
+    MainPageData,
+    ScheduleData,
+    Teacher
+} from 'webapps-reschke-common';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { ZenkitCollections } from '../shared/constants/zenkit-collections';

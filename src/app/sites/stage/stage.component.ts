@@ -1,10 +1,8 @@
-import { MainPageData } from './../../classes/main-page-data';
 import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { Performance } from './../../classes/performance';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { UtilityService } from 'webapps-reschke-common';
+import { UtilityService, MainPageData, Performance } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-stage',

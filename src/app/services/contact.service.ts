@@ -1,9 +1,8 @@
 import { RequiredElements } from './../shared/constants/required-elements';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { Contact } from './../classes/contact';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { UtilityService, ZenkitDataService} from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService, Contact } from 'webapps-reschke-common';
 
 @Injectable()
 export class ContactService {

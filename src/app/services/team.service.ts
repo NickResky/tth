@@ -1,8 +1,7 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { Teacher } from '../classes/teacher';
-import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService, Teacher } from 'webapps-reschke-common';
 
 @Injectable()
 export class TeamService {

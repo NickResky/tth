@@ -1,8 +1,6 @@
-import { Location } from './../../classes/location';
-import { Contact } from './../../classes/contact';
+import { Contact, Appointment, LocationData } from 'webapps-reschke-common';
 import { ModelService } from './../../services/model.service';
 import { Component, OnInit } from '@angular/core';
-import { LocationData } from '../../classes/location-data';
 import * as _ from 'lodash';
 
 @Component({

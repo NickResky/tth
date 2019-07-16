@@ -1,4 +1,4 @@
-import { ElementTypes } from './element_types';
+import { ElementTypes } from 'webapps-reschke-common';
 
 export const RequiredElements  = {
     home: [

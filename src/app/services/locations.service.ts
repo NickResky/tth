@@ -1,9 +1,7 @@
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
-import { Location } from './../classes/location';
-import { LocationData } from './../classes/location-data';
 import * as _ from 'lodash';
-import { UtilityService, ZenkitDataService } from 'webapps-reschke-common';
+import { UtilityService, ZenkitDataService, Appointment, Location, LocationData } from 'webapps-reschke-common';
 
 @Injectable()
 export class LocationsService {
