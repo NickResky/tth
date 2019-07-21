@@ -1,6 +1,13 @@
-import { UtilityService, ZenkitDataService, CourseInformation, MainPageData, MainPageSection, ModelService } from 'webapps-reschke-common';
+import {
+  UtilityService,
+  ZenkitDataService,
+  CourseInformation,
+  MainPageData,
+  MainPageSection,
+  ModelService,
+  MainPageSectionTypes
+} from 'webapps-reschke-common';
 import { MainPageComponent } from './../main-page/main-page.component';
-import { MainPageSectionTypes } from './../shared/constants/main-page-section-types';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';

@@ -16,6 +16,13 @@
       "dom"
     ]
   },
+  "include": [
+    "src/**/*.ts",
+    "node_modules/webapps-reschke-common/*.ts",
+    "node_modules/webapps-reschke-common/**/*.ts",
+    "../webapps-reschke-common/*.ts",
+    "../webapps-reschke-common/**/*.ts"
+  ],
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.module#AppModule"
   }

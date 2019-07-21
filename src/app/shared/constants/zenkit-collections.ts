@@ -1,6 +1,7 @@
 import { RequiredElements } from './required-elements';
+import { ZenkitCollectionsConfig } from 'webapps-reschke-common/src/app/constants/zenkit-collections-config';
 
-export const ZenkitCollections  = {
+export const ZenkitCollections: ZenkitCollectionsConfig  = {
     apiUrl : 'https://zenkit.com/api/v1/',
     home: {
         shortId: 'S1k_AYFu-',
