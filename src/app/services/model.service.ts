@@ -20,7 +20,8 @@ import {
     LocationData,
     MainPageData,
     ScheduleData,
-    Teacher
+    Teacher,
+    Performance
 } from 'webapps-reschke-common';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';

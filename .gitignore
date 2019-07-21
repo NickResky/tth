@@ -86,3 +86,5 @@ modules/.vscode
 
 # rollup-test output
 /modules/rollup-test/dist/
+
+/src/assets/plugins/

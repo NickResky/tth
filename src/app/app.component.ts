@@ -1,4 +1,4 @@
-import { ModelService } from './services/model.service';
+import { ModelService } from 'webapps-reschke-common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { SeoService } from './services/seo.service';

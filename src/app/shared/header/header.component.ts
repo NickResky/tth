@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelService } from '../../services/model.service';
+import { ModelService } from 'webapps-reschke-common';
 import { Router } from '@angular/router';
 
 

@@ -1,5 +1,4 @@
-import { UtilityService, ZenkitDataService, CourseInformation, MainPageData, MainPageSection } from 'webapps-reschke-common';
-import { ModelService } from './model.service';
+import { UtilityService, ZenkitDataService, CourseInformation, MainPageData, MainPageSection, ModelService } from 'webapps-reschke-common';
 import { MainPageComponent } from './../main-page/main-page.component';
 import { MainPageSectionTypes } from './../shared/constants/main-page-section-types';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';

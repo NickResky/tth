@@ -1,9 +1,8 @@
-import { ModelService } from './../../services/model.service';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { TeamService } from '../../services/team.service';
-import { UtilityService, MainPageData, Teacher } from 'webapps-reschke-common';
+import { UtilityService, MainPageData, Teacher, ModelService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-team',

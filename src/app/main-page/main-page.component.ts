@@ -1,12 +1,8 @@
-import { ModelService } from './../services/model.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { Component, OnInit } from '@angular/core';
-import { MainPageService } from './../services/main-page.service';
+import { Component, OnInit, Inject } from '@angular/core';
 import * as _ from 'lodash';
-import { SafeResourceUrl } from '@angular/platform-browser';
 import { DomSanitizer } from '@angular/platform-browser';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { UtilityService, MainPageData, MainPageSection } from 'webapps-reschke-common';
+import { UtilityService, MainPageData, MainPageSection, ModelService } from 'webapps-reschke-common';
 
 
 @Component({

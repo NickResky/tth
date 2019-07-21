@@ -1,5 +1,4 @@
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
-import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -25,7 +24,6 @@ import { LocationsComponent } from './sites/locations/locations.component';
 import { LocationsService } from './services/locations.service';
 import { ContactComponent } from './sites/contact/contact.component';
 import { ContactService } from './services/contact.service';
-import { ModelService } from './services/model.service';
 import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
 import { CoursesOverviewComponent } from './courses-overview/courses-overview.component';
 import { PerformanceComponent } from './sites/stage/performance/performance.component';
@@ -41,6 +39,9 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ScheduleService } from './services/schedule.service';
 import {SeoService} from './services/seo.service';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
+import { PluginModule } from 'webapps-reschke-common';
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
+
 // import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
@@ -196,9 +197,9 @@ const routes: Routes = [
     ImprintComponent,
     CourseInformationComponent,
     ScheduleComponent,
-    CookiesNotificationComponent,
     PrivacyComponent,
-    TextAnimationComponent
+    TextAnimationComponent,
+    CookiesNotificationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -206,8 +207,9 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule
-    // YoutubePlayerModule
+    FormsModule,
+    PluginModule.forRoot()
+    // PluginModule
   ],
   providers: [
     MainPageService,
@@ -217,7 +219,6 @@ const routes: Routes = [
     CoursesService,
     LocationsService,
     ContactService,
-    ModelService,
     ImprintService,
     ScheduleService,
     SeoService

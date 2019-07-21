@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { ModelService } from '../../services/model.service';
+import { ModelService } from 'webapps-reschke-common';
 
 @Component({
   selector: 'app-cookies-notification',

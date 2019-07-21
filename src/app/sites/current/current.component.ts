@@ -1,5 +1,4 @@
-import { UtilityService, BlogPost, MainPageData, MainPageSection } from 'webapps-reschke-common';
-import { ModelService } from './../../services/model.service';
+import { UtilityService, BlogPost, MainPageData, MainPageSection, ModelService } from 'webapps-reschke-common';
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';

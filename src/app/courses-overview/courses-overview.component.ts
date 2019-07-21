@@ -1,6 +1,5 @@
-import { UtilityService, CourseData, CourseInformation } from 'webapps-reschke-common';
+import { UtilityService, CourseData, CourseInformation, ModelService } from 'webapps-reschke-common';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { ModelService } from './../services/model.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 

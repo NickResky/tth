@@ -1,6 +1,5 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { UtilityService, Appointment, Location, ScheduleData } from 'webapps-reschke-common';
-import { ModelService } from './../../services/model.service';
+import { UtilityService, Appointment, Location, ScheduleData, ModelService } from 'webapps-reschke-common';
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 import { NgForm } from '@angular/forms';
