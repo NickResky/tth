@@ -1,6 +1,6 @@
-import { Title, Meta } from "@angular/platform-browser";
-import { Router, NavigationEnd } from "@angular/router";
-import {Injectable} from "@angular/core";
+import { Title, Meta } from '@angular/platform-browser';
+import { Router, NavigationEnd } from '@angular/router';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class SeoService {
@@ -17,9 +17,9 @@ export class SeoService {
       while (root) {
         if (root.children && root.children.length) {
           root = root.children[0];
-        } else if (root.data && root.data["title"]) {
-          this.titleService.setTitle(root.data["title"]);
-          let tags = root.data["metatags"];
+        } else if (root.data && root.data['title']) {
+          this.titleService.setTitle(root.data['title']);
+          let tags = root.data['metatags'];
           for (let tag in tags) {
             this.metaService.addTag({ name: tag, content: tags[tag] });
           }

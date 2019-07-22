@@ -15,10 +15,11 @@ export class AppComponent implements OnInit {
   removeOverlay;
   isBrowser;
 
-  constructor(private router: Router,
-              private seoService: SeoService,
-              private modelService: ModelService) {
-    seoService.addSeoData();
+  constructor(
+    private router: Router,
+    private modelService: ModelService,
+    private seoService: SeoService) {
+      this.seoService.addSeoData();
   }
 
   ngOnInit() {

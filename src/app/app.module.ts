@@ -8,23 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { MainPageService } from './services/main-page.service';
 import { TextAnimationComponent } from './main-page/text-animation/text-animation.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
-import { CurrentService } from './services/current.service';
 import { TeamComponent } from './sites/team/team.component';
-import { TeamService } from './services/team.service';
 import { CoursesComponent } from './sites/courses/courses.component';
-import { CoursesService } from './services/courses.service';
 import { StageComponent } from './sites/stage/stage.component';
-import { StageService } from './services/stage.service';
 import { GalleryComponent } from './sites/stage/gallery/gallery.component';
 import { LocationsComponent } from './sites/locations/locations.component';
-import { LocationsService } from './services/locations.service';
 import { ContactComponent } from './sites/contact/contact.component';
-import { ContactService } from './services/contact.service';
 import { MainPageSectionComponent } from './main-page/main-page-section/main-page-section.component';
 import { CoursesOverviewComponent } from './courses-overview/courses-overview.component';
 import { PerformanceComponent } from './sites/stage/performance/performance.component';
@@ -33,16 +26,12 @@ import { CourseDetailsComponent } from './sites/courses/course-details/course-de
 import { LocationComponent } from './sites/locations/location/location.component';
 import { HeaderImageComponent } from './components/header-image/header-image.component';
 import { ImprintComponent } from './sites/imprint/imprint.component';
-import { ImprintService } from './services/imprint.service';
 import { CourseInformationComponent } from './sites/courses/course-information/course-information.component';
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
-import { ScheduleService } from './services/schedule.service';
-import {SeoService} from './services/seo.service';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
-import { ModelPluginModule, CookiesNotificationComponent } from 'webapps-reschke-common';
-
-// import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { ModelPluginModule, CookiesNotificationComponent, ZenkitCollectionsConfigService } from 'webapps-reschke-common';
+import { SeoService } from './services/seo.service';
 
 const routes: Routes = [
   { path: '',
@@ -214,16 +203,11 @@ const routes: Routes = [
     // PluginModule
   ],
   providers: [
-    MainPageService,
-    CurrentService,
-    TeamService,
-    StageService,
-    CoursesService,
-    LocationsService,
-    ContactService,
-    ImprintService,
-    ScheduleService,
-    SeoService
+    SeoService,
+    {
+      provide: ZenkitCollectionsConfigService,
+      useValue: ZenkitCollections
+    },
   ],
   bootstrap: [AppComponent]
 })
