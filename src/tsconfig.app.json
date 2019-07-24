@@ -15,7 +15,10 @@
 {
     "extends": "../tsconfig.json",
     "angularCompilerOptions": {
-        "entryModule": "./app/app.module#AppModule"
+        "entryModule": "./app/app.module#AppModule",
+        "skipTemplateCodegen": true,
+        "strictMetadataEmit": true,
+        "fullTemplateTypeCheck": true
     },
     "exclude": ["test.ts", "**/*.spec.ts"]
 }

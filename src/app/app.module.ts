@@ -1,7 +1,7 @@
 import { ZenkitCollections } from './shared/constants/zenkit-collections';
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule} from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +30,11 @@ import { CourseInformationComponent } from './sites/courses/course-information/c
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
-import { ModelPluginModule, CookiesNotificationComponent, ZenkitCollectionsConfigService } from 'webapps-reschke-common';
+import { 
+  ModelPluginModule,
+  CookiesNotificationComponent,
+  ZenkitCollectionsService
+} from 'webapps-reschke-common';
 import { SeoService } from './services/seo.service';
 
 const routes: Routes = [
@@ -200,14 +204,13 @@ const routes: Routes = [
     HttpModule,
     FormsModule,
     ModelPluginModule.forRoot(ZenkitCollections)
-    // PluginModule
   ],
   providers: [
     SeoService,
     {
-      provide: ZenkitCollectionsConfigService,
+      provide: ZenkitCollectionsService,
       useValue: ZenkitCollections
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
