@@ -8,6 +8,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "baseUrl": "./",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -24,7 +25,7 @@
     // "../webapps-reschke-common/**/*.ts"
   ],
   "paths": {
-    "webapps-reschke-common": ["node_modules/webapps-reschke-common/dist"]
+    "webapps-reschke-common/*": ["node_modules/webapps-reschke-common/public_api*"]
   },
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.module#AppModule",

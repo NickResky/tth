@@ -207,7 +207,7 @@
             }
           }
         },
-        "server": {
+        "test": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/server",
@@ -221,7 +221,7 @@
             "browserTarget": "app:build"
           }
         },
-        "test": {
+        "test-original": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",

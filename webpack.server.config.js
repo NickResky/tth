@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
  
 module.exports = {
-  entry: { server: './src/server.ts' },
+  entry: { server: './src/main-server.ts' },
   resolve: { extensions: ['.js', '.ts'] },
   target: 'node',
   mode: 'none',

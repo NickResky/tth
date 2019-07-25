@@ -1,7 +1,7 @@
 const {
   AppServerModuleNgFactory,
   LAZY_MODULE_MAP
-} = require('../dist/server/main');
+} = require('./../dist/server/main.js');
 import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
 import { renderModuleFactory } from '@angular/platform-server';
