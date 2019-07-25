@@ -17,16 +17,6 @@
       "dom"
     ]
   },
-  "include": [
-    "src/**/*.ts"
-    // "node_modules/webapps-reschke-common/*.ts",
-    // "node_modules/webapps-reschke-common/**/*.ts",
-    // "../webapps-reschke-common/*.ts",
-    // "../webapps-reschke-common/**/*.ts"
-  ],
-  "paths": {
-    "webapps-reschke-common/*": ["node_modules/webapps-reschke-common/public_api*"]
-  },
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.module#AppModule",
     "skipTemplateCodegen": true,

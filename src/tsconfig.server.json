@@ -1,24 +1,14 @@
-// {
-//   "extends": "./tsconfig.app.json",
-//   "compilerOptions": {
-//     "outDir": "../out-tsc/server",
-//     "module": "commonjs"
-//   },
-//   "exclude": [
-//     "test.ts",
-//     "**/*.spec.ts"
-//   ],
-//   "angularCompilerOptions": {
-//     "entryModule": "./app/app-server.module#AppServerModule"
-//   }
-// }
 {
     "extends": "../tsconfig.json",
-    "angularCompilerOptions": {
-        "entryModule": "./app/app-server.module#AppServerModule",
-        "skipTemplateCodegen": true,
-        "strictMetadataEmit": true,
-        "fullTemplateTypeCheck": true
+    "compilerOptions": {
+        "paths": {
+            "webapps-reschke-common": ["node_modules/webapps-reschke-common-dist/"],
+        }
     },
-    "exclude": []
+    "angularCompilerOptions": {
+        "entryModule": "./app/app-server.module#AppServerModule"
+    },
+    "exclude": [
+        "node_modules/*"
+    ]
 }
