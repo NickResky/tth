@@ -17,12 +17,15 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "node_modules/webapps-reschke-common/*.ts",
-    "node_modules/webapps-reschke-common/**/*.ts",
-    "../webapps-reschke-common/*.ts",
-    "../webapps-reschke-common/**/*.ts"
+    "src/**/*.ts"
+    // "node_modules/webapps-reschke-common/*.ts",
+    // "node_modules/webapps-reschke-common/**/*.ts",
+    // "../webapps-reschke-common/*.ts",
+    // "../webapps-reschke-common/**/*.ts"
   ],
+  "paths": {
+    "webapps-reschke-common": ["node_modules/webapps-reschke-common/dist"]
+  },
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.module#AppModule",
     "skipTemplateCodegen": true,

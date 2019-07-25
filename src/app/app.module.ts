@@ -1,3 +1,4 @@
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { ZenkitCollections } from './shared/constants/zenkit-collections';
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,9 +31,8 @@ import { CourseInformationComponent } from './sites/courses/course-information/c
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
-import { 
+import {
   ModelPluginModule,
-  CookiesNotificationComponent,
   ZenkitCollectionsService
 } from 'webapps-reschke-common';
 import { SeoService } from './services/seo.service';
@@ -203,7 +203,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule,
     FormsModule,
-    ModelPluginModule.forRoot(ZenkitCollections)
+    ModelPluginModule.forRoot()
   ],
   providers: [
     SeoService,

@@ -1,5 +1,5 @@
 import { RequiredElements } from './required-elements';
-import { ZenkitCollectionsConfig } from 'webapps-reschke-common/src/app/constants/zenkit-collections-config';
+import { ZenkitCollectionsConfig } from 'webapps-reschke-common';
 
 export const ZenkitCollections: ZenkitCollectionsConfig  = {
     apiUrl : 'https://zenkit.com/api/v1/',

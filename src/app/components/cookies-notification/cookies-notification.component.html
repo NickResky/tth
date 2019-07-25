@@ -1,0 +1,24 @@
+<div class="cookies-notification-container" *ngIf="isBrowser && displayCookiesNotification">
+    <div class="cookies-notification">
+        <div class="cookies-notification-content">
+            <div class="cookies-notification-description-container">
+                <div class="cookies-icon-container">
+                    <i class="cookies-icon fas fa-cookie-bite">
+
+                    </i>
+                </div>
+                <div class="cookies-notification-description">
+                    Wir verwenden Cookies, um Ihnen ein optimales Nutzererlebnis zu bieten und Social Media einzubinden. Nutzen Sie unsere Website weiter, stimmen Sie der Verwendung zu.
+                </div>
+            </div>
+            <div class="cookies-notification-buttons-container">
+                <div class="cookies-notification-button cookies-notification-details-button" routerLink="/impressum">
+                    <div class="cookies-notification-button-text">Details</div>
+                </div>
+                <div class="cookies-notification-button cookies-notification-okay-button" (click)="acceptCookies()">
+                    <div class="cookies-notification-button-text">Okay</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
