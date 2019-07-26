@@ -13,14 +13,23 @@
 //   ]
 // }
 {
-    "extends": "../tsconfig.json",
+    "extends": "./tsconfig.json",
     "compilerOptions": {
         "paths": {
             "webapps-reschke-common": ["node_modules/webapps-reschke-common/public_api.ts"]
         }
     },
     "angularCompilerOptions": {
-        "entryModule": "./app/app.module#AppModule"
+        "entryModule": "./src/app/app.module#AppModule"
     },
-    "exclude": ["test.ts", "**/*.spec.ts"]
+    "include": [
+        "index.ts",
+        "src/*.ts",
+        "src/**/*.ts",
+        "node_modules/webapps-reschke-common/*.ts",
+        "node_modules/webapps-reschke-common/**/*.ts",
+        "../webapps-reschke-common/*.ts",
+        "../webapps-reschke-common/**/*.ts"
+    ],
+    "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

@@ -14,7 +14,7 @@
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
@@ -62,7 +62,7 @@
           "options": {
             "outputPath": "dist/server",
             "main": "src/main-server.ts",
-            "tsConfig": "src/tsconfig.server.json"
+            "tsConfig": "tsconfig.server.json"
           }
         },
         "extract-i18n": {

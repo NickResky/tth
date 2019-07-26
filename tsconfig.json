@@ -22,13 +22,5 @@
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true
-  },
-  "include": [
-    "*.ts",
-    "**/*.ts",
-    "node_modules/webapps-reschke-common/*.ts",
-    "node_modules/webapps-reschke-common/**/*.ts",
-    "../webapps-reschke-common/*.ts",
-    "../webapps-reschke-common/**/*.ts"
-  ]
+  }
 }
