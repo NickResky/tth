@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ServerModule } from '@angular/platform-server';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import {
+    ModelPluginModule
+} from 'webapps-reschke-common';
+  import { SeoService } from './services/seo.service';
 
 @NgModule({
     imports: [
