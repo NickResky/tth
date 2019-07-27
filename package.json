@@ -8,10 +8,10 @@
   "scripts": {
     "ng": "./node_modules/.bin/ng",
     "serve:ssr": "ts-node ./src/server",
-    "build:ssr": "npm run build:ssr:setup && npm run build:client-and-server-bundles && npm run webpack:server",
-    "build:ssr:windows": "npm run build:ssr:setup && npm run build:client-and-server-bundles:windows && npm run webpack:server",
+    "build:ssr": "npm run build:client-and-server-bundles",
+    "build:ssr:windows": "npm run build:client-and-server-bundles:windows",
     "build:ssr:setup": "node setup_production_build.js",
-    "build:client-and-server-bundles": "node ./node_modules/.bin/ng build && node ./node_modules/.bin/ng run app:server",
+    "build:client-and-server-bundles": "node ./node_modules/.bin/ng build && node ./node_modules/.bin/ng run test",
     "build:client-and-server-bundles:windows": "npm run ng build && npm run ng test",
     "webpack:server": "webpack --config ./webpack.server.config.js --progress --colors",
     "install-dev": "npm install --only=development",

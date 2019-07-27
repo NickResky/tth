@@ -1,26 +1,30 @@
-// {
-//   "extends": "../tsconfig.json",
-//   "compilerOptions": {
-//     "outDir": "../out-tsc/app",
-//     "baseUrl": "./",
-//     "module": "es2015",
-//     "types": []
-//   },
-//   "exclude": [
-//     "test.ts",
-//     "**/*.spec.ts",
-//     "server.ts"
-//   ]
-// }
 {
-    "extends": "./tsconfig.json",
+    "compileOnSave": false,
     "compilerOptions": {
-        "paths": {
-            "webapps-reschke-common": ["node_modules/webapps-reschke-common/public_api.ts"]
-        }
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "moduleResolution": "node",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "target": "es5",
+      "baseUrl": "./",
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "lib": [
+        "es2017",
+        "dom"
+      ],
+      "paths": {
+        "webapps-reschke-common": ["node_modules/webapps-reschke-common-dev/public_api.ts"]
+    }
     },
     "angularCompilerOptions": {
-        "entryModule": "./src/app/app.module#AppModule"
+      "entryModule": "./src/app/app.module#AppModule",
+      "skipTemplateCodegen": true,
+      "strictMetadataEmit": true,
+      "fullTemplateTypeCheck": true
     },
     "include": [
         "index.ts",
@@ -31,5 +35,12 @@
         "../webapps-reschke-common/*.ts",
         "../webapps-reschke-common/**/*.ts"
     ],
-    "exclude": ["src/test.ts", "**/*.spec.ts"]
+    "exclude": [
+        "src/test.ts", 
+        "**/*.spec.ts",
+        "node_modules/webapps-reschke-common/dist/*.ts",
+        "node_modules/webapps-reschke-common/dist/**/*.ts",
+        "../webapps-reschke-common/dist/*.ts",
+        "../webapps-reschke-common/dist/**/*.ts"
+    ]
 }
