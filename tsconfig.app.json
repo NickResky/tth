@@ -17,7 +17,8 @@
         "dom"
       ],
       "paths": {
-        "webapps-reschke-common": ["node_modules/webapps-reschke-common-dev/public_api.ts"]
+        "webapps-reschke-common": ["node_modules/webapps-reschke-common/public_api.ts"],
+        "@angular/*": [ "node_modules/@angular/*"]
     }
     },
     "angularCompilerOptions": {

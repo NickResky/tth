@@ -31,9 +31,19 @@ import { CourseInformationComponent } from './sites/courses/course-information/c
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
-import { ModelPluginModule } from 'webapps-reschke-common';
-import { ZenkitCollectionsService } from 'webapps-reschke-common';
 import { SeoService } from './services/seo.service';
+import { ModelPluginModule } from 'webapps-reschke-common';
+import { ModelService } from 'webapps-reschke-common';
+import { MainPageService } from 'webapps-reschke-common';
+import { ZenkitCollectionsService } from 'webapps-reschke-common';
+import { StageService } from 'webapps-reschke-common';
+import { CoursesService } from 'webapps-reschke-common';
+import { TeamService } from 'webapps-reschke-common';
+import { LocationsService } from 'webapps-reschke-common';
+import { ContactService } from 'webapps-reschke-common';
+import { CurrentService } from 'webapps-reschke-common';
+import { ImprintService } from 'webapps-reschke-common';
+import { ScheduleService } from 'webapps-reschke-common';
 
 const routes: Routes = [
   { path: '',
@@ -201,9 +211,19 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule,
     FormsModule,
-    ModelPluginModule.forRoot()
   ],
   providers: [
+    ModelService,
+    ZenkitCollectionsService,
+    MainPageService,
+    StageService,
+    CoursesService,
+    TeamService,
+    LocationsService,
+    ContactService,
+    CurrentService,
+    ImprintService,
+    ScheduleService,
     SeoService,
     {
       provide: ZenkitCollectionsService,

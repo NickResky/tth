@@ -15,7 +15,11 @@
         "lib": [
             "es2017",
             "dom"
-        ]
+        ],
+        "paths": {
+            "webapps-reschke-common": ["node_modules/webapps-reschke-common/dist/bundles/webapps-reschke-common.umd.js"],
+            "@angular/*": [ "../node_modules/@angular/*"]
+        }
     },
     "angularCompilerOptions": {
         "entryModule": "./src/app/app-server.module#AppServerModule"
