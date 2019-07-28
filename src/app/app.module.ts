@@ -1,4 +1,3 @@
-import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 import { ZenkitCollections } from './shared/constants/zenkit-collections';
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,6 +43,7 @@ import { ContactService } from 'webapps-reschke-common';
 import { CurrentService } from 'webapps-reschke-common';
 import { ImprintService } from 'webapps-reschke-common';
 import { ScheduleService } from 'webapps-reschke-common';
+import { CookiesNotificationComponent } from 'webapps-reschke-common';
 
 const routes: Routes = [
   { path: '',

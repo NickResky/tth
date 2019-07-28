@@ -10,7 +10,7 @@
           <span class="footer-section-content-link">{{locationMG.addressStreet}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressZIP}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationMG.addressCity}}</span>
-          <span class="footer-section-content-link consultation-label" [routerLink]="['/standorte', 0]">Beratungszeiten<i class="fas fa-arrow-right"></i></span>
+          <span class="footer-section-content-link consultation-label" [routerLink]="['/standorte', locationMG.shortId]">Beratungszeiten<i class="fas fa-arrow-right"></i></span>
           <!-- <span class="footer-section-content-link">{{locationMG.consultationTime1}}</span>
           <span class="footer-section-content-link" *ngIf="locationMG.consultationTime2">{{locationMG.consultationTime2}}</span>
           <span class="footer-section-content-link" *ngIf="locationMG.consultationTime3">{{locationMG.consultationTime3}}</span> -->
@@ -19,7 +19,7 @@
           <span class="footer-section-content-link">{{locationLB.addressStreet}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressZIP}}</span>
           <span class="footer-section-content-link footer-section-content-link-inline">{{locationLB.addressCity}}</span>
-          <span class="footer-section-content-link consultation-label" [routerLink]="['/standorte', 1]">Beratungszeiten<i class="fas fa-arrow-right"></i></span>
+          <span class="footer-section-content-link consultation-label" [routerLink]="['/standorte', locationLB.shortId]">Beratungszeiten<i class="fas fa-arrow-right"></i></span>
           <!-- <span class="footer-section-content-link">{{locationLB.consultationTime1}}</span>
           <span class="footer-section-content-link" *ngIf="locationLB.consultationTime2">{{locationLB.consultationTime2}}</span>
           <span class="footer-section-content-link" *ngIf="locationLB.consultationTime3">{{locationLB.consultationTime3}}</span> -->

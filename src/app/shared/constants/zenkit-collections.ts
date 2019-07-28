@@ -1,9 +1,9 @@
 import { RequiredElements } from './required-elements';
-import { ZenkitCollectionsConfig } from 'webapps-reschke-common';
+import { ZenkitCollectionsConfig, ApplicationIdentifier } from 'webapps-reschke-common';
 
 export const ZenkitCollections: ZenkitCollectionsConfig  = {
     apiUrl : 'https://zenkit.com/api/v1/',
-    workspaceName: 'Tanztheater Hanke',
+    applicationIdentifier: ApplicationIdentifier.TTH,
     home: {
         shortId: 'S1k_AYFu-',
         requiredElements: RequiredElements.home
