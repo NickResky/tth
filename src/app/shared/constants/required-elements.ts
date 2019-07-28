@@ -275,6 +275,26 @@ export const RequiredElements  = {
             name: 'Telefon',
             type: ElementTypes.text,
             mappedClassPropertyName: 'phone'
+        },
+        {
+            name: 'YouTube Link',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'youtubeLink'
+        },
+        {
+            name: 'Facebook Link',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'facebookLink'
+        },
+        {
+            name: 'Instagram Link',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'instagramLink'
+        },
+        {
+            name: 'GoogleMaps Link',
+            type: ElementTypes.text,
+            mappedClassPropertyName: 'googleMapsLink'
         }
     ],
     imprint: [

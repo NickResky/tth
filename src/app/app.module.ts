@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TextAnimationComponent } from './main-page/text-animation/text-animation.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { CurrentComponent } from './sites/current/current.component';
 import { TeamComponent } from './sites/team/team.component';
 import { CoursesComponent } from './sites/courses/courses.component';
@@ -44,6 +43,7 @@ import { CurrentService } from 'webapps-reschke-common';
 import { ImprintService } from 'webapps-reschke-common';
 import { ScheduleService } from 'webapps-reschke-common';
 import { CookiesNotificationComponent } from 'webapps-reschke-common';
+import { FooterComponent } from 'webapps-reschke-common';
 
 const routes: Routes = [
   { path: '',
