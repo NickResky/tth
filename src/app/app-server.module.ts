@@ -1,12 +1,10 @@
+import { App01Component } from 'webapps-reschke-common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServerModule } from '@angular/platform-server';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
-import {
-    ModelPluginModule
-} from 'webapps-reschke-common';
-  import { SeoService } from 'webapps-reschke-common';
+
 
 @NgModule({
     imports: [
@@ -16,6 +14,6 @@ import {
         ServerModule,
         AppModule
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [App01Component]
 })
 export class AppServerModule { }

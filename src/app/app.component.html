@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="nav-spacer">
+</div>  
+<div class="app-container">
+  <router-outlet></router-outlet>
+  <wrc-footer-01></wrc-footer-01>
+</div>
+<div class="loading-overlay" [ngClass]="[pageLoaded && isBrowser ? 'hide-overlay' : '', removeOverlay && isBrowser ? 'remove-overlay' : '']">
+  <div class="vertical-centered-box">
+    <!-- <div class="logo" [ngClass]="[pageLoaded ? 'move-up' : '']">
+
+    </div>
+    <div class="title" [ngClass]="[pageLoaded ? 'move-up' : '']">
+      Tanztheater<br/>Anita Hanke
+    </div> -->
+    <!-- <div class="loader-circle"></div>
+    <div class="loader-line-mask">
+      <div class="loader-line"></div>
+    </div> -->
+  </div>
+</div>
+<wrc-cookies-notification-01></wrc-cookies-notification-01>

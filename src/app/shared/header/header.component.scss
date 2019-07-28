@@ -179,7 +179,7 @@
                 display: inline-block;
                 width: 120px;
                 .logo-label {
-                    color: $header-link-color;
+                    color: $main-text-color;
                     padding: 5px 0px 5px 10px;
                     font-size: 16px;
                     text-transform: uppercase;
@@ -196,7 +196,7 @@
 
             .navbar-navigation-link {
                 display: block;
-                color: $header-link-color;
+                color: $main-text-color;
                 text-decoration: none;
                 font-size: 14px;
                 text-transform: uppercase;

@@ -5,3 +5,27 @@
         }
     }
 }
+
+.navbar-container {
+    height: 70px;
+    .loading-animation-container {
+        .logo-container {
+            .logo-container-inner {
+                height: 42px;
+                width: 20px;
+            }
+            .logo {
+                background-image: url("./resources/Logo.png");
+            }
+        }
+    }
+    .navbar {
+        .logo-container {
+            .logo {
+                background-image: url("./resources/Logo.png");
+           }
+        }
+    }
+}
+
+   

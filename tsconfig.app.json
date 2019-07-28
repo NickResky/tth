@@ -21,7 +21,8 @@
         "@angular/*": [ "node_modules/@angular/*"],
         "@types/*": [ "node_modules/@types/*"],
         "lodash": [ "node_modules/lodash"],
-        "rxjs": [ "node_modules/rxjs"]
+        "rxjs": [ "node_modules/rxjs"],
+        "rxjs/*": [ "node_modules/rxjs/*"]
       },
     },
     "angularCompilerOptions": {

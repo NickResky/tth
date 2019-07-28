@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { ZenkitCollections } from './shared/constants/zenkit-collections';
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MainPageComponent } from './main-page/main-page.component';
 import { TextAnimationComponent } from './main-page/text-animation/text-animation.component';
-import { HeaderComponent } from './shared/header/header.component';
 import { CurrentComponent } from './sites/current/current.component';
 import { TeamComponent } from './sites/team/team.component';
 import { CoursesComponent } from './sites/courses/courses.component';
@@ -28,23 +28,29 @@ import { CourseInformationComponent } from './sites/courses/course-information/c
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { PrivacyComponent } from './sites/privacy/privacy.component';
+import { NavigationConfig } from './shared/constants/navigation-config';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
+
 import {
   ModelService,
+  ContactService,
+  CoursesService,
+  CurrentService,
+  ImprintService,
+  LocationsService,
+  MainPageService,
+  ScheduleService,
+  StageService,
+  TeamService,
+  NavigationConfigService,
+  ZenkitCollectionsService,
   SeoService,
-  App01Component
+
+  App01Component,
+  ComponentsPluginModule
 } from 'webapps-reschke-common';
-import { MainPageService } from 'webapps-reschke-common';
-import { ZenkitCollectionsService } from 'webapps-reschke-common';
-import { StageService } from 'webapps-reschke-common';
-import { CoursesService } from 'webapps-reschke-common';
-import { TeamService } from 'webapps-reschke-common';
-import { LocationsService } from 'webapps-reschke-common';
-import { ContactService } from 'webapps-reschke-common';
-import { CurrentService } from 'webapps-reschke-common';
-import { ImprintService } from 'webapps-reschke-common';
-import { ScheduleService } from 'webapps-reschke-common';
-import { CookiesNotificationComponent } from 'webapps-reschke-common';
-import { FooterComponent } from 'webapps-reschke-common';
 
 const routes: Routes = [
   {
@@ -204,10 +210,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    App01Component,
     MainPageComponent,
-    HeaderComponent,
-    FooterComponent,
     CurrentComponent,
     CurrentDetailsComponent,
     TeamComponent,
@@ -229,7 +232,10 @@ const routes: Routes = [
     ScheduleComponent,
     PrivacyComponent,
     TextAnimationComponent,
-    CookiesNotificationComponent
+    HeaderComponent,
+    FooterComponent,
+    CookiesNotificationComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -238,6 +244,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule,
     FormsModule,
+    ComponentsPluginModule
   ],
   providers: [
     ModelService,
@@ -255,6 +262,10 @@ const routes: Routes = [
     {
       provide: ZenkitCollectionsService,
       useValue: ZenkitCollections
+    },
+    {
+      provide: NavigationConfigService,
+      useValue: NavigationConfig
     }
   ],
   bootstrap: [App01Component]
