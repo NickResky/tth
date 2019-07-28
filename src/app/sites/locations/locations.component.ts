@@ -23,10 +23,14 @@ export class LocationsComponent implements OnInit {
 
   ngOnInit() {
     this.modelService.setPageLoaded(false);
-    this.modelService.getLocationData().then((locationData: LocationData) => {
-      this.locationMG = locationData.locationMG;
-      this.locationLB = locationData.locationLB;
-      this.locations = [locationData.locationMG, locationData.locationLB];
+    this.modelService.getLocations().then((locations: Location[]) => {
+      this.locations = locations;
+      this.locationMG = _.find(locations, (l: Location) => {
+        return l.initials === 'MG';
+      });
+      this.locationLB = _.find(locations, (l: Location) => {
+        return l.initials === 'LB';
+      });
       this.modelService.setPageLoaded(true);
     });
   }
@@ -50,5 +54,9 @@ export class LocationsComponent implements OnInit {
 
   mouseLeave(course) {
     this.activeImageContainer.classList.remove('active');
+  }
+
+  getLocationLink(location: Location) {
+    return '/standorte/' + _.get(location, ['shortId']) + '/' + UtilityService.convertStringToUrlId(_.get(location, ['name']));
   }
 }

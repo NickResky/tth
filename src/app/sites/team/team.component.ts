@@ -1,7 +1,6 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
-import { TeamService } from '../../services/team.service';
 import { UtilityService, MainPageData, Teacher, ModelService } from 'webapps-reschke-common';
 
 @Component({
@@ -19,8 +18,7 @@ export class TeamComponent implements OnInit {
 
 
   constructor(
-    private modelService: ModelService,
-    private teamService: TeamService
+    private modelService: ModelService
   ) { }
 
   ngOnInit() {
@@ -34,7 +32,7 @@ export class TeamComponent implements OnInit {
   }
 
   getTeacherUrlId(teacher) {
-    const urlId = this.teamService.convertTeacherToUrlId(teacher);
+    const urlId = UtilityService.convertTeacherToUrlName(teacher);
     return urlId;
   }
 
@@ -47,5 +45,4 @@ export class TeamComponent implements OnInit {
       'background-image': 'url(' + this.getFileSrc(image) + ')'
     };
   }
-
 }

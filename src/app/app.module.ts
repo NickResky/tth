@@ -83,7 +83,10 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'lehrer/:id',
+  { path: 'lehrer/:teacherShortId',
+    component: TeacherDetailsComponent
+  },
+  { path: 'lehrer/:teacherShortId/:teacherName',
     component: TeacherDetailsComponent
   },
   { path: 'kurse',
@@ -139,7 +142,10 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'standorte/:id',
+  { path: 'standorte/:locationShortId',
+    component: LocationComponent
+  },
+  { path: 'standorte/:locationShortId/:locationTitle',
     component: LocationComponent
   },
   { path: 'kontakt',

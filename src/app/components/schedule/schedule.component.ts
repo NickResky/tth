@@ -1,5 +1,5 @@
 import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { UtilityService, Appointment, Location, ScheduleData, ModelService } from 'webapps-reschke-common';
+import { UtilityService, Appointment, Location, ScheduleData, ModelService, CourseInformation } from 'webapps-reschke-common';
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash';
 import { NgForm } from '@angular/forms';
@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ScheduleComponent implements OnInit {
 
+  @Input() locationShortId: string;
   @Input() locationInitials: string;
   @Input() courseShortId: string;
   @Input() displayNavigationDrawer: string;
@@ -56,19 +57,28 @@ export class ScheduleComponent implements OnInit {
 
     Promise.all([
       this.modelService.getScheduleData(),
-      this.modelService.getLocationByInitials(this.locationInitials),
-      this.modelService.getCourses()
+      this.modelService.getLocationByShortId(this.locationShortId),
+      this.modelService.getCourses(),
+      this.modelService.getLocationByInitials(this.locationInitials)
       ]).then((results: any) => {
         const scheduleData: ScheduleData = results[0];
         this.courseAppointments = scheduleData.appointments;
-        this.location = results[1];
+        if (results[1]) {
+          this.location = results[1];
+        } else if (results[3]) {
+          this.location = results[3];
+        }
 
-        if (this.locationInitials === 'MG') {
-          const schedulePDFData = _.get(results[2], ['scheduleMG']);
-          this.schedulePDF = UtilityService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
-        } else if (this.locationInitials === 'LB') {
-          const schedulePDFData = _.get(results[2], ['scheduleLB']);
-          this.schedulePDF = UtilityService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+        const courses: CourseInformation[] = results[2];
+
+        if (this.location) {
+          if (this.location.initials === 'MG') {
+            const schedulePDFData = _.get(courses, ['scheduleMG']);
+            this.schedulePDF = UtilityService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+          } else if (this.location.initials === 'LB') {
+            const schedulePDFData = _.get(results[2], ['scheduleLB']);
+            this.schedulePDF = UtilityService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
+          }
         }
 
         this.ageGroups = _.map(scheduleData.ageGroupLabels, (ageGroupLabel) => {
@@ -83,8 +93,8 @@ export class ScheduleComponent implements OnInit {
 
         // Filter appointments by location
         if (this.location) {
-          this.courseAppointments = _.filter(this.courseAppointments, {
-            'location': this.location
+          this.courseAppointments = _.filter(this.courseAppointments, (appointment: Appointment) => {
+            return appointment.location.shortId === this.location.shortId;
           });
         }
 

@@ -18,8 +18,11 @@
       ],
       "paths": {
         "webapps-reschke-common": ["node_modules/webapps-reschke-common/public_api.ts"],
-        "@angular/*": [ "node_modules/@angular/*"]
-    }
+        "@angular/*": [ "node_modules/@angular/*"],
+        "@types/*": [ "node_modules/@types/*"],
+        "lodash": [ "node_modules/lodash"],
+        "rxjs": [ "node_modules/rxjs"]
+      },
     },
     "angularCompilerOptions": {
       "entryModule": "./src/app/app.module#AppModule",

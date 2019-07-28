@@ -3,6 +3,7 @@ import { ZenkitCollectionsConfig } from 'webapps-reschke-common';
 
 export const ZenkitCollections: ZenkitCollectionsConfig  = {
     apiUrl : 'https://zenkit.com/api/v1/',
+    workspaceName: 'Tanztheater Hanke',
     home: {
         shortId: 'S1k_AYFu-',
         requiredElements: RequiredElements.home

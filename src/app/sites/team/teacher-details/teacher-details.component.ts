@@ -1,5 +1,4 @@
 import { ActivatedRoute } from '@angular/router';
-import { TeamService } from './../../../services/team.service';
 import { ZenkitCollections } from './../../../shared/constants/zenkit-collections';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
@@ -18,7 +17,6 @@ export class TeacherDetailsComponent implements OnInit {
 
   constructor(
     private modelService: ModelService,
-    private teamService: TeamService,
     private route: ActivatedRoute
   ) { }
 
@@ -26,8 +24,8 @@ export class TeacherDetailsComponent implements OnInit {
   ngOnInit() {
     this.modelService.setPageLoaded(false);
     this.sub = this.route.params.subscribe(params => {
-      const teacherUrlId = params['id'];
-      this.modelService.getTeacherByUrlId(teacherUrlId).then((teacher: Teacher) => {
+      const teacherShortId = params['teacherShortId'];
+      this.modelService.getTeacherByShortId(teacherShortId).then((teacher: Teacher) => {
         this.teacher = teacher;
         this.modelService.setPageLoaded(true);
       });

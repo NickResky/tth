@@ -14,7 +14,7 @@ export class LocationComponent implements OnInit {
 
   location: Location;
   private sub: any;
-  locationId: number;
+  locationShortId: string;
   locationsListShortId = ZenkitCollections.locations.shortId;
 
   constructor(
@@ -26,13 +26,9 @@ export class LocationComponent implements OnInit {
   ngOnInit() {
     this.modelService.setPageLoaded(false);
     this.sub = this.route.params.subscribe(params => {
-      this.locationId = +params['id'];
-      this.modelService.getLocationData().then((locationData: LocationData) => {
-        if (this.locationId === 0) {
-          this.location = locationData.locationMG;
-        } else {
-          this.location = locationData.locationLB;
-        }
+      this.locationShortId = params['locationShortId'];
+      this.modelService.getLocationByShortId(this.locationShortId).then((location: Location) => {
+        this.location = location;
         this.modelService.setPageLoaded(true);
       });
    });
