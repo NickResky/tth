@@ -1,4 +1,3 @@
-import { AppComponent } from './app.component';
 import { ZenkitCollections } from './shared/constants/zenkit-collections';
 import { CurrentDetailsComponent } from './sites/current/current-details/current-details.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,9 +28,6 @@ import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-de
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { PrivacyComponent } from './sites/privacy/privacy.component';
 import { NavigationConfig } from './shared/constants/navigation-config';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { CookiesNotificationComponent } from './components/cookies-notification/cookies-notification.component';
 
 import {
   ModelService,
@@ -232,10 +228,6 @@ const routes: Routes = [
     ScheduleComponent,
     PrivacyComponent,
     TextAnimationComponent,
-    HeaderComponent,
-    FooterComponent,
-    CookiesNotificationComponent,
-    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
