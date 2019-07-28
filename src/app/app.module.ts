@@ -3,10 +3,9 @@ import { CurrentDetailsComponent } from './sites/current/current-details/current
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TextAnimationComponent } from './main-page/text-animation/text-animation.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -28,10 +27,12 @@ import { ImprintComponent } from './sites/imprint/imprint.component';
 import { CourseInformationComponent } from './sites/courses/course-information/course-information.component';
 import { TeacherDetailsComponent } from './sites/team/teacher-details/teacher-details.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
-import {PrivacyComponent} from './sites/privacy/privacy.component';
-import { SeoService } from './services/seo.service';
-import { ModelPluginModule } from 'webapps-reschke-common';
-import { ModelService } from 'webapps-reschke-common';
+import { PrivacyComponent } from './sites/privacy/privacy.component';
+import {
+  ModelService,
+  SeoService,
+  App01Component
+} from 'webapps-reschke-common';
 import { MainPageService } from 'webapps-reschke-common';
 import { ZenkitCollectionsService } from 'webapps-reschke-common';
 import { StageService } from 'webapps-reschke-common';
@@ -46,7 +47,8 @@ import { CookiesNotificationComponent } from 'webapps-reschke-common';
 import { FooterComponent } from 'webapps-reschke-common';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     component: MainPageComponent,
     data: {
       title: 'Tanztheater Anita Hanke',
@@ -57,23 +59,27 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'blog',
+  {
+    path: 'blog',
     component: CurrentComponent,
-      data: {
+    data: {
       title: 'Aktuelles | Tanztheater Anita Hanke',
-        metatags: {
-          description: 'Neuigkeiten aus dem Tanztheater Anita Hanke in Markgröningen und Ludwigsburg',
-          keywords: 'Neuigkeiten, Tanzschule, Markgröningen, Ludwigsburg, Tanztheater'
+      metatags: {
+        description: 'Neuigkeiten aus dem Tanztheater Anita Hanke in Markgröningen und Ludwigsburg',
+        keywords: 'Neuigkeiten, Tanzschule, Markgröningen, Ludwigsburg, Tanztheater'
       }
     }
   },
-  { path: 'blog/:shortId',
+  {
+    path: 'blog/:shortId',
     component: CurrentDetailsComponent
   },
-  { path: 'blog/:shortId/:title/:date',
+  {
+    path: 'blog/:shortId/:title/:date',
     component: CurrentDetailsComponent
   },
-  { path: 'team',
+  {
+    path: 'team',
     component: TeamComponent,
     data: {
       title: 'Team | Tanztheater Anita Hanke',
@@ -83,13 +89,16 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'lehrer/:teacherShortId',
+  {
+    path: 'lehrer/:teacherShortId',
     component: TeacherDetailsComponent
   },
-  { path: 'lehrer/:teacherShortId/:teacherName',
+  {
+    path: 'lehrer/:teacherShortId/:teacherName',
     component: TeacherDetailsComponent
   },
-  { path: 'kurse',
+  {
+    path: 'kurse',
     component: CoursesComponent,
     data: {
       title: 'Kurse | Tanztheater Anita Hanke',
@@ -100,13 +109,16 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'kurse/:shortId',
+  {
+    path: 'kurse/:shortId',
     component: CourseDetailsComponent
   },
-  { path: 'kurse/:shortId/:title',
+  {
+    path: 'kurse/:shortId/:title',
     component: CourseDetailsComponent
   },
-  { path: 'kurs-informationen',
+  {
+    path: 'kurs-informationen',
     component: CourseInformationComponent,
     data: {
       title: 'Kurs Informationen | Tanztheater Anita Hanke',
@@ -116,7 +128,8 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'auftritte',
+  {
+    path: 'auftritte',
     component: StageComponent,
     data: {
       title: 'Auftritte | Tanztheater Anita Hanke',
@@ -126,13 +139,16 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'auftritte/:shortId',
+  {
+    path: 'auftritte/:shortId',
     component: PerformanceComponent
   },
-  { path: 'auftritte/:shortId/:title/:date',
+  {
+    path: 'auftritte/:shortId/:title/:date',
     component: PerformanceComponent
   },
-  { path: 'standorte',
+  {
+    path: 'standorte',
     component: LocationsComponent,
     data: {
       title: 'Standorte | Tanztheater Anita Hanke',
@@ -142,13 +158,16 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'standorte/:locationShortId',
+  {
+    path: 'standorte/:locationShortId',
     component: LocationComponent
   },
-  { path: 'standorte/:locationShortId/:locationTitle',
+  {
+    path: 'standorte/:locationShortId/:locationTitle',
     component: LocationComponent
   },
-  { path: 'kontakt',
+  {
+    path: 'kontakt',
     component: ContactComponent,
     data: {
       title: 'Kontakt | Tanztheater Anita Hanke',
@@ -158,7 +177,8 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'impressum',
+  {
+    path: 'impressum',
     component: ImprintComponent,
     data: {
       title: 'Impressum | Tanztheater Anita Hanke',
@@ -168,7 +188,8 @@ const routes: Routes = [
       }
     }
   },
-  { path: 'datenschutz',
+  {
+    path: 'datenschutz',
     component: PrivacyComponent,
     data: {
       title: 'Datenschutz | Tanztheater Anita Hanke',
@@ -183,7 +204,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
+    App01Component,
     MainPageComponent,
     HeaderComponent,
     FooterComponent,
@@ -236,6 +257,6 @@ const routes: Routes = [
       useValue: ZenkitCollections
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [App01Component]
 })
 export class AppModule { }

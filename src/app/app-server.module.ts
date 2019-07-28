@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import {
     ModelPluginModule
 } from 'webapps-reschke-common';
-  import { SeoService } from './services/seo.service';
+  import { SeoService } from 'webapps-reschke-common';
 
 @NgModule({
     imports: [
