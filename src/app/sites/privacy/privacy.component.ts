@@ -15,7 +15,7 @@ export class PrivacyComponent implements OnInit {
   privacy: Imprint;
 
   ngOnInit() {
-    this.modelService.getEntries().then((results: any) => {
+    this.modelService.getImprint().then((results: any) => {
       this.privacy = results[1];
     });
   }

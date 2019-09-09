@@ -15,7 +15,7 @@ export class ImprintComponent implements OnInit {
   imprint: Imprint;
 
   ngOnInit() {
-    this.modelService.getEntries().then((results: any) => {
+    this.modelService.getImprint().then((results: any) => {
       this.imprint = results[0];
     });
   }
