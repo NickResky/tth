@@ -1,16 +1,17 @@
+import { element } from 'protractor';
 import { ElementTypes } from './../shared/constants/element_types';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { BlogPost } from './../classes/blog-post';
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 import * as _ from 'lodash';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class DynamicContentService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   // production
   apiUrl = 'https://zenkit.com/api/v1/';
@@ -22,17 +23,6 @@ export class DynamicContentService {
   // TODO: Remove before release
   // headers.append('Authorization', 'Bearer ' + this.apiToken);
 
-  getTestDataWithPromise(listId): Promise<any> {
-    const headers: Headers = new Headers();
-    return this.http
-      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
-      .toPromise().then((res) => {
-        return new Promise((resolve, reject) => {
-          return resolve(res.json());
-        });
-      });
-  }
-
   fetchAndTransformZenkitListData(listShortId): Promise<any> {
     return this.fetchZenkitListData(listShortId)
       .then((results) => {
@@ -41,23 +31,23 @@ export class DynamicContentService {
   }
 
   fetchList(listId): Promise<any> {
-    const headers: Headers = new Headers();
+    const headers: HttpHeaders = new HttpHeaders();
     // headers.append('Authorization', 'Bearer ' + this.apiToken);
     return this.http
-      .get(this.apiUrl + 'lists/' + listId, {headers: headers})
+      .get(this.apiUrl + 'lists/' + listId, { headers: headers })
       .toPromise();
   }
 
   fetchListElements(listId): Promise<any> {
-    const headers: Headers = new Headers();
+    const headers: HttpHeaders = new HttpHeaders();
     // headers.append('Authorization', 'Bearer ' + this.apiToken);
     return this.http
-      .get(this.apiUrl + 'lists/' + listId + '/elements', {headers: headers})
+      .get(this.apiUrl + 'lists/' + listId + '/elements', { headers: headers })
       .toPromise();
   }
 
   fetchListEntriesInKanbanMode(elementIdX: string, listId): Promise<any> {
-    const headers: Headers = new Headers();
+    const headers: HttpHeaders = new HttpHeaders();
     // headers.append('Authorization', 'Bearer ' + this.apiToken);
     const httpRequestBody = {
       filter: {
@@ -68,60 +58,31 @@ export class DynamicContentService {
       elementIdX: elementIdX
     };
     return this.http
-      .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, {headers: headers})
+      .post(this.apiUrl + 'lists/' + listId + '/entries/filter/kanban', httpRequestBody, { headers: headers })
       .toPromise();
   }
 
-  fetchZenkitListData(listId: string): Promise<any> {
+  async fetchZenkitListData(listId: string): Promise<any> {
 
-      return Promise.all([this.fetchList(listId), this.fetchListElements(listId)]).then((results) => {
-        const listResponse: any = results[0];
-        const elementsResponse: any = results[1];
+    const [list, elements] = await Promise.all([this.fetchList(listId), this.fetchListElements(listId)]);
 
-        if (listResponse.status === 403  || listResponse.status === 403) {
-          throw new Error('It seems like you do not have permission to access this collection');
-        }
-        if (listResponse.status !== 200 || listResponse.status !== 200) {
-          throw new Error('Collection not found.');
-        }
-
-        return Promise.all([listResponse.json(), elementsResponse.json()]).then((results) => {
-
-          const listJson = results[0];
-          const elementsJson = results[1];
-
-          const sectionElement: any = _.find(elementsJson, {
-            name: 'Labels',
-            elementcategory: 6
-          });
-
-          if (_.has(sectionElement, ['id']) === false) {
-            // tslint:disable-next-line:max-line-length
-            throw new Error('Missing Section Field! Please define a field called "Labels" for the Zenkit Collection ' + listJson.name + '.');
-          }
-
-          return this.fetchListEntriesInKanbanMode(sectionElement.id, listId)
-            .then((entriesResponse) => {
-
-              if (entriesResponse.status === 403) {
-                throw new Error('It seems like you do not have permission to access this collection (Collection ID:' + listId + ').');
-              }
-
-              if (entriesResponse.status !== 200) {
-                throw new Error('Collection not found (Collection ID: ' + listId + ').');
-              }
-
-              const entriesJson = entriesResponse.json();
-
-              return {
-                list: listJson,
-                elements: elementsJson,
-                kanbanEntries: entriesJson,
-                sectionElement: sectionElement
-              };
-            });
-          });
+    const sectionElement: any = _.find(elements, {
+      name: 'Labels',
+      elementcategory: 6
     });
+
+    if (_.has(sectionElement, ['id']) === false) {
+      // tslint:disable-next-line:max-line-length
+      throw new Error('Missing Section Field! Please define a field called "Labels" for the Zenkit Collection ' + list.name + '.');
+    }
+
+    const entries = await this.fetchListEntriesInKanbanMode(sectionElement.id, listId);
+    return {
+      list: list,
+      elements: elements,
+      kanbanEntries: entries,
+      sectionElement: sectionElement
+    };
   }
 
   transformZenkitListData(params): Promise<{}> {
@@ -177,18 +138,18 @@ export class DynamicContentService {
         return _.reduce(modifiedRequiredElements, (modifiedEntry, modifiedElement) => {
           // Handle label elements
           let value;
-          if (_.isEqual(modifiedElement.type,  ElementTypes.labels)) {
+          if (_.isEqual(modifiedElement.type, ElementTypes.labels)) {
             const labelsIds1 = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
 
             if (_.isEmpty(labelsIds1) === false) {
               value = _.map(labelsIds1, (labelId) => {
-                const label = _.find(modifiedElement.predefinedCategories, {
+                const _label = _.find(modifiedElement.predefinedCategories, {
                   id: labelId
                 });
-                return _.get(label, ['name']);
+                return _.get(_label, ['name']);
               });
             }
-          // Handle other elements
+            // Handle other elements
           } else {
             value = entry[modifiedElement.uuid + '_' + modifiedElement.type.category];
           }

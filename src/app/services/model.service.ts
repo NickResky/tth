@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  BehaviorSubject } from 'rxjs';
 import { ScheduleData } from './../classes/schedule-data';
 import { CurrentService } from './current.service';
 import { ContactService } from './contact.service';
@@ -22,7 +22,6 @@ import { Imprint } from './../classes/imprint';
 import { ImprintService } from './imprint.service';
 import { CourseInformation } from '../classes/course-information';
 import { Appointment } from '../classes/appointment';
-import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 

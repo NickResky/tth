@@ -1,3 +1,5 @@
+
+import {filter} from 'rxjs/operators';
 import { Title, Meta } from "@angular/platform-browser";
 import { Router, NavigationEnd } from "@angular/router";
 import {Injectable} from "@angular/core";
@@ -12,7 +14,7 @@ export class SeoService {
   ) {}
 
   public addSeoData() : void {
-    this.router.events.filter((event: any) => event instanceof NavigationEnd).subscribe(() => {
+    this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd)).subscribe(() => {
       var root = this.router.routerState.snapshot.root;
       while (root) {
         if (root.children && root.children.length) {

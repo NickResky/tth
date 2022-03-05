@@ -4,7 +4,6 @@ import { DynamicContentService } from './services/dynamic-content.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HttpModule} from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -43,6 +42,7 @@ import { ScheduleService } from './services/schedule.service';
 import { UtilityService } from './services/utility.service';
 import {SeoService} from './services/seo.service';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
+import { HttpClientModule } from '@angular/common/http';
 // import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
@@ -207,7 +207,7 @@ const routes: Routes = [
       appId: 'app'
     }),
     RouterModule.forRoot(routes),
-    HttpModule,
+    HttpClientModule,
     FormsModule
     // YoutubePlayerModule
   ],
