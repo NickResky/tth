@@ -5,6 +5,7 @@ import { MainPageSection } from './../../classes/main-page-section';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { Parser, getParser } from 'bowser';
 
 @Component({
   selector: 'app-main-page-section',
@@ -18,12 +19,18 @@ export class MainPageSectionComponent implements OnInit {
   section: MainPageSection;
   firstSection: boolean;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
+  browser: Parser.Parser;
+  isIOS = false;
 
   constructor(private dynamicContentService: DynamicContentService, private router: Router) { }
 
   ngOnInit() {
     this.section = this.sectiondata;
     this.firstSection = this.isFirstSection;
+
+    this.browser = getParser(window.navigator.userAgent);
+    this.isIOS = this.browser.is('iOS');
+    console.log('iOS Device detected: ' + this.isIOS);
   }
 
   getFileSrc(file) {
@@ -31,9 +38,13 @@ export class MainPageSectionComponent implements OnInit {
   }
 
   getBackgroundStyle(image) {
-    return {
+    const style = {
       'background-image': 'url(' + this.getFileSrc(image) + ')'
     };
+    // if (!this.isIOS) {
+    //   style['background-attachment'] = 'fixed';
+    // }
+    return style;
   }
 
   goToSection(section) {

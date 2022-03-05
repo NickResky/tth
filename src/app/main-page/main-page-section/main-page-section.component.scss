@@ -134,12 +134,19 @@ $main-page-text-color: #fff;
     .main-page-section {
         height: 800px;
         .main-page-section-background {
-            background-attachment: fixed;
             .main-page-section-container {
                 .main-page-section-content-container {
                     max-width: $media-breakpoint-lg - 200px;                
                 }
             }
+        }
+    }
+}
+
+@media (min-width: 1400) {
+    .main-page-section {
+        .main-page-section-background {
+            background-attachment: fixed;
         }
     }
 }
