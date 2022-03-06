@@ -97,7 +97,7 @@ export class ModelService {
         });
     }
 
-    getPerformances() {
+    getPerformances(): Promise<Performance[]> {
         if (_.isNil(this.performancesData)) {
             this.performancesData = this.stageService.getPerformances();
             return this.performancesData;
@@ -108,7 +108,7 @@ export class ModelService {
     }
 
     async getPerformanceByShortId(shortId: string) {
-        const performances = this.getPerformances();
+        const performances = await this.getPerformances();
         const performance = _.find(performances, (p: Performance) => {
             return p.shortId === shortId;
         });
@@ -140,7 +140,7 @@ export class ModelService {
         });
     }
 
-    getTeam() {
+    getTeam(): Promise<Teacher[]> {
         if (_.isNil(this.teamData)) {
             this.teamData = this.teamService.getTeam();
             return this.teamData;

@@ -17,5 +17,10 @@
     "angularCompilerOptions": {
         "entryModule": "./app/app-server.module#AppServerModule"
     },
-    "exclude": []
+  "files": [
+    "main-server.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }
