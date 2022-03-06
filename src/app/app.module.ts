@@ -206,7 +206,7 @@ const routes: Routes = [
     BrowserModule.withServerTransition({
       appId: 'app'
     }),
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     HttpClientModule,
     FormsModule
     // YoutubePlayerModule
