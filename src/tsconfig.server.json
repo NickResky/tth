@@ -22,5 +22,8 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "compilerOptions": {
+    "target": "es2016"
+  }
 }
