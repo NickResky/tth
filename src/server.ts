@@ -3,7 +3,7 @@ const {
   LAZY_MODULE_MAP
 } = require('../dist/server/main');
 import 'reflect-metadata';
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 import { renderModuleFactory } from '@angular/platform-server';
 import { enableProdMode } from '@angular/core';
 import * as express from 'express';
