@@ -107,13 +107,12 @@ export class ModelService {
         });
     }
 
-    getPerformanceByShortId(shortId: string) {
-        return this.getPerformances().then((performances) => {
-            const performance = _.find(performances, (p: Performance) => {
-                return p.shortId === shortId;
-            });
-            return performance;
+    async getPerformanceByShortId(shortId: string) {
+        const performances = this.getPerformances();
+        const performance = _.find(performances, (p: Performance) => {
+            return p.shortId === shortId;
         });
+        return performance;
     }
 
     getCourses() {
@@ -151,14 +150,13 @@ export class ModelService {
         });
     }
 
-    getTeacherByUrlId(urlId) {
-        return this.getTeam().then((team) => {
-            const teacher = _.find(team, (t: Teacher) => {
-                const teacherUrlId = this.teamService.convertTeacherToUrlId(t);
-                return teacherUrlId === urlId;
-            });
-            return teacher;
+    async getTeacherByUrlId(urlId) {
+        const team = await this.getTeam();
+        const teacher = _.find(team, (t: Teacher) => {
+            const teacherUrlId = this.teamService.convertTeacherToUrlId(t);
+            return teacherUrlId === urlId;
         });
+        return teacher;
     }
 
     getLocationData() {
