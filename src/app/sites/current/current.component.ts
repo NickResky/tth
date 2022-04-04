@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 import { MainPageSection } from '../../classes/main-page-section';
 import * as _ from 'lodash';
 import { MainPageData } from '../../classes/main-page-data';
-import 'rxjs/Rx';
 
 @Component({
   selector: 'app-current',

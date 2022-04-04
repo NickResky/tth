@@ -1,10 +1,6 @@
-import { element } from 'protractor';
 import { ElementTypes } from './../shared/constants/element_types';
-import { Observable } from 'rxjs';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { BlogPost } from './../classes/blog-post';
 import { Injectable } from '@angular/core';
-import 'rxjs/Rx';
 import * as _ from 'lodash';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
