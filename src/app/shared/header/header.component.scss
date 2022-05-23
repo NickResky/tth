@@ -55,7 +55,7 @@
                 
             }
             .logo {
-                background-image: url("../../../resources/Logo.png"); 
+                // background-image: url("../../../resources/Logo.png"); 
                 background-size: 100% 100%;
                 width: 100%;
                 height: 100%;
@@ -169,7 +169,7 @@
                 outline: none;
             }
             .logo {
-                background-image: url("../../../resources/Logo.png"); //no-repeat;
+                // background-image: url("../../../resources/Logo.png"); //no-repeat;
                 background-size: 100% 100%;
                 display: inline-block;
                 height: 50px;
@@ -217,7 +217,7 @@
                 .bar {
                     height: 2px;
                     width: 35px;
-                    background-color: #FFFFFF;
+                    background-color: $main-text-color;
                     margin: 6px 0;
                     @include transition(all 0.5s ease);
                 }

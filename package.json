@@ -6,7 +6,7 @@
     "node": "8.11.3"
   },
   "scripts": {
-    "start-local": "ng serve",
+    "start-local": "cross-env NODE_ENV=development ng serve",
     "ng": "./node_modules/.bin/ng",
     "build": "ng build",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
@@ -32,27 +32,31 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@ngneat/tailwind": "^7.0.3",
     "bowser": "^2.11.0",
     "express": "^4.17.3",
     "lodash": "^4.17.21",
     "rxjs": "~7.4.0",
     "ts-node": "^10.7.0",
     "tslib": "^2.3.0",
+    "webpack": "^5.72.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.0.3",
+    "@angular-devkit/build-angular": "^13.2.0",
     "@angular/cli": "~13.0.3",
     "@angular/compiler-cli": "~13.0.0",
     "@types/file-saver": "^2.0.5",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "cross-env": "^7.0.3",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "tailwindcss": "^3.0.24",
     "typescript": "~4.4.3"
   }
 }

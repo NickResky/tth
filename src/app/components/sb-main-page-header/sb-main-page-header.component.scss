@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.img-tile {
+  height: 100%;
+  width: 100%;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-family: august;
+    font-size: 55px;
+    text-align: left;
+    text-transform: uppercase;
+    color: #f24139;
+  }
+  .img-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    .img-overlay {
+      height: 100%;
+      width: 100%;
+      background-color: #64f1ff;
+      opacity: 0.15;
+      position: absolute;
+      top: 0;
+    }
+
+    .img-background {
+      height: 100%;
+      width: 100%;
+      filter: grayscale(1);
+      background-position: center;
+      background-size: cover;
+    }
+  }
+}
+
+.img1 {
+  background-image: url("../../../assets/images/room.jpeg");
+}
+
+.img2 {
+  background-image: url("../../../assets/images/walking.jpeg");
+}
+
+.img3 {
+  background-image: url("../../../assets/images/food.jpg");
+}
+
+body {
+  background-color: #111111;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation 0.2s infinite;
+  opacity: 0.5;
+  visibility: visible;
+}
+
+@keyframes bg-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  100% {
+    transform: translate(5%, 0);
+  }
+}

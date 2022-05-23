@@ -43,6 +43,7 @@ import { UtilityService } from './services/utility.service';
 import {SeoService} from './services/seo.service';
 import {PrivacyComponent} from './sites/privacy/privacy.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SbMainPageHeaderComponent } from './components/sb-main-page-header/sb-main-page-header.component';
 // import { YoutubePlayerModule } from 'ngx-youtube-player';
 
 const routes: Routes = [
@@ -200,7 +201,8 @@ const routes: Routes = [
     ScheduleComponent,
     CookiesNotificationComponent,
     PrivacyComponent,
-    TextAnimationComponent
+    TextAnimationComponent,
+    SbMainPageHeaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({

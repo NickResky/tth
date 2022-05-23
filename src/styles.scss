@@ -1,5 +1,8 @@
 @import './variables.scss';
 @import './mixins';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* You can add global styles to this file, and also import other style files */
 body, html {
@@ -7,9 +10,15 @@ body, html {
     width: 100%;
     margin: 0;
     font: 400 15px/1.8 "Raleway", sans-serif;
-    color: #777;
-    background-color: #000;
+    color: #000;
+    background-color: #fff;
 }
+
+@font-face {
+    font-family: august;
+    src: url('assets/font/August-Bold.woff') format('woff'), /* Modern Browsers */
+       url('assets/font/August-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+  }
 
 a {
     text-decoration: none;
