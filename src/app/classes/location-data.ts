@@ -1,5 +1,5 @@
-import { Location } from './location';
+import { ZenkitLocation } from "./location";
 export class LocationData {
-    locationMG: Location;
-    locationLB: Location;
+  locationMG: ZenkitLocation;
+  locationLB: ZenkitLocation;
 }

@@ -121,7 +121,7 @@
                     cursor: pointer;
                 }
                 .appointment-time {
-                    color: #9f9f9f;
+                    color: #fff;
                     font-size: 11px;
                 }
                 .appointment-info-icons-container {
@@ -202,9 +202,10 @@
                     margin-right: 15px;
                     display: flex;
                     flex-direction: column;
-                    border: 1px solid $border-color-dark-2;
+                    // border: 1px solid $border-color-dark-2;
                     background-color: $background-color-dark-2;
                     border-radius: 3px;
+                    color: #fff;
                     &.has-course-link:hover {
                         background-color: #222222;
                     }

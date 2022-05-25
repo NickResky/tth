@@ -1,20 +1,21 @@
-<div class="main-page-section" [ngClass]="firstSection ? 'first-section' : ''">
+<div class="main-page-section pt-[100px]" [ngClass]="firstSection ? 'first-section' : ''">
   <div class="{{section.cssClass}} main-page-section-background" [ngStyle]="getBackgroundStyle(section.image)">
     <div class="main-page-section-container" [ngClass]="firstSection ? 'first-section-container' : ''">
       <div class="main-page-section-content-container">
         <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
           <div  class="main-page-section-caption">{{section.title}}</div>
-          <p class="main-page-section-description">
-            {{section.description}}
+          <p class="main-page-section-description" [innerHTML]="section.description">
           </p>
+          <iframe class="w-full aspect-video mt-[100px] mb-[100px]" *ngIf="sectiondata.youtubeVideoId" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <app-schedule *ngIf="sectiondata.title === 'Rücken-Fit'"></app-schedule>
+
         </div>
       </div>
     </div>
   </div>
-  <div class="main-page-section-content mobile-only" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
+  <!-- <div class="main-page-section-content mobile-only" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
     <div  class="main-page-section-caption">{{section.title}}</div>
-    <p class="main-page-section-description">
-      {{section.description}}
+    <p class="main-page-section-description" [innerHTML]="section.description">
     </p>
-  </div>
+  </div> -->
 </div>

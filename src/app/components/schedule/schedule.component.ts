@@ -1,22 +1,19 @@
-import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { ScheduleData } from './../../classes/schedule-data';
-import { LocationData } from './../../classes/location-data';
-import { UtilityService } from './../../services/utility.service';
-import { Appointment } from './../../classes/appointment';
-import { Location } from './../../classes/location';
-import { ModelService } from './../../services/model.service';
-import { DynamicContentService } from './../../services/dynamic-content.service';
-import { Component, OnInit, Input } from '@angular/core';
-import * as _ from 'lodash';
-import { NgForm } from '@angular/forms';
+import { Component, Input, OnInit } from "@angular/core";
+import * as _ from "lodash";
+import { Appointment } from "./../../classes/appointment";
+import { ZenkitLocation } from "./../../classes/location";
+import { ScheduleData } from "./../../classes/schedule-data";
+import { DynamicContentService } from "./../../services/dynamic-content.service";
+import { ModelService } from "./../../services/model.service";
+import { UtilityService } from "./../../services/utility.service";
+import { ZenkitCollections } from "./../../shared/constants/zenkit-collections";
 
 @Component({
-  selector: 'app-schedule',
-  templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.scss']
+  selector: "app-schedule",
+  templateUrl: "./schedule.component.html",
+  styleUrls: ["./schedule.component.scss"],
 })
 export class ScheduleComponent implements OnInit {
-
   @Input() locationInitials: string;
   @Input() courseShortId: string;
   @Input() displayNavigationDrawer: string;
@@ -26,7 +23,7 @@ export class ScheduleComponent implements OnInit {
   courseAppointmentsByDayAll: Array<Appointment[]>;
   days: any;
   private sub: any;
-  location: Location;
+  location: ZenkitLocation;
   levels: any[];
   ageGroups: any[];
   displayColors = true;
@@ -40,21 +37,22 @@ export class ScheduleComponent implements OnInit {
     private modelService: ModelService,
     private utilityService: UtilityService,
     private dynamicContentService: DynamicContentService
-  ) {  }
+  ) {}
 
   ngOnInit() {
-
     let displayColorsStoredValue;
 
     if (this.modelService.isPlatformBrowser()) {
-      displayColorsStoredValue = window.localStorage.getItem('tth-schedule-display-colors');
+      displayColorsStoredValue = window.localStorage.getItem(
+        "tth-schedule-display-colors"
+      );
     }
 
     if (displayColorsStoredValue) {
-      this.displayColors = displayColorsStoredValue === 'true';
+      this.displayColors = displayColorsStoredValue === "true";
     }
 
-    if (this.displayNavigationDrawer === 'true') {
+    if (this.displayNavigationDrawer === "true") {
       this.scheduleOpen = false;
       this.displayDrawer = true;
     } else {
@@ -65,164 +63,219 @@ export class ScheduleComponent implements OnInit {
     Promise.all([
       this.modelService.getScheduleData(),
       this.modelService.getLocationByInitials(this.locationInitials),
-      this.modelService.getCourses()
-      ]).then((results: any) => {
-        const scheduleData: ScheduleData = results[0];
-        this.courseAppointments = scheduleData.appointments;
-        this.location = results[1];
+      this.modelService.getCourses(),
+    ]).then((results: any) => {
+      const scheduleData: ScheduleData = results[0];
+      this.courseAppointments = scheduleData.appointments;
+      this.location = results[1];
 
-        if (this.locationInitials === 'MG') {
-          const schedulePDFData = _.get(results[2], ['scheduleMG']);
-          this.schedulePDF = this.dynamicContentService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
-        } else if (this.locationInitials === 'LB') {
-          const schedulePDFData = _.get(results[2], ['scheduleLB']);
-          this.schedulePDF = this.dynamicContentService.getFileSrc(_.get(schedulePDFData, ['shortId']), this.coursesListShortId);
-        }
+      if (this.locationInitials === "MG") {
+        const schedulePDFData = _.get(results[2], ["scheduleMG"]);
+        this.schedulePDF = this.dynamicContentService.getFileSrc(
+          _.get(schedulePDFData, ["shortId"]),
+          this.coursesListShortId
+        );
+      } else if (this.locationInitials === "LB") {
+        const schedulePDFData = _.get(results[2], ["scheduleLB"]);
+        this.schedulePDF = this.dynamicContentService.getFileSrc(
+          _.get(schedulePDFData, ["shortId"]),
+          this.coursesListShortId
+        );
+      }
 
-        this.ageGroups = _.map(scheduleData.ageGroupLabels, (ageGroupLabel) => {
-          ageGroupLabel.isActive = true;
-          return ageGroupLabel;
+      this.ageGroups = _.map(scheduleData.ageGroupLabels, (ageGroupLabel) => {
+        ageGroupLabel.isActive = true;
+        return ageGroupLabel;
+      });
+
+      this.levels = _.map(scheduleData.levelLabels, (levelLabel) => {
+        levelLabel.isActive = true;
+        return levelLabel;
+      });
+
+      // Filter appointments by location
+      if (this.location) {
+        this.courseAppointments = _.filter(this.courseAppointments, {
+          location: this.location,
         });
+      }
 
-        this.levels = _.map(scheduleData.levelLabels, (levelLabel) => {
-          levelLabel.isActive = true;
-          return levelLabel;
-        });
+      // Filter appointments by course category
+      if (this.courseShortId) {
+        this.courseAppointments = _.filter(
+          this.courseAppointments,
+          (appointment) => {
+            return (
+              _.get(appointment, ["course", "shortId"]) === this.courseShortId
+            );
+          }
+        );
+      }
 
-        // Filter appointments by location
-        if (this.location) {
-          this.courseAppointments = _.filter(this.courseAppointments, {
-            'location': this.location
-          });
-        }
+      this.days = _.get(scheduleData, ["dayLabels"]);
 
-        // Filter appointments by course category
-        if (this.courseShortId) {
-          this.courseAppointments = _.filter(this.courseAppointments, (appointment) => {
-            return _.get(appointment, ['course', 'shortId']) === this.courseShortId;
-          });
-        }
+      // Categorize appointments by day
+      const daysTotal = _.get(scheduleData, ["dayLabels", "length"]);
+      const sortedAppointments = [];
+      for (let i = 0; i < daysTotal; i++) {
+        sortedAppointments[i] = [];
+      }
 
-        this.days = _.get(scheduleData, ['dayLabels']);
+      this.columnWidth = (1 / daysTotal) * 100 + "%";
 
-        // Categorize appointments by day
-        const daysTotal = _.get(scheduleData, ['dayLabels', 'length']);
-        const sortedAppointments = [];
-        for (let i = 0; i < daysTotal; i++) {
-          sortedAppointments[i] = [];
-        }
-
-        this.columnWidth = ((1 / daysTotal) * 100) + '%';
-
-        // tslint:disable-next-line:max-line-length
-        this.courseAppointmentsByDay = _.reduce(this.courseAppointments, (sortedArray: any, appointment: Appointment) => {
+      // tslint:disable-next-line:max-line-length
+      this.courseAppointmentsByDay = _.reduce(
+        this.courseAppointments,
+        (sortedArray: any, appointment: Appointment) => {
           sortedArray[appointment.dayIndex].push(appointment);
           return sortedArray;
-        }, sortedAppointments);
+        },
+        sortedAppointments
+      );
 
-        // Sort appointments by time
-        this.courseAppointmentsByDay = _.map(this.courseAppointmentsByDay, (appointmentArray: Appointment[]) => {
-          return _.orderBy(appointmentArray, ['dateStart'], ['asc']);
-        });
-
-        this.courseAppointmentsByDayAll = this.courseAppointmentsByDay;
-
-        const activeLevels = _.filter(this.levels, (level) => {
-          return level.isActive === true;
-        });
-        const activeAgeGroups = _.filter(this.ageGroups, (ageGroup) => {
-          return ageGroup.isActive === true;
-        });
-
-        if (activeAgeGroups.length !== this.ageGroups.length
-          || activeLevels.length !== this.levels.length) {
-          this.updateSchedule();
+      // Sort appointments by time
+      this.courseAppointmentsByDay = _.map(
+        this.courseAppointmentsByDay,
+        (appointmentArray: Appointment[]) => {
+          return _.orderBy(appointmentArray, ["dateStart"], ["asc"]);
         }
+      );
+
+      this.courseAppointmentsByDayAll = this.courseAppointmentsByDay;
+
+      const activeLevels = _.filter(this.levels, (level) => {
+        return level.isActive === true;
+      });
+      const activeAgeGroups = _.filter(this.ageGroups, (ageGroup) => {
+        return ageGroup.isActive === true;
+      });
+
+      if (
+        activeAgeGroups.length !== this.ageGroups.length ||
+        activeLevels.length !== this.levels.length
+      ) {
+        this.updateSchedule();
+      }
     });
   }
 
   updateSchedule() {
-    const activeAgeGroupsStrings = _.reduce(this.ageGroups, (results, ageGroup) => {
-      if (ageGroup.isActive) {
-        results.push(ageGroup.title);
-      }
-      return results;
-    }, []);
+    const activeAgeGroupsStrings = _.reduce(
+      this.ageGroups,
+      (results, ageGroup) => {
+        if (ageGroup.isActive) {
+          results.push(ageGroup.title);
+        }
+        return results;
+      },
+      []
+    );
 
     if (activeAgeGroupsStrings.length === this.ageGroups.length) {
       this.courseAppointmentsByDay = this.courseAppointmentsByDayAll;
     } else {
-      this.courseAppointmentsByDay = _.map        (this.courseAppointmentsByDayAll, (day) => {
-        return _.reduce(day, (results: Appointment[], appointment) => {
-          if (_.isEmpty(appointment.ageGroups)) {
-            // results.push(appointment);
-          } else {
-            const appointmentAgeGroupsStrings = _.map(appointment.ageGroups, (ageGroup) => {
-              return ageGroup.title;
-            });
-            const intersection = _.intersection(activeAgeGroupsStrings, appointmentAgeGroupsStrings);
-            if (_.isEmpty(intersection) === false) {
-              results.push(appointment);
-
-            }
-          }
-          return results;
-        }, []);
-      });
+      this.courseAppointmentsByDay = _.map(
+        this.courseAppointmentsByDayAll,
+        (day) => {
+          return _.reduce(
+            day,
+            (results: Appointment[], appointment) => {
+              if (_.isEmpty(appointment.ageGroups)) {
+                // results.push(appointment);
+              } else {
+                const appointmentAgeGroupsStrings = _.map(
+                  appointment.ageGroups,
+                  (ageGroup) => {
+                    return ageGroup.title;
+                  }
+                );
+                const intersection = _.intersection(
+                  activeAgeGroupsStrings,
+                  appointmentAgeGroupsStrings
+                );
+                if (_.isEmpty(intersection) === false) {
+                  results.push(appointment);
+                }
+              }
+              return results;
+            },
+            []
+          );
+        }
+      );
     }
 
-    const activeLevelsStrings = _.reduce(this.levels, (results, level) => {
-      if (level.isActive) {
-        results.push(level.title);
-      }
-      return results;
-    }, []);
+    const activeLevelsStrings = _.reduce(
+      this.levels,
+      (results, level) => {
+        if (level.isActive) {
+          results.push(level.title);
+        }
+        return results;
+      },
+      []
+    );
 
     if (activeLevelsStrings.length !== this.levels.length) {
-      this.courseAppointmentsByDay = _.map        (this.courseAppointmentsByDay, (day) => {
-        return _.reduce(day, (results: Appointment[], appointment) => {
-          if (_.isEmpty(appointment.levels)) {
-            // results.push(appointment);
-          } else {
-            const appointmentLevelsStrings = _.map(appointment.levels, (level) => {
-              return level.title;
-            });
-            const intersection = _.intersection(activeLevelsStrings, appointmentLevelsStrings);
-            if (_.isEmpty(intersection) === false) {
-              results.push(appointment);
-            }
-          }
-          return results;
-        }, []);
-      });
+      this.courseAppointmentsByDay = _.map(
+        this.courseAppointmentsByDay,
+        (day) => {
+          return _.reduce(
+            day,
+            (results: Appointment[], appointment) => {
+              if (_.isEmpty(appointment.levels)) {
+                // results.push(appointment);
+              } else {
+                const appointmentLevelsStrings = _.map(
+                  appointment.levels,
+                  (level) => {
+                    return level.title;
+                  }
+                );
+                const intersection = _.intersection(
+                  activeLevelsStrings,
+                  appointmentLevelsStrings
+                );
+                if (_.isEmpty(intersection) === false) {
+                  results.push(appointment);
+                }
+              }
+              return results;
+            },
+            []
+          );
+        }
+      );
     }
   }
 
   getDayTitle(index: number) {
-    return _.get(this.days[index], ['title']);
+    return _.get(this.days[index], ["title"]);
   }
 
   getTimeString(date: Date) {
     const minutes = date.getMinutes();
     let minutesString = minutes.toString();
     if (minutes < 10) {
-      minutesString = '0' + minutesString;
+      minutesString = "0" + minutesString;
     }
-    return date.getHours() + '.' + minutesString;
+    return date.getHours() + "." + minutesString;
   }
 
   getCourseLink(appointment: Appointment) {
     if (appointment.course) {
-      const courseShortId = _.get(appointment, ['course', 'shortId']);
-      const courseTitle = _.get(appointment, ['course', 'title']);
-      return '/kurse/' + courseShortId + '/' + this.convertStringToUrlId(courseTitle);
+      const courseShortId = _.get(appointment, ["course", "shortId"]);
+      const courseTitle = _.get(appointment, ["course", "title"]);
+      return (
+        "/kurse/" + courseShortId + "/" + this.convertStringToUrlId(courseTitle)
+      );
     }
     return undefined;
   }
 
   toggleAgeGroup(ageGroup) {
     const index = _.findIndex(this.ageGroups, {
-      title: ageGroup.title
+      title: ageGroup.title,
     });
     this.ageGroups[index].isActive = !this.ageGroups[index].isActive;
     this.updateSchedule();
@@ -230,7 +283,7 @@ export class ScheduleComponent implements OnInit {
 
   toggleLevel(level) {
     const index = _.findIndex(this.levels, {
-      title: level.title
+      title: level.title,
     });
     this.levels[index].isActive = !this.levels[index].isActive;
     this.updateSchedule();
@@ -248,8 +301,8 @@ export class ScheduleComponent implements OnInit {
 
   getScheduleIconStyle(hexColor) {
     return {
-      'border-color': hexColor,
-      'color': hexColor,
+      "border-color": hexColor,
+      color: hexColor,
     };
   }
 
@@ -290,8 +343,10 @@ export class ScheduleComponent implements OnInit {
   toggleDisplayColors() {
     this.displayColors = !this.displayColors;
     if (this.modelService.isPlatformBrowser()) {
-      window.localStorage.setItem('tth-schedule-display-colors', this.displayColors.toString());
-
+      window.localStorage.setItem(
+        "tth-schedule-display-colors",
+        this.displayColors.toString()
+      );
     }
   }
 

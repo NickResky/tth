@@ -1,12 +1,10 @@
-import { CourseInformation } from './../classes/course-information';
-import { MainPageComponent } from './../main-page/main-page.component';
+import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
+import { MainPageData } from '../classes/main-page-data';
+import { MainPageSection } from './../classes/main-page-section';
 import { MainPageSectionTypes } from './../shared/constants/main-page-section-types';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
 import { DynamicContentService } from './dynamic-content.service';
-import { Injectable } from '@angular/core';
-import { MainPageSection } from './../classes/main-page-section';
-import * as _ from 'lodash';
-import { MainPageData } from '../classes/main-page-data';
 
 @Injectable()
 export class MainPageService {
@@ -46,17 +44,13 @@ export class MainPageService {
 
         const videoSection = getSection('Video');
 
-        const philosophySection = getSection('das Tanztheater');
+        const rueckenFitSection = getSection('Rücken-Fit');
 
         const blogSection = getSection('Neuigkeiten');
 
-        const coursesSection = getSection('Kurse');
+        const nordicWalkingSection = getSection('Nordic-Walking');
 
-        const performancesSection = getSection('Auftritte');
-
-        const teamSection = getSection('Team');
-
-        const locationsSection = getSection('Standorte');
+        const ernaehrungsberatungSection = getSection('Ernährungsberatung');
 
         const contactSection = getSection('Kontakt');
 
@@ -66,12 +60,10 @@ export class MainPageService {
 
         const mainPageData = new MainPageData();
         mainPageData.youtubeVideoId = _.get(videoSection, ['youtubeVideoId']);
-        mainPageData.philosophySection = philosophySection;
+        mainPageData.rueckenFitSection = rueckenFitSection;
         mainPageData.blogSection = blogSection;
-        mainPageData.coursesSection = coursesSection;
-        mainPageData.performancesSection = performancesSection;
-        mainPageData.teamSection = teamSection;
-        mainPageData.locationsSection = locationsSection;
+        mainPageData.nordicWalkingSection = nordicWalkingSection;
+        mainPageData.ernaehrungsberatungSection = ernaehrungsberatungSection;
         mainPageData.contactSection = contactSection;
         mainPageData.videoFileSection = videoFileSection;
         mainPageData.titleImageSection = titleImageSection;

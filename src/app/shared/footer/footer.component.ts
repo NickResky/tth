@@ -1,19 +1,15 @@
-import { Location } from './../../classes/location';
-import { Contact } from './../../classes/contact';
-import { ModelService } from './../../services/model.service';
-import { Component, OnInit } from '@angular/core';
-import { LocationData } from '../../classes/location-data';
-import * as _ from 'lodash';
+import { Component, OnInit } from "@angular/core";
+import { ZenkitLocation } from "./../../classes/location";
+import { ModelService } from "./../../services/model.service";
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: 'footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  selector: "app-footer",
+  templateUrl: "footer.component.html",
+  styleUrls: ["./footer.component.scss"],
 })
 export class FooterComponent implements OnInit {
-
-  locationMG: Location;
-  locationLB: Location;
+  locationMG: ZenkitLocation;
+  locationLB: ZenkitLocation;
   name: string;
   email: string;
   phone: string;
@@ -22,15 +18,17 @@ export class FooterComponent implements OnInit {
   footerContentLoaded = false;
   mainPageContentLoaded = false;
 
-  constructor(private modelService: ModelService) { }
+  constructor(private modelService: ModelService) {}
 
   ngOnInit() {
-    this.modelService.isPageLoaded().subscribe(
-      (x) => {
-        this.mainPageContentLoaded = x;
-      });
+    this.modelService.isPageLoaded().subscribe((x) => {
+      this.mainPageContentLoaded = x;
+    });
 
-    Promise.all([this.modelService.getContact(), this.modelService.getLocationData()]).then((results: any) => {
+    Promise.all([
+      this.modelService.getContact(),
+      this.modelService.getLocations(),
+    ]).then((results: any) => {
       const contact = results[0];
       const locationData = results[1];
       this.name = contact.name;
@@ -41,5 +39,4 @@ export class FooterComponent implements OnInit {
       this.footerContentLoaded = true;
     });
   }
-
 }

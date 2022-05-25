@@ -1,14 +1,11 @@
+import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as _ from 'lodash';
 import { MainPageData } from './../classes/main-page-data';
+import { MainPageSection } from './../classes/main-page-section';
+import { DynamicContentService } from './../services/dynamic-content.service';
 import { ModelService } from './../services/model.service';
 import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../services/dynamic-content.service';
-import { Component, OnInit } from '@angular/core';
-import { MainPageService } from './../services/main-page.service';
-import { MainPageSection } from './../classes/main-page-section';
-import * as _ from 'lodash';
-import { SafeResourceUrl } from '@angular/platform-browser';
-import { DomSanitizer } from '@angular/platform-browser';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 
 @Component({
@@ -20,12 +17,10 @@ export class MainPageComponent implements OnInit {
 
   mainPageListShortId: string;
   video: string;
-  philosophySection: MainPageSection;
+  rueckenFitSection: MainPageSection;
   blogSection: MainPageSection;
-  coursesSection: MainPageSection;
-  performancesSection: MainPageSection;
-  teamSection: MainPageSection;
-  locationsSection: MainPageSection;
+  nordicWalkingSection: MainPageSection;
+  ernaehrungsberatungSection: MainPageSection;
   contactSection: MainPageSection;
   videoFileSection: MainPageSection;
   titleImageSection: MainPageSection;
@@ -68,12 +63,10 @@ export class MainPageComponent implements OnInit {
       this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
 
         this.youtubeVideoId = mainPageData.youtubeVideoId;
-        this.philosophySection = mainPageData.philosophySection;
+        this.rueckenFitSection = mainPageData.rueckenFitSection;
         this.blogSection = mainPageData.blogSection;
-        this.coursesSection = mainPageData.coursesSection;
-        this.performancesSection = mainPageData.performancesSection;
-        this.teamSection = mainPageData.teamSection;
-        this.locationsSection = mainPageData.locationsSection;
+        this.nordicWalkingSection = mainPageData.nordicWalkingSection;
+        this.ernaehrungsberatungSection = mainPageData.ernaehrungsberatungSection;
         this.contactSection = mainPageData.contactSection;
         this.videoFileSection = mainPageData.videoFileSection;
         this.titleImageSection = mainPageData.titleImageSection;

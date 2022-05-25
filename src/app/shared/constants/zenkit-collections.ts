@@ -1,40 +1,40 @@
-import { RequiredElements } from './required-elements';
+import { RequiredElements } from "./required-elements";
 
-export const ZenkitCollections  = {
-    home: {
-        shortId: 'S1k_AYFu-',
-        requiredElements: RequiredElements.home
-    },
-    current: {
-        shortId: 'SyNHkctub',
-        requiredElements: RequiredElements.current
-    },
-    performances: {
-        shortId: 'HyltubcKub',
-        requiredElements: RequiredElements.performances
-    },
-    courses: {
-        shortId: 'rkmtZcFu-',
-        requiredElements: RequiredElements.courses
-    },
-    schedule: {
-        shortId: 'Bkgc6Bs3r7',
-        requiredElements: RequiredElements.schedule
-    },
-    team: {
-        shortId: 'BJ6t-cFub',
-        requiredElements: RequiredElements.team
-    },
-    locations: {
-        shortId: 'Syd9b9F_W',
-        requiredElements: RequiredElements.locations
-    },
-    contact: {
-        shortId: 'B1xo-5tub',
-        requiredElements: RequiredElements.contact
-    },
-    imprint: {
-        shortId: 'HkLziF2WUm',
-        requiredElements: RequiredElements.imprint
-    }
+export const ZenkitCollections = {
+  home: {
+    shortId: "rIFi2vVu3",
+    requiredElements: RequiredElements.home,
+  },
+  current: {
+    shortId: "SyNHkctub",
+    requiredElements: RequiredElements.current,
+  },
+  performances: {
+    shortId: "HyltubcKub",
+    requiredElements: RequiredElements.performances,
+  },
+  courses: {
+    shortId: "rkmtZcFu-",
+    requiredElements: RequiredElements.courses,
+  },
+  schedule: {
+    shortId: "RBbSAM-xD",
+    requiredElements: RequiredElements.schedule,
+  },
+  team: {
+    shortId: "BJ6t-cFub",
+    requiredElements: RequiredElements.team,
+  },
+  locations: {
+    shortId: "rJoXoob-Y",
+    requiredElements: RequiredElements.locations,
+  },
+  contact: {
+    shortId: "B1xo-5tub",
+    requiredElements: RequiredElements.contact,
+  },
+  imprint: {
+    shortId: "HkLziF2WUm",
+    requiredElements: RequiredElements.imprint,
+  },
 };

@@ -1,19 +1,18 @@
-import { ZenkitCollections } from './../../shared/constants/zenkit-collections';
-import { DynamicContentService } from './../../services/dynamic-content.service';
-import { MainPageComponent } from './../main-page.component';
-import { MainPageSection } from './../../classes/main-page-section';
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import * as _ from 'lodash';
-import { Parser, getParser } from 'bowser';
+import { Component, Input, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import { Router } from "@angular/router";
+import { getParser, Parser } from "bowser";
+import * as _ from "lodash";
+import { MainPageSection } from "./../../classes/main-page-section";
+import { DynamicContentService } from "./../../services/dynamic-content.service";
+import { ZenkitCollections } from "./../../shared/constants/zenkit-collections";
 
 @Component({
-  selector: 'app-main-page-section',
-  templateUrl: './main-page-section.component.html',
-  styleUrls: ['./main-page-section.component.scss']
+  selector: "app-main-page-section",
+  templateUrl: "./main-page-section.component.html",
+  styleUrls: ["./main-page-section.component.scss"],
 })
 export class MainPageSectionComponent implements OnInit {
-
   @Input() sectiondata: MainPageSection;
   @Input() isFirstSection: boolean;
   section: MainPageSection;
@@ -22,24 +21,31 @@ export class MainPageSectionComponent implements OnInit {
   browser: Parser.Parser;
   isIOS = false;
 
-  constructor(private dynamicContentService: DynamicContentService, private router: Router) { }
+  constructor(
+    private dynamicContentService: DynamicContentService,
+    private router: Router,
+    private domSanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.section = this.sectiondata;
     this.firstSection = this.isFirstSection;
 
     this.browser = getParser(window.navigator.userAgent);
-    this.isIOS = this.browser.is('iOS');
-    console.log('iOS Device detected: ' + this.isIOS);
+    this.isIOS = this.browser.is("iOS");
+    console.log("iOS Device detected: " + this.isIOS);
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
+    return this.dynamicContentService.getFileSrc(
+      _.get(file, ["shortId"]),
+      this.mainPageListShortId
+    );
   }
 
   getBackgroundStyle(image) {
     const style = {
-      'background-image': 'url(' + this.getFileSrc(image) + ')'
+      "background-image": "url(" + this.getFileSrc(image) + ")",
     };
     // if (!this.isIOS) {
     //   style['background-attachment'] = 'fixed';
@@ -51,5 +57,14 @@ export class MainPageSectionComponent implements OnInit {
     if (section.routerLink) {
       this.router.navigate([section.routerLink]);
     }
+  }
+
+  getYoutubeLink() {
+    const url =
+      "https://www.youtube.com/embed/" +
+      this.sectiondata.youtubeVideoId +
+      "?rel=0&amp;showinfo=0&amp;loop=1&amp;playlist=" +
+      this.sectiondata.youtubeVideoId;
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

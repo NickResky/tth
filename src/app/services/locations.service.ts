@@ -1,21 +1,20 @@
-import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-import { DynamicContentService } from './dynamic-content.service';
-import { Injectable } from '@angular/core';
-import { Location } from './../classes/location';
-import { LocationData } from './../classes/location-data';
-import * as _ from 'lodash';
+import { Injectable } from "@angular/core";
+import * as _ from "lodash";
+import { ZenkitLocation } from "./../classes/location";
+import { LocationData } from "./../classes/location-data";
+import { ZenkitCollections } from "./../shared/constants/zenkit-collections";
+import { DynamicContentService } from "./dynamic-content.service";
 
 @Injectable()
 export class LocationsService {
+  constructor(private dynamicContentService: DynamicContentService) {}
 
-  constructor(private dynamicContentService: DynamicContentService) { }
-
-  getLocationData() {
+  getLocations() {
     return this.dynamicContentService
       .fetchAndTransformZenkitListData(ZenkitCollections.locations.shortId)
       .then((zenkitListData) => {
         const locations = _.map(zenkitListData.entries, (modifiedEntry) => {
-          const location = new Location();
+          const location = new ZenkitLocation();
           location.uuid = modifiedEntry.uuid;
           location.name = modifiedEntry.name;
           location.addressName = modifiedEntry.addressName;
@@ -32,11 +31,13 @@ export class LocationsService {
           location.consultationTime3 = modifiedEntry.consultationTime3;
           return location;
         });
+
+        return locations;
         const locationMG = _.find(locations, {
-          initials: 'MG'
+          initials: "MG",
         });
         const locationLB = _.find(locations, {
-          initials: 'LB'
+          initials: "LB",
         });
         const locationData = new LocationData();
         locationData.locationMG = locationMG;
@@ -45,5 +46,4 @@ export class LocationsService {
         return locationData;
       });
   }
-
 }

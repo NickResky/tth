@@ -1,9 +1,8 @@
 <div class="schedule-component">
-  <div class="schedule-header">
+  <!-- <div class="schedule-header">
     <h2 class="schedule-title" (click)="toggleScheduleOpen()">
       <span>Stundenplan</span>
       <span *ngIf="location"> Studio {{location.name}}</span>
-      <!--<i class="fas fa-arrow-right navigation-icon" [ngClass]="scheduleOpen ? 'schedule-open' : ''" *ngIf="displayDrawer"></i>-->
     </h2>
     <div class="schedule-navigation-container" [ngClass]="[courseShortId ? 'schedule-navigation-hide-filters' : '', scheduleOpen === false ? 'schedule-closed' : 'schedule-open']">
       <div class="schedule-navigation-filter-segments">
@@ -29,10 +28,10 @@
           <span class="schedule-navigation-style-label">Stundenplan einfärben</span>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="schedule-container" [ngClass]="scheduleOpen === false ? 'schedule-closed' : 'schedule-open'">
     <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index" [ngClass]="appointments.length === 0 ? 'day-container-empty' : ''" [ngStyle]="{'width': columnWidth}">
-      <div class="day-title">{{getDayTitle(dayIndex)}}</div>
+      <div class="day-title font-[august] text-[40px]">{{getDayTitle(dayIndex)}}</div>
       <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="[getCourseLink(appointment) ? 'has-course-link' : '', displayColors ? 'display-colors' : '']">
         <div class="appointment-time appointment-text">
           {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr
