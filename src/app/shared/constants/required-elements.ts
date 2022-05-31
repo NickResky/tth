@@ -261,6 +261,16 @@ export const RequiredElements = {
       type: ElementTypes.text,
       mappedClassPropertyName: "phone",
     },
+    {
+      name: "Beschreibung",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "description",
+    },
+    {
+      name: "Bild",
+      type: ElementTypes.files,
+      mappedClassPropertyName: "image",
+    },
   ],
   imprint: [
     {

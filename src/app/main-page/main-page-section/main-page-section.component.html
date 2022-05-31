@@ -5,7 +5,8 @@
       <div class="main-page-section-content-container">
         <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''"
           (click)="goToSection(section)">
-          <div class="main-page-section-caption text-heading-1 font-august md:text-center">{{section.title}}</div>
+          <div class="main-page-section-caption text-heading-1 font-august md:text-center" *ngIf="!hideTitle">
+            {{section.title}}</div>
           <p class="main-page-section-description text-default mb-[50px]" [innerHTML]="section.description">
           </p>
           <div class="speech-bubble" [innerHTML]="section.speechBubble" *ngIf="section.speechBubble">

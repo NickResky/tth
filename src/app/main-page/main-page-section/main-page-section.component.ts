@@ -18,6 +18,7 @@ export class MainPageSectionComponent implements OnInit {
   @Input() isFirstSection: boolean;
   @Input() displayInstructor: boolean;
   @Input() displayLocations: boolean;
+  @Input() hideTitle: boolean;
   section: MainPageSection;
   firstSection: boolean;
   mainPageListShortId: string = ZenkitCollections.home.shortId;

@@ -59,7 +59,7 @@ export class MainPageService {
 
         const videoFileSection = getSection('Videodatei');
 
-        const titleImageSection = getSection('Titelbild');
+        const aboutMeSection = getSection('Über mich');
 
         const mainPageData = new MainPageData();
         mainPageData.youtubeVideoId = _.get(videoSection, ['youtubeVideoId']);
@@ -69,7 +69,7 @@ export class MainPageService {
         mainPageData.ernaehrungsberatungSection = ernaehrungsberatungSection;
         mainPageData.contactSection = contactSection;
         mainPageData.videoFileSection = videoFileSection;
-        mainPageData.titleImageSection = titleImageSection;
+        mainPageData.aboutMeSection = aboutMeSection;
 
         return mainPageData;
       });
