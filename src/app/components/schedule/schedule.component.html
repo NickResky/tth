@@ -31,7 +31,7 @@
   </div> -->
   <div class="schedule-container" [ngClass]="scheduleOpen === false ? 'schedule-closed' : 'schedule-open'">
     <div class="day-container" *ngFor="let appointments of courseAppointmentsByDay; let dayIndex = index" [ngClass]="appointments.length === 0 ? 'day-container-empty' : ''" [ngStyle]="{'width': columnWidth}">
-      <div class="day-title font-[august] text-[40px]">{{getDayTitle(dayIndex)}}</div>
+      <div class="day-title font-august text-heading-2">{{getDayTitle(dayIndex)}}</div>
       <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="[getCourseLink(appointment) ? 'has-course-link' : '', displayColors ? 'display-colors' : '']">
         <div class="appointment-time appointment-text">
           {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr

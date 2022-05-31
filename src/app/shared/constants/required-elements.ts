@@ -22,6 +22,21 @@ export const RequiredElements = {
       type: ElementTypes.text,
       mappedClassPropertyName: "youtubeVideoId",
     },
+    {
+      name: "Kosten",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "prices",
+    },
+    {
+      name: "Sprechblase",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "speechBubble",
+    },
+    {
+      name: "Sprechblase Bild",
+      type: ElementTypes.files,
+      mappedClassPropertyName: "speechBubbleImage",
+    },
   ],
   current: [
     {

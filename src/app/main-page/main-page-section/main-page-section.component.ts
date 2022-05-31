@@ -1,3 +1,4 @@
+import { LocationsService } from './../../services/locations.service';
 import { Component, Input, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
@@ -15,17 +16,25 @@ import { ZenkitCollections } from "./../../shared/constants/zenkit-collections";
 export class MainPageSectionComponent implements OnInit {
   @Input() sectiondata: MainPageSection;
   @Input() isFirstSection: boolean;
+  @Input() displayInstructor: boolean;
+  @Input() displayLocations: boolean;
   section: MainPageSection;
   firstSection: boolean;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
   browser: Parser.Parser;
   isIOS = false;
+  locations: Location[] = []
 
   constructor(
     private dynamicContentService: DynamicContentService,
     private router: Router,
-    private domSanitizer: DomSanitizer
-  ) {}
+    private domSanitizer: DomSanitizer,
+    private locationService: LocationsService
+  ) {
+    this.locationService.getLocations().then((locs) => {
+      this.locations = locs;
+    })
+  }
 
   ngOnInit() {
     this.section = this.sectiondata;

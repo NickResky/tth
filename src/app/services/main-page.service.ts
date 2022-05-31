@@ -21,16 +21,19 @@ export class MainPageService {
           mainPageSection.description = modifiedEntry.description;
           mainPageSection.image = _.head(modifiedEntry.image);
           mainPageSection.youtubeVideoId = modifiedEntry.youtubeVideoId;
+          mainPageSection.prices = modifiedEntry.prices;
+          mainPageSection.speechBubble = modifiedEntry.speechBubble.length ? modifiedEntry.speechBubble : undefined;
+          mainPageSection.speechBubbleImage = _.head(modifiedEntry.speechBubbleImage);
 
           const sectionType = _.find(MainPageSectionTypes, {
             name: modifiedEntry.title
           });
           mainPageSection.cssClass = _.get(sectionType, ['cssClass']);
-          mainPageSection.routerLink =  _.get(sectionType, ['routerLink']);
+          mainPageSection.routerLink = _.get(sectionType, ['routerLink']);
           return mainPageSection;
         });
 
-        const getSection = function(sectionName) {
+        const getSection = function (sectionName) {
           const section = _.head(_.remove(mainPageSections, {
             title: sectionName
           }));
@@ -70,6 +73,6 @@ export class MainPageService {
 
         return mainPageData;
       });
-    }
+  }
 
 }

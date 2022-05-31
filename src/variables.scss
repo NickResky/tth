@@ -5,14 +5,17 @@
 $header-link-color: #f2f2f2;
 $header-hover-background-color: #595959;
 $main-text-color: rgb(24, 24, 24);
+$secondary-text-color: #f24139;
 $main-text-color-on-dark-bg: #ffffff;
 $main-text-color-on-light-bg: #252525;
-$post-seperator-color: #8C8C8C;
+$post-seperator-color: #8c8c8c;
 $accent-color-1: #595959;
+$main-background-color: #ffebcc;
 $main-background-color-dark: #000000;
 $main-background-color-imprint: #1b1b1b;
 $main-background-color-light: #f0f0f0;
 $download-link-color: #dbd6d6;
+$secondary-background-color: #fff7ea;
 $background-color-dark-2: #ff827c;
 $background-color-dark-3: #0f0f0f;
 $border-color-dark-2: #2c2c2c;
@@ -25,13 +28,13 @@ $link-color-hover: #0934c4;
 ----------------------------*/
 
 // Small devices (landscape phones, 576px and up)
-$media-breakpoint-sm: 576px;
+$media-breakpoint-sm: 640px;
 
 // Medium devices (tablets, 768px and up)
 $media-breakpoint-md: 768px;
 
 // Large devices (desktops, 992px and up)
-$media-breakpoint-lg: 992px;
+$media-breakpoint-lg: 1024px;
 
 // Extra large devices (large desktops, 1200px and up)
-$media-breakpoint-xl: 1200px;
+$media-breakpoint-xl: 1280px;

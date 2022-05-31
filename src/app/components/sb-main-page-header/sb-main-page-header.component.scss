@@ -11,6 +11,10 @@
   width: 100%;
 }
 
+.image-container {
+  gap: 15px;
+}
+
 .middle {
   display: table-cell;
   vertical-align: middle;
@@ -19,12 +23,11 @@
 .img-tile {
   height: 100%;
   width: 100%;
-  margin: 0 10px;
   display: flex;
   flex-direction: column;
   .title {
     font-family: august;
-    font-size: 55px;
+    font-size: 3rem;
     text-align: left;
     text-transform: uppercase;
     color: #f24139;

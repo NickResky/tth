@@ -11,10 +11,13 @@
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>-->
 <app-sb-main-page-header></app-sb-main-page-header>
-<div class="main-page-section-container bg-[#ffebcc] text-[#f24139]">
-    <app-main-page-section *ngIf="rueckenFitSection" [sectiondata]='rueckenFitSection' isFirstSection='true'>
+<div class="main-page-section-container text-[#f24139]">
+    <app-main-page-section *ngIf="rueckenFitSection" [sectiondata]='rueckenFitSection' isFirstSection='true'
+        displayInstructor='true' displayLocations='true'>
     </app-main-page-section>
-    <app-main-page-section *ngIf="nordicWalkingSection" [sectiondata]='nordicWalkingSection'></app-main-page-section>
-    <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection'></app-main-page-section>
+    <app-main-page-section *ngIf="nordicWalkingSection" [sectiondata]='nordicWalkingSection' isFirstSection='true'
+        displayInstructor='true'></app-main-page-section>
+    <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection'>
+    </app-main-page-section>
 
 </div>

@@ -1,14 +1,54 @@
-<div class="main-page-section pt-[100px]" [ngClass]="firstSection ? 'first-section' : ''">
+<div class="main-page-section pt-[100px] main-content-container main-content-container-padding"
+  [ngClass]="firstSection ? 'first-section' : ''">
   <div class="{{section.cssClass}} main-page-section-background" [ngStyle]="getBackgroundStyle(section.image)">
     <div class="main-page-section-container" [ngClass]="firstSection ? 'first-section-container' : ''">
       <div class="main-page-section-content-container">
-        <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''" (click)="goToSection(section)">
-          <div  class="main-page-section-caption">{{section.title}}</div>
-          <p class="main-page-section-description" [innerHTML]="section.description">
+        <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''"
+          (click)="goToSection(section)">
+          <div class="main-page-section-caption text-heading-1 font-august md:text-center">{{section.title}}</div>
+          <p class="main-page-section-description text-default mb-[50px]" [innerHTML]="section.description">
           </p>
-          <iframe class="w-full aspect-video mt-[100px] mb-[100px]" *ngIf="sectiondata.youtubeVideoId" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="speech-bubble" [innerHTML]="section.speechBubble" *ngIf="section.speechBubble">
+
+          </div>
+          <div class="w-[300px] h-[300px] mx-auto mt-[50px] bg-cover bg-center rounded-[300px]"
+            [ngStyle]="getBackgroundStyle(section.speechBubbleImage)" *ngIf="section.speechBubbleImage">
+          </div>
+          <iframe class="w-full aspect-video mt-[50px] ml-[auto] mr-[auto] max-w-[800px] mb-[100px]"
+            *ngIf="sectiondata.youtubeVideoId" [src]="getYoutubeLink()" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
           <app-schedule *ngIf="sectiondata.title === 'Rücken-Fit'"></app-schedule>
 
+          <div class="text-default" *ngIf="displayLocations">
+            <div class="text-heading-1 font-august">Räumlichkeiten</div>
+            <div class="md:flex md:gap-[15px]">
+              <div class="md:flex-1" *ngFor="let location of locations; index as i">
+                <div class="text-heading-2 font-august">
+                  {{location.name}}
+                </div>
+                <div class="">{{location.addressName}}</div>
+                <div class="">{{location.addressStreet}}</div>
+                <div class="mb-[20px]">{{location.addressZIP}} {{location.addressCity}}</div>
+                <div
+                  class="inline pl-[20px] pr-[20px] pt-[10px] pb-[10px] bg-secondary-text-color text-[#fff] rounded-[20px]">
+                  Auf Google Maps
+                  anzeigen
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex main-page-section-flex" *ngIf="displayInstructor || sectiondata.prices">
+            <div class="flex-1 text-default" *ngIf="displayInstructor">
+              <p class="font-august text-heading-2">Kursleitung</p>
+              <p>Susane Brenner</p>
+              <p>(Gymnastiklehrerin und NordicWalking-Trainerin)</p>
+              <span>Über mich</span>
+            </div>
+            <div class="flex-1 text-default">
+              <p class="font-august text-heading-2">Kosten</p>
+              <p [innerHtml]="sectiondata.prices" *ngIf="sectiondata.prices"></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

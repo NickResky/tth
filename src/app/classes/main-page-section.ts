@@ -5,4 +5,7 @@ export class MainPageSection {
     image: string;
     youtubeVideoId: string;
     routerLink: string;
+    prices?: string;
+    speechBubble?: string;
+    speechBubbleImage?: string;
 }
