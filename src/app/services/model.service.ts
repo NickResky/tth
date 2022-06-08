@@ -185,7 +185,7 @@ export class ModelService {
     });
   }
 
-  getContact() {
+  getContact(): Promise<Contact> {
     if (_.isNil(this.contactData)) {
       this.contactData = this.contactService.getContact();
       return this.contactData;

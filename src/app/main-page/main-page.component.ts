@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import * as _ from 'lodash';
-import { MainPageData } from './../classes/main-page-data';
-import { MainPageSection } from './../classes/main-page-section';
-import { DynamicContentService } from './../services/dynamic-content.service';
-import { ModelService } from './../services/model.service';
-import { ZenkitCollections } from './../shared/constants/zenkit-collections';
-
+import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import * as _ from "lodash";
+import { Contact } from "../classes/contact";
+import { MainPageSection } from "./../classes/main-page-section";
+import { DynamicContentService } from "./../services/dynamic-content.service";
+import { ModelService } from "./../services/model.service";
+import { ZenkitCollections } from "./../shared/constants/zenkit-collections";
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: "app-main-page",
+  templateUrl: "./main-page.component.html",
+  styleUrls: ["./main-page.component.scss"],
 })
 export class MainPageComponent implements OnInit {
-
   mainPageListShortId: string;
   video: string;
   rueckenFitSection: MainPageSection;
@@ -40,11 +38,13 @@ export class MainPageComponent implements OnInit {
   hideTitle = false;
   videoElement: any;
   isBrowser: boolean;
+  contact: Contact;
 
   constructor(
     private dynamicContentService: DynamicContentService,
     private modelService: ModelService,
-    private domSanitizer: DomSanitizer) { }
+    private domSanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.pageLoaded = this.modelService.setPageLoaded(false);
@@ -52,16 +52,19 @@ export class MainPageComponent implements OnInit {
     this.isBrowser = this.modelService.isPlatformBrowser();
     if (this.isBrowser) {
       this.isBrowser = true;
-      console.log('platform is browser');
+      console.log("platform is browser");
     } else {
       this.isBrowser = false;
-      console.log('platform is server');
+      console.log("platform is server");
     }
 
     this.mainPageListShortId = ZenkitCollections.home.shortId;
 
-    this.modelService.getMainPageSections().then((mainPageData: MainPageData) => {
-
+    Promise.all([
+      this.modelService.getMainPageSections(),
+      this.modelService.getContact(),
+    ]).then(([mainPageData, contact]) => {
+      this.contact = contact;
       this.youtubeVideoId = mainPageData.youtubeVideoId;
       this.rueckenFitSection = mainPageData.rueckenFitSection;
       this.blogSection = mainPageData.blogSection;
@@ -91,25 +94,32 @@ export class MainPageComponent implements OnInit {
   }
 
   getFileSrc(file) {
-    return this.dynamicContentService.getFileSrc(_.get(file, ['shortId']), this.mainPageListShortId);
+    return this.dynamicContentService.getFileSrc(
+      _.get(file, ["shortId"]),
+      this.mainPageListShortId
+    );
   }
 
   setVideoElement() {
     if (_.isNil(this.videoElement)) {
-      this.videoElement = document.getElementById('video');
+      this.videoElement = document.getElementById("video");
     }
     return this.videoElement;
   }
 
   getYoutubeLink() {
     // tslint:disable-next-line:max-line-length
-    const url = 'https://www.youtube.com/embed/' + this.youtubeVideoId + '?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;playlist=' + this.youtubeVideoId;
+    const url =
+      "https://www.youtube.com/embed/" +
+      this.youtubeVideoId +
+      "?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;mute=1&amp;playlist=" +
+      this.youtubeVideoId;
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   getBackgroundStyle(image) {
     const backgroundStyle = {
-      'background-image': 'url(' + this.getFileSrc(image) + ')'
+      "background-image": "url(" + this.getFileSrc(image) + ")",
     };
     return backgroundStyle;
   }
@@ -120,7 +130,7 @@ export class MainPageComponent implements OnInit {
   }
 
   imageLoaded() {
-    console.log('title image loaded!');
+    console.log("title image loaded!");
     this.titleImageLoaded = true;
     this.checkIfTitleImageShouldBeDisplayed();
   }
@@ -138,7 +148,7 @@ export class MainPageComponent implements OnInit {
   }
 
   videoDataLoaded() {
-    console.log('title video loaded!');
+    console.log("title video loaded!");
     this.videoLoaded = true;
     this.checkIfVideoShouldBePlayed();
   }
