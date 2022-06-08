@@ -21,13 +21,17 @@ div {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: calc(100% - 70px);
-        margin-top: 70px;
+        height: 100%;
+        width: 177.77777778vh; /* 100 * 16 / 9 */
+        min-width: 100%;
+        min-height: 56.25vw; /* 100 * 9 / 16 */
         background-color: $main-background-color-dark;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        left: 50%; /* % of surrounding element */
+        top: 50%;
+        transform: translate(-50%, -50%); /* % of current element */
     }
 
     video {
@@ -218,6 +222,8 @@ div {
             .title {
                 padding-left: 50px;
                 max-width: 600px;
+                font-size: 30px;
+                line-height: 40px;
             }
         }
     }

@@ -11,24 +11,25 @@
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
 </div>-->
 <div class="main-page-title-video-container">
-    <div class="title-image-container" [ngClass]="displayTitleImage && isBrowser  ? 'show' : ''">
+    <!-- <div class="title-image-container" [ngClass]="displayTitleImage && isBrowser  ? 'show' : ''">
         <img class="title-image" *ngIf="titleImageSection" [src]="getFileSrc(titleImageSection.image)" (load)="imageLoaded()"/>
-    </div>
-    <iframe id="video-iframe" class="video-iframe" width="560" height="315" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen *ngIf="hideTitle"></iframe>
-    <!--<video muted loop controls="true" *ngIf="videoFileSection" id="video" (loadeddata)="videoDataLoaded()" [ngClass]="hideTitle === true  ? 'show' : ''">
+    </div> -->
+    <!-- <iframe id="video-iframe" class="video-iframe" width="560" height="315" [src]="getYoutubeLink()" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen *ngIf="hideTitle"></iframe> -->
+    <video muted loop *ngIf="videoFileSection" id="video" (loadeddata)="videoDataLoaded()" [ngClass]="hideTitle === true  ? 'show' : 'show'">
         <source [src]="getFileSrc(videoFileSection.image)" type="video/mp4">
-    </video>-->
+    </video>
+   
     <div class="video-overlay" [ngClass]="videoLoaded === true  ? 'hide' : ''"></div>
     <div class="title-container" *ngIf="contentLoaded && !hideTitle && isBrowser" [ngClass]="hideTitle === true  ? 'hide' : ''">
         <!-- <div class="logo-container">
             <div class="logo"></div>
         </div> -->
         <div class="play-icon-container">
-            <div class="play-icon-outer-ring" (click)="playVideoButtonClicked()">
+            <!-- <div class="play-icon-outer-ring" (click)="playVideoButtonClicked()">
                 <div class="play-icon-inner-ring">
                     <div class="fas fa-play play-icon"></div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="title">Schule für klassisches Ballett und modernen Tanz </div>
         <!-- <div class="title-row">
