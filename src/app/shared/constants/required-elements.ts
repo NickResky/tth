@@ -271,6 +271,16 @@ export const RequiredElements = {
       type: ElementTypes.files,
       mappedClassPropertyName: "image",
     },
+    {
+      name: "Straße",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "street",
+    },
+    {
+      name: "ZIP & Stadt",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "zipAndCity",
+    },
   ],
   imprint: [
     {

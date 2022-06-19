@@ -22,25 +22,31 @@
     <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection'>
     </app-main-page-section>
     <div class="mt-[100px] main-content-container main-content-container-padding">
-            <div class="main-page-section-container">
-                <div class="main-page-section-content-container">
-                    <div class="main-page-section-content">
-                        <div class="main-page-section-caption text-heading-1 font-august md:text-center">
-                            Kontakt
+        <div class="main-page-section-container">
+            <div class="main-page-section-content-container">
+                <div class="main-page-section-content">
+                    <div class="main-page-section-caption text-heading-1 font-august md:text-center">
+                        Kontakt
+                    </div>
+                    <div class="speech-bubble mt-[50px]">
+                        <p>
+                            Sie interessieren sich für meine Kurse?
+                        </p>
+                        <p class="mt-[20px]">
+                            Dann melden Sie sich telefonisch bei mir, unter:
+                        </p>
+                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color">
+                            {{contact.phone}}
                         </div>
-                        <div class="speech-bubble mt-[50px]">
-                            <p>
-                                Sie interessieren sich für meine Kurse?
-                            </p>
-                            <p class="mt-[20px]">
-                                Dann melden Sie sich telefonisch bei mir, unter:
-                            </p>
-                            <div class="rounded-[50px] bg-[#fff] inline-block mx-auto text-main-text-color">
-                                {{contact.phone}}
-                            </div>
+                        <p class="mt-[20px]">
+                            Oder schicken Sie mir eine Nachricht:
+                        </p>
+                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color">
+                            {{contact.email}}
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>

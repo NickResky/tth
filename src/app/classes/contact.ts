@@ -7,4 +7,6 @@ export class Contact {
     imprint: string;
     description: string;
     image: string;
+    street: string;
+    zipAndCity: string;
 }
