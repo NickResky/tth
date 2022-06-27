@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from "@angular/common";
+// import { isPlatformBrowser } from "@angular/common";
 import { Inject, Injectable, PLATFORM_ID } from "@angular/core";
 import * as _ from "lodash";
 import { BehaviorSubject } from "rxjs";
@@ -53,10 +53,11 @@ export class ModelService {
     private currentService: CurrentService,
     private imprintService: ImprintService,
     private scheduleService: ScheduleService
-  ) { }
+  ) {}
 
   isPlatformBrowser() {
-    return isPlatformBrowser(this.platformId);
+    return true;
+    // return isPlatformBrowser(this.platformId);
   }
 
   isPageLoaded() {

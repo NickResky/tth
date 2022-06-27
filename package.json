@@ -8,7 +8,7 @@
   "scripts": {
     "start-local": "cross-env NODE_ENV=development ng serve",
     "ng": "./node_modules/.bin/ng",
-    "build": "ng build",
+    "build": "ng build --configuration production --output-hashing all",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node ./src/server",
     "build:client-and-server-bundles": "node ./node_modules/.bin/ng build && node ./node_modules/.bin/ng run app:server",
