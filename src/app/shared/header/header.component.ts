@@ -16,6 +16,17 @@ export class HeaderComponent implements OnInit {
   pageIsHome;
   isBrowser;
 
+  sections = [{
+    title: "Rückengymnastik",
+    id: "section01"
+  }, {
+    title: "Nordic Walking",
+    id: "section02"
+  }, {
+    title: "Ernährungsberatung",
+    id: "section03"
+  }]
+
   constructor(
     private modelService: ModelService,
     private router: Router
@@ -54,6 +65,16 @@ export class HeaderComponent implements OnInit {
 
   closeMobileNav() {
     this.isMobileNavOpen = false;
+  }
+
+  goTo(sectionId: string) {
+    this.closeMobileNav();
+
+    var element = document.getElementById(sectionId);
+
+    if (!element) return;
+    element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
   }
 
 }

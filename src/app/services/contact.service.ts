@@ -21,6 +21,7 @@ export class ContactService {
         contact.street = modifiedEntry.street;
         contact.zipAndCity = modifiedEntry.zipAndCity;
         contact.imprint = modifiedEntry.imprint;
+        contact.privacy = modifiedEntry.privacy;
         return contact;
       });
   }

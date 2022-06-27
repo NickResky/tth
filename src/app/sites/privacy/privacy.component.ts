@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
-import {DynamicContentService} from "../../services/dynamic-content.service";
-import {ModelService} from "../../services/model.service";
-import {Imprint} from "../../classes/imprint";
-import {ZenkitCollections} from "../../shared/constants/zenkit-collections";
+import { DynamicContentService } from "../../services/dynamic-content.service";
+import { ModelService } from "../../services/model.service";
+import { Imprint } from "../../classes/imprint";
+import { ZenkitCollections } from "../../shared/constants/zenkit-collections";
 import { Contact } from '../../classes/contact';
 import * as _ from 'lodash';
 
@@ -15,14 +15,14 @@ import * as _ from 'lodash';
 })
 export class PrivacyComponent implements OnInit {
 
-  privacy: Imprint;
+  privacy: string;
 
   ngOnInit() {
-    this.modelService.getEntries().then((results: any) => {
-      this.privacy = results[1];
-    });
+    this.modelService.getContact().then(contact => {
+      this.privacy = contact.privacy;
+    })
   }
 
-  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) {}
+  constructor(private modelService: ModelService, private dynamicContentService: DynamicContentService) { }
 
 }

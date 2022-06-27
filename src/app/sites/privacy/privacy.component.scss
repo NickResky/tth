@@ -1,10 +1,10 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
 .imprint-content-container {
-  background-color: $main-background-color-imprint;
+  // background-color: $main-background-color-imprint;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: $main-text-color-on-dark-bg;
+  color: black;
 
   .imprint-heading {
     font-size: 30px;

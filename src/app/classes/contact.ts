@@ -5,6 +5,8 @@ export class Contact {
     email: string;
     phone: string;
     imprint: string;
+    legal: string;
+    privacy: string;
     description: string;
     image: string;
     street: string;

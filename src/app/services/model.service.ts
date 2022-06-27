@@ -53,7 +53,7 @@ export class ModelService {
     private currentService: CurrentService,
     private imprintService: ImprintService,
     private scheduleService: ScheduleService
-  ) {}
+  ) { }
 
   isPlatformBrowser() {
     return isPlatformBrowser(this.platformId);
@@ -195,7 +195,7 @@ export class ModelService {
     });
   }
 
-  getEntries() {
+  getImprint() {
     if (_.isNil(this.imprintData)) {
       this.imprintData = this.imprintService.getEntries();
       return this.imprintData;

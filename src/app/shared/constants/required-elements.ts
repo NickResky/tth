@@ -281,6 +281,16 @@ export const RequiredElements = {
       type: ElementTypes.text,
       mappedClassPropertyName: "zipAndCity",
     },
+    {
+      name: "Impressum",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "imprint",
+    },
+    {
+      name: "Datenschutz",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "privacy",
+    },
   ],
   imprint: [
     {

@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SbMainPageHeaderComponent implements OnInit {
 
+  sections = [{
+    title: "Rückengymnastik",
+    imageClass: "img1"
+  }, {
+    title: "Nordic Walking",
+    imageClass: "img2"
+  }, {
+    title: "Ernährungsberatung",
+    imageClass: "img3"
+  }]
+
   constructor() { }
 
   ngOnInit(): void {

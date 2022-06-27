@@ -24,7 +24,8 @@
           <div class="text-default" *ngIf="displayLocations">
             <div class="text-heading-1 font-august">Räumlichkeiten</div>
             <div class="md:flex md:gap-[15px] mt-[50px]">
-              <div class="md:flex-1 flex flex-col bg-secondary-background-color rounded-[3px] pb-[20px] px-[20px]"
+              <div
+                class="md:flex-1 flex flex-col bg-secondary-background-color rounded-[3px] pb-[20px] px-[20px] mb-[20px] md:mb-[0]"
                 *ngFor="let location of locations; index as i">
                 <div class="text-heading-2 font-august flex-1">
                   {{location.name}}

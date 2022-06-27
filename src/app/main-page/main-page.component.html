@@ -15,13 +15,13 @@
     <app-main-page-section *ngIf="aboutMeSection" [sectiondata]='aboutMeSection' isFirstSection='true' hideTitle="true">
     </app-main-page-section>
     <app-main-page-section *ngIf="rueckenFitSection" [sectiondata]='rueckenFitSection' displayInstructor='true'
-        displayLocations='true'>
+        displayLocations='true' id="section01">
     </app-main-page-section>
     <app-main-page-section *ngIf="nordicWalkingSection" [sectiondata]='nordicWalkingSection' isFirstSection='true'
-        displayInstructor='true'></app-main-page-section>
-    <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection'>
+        displayInstructor='true' id="section02"></app-main-page-section>
+    <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection' id="section03">
     </app-main-page-section>
-    <div class="mt-[100px] main-content-container main-content-container-padding">
+    <div class="mt-[100px] main-content-container main-content-container-padding" *ngIf="contact" id="section04">
         <div class="main-page-section-container">
             <div class="main-page-section-content-container">
                 <div class="main-page-section-content">
@@ -35,13 +35,13 @@
                         <p class="mt-[20px]">
                             Dann melden Sie sich telefonisch bei mir, unter:
                         </p>
-                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color">
+                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color break-all">
                             {{contact.phone}}
                         </div>
                         <p class="mt-[20px]">
                             Oder schicken Sie mir eine Nachricht:
                         </p>
-                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color">
+                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color break-all">
                             {{contact.email}}
                         </div>
                     </div>
