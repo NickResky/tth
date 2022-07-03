@@ -69,7 +69,7 @@
             }
             &.active {
               .schedule-navigation-text {
-                border-bottom: 1px solid $secondary-text-color;
+                border-bottom: 1px solid $post-seperator-color;
               }
             }
             &:not(.active) {
@@ -106,7 +106,7 @@
     }
     .day-container {
       .day-title {
-        border-bottom: 1px solid $secondary-text-color;
+        border-bottom: 1px solid $post-seperator-color;
         margin-bottom: 10px;
       }
       .appointment-container {

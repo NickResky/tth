@@ -1,4 +1,3 @@
-import { LocationsService } from './../../services/locations.service';
 import { Component, Input, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 import { Router } from "@angular/router";
@@ -6,6 +5,7 @@ import { getParser, Parser } from "bowser";
 import * as _ from "lodash";
 import { MainPageSection } from "./../../classes/main-page-section";
 import { DynamicContentService } from "./../../services/dynamic-content.service";
+import { LocationsService } from "./../../services/locations.service";
 import { ZenkitCollections } from "./../../shared/constants/zenkit-collections";
 
 @Component({
@@ -19,12 +19,13 @@ export class MainPageSectionComponent implements OnInit {
   @Input() displayInstructor: boolean;
   @Input() displayLocations: boolean;
   @Input() hideTitle: boolean;
+  @Input() smallTitle: boolean;
   section: MainPageSection;
   firstSection: boolean;
   mainPageListShortId: string = ZenkitCollections.home.shortId;
   browser: Parser.Parser;
   isIOS = false;
-  locations: Location[] = []
+  locations: Location[] = [];
 
   constructor(
     private dynamicContentService: DynamicContentService,
@@ -34,7 +35,7 @@ export class MainPageSectionComponent implements OnInit {
   ) {
     this.locationService.getLocations().then((locs) => {
       this.locations = locs;
-    })
+    });
   }
 
   ngOnInit() {

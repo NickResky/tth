@@ -1,26 +1,28 @@
-<div class="text-center h-full w-full flex flex-col main-content-container main-content-container-padding">
+<div class="text-center h-full w-full flex flex-col px-[20px] xl:px-[150px]">
     <!-- <div class="bg"></div> -->
     <div class="h-full w-full ml-[auto] mr-[auto]">
-        <div class="h-[60%] md:h-[40%] relative  main-content">
+        <div class="h-[30%] md:h-[40%] xl:h-[35%] relative  main-content">
             <div class="outer">
                 <div class="middle">
-                    <div class="inner pt-[70px] md:pt-[100px]">
+                    <div class="inner pt-[20px] md-[70px] md:pt-[100px]">
                         <span
-                            class="text-[140px] leading-[140px] sm:text-[150px] md:text-[160px] lg:text-[220px] lg:leading-[220px] xl:text-[250px] lg:leading-[250px] font-[august] text-[#f24139] flex-1">Susanne
+                            class="page-title text-[90px] leading-[90px] sm:text-[150px] md:text-[160px] lg:text-[220px] lg:leading-[220px] xl:text-[250px] xl:leading-[250px] font-[august] flex-1">Susanne
                             Brenner</span>
                     </div>
                 </div>
             </div>
         </div>
         <div
-            class="image-container md:flex h-[40%] md:h-[60%] pb-[50px] pt-[30px] md:pt-[0px] md:pb-[100px]  main-content">
-            <div class="img-tile md:flex" *ngFor="let section of sections md:h-full">
-                <span class="title md:py-[15px]">{{section.title}}</span>
-                <div class="img-container hidden md:block">
-                    <div class="img-background" [ngClass]="section.imageClass"></div>
-                    <div class="img-overlay"></div>
+            class="image-container gap-[15px] xl:gap-[30px] flex flex-col h-[70%] md:h-[60%] xl:h-[65%] pb-[10px] pt-[30px] md:pt-[0px] md:pb-[50px]  main-content">
+            <div class="img-tile flex flex-1" *ngFor="let section of sections w-full h-full cursor-pointer" (click)="goTo(section.id)">
+                <div class="flex-1 overflow-hidden flex flex-col text-left">
+                    <div class="img-container rounded-[15px]">
+                        <div class="img-background" [ngClass]="section.imageClass"></div>
+                        <div class="img-overlay"></div>
+                        <span class="absolute bottom-0 text-[#ffffff] text-[30px] leading-[30px] xl:text-[50px] xl:leading-[60px] uppercase px-[15px] pb-[10px] lg:px-[30px] title md:py-[15px] md:float-left">{{section.title}}</span>
+                    </div>
                 </div>
-
+            
             </div>
         </div>
     </div>

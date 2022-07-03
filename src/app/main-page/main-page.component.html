@@ -12,14 +12,14 @@
 </div>-->
 <app-sb-main-page-header></app-sb-main-page-header>
 <div class="main-page-section-container">
-    <app-main-page-section *ngIf="aboutMeSection" [sectiondata]='aboutMeSection' isFirstSection='true' hideTitle="true">
+    <app-main-page-section *ngIf="aboutMeSection" [sectiondata]='aboutMeSection' isFirstSection='true' hideTitle="true" [smallTitle]="false">
     </app-main-page-section>
     <app-main-page-section *ngIf="rueckenFitSection" [sectiondata]='rueckenFitSection' displayInstructor='true'
-        displayLocations='true' id="section01">
+        displayLocations='true' [smallTitle]="false" id="section01">
     </app-main-page-section>
     <app-main-page-section *ngIf="nordicWalkingSection" [sectiondata]='nordicWalkingSection' isFirstSection='true'
-        displayInstructor='true' id="section02"></app-main-page-section>
-    <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection' id="section03">
+        displayInstructor='true' [smallTitle]="false" id="section02"></app-main-page-section>
+    <app-main-page-section *ngIf="ernaehrungsberatungSection" [sectiondata]='ernaehrungsberatungSection' [smallTitle]="true" id="section03">
     </app-main-page-section>
     <div class="mt-[100px] main-content-container main-content-container-padding" *ngIf="contact" id="section04">
         <div class="main-page-section-container">
@@ -35,15 +35,15 @@
                         <p class="mt-[20px]">
                             Dann melden Sie sich telefonisch bei mir, unter:
                         </p>
-                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color break-all">
+                        <a class="block contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color break-all" [href]="['tel:', contact.phone, '?']">
                             {{contact.phone}}
-                        </div>
+                        </a>
                         <p class="mt-[20px]">
                             Oder schicken Sie mir eine Nachricht:
                         </p>
-                        <div class="contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color break-all">
+                        <a class="block contact-label rounded-[50px] bg-[#fff] mx-auto text-main-text-color break-all" [href]="['mailto:', contact.email, '?']">
                             {{contact.email}}
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

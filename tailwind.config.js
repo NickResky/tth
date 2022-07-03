@@ -3,9 +3,10 @@ module.exports = {
   mode: 'jit',
   theme: {
     colors: {
-      'main-text-color': '#f24139',
+      'main-text-color': '#252525',
       'secondary-text-color': '#f24139',
-      'secondary-background-color': '#fff7ea'
+      'secondary-background-color': '#ffffff',
+      'accent-color-1': '#49a579'
     },
     screens: {
       'sm': '640px',

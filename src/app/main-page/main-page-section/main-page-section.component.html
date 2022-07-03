@@ -5,15 +5,20 @@
       <div class="main-page-section-content-container">
         <div class="main-page-section-content" [ngClass]="section.routerLink ? 'section-link' : ''"
           (click)="goToSection(section)">
-          <div class="main-page-section-caption text-heading-1 font-august md:text-center" *ngIf="!hideTitle">
-            {{section.title}}</div>
-          <p class="main-page-section-description text-default mb-[50px]" [innerHTML]="section.description">
+          <div class="md:text-center text-accent-color-1 mb-[50px]" *ngIf="!hideTitle">
+            <div *ngIf="true" class="text-[120px] leading-[120px] sm:text-[150px] md:text-[160px] md:leading-[170px] lg:text-[220px] lg:leading-[220px] xl:text-[250px] xl:leading-[250px] font-august">
+              {{section.title}}
+            </div>
+            <!-- <div *ngIf="smallTitle" class="text-[90px] leading-[120px] sm:text-[120px] md:text-[130px] lg:text-[170px] lg:leading-[190px] xl:text-[200px] xl:leading-[200px] font-august">
+              {{section.title}}</div> -->
+            </div>
+          <p class="main-page-section-description text-default mb-[50px] mx-[auto] max-w-[700px]" [innerHTML]="section.description">
           </p>
           <div class="speech-bubble speech-bubble-inner-html" [innerHTML]="section.speechBubble"
             *ngIf="section.speechBubble">
 
           </div>
-          <div class="w-[300px] h-[300px] mx-auto mt-[50px] bg-cover bg-center rounded-[300px]"
+          <div class="w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] mx-auto mt-[50px] md:mt-[70px] bg-cover bg-center rounded-[300px]"
             [ngStyle]="getBackgroundStyle(section.speechBubbleImage)" *ngIf="section.speechBubbleImage">
           </div>
           <iframe class="w-full aspect-video mt-[50px] ml-[auto] mr-[auto] max-w-[800px] mb-[100px]"
@@ -35,7 +40,7 @@
                 <div class="mb-[20px]">{{location.addressZIP}} {{location.addressCity}}</div>
                 <div class="">
                   <div
-                    class="inline pl-[20px] pr-[20px] pt-[10px] pb-[10px] bg-secondary-text-color text-[#fff] rounded-[20px]">
+                    class="inline pl-[20px] pr-[20px] pt-[10px] pb-[10px] bg-accent-color-1 text-[#fff] rounded-[20px]">
                     Auf Google Maps
                     anzeigen
                   </div>

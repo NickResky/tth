@@ -20,7 +20,7 @@ $main-page-text-color: #fff;
       width: 100%;
       .main-page-section-content-container {
         padding-top: 80px;
-        border-top: 1px solid $secondary-text-color;
+        border-top: 1px solid $post-seperator-color;
         .main-page-section-content {
           @include transition(background-color 0.2s ease);
           &.section-link:hover {

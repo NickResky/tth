@@ -170,6 +170,8 @@ export class ScheduleService {
               return location.uuid === locationUuid;
             });
 
+            appointment.holidays = modifiedEntry.holidays;
+
             if (modifiedEntry.days && _.head(modifiedEntry.days)) {
               appointment.dayIndex = _.findIndex(
                 _.get(zenkitListData, ["prefefinedCategories", "days"]),

@@ -17,4 +17,5 @@ export class Appointment {
   location: ZenkitLocation;
   levels: any[];
   ageGroups: any[];
+  holidays: string;
 }

@@ -34,13 +34,17 @@
       <div class="day-title font-august text-heading-2">{{getDayTitle(dayIndex)}}</div>
       <div class="appointment-container" *ngFor="let appointment of appointments" [routerLink]="getCourseLink(appointment)" [ngClass]="[getCourseLink(appointment) ? 'has-course-link' : '', displayColors ? 'display-colors' : '']">
         <div class="appointment-time appointment-text">
-          {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr
+          {{getTimeString(appointment.dateStart)}}-{{getTimeString(appointment.dateEnd)}} Uhr <span *ngIf="appointment.holidays && appointment.holidays">*</span>
         </div>
         <div class="appointment-title appointment-text">
           {{appointment.title}}
         </div>
         <div class="appointment-location appointment-text" *ngIf="!location">
           in {{appointment.location.name}}
+        </div>
+        <div class="mt-[20px] mb-[10px] text-[14px] leading-[16px]" *ngIf="appointment.holidays && appointment.holidays">
+          * = Ferienzeiten: <br/>
+          <div class="" [innerHtml]="appointment.holidays"></div>
         </div>
         <div class="appointment-info-icons-container">
           <div class="appointment-age-groups" *ngIf="appointment.ageGroups && appointment.ageGroups.length > 0">
@@ -55,7 +59,6 @@
               {{level.title}}<span *ngIf="appointment.levels.length > 1 && i < appointment.levels.length - 1" class="schedule-no-colors-label"> / </span>
             </span>
           </div>
-        </div>
       </div>
     </div>
   </div>

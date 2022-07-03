@@ -160,6 +160,11 @@ export const RequiredElements = {
       type: ElementTypes.number,
       mappedClassPropertyName: "timeEndMinutes",
     },
+    {
+      name: "Ferienzeit",
+      type: ElementTypes.text,
+      mappedClassPropertyName: "holidays",
+    },
   ],
   team: [
     {

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "../../../variables.scss";
 
 .outer {
   display: table;
@@ -11,25 +12,23 @@
   width: 100%;
 }
 
-.image-container {
-  gap: 15px;
-}
-
 .middle {
   display: table-cell;
   vertical-align: middle;
 }
 
+.page-title {
+  color: $accent-color-1;
+
+}
+
 .img-tile {
   width: 100%;
-  flex-direction: column;
+  &:hover {
+    cursor: pointer;
+  }
   .title {
     font-family: HelveticaNowDislayBold;
-    font-size: 1.5rem;
-    line-height: 3rem;
-    text-align: left;
-    text-transform: uppercase;
-    color: #f24139;
   }
   .img-container {
     position: relative;
@@ -38,16 +37,20 @@
     .img-overlay {
       height: 100%;
       width: 100%;
-      background-color: #64f1ff;
-      opacity: 0.15;
+      background-color: #000;
+      opacity: 0;
       position: absolute;
       top: 0;
+      transition: opacity 0.3s ease;
+      &:hover {
+        opacity: 0.1;
+      }
     }
 
     .img-background {
       height: 100%;
       width: 100%;
-      filter: grayscale(1);
+      // filter: grayscale(1);
       background-position: center;
       background-size: cover;
     }
@@ -86,6 +89,12 @@ body {
   animation: bg-animation 0.2s infinite;
   opacity: 0.5;
   visibility: visible;
+}
+
+@media (min-width: $media-breakpoint-md) {
+  .image-container {
+    flex-direction: row;
+  }
 }
 
 @keyframes bg-animation {
